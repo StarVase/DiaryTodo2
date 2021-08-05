@@ -1,0 +1,147 @@
+
+
+--作者：StarVase
+--日记与待办开源模块
+--本示例未经允许禁止转发
+
+
+
+{
+  CoordinatorLayout;
+  layout_height="fill";
+  layout_width="fill";
+  id="mainLay1";
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+  {
+    LinearLayout;
+    orientation="vertical";
+    layout_height="fill";
+    gravity="center";
+    layout_width="fill";
+    backgroundColor=BGC,
+    layout_marginTop="24dp",
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    {
+      RelativeLayout;
+      layout_width="fill";
+      layout_height="fill";
+      layout_marginTop="1dp";
+      {
+        ScrollView;
+        layout_width="fill";
+        layout_height="fill";
+        fillViewport=true;
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        {
+          LinearLayout;
+          layout_width="fill";
+          layout_height="wrap";
+          orientation="vertical";
+
+
+          {
+            LinearLayout;
+            layout_width="wrap";
+            layout_height="fill";
+            layout_marginRight="8dp";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            {
+              TextView;
+              textSize="16sp";
+              layout_width="wrap";
+              text=AdapLan("聚焦","Focusing"),
+              layout_height="fill";
+              gravity="center|left",
+              Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+              textColor=icon;
+              layout_marginLeft="26dp";
+              layout_marginRight="16dp";
+              paddingBottom="6dp",
+              singleLine="true";
+            };
+          };
+          {
+            LinearLayout,
+            layout_width="fill";
+            layout_height="wrap";
+            orientation="vertical";
+            layout_marginTop="1dp";
+            id="focusing",
+            layout_margin="16dp",
+            paddingLeft="16dp";
+            paddingRight="16dp";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            {
+              TextView;
+              textSize="24";
+              layout_margin="4dp",
+              layout_width="fill";
+              text="凌晨好！注意休息哟！",
+              layout_height="wrap";
+              gravity="center",
+              Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+              textColor=textColor;
+
+            };
+            {
+              LinearLayout,
+              --backgroundDrawable=graph.ButtonFrame(test,math.dp2int(4),lightForceColor,0.5,math.dp2int(4)),
+              layout_width="fill";
+              layout_height="wrap";
+              id="weather",
+            },
+          },
+
+          {
+            LinearLayout;
+            layout_width="wrap";
+            layout_height="fill";
+            layout_marginRight="8dp";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            {
+              TextView;
+              textSize="16sp";
+              layout_width="wrap";
+              text=AdapLan("功能","Functions"),
+              layout_height="fill";
+              gravity="center|left",
+              Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+              textColor=icon;
+              layout_marginLeft="26dp";
+              layout_marginRight="16dp";
+              paddingBottom="6dp",
+              singleLine="true";
+            };
+          };
+          {
+            FlowLayout;
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            id="mainGrid";
+            -- orientation="vertical";
+            layout_height="fill";
+            layout_margin="16dp",
+            layout_width="fill";
+            --  horizontalSpacing="16dp",
+            -- verticalSpacing="16dp",
+            --   ScrollBarStyle=ScrollView.SCROLLBARS_OUTSIDE_OVERLAY;
+            paddingLeft="16dp";
+
+            paddingRight="16dp";
+            --paddingBottom="80dp";
+            --clipToPadding=false,
+          };
+
+        };
+
+      },
+
+    };
+  };
+}

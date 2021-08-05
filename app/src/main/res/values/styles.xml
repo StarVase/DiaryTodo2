@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Widget.PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/popup_background</item>
+    </style>
+    <style name="Widget.PopupMenu.Overflow" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/popup_background</item>
+    </style>
+	
+	<!--基础主题-->
+    <style name="Base.Theme.Light" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/White</item>
+        <item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="colorAccent">@color/Blue</item>
+        <item name="navigationViewColorAccent">?colorAccent</item>
+        <item name="windowBackgroundColor">@color/White</item>
+        <item name="android:windowBackground">?windowBackgroundColor</item>
+        <item name="android:navigationBarColor">?colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">?windowLightStatusBar</item>
+        <item name="android:windowLightNavigationBar">?windowLightNavigationBar</item>
+        <item name="windowLightStatusBar">true</item>
+        <item name="windowLightNavigationBar">true</item>
+		<item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
+		
+        <item name="actionModeBackground">?colorPrimary</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.PopupMenu.Overflow</item>
+        <item name="popupMenuStyle">@style/Widget.PopupMenu</item>
+    
+        <item name="android:alertDialogTheme">@style/Base.Theme.Dialog.Alert</item>
+   
+        <!--圆角-->
+        <item name="dialogCornerRadius">?cornerRadius</item>
+        <item name="cardCornerRadius">?cornerRadius</item>
+        <item name="popupMenuCornerRadius">?cornerRadius</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+
+
+    </style>
+	
+	<style name="Base.Theme.DarkActionBar" parent="Base.Theme.Light">
+        <item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="navigationViewColorAccent">?colorPrimary</item>
+        <item name="android:navigationBarColor">?colorPrimaryDark</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.Dark.ActionBar</item>
+        <item name="actionBarWidgetTheme">@null</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.MaterialComponents.Light</item>
+        <item name="tabStyle">@style/Widget.TabLayout.Colored</item>
+        <item name="colorPrimary">?colorAccent</item>
+        <item name="windowLightStatusBar">false</item>
+        <item name="windowLightNavigationBar">false</item>
+    </style>
+	
+	<style name="Base.Theme.Dark" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/Black</item>
+        <item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="colorAccent">@color/Blue</item>
+        <item name="navigationViewColorAccent">?colorAccent</item>
+        <item name="windowBackgroundColor">@color/Black</item>
+        <item name="android:windowBackground">?windowBackgroundColor</item>
+        <item name="android:navigationBarColor">?colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">?windowLightStatusBar</item>
+        <item name="android:windowLightNavigationBar">?windowLightNavigationBar</item>
+        <item name="windowLightStatusBar">false</item>
+        <item name="windowLightNavigationBar">false</item>
+
+		<item name="actionBarTheme">@style/ThemeOverlay.Dark.ActionBar</item>
+		
+        <item name="actionModeBackground">?colorPrimary</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.PopupMenu.Overflow</item>
+        <item name="popupMenuStyle">@style/Widget.PopupMenu</item>
+
+        <item name="android:alertDialogTheme">@style/Base.Theme.Dark.Dialog.Alert</item>
+
+        <!--圆角-->
+        <item name="dialogCornerRadius">?cornerRadius</item>
+        <item name="cardCornerRadius">?cornerRadius</item>
+        <item name="popupMenuCornerRadius">?cornerRadius</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+
+
+    </style>
+	
+	
+	<style name="Base.Theme.Dialog.Alert" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">?colorAccent</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Dialog.Alert" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">?colorAccent</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+	
+	<style name="ThemeOverlay.Dark.ActionBar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorControlNormal">@color/White</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <style name="ThemeOverlay.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/Black</item>
+        <item name="elevation">4dp</item>
+        
+    </style>
+
+    <style name="Widget.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">?colorPrimary</item>
+    </style>
+
+    <style name="Widget.TabLayout.Colored" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:background">?colorPrimary</item>
+    </style>
+	
+    <style name="welcome" parent="mDefaultWhite"/>
+    <style name="DefaultWhite" parent="mDefaultWhite"/>
+    <style name="SkyBlue" parent="mSkyBlue"/>
+    <style name="GudovePink" parent="mGudovePink"/>
+    <style name="NewYearRed" parent="mNewYearRed"/>
+    <style name="HonorGreen" parent="mHonorGreen"/>
+	<style name="StarBlack" parent="mStarBlack"/>
+    <style name="Night" parent="mNight"/>
+    
+</resources>

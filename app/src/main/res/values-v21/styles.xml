@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Base.Theme.Light"></style>
+
+    
+    <!--默认白-->
+    <style name="mDefaultWhite" parent="Base.Theme.Light">
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="colorPrimary">@color/White</item>      
+        <item name="colorAccent">@color/Blue</item>
+        <item name="android:statusBarColor">?colorPrimary</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+    
+    <!--天空蓝-->
+    <style name="mSkyBlue" parent="Base.Theme.DarkActionBar">
+        <item name="colorPrimary">@color/Blue</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">@color/Blue</item>
+        <item name="colorAccent">@color/Blue</item>
+        <item name="android:statusBarColor">@color/Blue</item>
+        <item name="android:navigationBarColor">@color/Blue</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+		<item name="android:windowLightNavigationBar">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+    
+    <!--咕鸽粉-->
+    <style name="mGudovePink" parent="Base.Theme.DarkActionBar">
+        <item name="colorPrimary">?colorAccent</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="colorAccent">#FFCB82BE</item>
+        <item name="android:statusBarColor">?colorPrimary</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+	    <item name="android:windowLightNavigationBar">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+    
+
+    <!--新年红-->
+    <style name="mNewYearRed" parent="Base.Theme.Dark">
+        <item name="colorPrimary">@color/NewYearRed</item>
+        <item name="colorAccent">#FFECC03F</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="android:statusBarColor">?colorPrimary</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/NewYearRed</item>
+	    <item name="android:windowLightNavigationBar">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    
+    <!--荣耀绿-->
+    <style name="mHonorGreen" parent="Base.Theme.DarkActionBar">
+        <item name="colorPrimary">#FF00ACC2</item>
+        <item name="colorAccent">#FF00ACC2</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">#FF00ACC2</item>
+        <item name="android:statusBarColor">#FF00ACC2</item>
+        <item name="android:navigationBarColor">#FF00ACC2</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+		<item name="android:windowLightNavigationBar">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+    
+	<!--星空黑-->
+    <style name="mStarBlack" parent="Base.Theme.DarkActionBar">
+        <item name="colorPrimary">#FF000000</item>
+        <item name="colorAccent">#FF000000</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">#FF000000</item>
+        <item name="android:statusBarColor">#FF000000</item>
+        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+		<item name="android:windowLightNavigationBar">false</item>
+		<item name="android:windowIsTranslucent">true</item>
+    </style>
+	
+        <!--夜间黑-->
+    <style name="mNight" parent="Base.Theme.Dark">
+        <item name="colorPrimary">@color/Dark</item>
+        <item name="colorAccent">@color/Blue</item>
+		<!--状态栏颜色-->
+		<item name="colorPrimaryDark">?colorPrimary</item>
+        <item name="android:statusBarColor">?colorPrimary</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+        <item name="colorButtonNormal">@color/Black</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/Dark</item>
+		<item name="android:windowIsTranslucent">true</item>
+		
+    </style>
+    
+    <style name="welcome" parent="mDefaultWhite">
+        <item name="android:statusBarColor">#FF9E9E9E</item>
+        <item name="android:navigationBarColor">#FF9E9E9E</item>
+		<item name="android:windowIsTranslucent">false</item>
+    </style>
+	
+    <style name="White" parent="mDefaultWhite">
+        <item name="android:statusBarColor">#FF9E9E9E</item>
+    </style>
+</resources>

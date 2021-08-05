@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources> 
+	<string name="accsibility_service_description">日记与待办</string>  
+  	<string name="app_name">日记与待办</string> 
+
+	<!--Global functions name-->
+	<string name="func_diary">日记</string>
+	<string name="func_todo">待办</string>
+	<string name="func_inspiration">灵感</string>
+    <string name="func_markdown">Markdown</string>
+	<string name="func_one_article">一文</string>
+	<string name="func_collection">收藏</string>
+	<string name="func_logcat">LogCat</string>
+	<!--Main page strings-->
+	<string name="menu_main_new">新建</string>
+	<string name="menu_main_sync">同步</string>
+ 	<string name="menu_main_settings">设置</string> 
+  	<string name="menu_main_about">关于</string>
+  	<string name="menu_main_exit">退出</string>
+    
+  	<string name="lab_focusing">聚焦</string>
+	<string name="lab_functions">功能</string>
+	
+  
+  
+</resources>

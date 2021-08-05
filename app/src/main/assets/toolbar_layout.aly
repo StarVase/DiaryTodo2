@@ -1,0 +1,85 @@
+
+--作者：StarVase
+--日记与待办开源模块
+--本示例未经允许禁止转发
+
+
+{
+  CoordinatorLayout;
+  layout_width="fill";
+  layout_height="fill";
+  id="mainLay";
+  backgroundColor=BGC,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+  --fitsSystemWindows=true,
+  {
+    AppBarLayout;
+    layout_width="fill";
+    layout_height="305dp";
+    id="appBarLayout",
+    fitsSystemWindows=true,
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    {
+      SubtitleCollapsingToolbarLayout;
+      layout_height="fill";
+      layout_width="fill";
+      id="collapsingToolbarLayout",
+      scrimAnimationDuration=400,
+      fitsSystemWindows=true,
+     -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+      {
+        FrameLayout,
+        layout_width="fill",
+        layout_height="305dp",
+        id="imageFrame",
+        fitsSystemWindows=true,
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        {
+          ImageView,
+          layout_width="fill",
+          layout_height="305dp";
+          scaleType="centerCrop";
+          id="mainImageView",
+          
+        },
+        {
+          ImageView,
+          layout_width="fill",
+          layout_height="305dp";
+          scaleType="centerCrop";
+          alpha=0,
+          id="subImageView",
+          
+        },
+      },
+      {
+        Toolbar,
+        layout_height="56dp";
+        layout_width="fill";
+        id="toolBar",
+       -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        --fitsSystemWindows=true,
+      },
+    };
+  };
+  {
+    NestedScrollView,
+    id="nestedScrollView",
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    --layout_behavior=R.string.appbar_scrolling_view_behavior,
+  },
+  {
+    FloatingActionButton,
+    id="fab",
+    
+    layout_margin="16dp",
+    --layout_anchorId="1"
+    --layout_anchorGravity="bottom|right|end"
+  }
+};

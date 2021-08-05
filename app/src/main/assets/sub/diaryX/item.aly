@@ -1,0 +1,35 @@
+{
+  LinearLayout;
+  gravity="center";
+  layout_width="fill";
+  layout_height="56dp";
+  {
+    ImageView,
+    id="img",
+    layout_margin="16dp",
+    src="images/check.png",
+    layout_width="24dp",
+    layout_height="24dp",
+    colorFilter=icon,
+  },
+  {
+    TextView;
+    id="title";
+    textSize="16sp";
+    --gravity="center";
+    --layout_height="fill";
+    layout_weight="1";
+    layout_marginLeft="16dp";
+    layout_marginRight="16dp";
+    textColor=textColor;
+    singleLine="true";
+  };
+  {
+    ImageView;
+    layout_margin="16dp";
+    layout_height="24dp";
+    layout_width="24dp";
+    id="image",
+    colorFilter=textColor,
+  };
+};

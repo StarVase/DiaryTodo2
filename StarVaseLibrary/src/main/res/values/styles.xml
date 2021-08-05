@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+      <item name="android:colorPrimary">@color/White</item>      
+        <item name="android:colorAccent">@color/Blue</item>
+        <item name="android:statusBarColor">?android:colorPrimary</item>
+        <item name="android:navigationBarColor">?android:colorPrimary</item>
+        <item name="android:colorButtonNormal">@color/White</item>
+        <item name="android:actionModeBackground">@null</item>
+        <item name="android:windowBackground">@color/White</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+	</style>
+   
+</resources>

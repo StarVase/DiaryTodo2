@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>showdown.js</title>
+    <script type="text/javascript" src="public/showdown/dist/showdown.min.js"></script>
+    <link rel="stylesheet" href="css/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="github-markdown.css">
+    <script src="public/katex/dist/showdown-katex.js"></script>
+    <meta charset="utf-8"/>
+</head>
+<style>
+    blockquote {
+        border-left:#eee solid 5px;
+        padding-left:20px;
+    }
+    ul li {
+        line-height: 20px;
+    }
+
+    code {
+        color:#D34B62;
+        background: #F6F6F6;
+        width:100%;
+    }
+</style>
+<body>
+<div>
+     <div id="main"></div>
+
+</div>
+
+<script type="text/javascript">
+function convert(){
+    var text = document.getElementById("oriContent").value;
+    var converter = new showdown.Converter({
+        extensions: [
+          showdownKatex(),
+        ],
+        simplifiedAutoLink: true,
+        tasklists: true,
+        tables: true,
+        strikethrough: true,
+        parseImgDimensions: true
+    });
+    var html = converter.makeHtml(text);
+    document.getElementById("result").innerHTML = '<xmp>'+ html +'</xmp>';
+}
+
+function MarkText(text){
+    var converter = new showdown.Converter({
+        extensions: [
+          showdownKatex(),
+        ],
+        simplifiedAutoLink: true,
+        tasklists: true,
+        tables: true,
+        strikethrough: true,
+        parseImgDimensions: true
+    });
+    var html = converter.makeHtml(text);
+    document.getElementById("main").innerHTML =  html ;
+}
+//MarkText("```latex x=b^2-4ac ``` ")
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  LinearLayout,
+  layout_width="fill",
+  layout_height="fill",
+  orientation="vertical",
+  backgroundColor=mainColor,
+  Gravity="center",
+  
+  {
+    LinearLayout,
+    layout_width="fill",
+    layout_height="fill",
+    orientation="vertical",
+    backgroundColor=BGC,
+    Gravity="center",
+
+    {
+      RelativeLayout,
+      layout_width="fill",
+      layout_height="fill",
+      layout_marginTop="1dp",
+
+      {
+        LinearLayout,
+        layout_width="fill",
+        layout_height="fill",
+        orientation="vertical";
+        {
+          FlexibleListView,
+          id="listView",
+          DividerHeight=0;
+          layout_width="fill",
+          layout_height="fill",
+        }
+      }
+    }
+  }
+}

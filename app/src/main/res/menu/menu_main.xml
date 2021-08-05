@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item
+		android:id="@+id/menu_main_new"
+		android:showAsAction="always"
+		android:icon="@drawable/ic_plus"
+		android:title="@string/menu_main_new"/>
+	<item
+		android:id="@+id/menu_main_sync"
+		android:showAsAction="always"
+		android:icon="@drawable/ic_sync"
+		android:title="@string/menu_main_sync"/>
+    <item
+        android:id="@+id/menu_main_settings"
+		android:showAsAction="never"
+		android:icon="@drawable/ic_cog"
+        android:title="@string/menu_main_settings"/>
+    <item
+        android:id="@+id/menu_main_about"
+		android:showAsAction="never"
+		android:icon="@drawable/ic_information_outline"
+        android:title="@string/menu_main_about"/>
+	<item
+        android:id="@+id/menu_main_exit"
+		android:showAsAction="never"
+		android:icon="@drawable/ic_exit"
+        android:title="@string/menu_main_exit"/>
+</menu>

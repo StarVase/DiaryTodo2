@@ -1,0 +1,51 @@
+{
+  LinearLayout;
+  orientation="vertical";
+  gravity="left|center";
+  layout_height="56dp";
+  layout_width="fill";
+  {
+    LinearLayout;
+    orientation="horizontal";
+
+    gravity="left|center";
+    {
+      ImageView;
+      id="img";
+      layout_width="24dp";
+      layout_margin="14dp";
+      layout_height="24dp";
+      src="images/inspiration.png";
+    };
+    {
+      LinearLayout;
+      layout_height="fill";
+      layout_width="fill";
+      gravity="left|center";
+      orientation="vertical";
+      {
+        TextView;
+        id="title";
+        ellipsize="end";
+        --[[getPaint={
+        Flags=Paint. STRIKE_THRU_TEXT_FLAG,
+        },]]
+        --layout_weight="1";
+        layout_marginRight="16dp";
+        singleLine="true";
+        layout_marginLeft="16dp";
+        textSize="16sp";
+      };
+        {
+      ProgressBar;
+      id="progress",
+      style="?android:attr/progressBarStyleHorizontal",
+      --progress=050,
+      layout_height="4dp";
+      layout_width="fill";
+    };
+    };
+
+
+  };
+};

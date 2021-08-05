@@ -1,0 +1,84 @@
+{
+  LinearLayout,
+  layout_width="fill",
+  layout_height="fill",
+  orientation="vertical",
+  backgroundColor=mainColor,
+  Gravity="center",
+  
+  
+  {
+    FrameLayout;
+    layout_height="fill";
+    layout_width="fill";
+
+    {
+      LinearLayout,
+      layout_width="fill",
+      layout_height="fill",
+      orientation="vertical",
+      backgroundColor=BGC,
+      Gravity="center",
+
+      {
+        SwipeRefreshLayout,
+        id="sr",
+        {
+          RelativeLayout,
+          layout_width="fill",
+          layout_height="fill",
+
+          {
+            FlexibleListView,
+            id="list",
+            layout_width="fill",
+            layout_marginTop="0dp",
+            --  Gravity='center',
+            layout_marginLeft="0dp",
+            --paddingBottom="88dp";
+            layout_marginRight="0dp",
+            dividerHeight="0px",
+            FastScrollEnabled=true;
+          },
+          {
+            LinearLayout;
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            {
+              ProgressBar;
+              --layout_height="fill";
+              --layout_gravity="center";
+              id="loading";
+            };
+          };
+        },
+      },
+    },
+    {
+      CardView;
+      layout_gravity="bottom|right";
+      layout_width="56dp";
+      backgroundColor=mainColor;
+      id="fab",
+      layout_margin="16dp";
+      layout_height="56dp";
+      radius="28dp";
+      {
+        LinearLayout;
+        layout_width="fill";
+        gravity="center";
+        layout_height="fill";
+        backgroundColor=mainColor;
+        id="add";
+        {
+          ImageView;
+          layout_width="24dp";
+          colorFilter=titleColor;
+          layout_height="24dp";
+          src="images/plus_512x512.png";
+        };
+      };
+    };
+  },
+}

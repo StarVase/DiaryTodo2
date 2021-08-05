@@ -1,0 +1,37 @@
+
+{
+  LinearLayout;
+  layout_height="56dp";
+  layout_width="fill";
+  orientation="horizontal";
+  --layout_marginTop="8dp";
+  --layout_marginBottom="8dp";
+  gravity="center";
+  {
+    ImageView;
+    src="images/backup.png",
+    layout_width="24dp";
+    layout_margin="16dp";
+    colorFilter=icon;
+    layout_height="24dp";
+  };
+
+  {
+    TextView;
+    id="title";
+    textSize="16dp";
+    singleLine="true";
+    layout_marginLeft="16dp";
+    layout_marginRight="16dp";
+    textColor=textColor;
+    layout_weight="1";
+  };
+  {
+    ImageView;
+    layout_margin="16dp";
+    layout_height="24dp";
+    layout_width="24dp";
+    id="image",
+    colorFilter=textColor,
+  };
+};

@@ -1,0 +1,127 @@
+
+{
+  import "androidx.coordinatorlayout.widget.CoordinatorLayout";
+  layout_height="fill";
+  layout_width="fill";
+  id="mainLay",
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+  {
+    LinearLayout,
+    orientation="vertical",
+    layout_width="fill",
+    layout_height="fill",
+    gravity="center",
+    backgroundColor=BGC,
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    {
+      View;
+      layout_height=0;
+      backgroundColor=mainColor,
+    };
+    {
+      LinearLayout,
+      orientation="vertical",
+      layout_width="fill",
+      layout_height="fill",
+      gravity="center",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+      backgroundColor=BGC,
+
+      {
+        RelativeLayout,
+        layout_width="fill",
+        layout_height="fill",
+        layout_marginTop="1dp",
+
+
+
+        {
+          NoScrollPageView,
+          id="page",
+          layout_height="fill",
+          layout_width='fill',
+          clipToPadding=true,
+          fitsSystemWindows=true,
+          --touchEnabled=false;--禁止触摸
+          pages={
+            {
+              LinearLayout,
+              orientation="vertical",
+              layout_width="fill",
+              layout_height="fill";
+              gravity="center|top",
+              backgroundColor=BGC,
+              layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+              {
+                HVScrollView,
+                layout_width="fill",
+                layout_height="fill";
+                {
+                  AppCompatEditText,
+                  text="StarVase文本编辑器",
+                  gravity="top";
+                  hint="内容";
+                  textColor=textColor,
+                  layout_width="wrap";
+                  layout_height="wrap";
+                  padding="16dp";
+                  textSize="14sp";
+                  id="Widgetcontent",
+                  backgroundColor=0;
+                  --Typeface=Typeface.createFromAsset(this.getAssets(),"res/fonts/mono.ttf"),
+
+                },
+              },
+            },
+
+
+            -------------------------
+            {
+              LinearLayout,
+              orientation="vertical",
+              layout_width="fill",
+              layout_height="fill",
+              --gravity="center",
+              backgroundColor=BGC,
+              
+
+              {
+                LinearLayout,
+                orientation="vertical",
+                layout_width="fill",
+                --gravity="center",
+                backgroundColor=BGC,
+                {
+                  LuaWebView,
+                  layout_height="fill",
+                  layout_width="fill",
+                  id="webView",
+                },
+
+
+              },
+            }
+
+
+          },
+
+        },
+      },
+    },
+  },
+  {
+    FloatingActionButton;
+    layout_gravity="bottom|right";
+    layout_width="56dp";
+    id="fab",
+   -- backgroundColor=graph.修改颜色强度(50,mainColor);
+    layout_margin="16dp";
+    layout_height="56dp";
+    alpha=0.86
+    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  };
+}
