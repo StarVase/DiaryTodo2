@@ -6,9 +6,9 @@ import "android.view.*"
 import "StarVase"
 import "com.bumptech.glide.Glide"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+import "androidx.coordinatorlayout.widget.CoordinatorLayout"
 
-importFile('diaryX',"UIHelper")
-
+import "UIHelper"
 
 
 list.onItemLongClick=function(id,v,zero,one)
@@ -25,34 +25,6 @@ end
 
 
 
-
-
-add.onClick=function()
-  输入对话框("新建","标题",date,"创建","取消",function() onEditDialogCallback(edit.getText()) 关闭对话框(an) return edit.Text end,function() 关闭对话框(an) return nil end )
-
-  function onEditDialogCallback(edit)
-    import "rc4"
-    activity.setSharedData('diaryRC4PSK',"1234")
-    content=minicrypto.encrypt("日记新建成功",activity.getSharedData('diaryRC4PSK'))
-    key=minicrypto.encrypt("1234","Diaryenced")
-print(edit)
-    values = ContentValues();
-    values.put("title",edit);
-    values.put("year", "2021");
-    values.put("month", "03");
-    values.put("day", "21");
-    values.put("isEmp", "1");
-    values.put("key", "");
-    values.put("content", "");
-    db.insert("diary", nil, values);
-
-    Refresh()
-
-  end
-end
-
-
-
 list.onItemClick=function(id,v,zero,one)
   id=data[one].id
   sql="select * from diary WHERE id=?"
@@ -63,7 +35,7 @@ list.onItemClick=function(id,v,zero,one)
     isEmp = cursor.getInt(6);
     key = cursor.getString(7);
   end
-  sub("notepad","diaryX",title,{
+  subed("notepad","diaryX",title,{
     id=id,
     isEmp=isEmp,
     key=key
@@ -72,7 +44,53 @@ list.onItemClick=function(id,v,zero,one)
 end
 
 
-function onResume()
-  Refresh()
+onResume= lambda -> Refresh()
+
+
+--没注释，不解释不抱怨
+function fab.onClick()
+  task(1,function()
+    import "android.icu.util.Calendar"
+    calendar = Calendar.getInstance();
+    year = calendar.get(Calendar.YEAR);
+    month = calendar.get(Calendar.MONTH)+1;
+    day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+    local dann=import "layout.add_dialog"
+
+    dl=BottomSheetDialog(activity)
+    dl.setContentView(loadlayout(dann))
+    an=dl.show()
+    bottom = dl.findViewById(R.id.design_bottom_sheet);
+    if (bottom != nil) then
+      bottom
+      .setBackgroundResource(android.R.color.transparent)
+      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+    end
+    enccheckbox.setText(AdapLan("启用加密","Enable encryption"))
+    if activity.getSharedData("EncryptDiary") then
+      enccheckbox.checked=true
+     else enccheckbox.enabled=false
+    end
+    date.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+    okey.onClick=function()
+      if edit.getText() then
+        CreateFileUtil.diary({
+          title=edit.getText(),
+          isLocked=enccheckbox.checked,
+          passkey=activity.getSharedData("DiaryPassword"),
+          date={year=year,month=month,day=day},
+        })
+        MyToast.showSnackBar("Done")
+      end
+      dl.dismiss()
+      Refresh()
+    end
+    cancel.onClick=lambda -> dl.dismiss()
+    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+  end)
 end
 
+import "android.app.DatePickerDialog"

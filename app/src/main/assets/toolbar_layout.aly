@@ -9,8 +9,8 @@
   layout_width="fill";
   layout_height="fill";
   id="mainLay";
-  backgroundColor=BGC,
-  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  --backgroundColor=BGC,
+  --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
   --fitsSystemWindows=true,
   {
@@ -19,7 +19,7 @@
     layout_height="305dp";
     id="appBarLayout",
     fitsSystemWindows=true,
-    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       SubtitleCollapsingToolbarLayout;
@@ -28,6 +28,7 @@
       id="collapsingToolbarLayout",
       scrimAnimationDuration=400,
       fitsSystemWindows=true,
+      
      -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
@@ -36,7 +37,7 @@
         layout_height="305dp",
         id="imageFrame",
         fitsSystemWindows=true,
-        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
           ImageView,
@@ -72,7 +73,7 @@
     id="nestedScrollView",
     layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-    --layout_behavior=R.string.appbar_scrolling_view_behavior,
+    layout_behavior=R.string.appbar_scrolling_view_behavior,
   },
   {
     FloatingActionButton,

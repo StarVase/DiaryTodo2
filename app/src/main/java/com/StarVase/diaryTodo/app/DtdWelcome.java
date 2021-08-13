@@ -1,11 +1,18 @@
 package com.StarVase.diaryTodo.app;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 
 public class DtdWelcome extends BaseActivity
 {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        // TODO: Implement this method
+        super.onCreate(savedInstanceState);
+        //super.setSwipeBackEnable(false);
+	}
 
 	@Override
 	public String getLuaDir()
@@ -22,6 +29,15 @@ public class DtdWelcome extends BaseActivity
 		return getLocalDir()+"/welcome.lua";
 	}
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  
+    {
+        if(keyCode==KeyEvent.KEYCODE_BACK)
+        {
+            return true;
+        }
+        return false;
+    }
+    
 }
 

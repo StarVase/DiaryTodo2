@@ -62,7 +62,7 @@
                 layout_height="fill";
                 {
                   AppCompatEditText,
-                  text="StarVase文本编辑器",
+                  text="# Markdown Editor",
                   gravity="top";
                   hint="内容";
                   textColor=textColor,

@@ -55,9 +55,6 @@ function clearlog()
 end
 
 
-print("logs",readlog("*:V"))
-
-error("err")
 func={}
 func.All=function()
   activity.setTitle("LogCat - All")

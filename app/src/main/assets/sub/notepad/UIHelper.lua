@@ -115,7 +115,6 @@ end
 
 
 
-
 function onOptionsItemSelected(item)
   local id=item.getItemId()
   if id==android.R.id.home then
@@ -212,5 +211,5 @@ pweb.getSettings().setOffscreenPreRaster(true) --设置预绘制
 pweb.getSettings().setRenderPriority(HIGH)--设置高渲染率
 pweb.setLayerType(View.LAYER_TYPE_HARDWARE,nil);--硬件加速
 pweb.getSettings().setPluginsEnabled(true)--支持插件
-pweb.loadUrl("file:///"..activity.getLuaDir().."/html/index.html")
+pweb.loadUrl("file:///android_asset/html/index.html")
 pweb.removeView(pweb.getChildAt(0))

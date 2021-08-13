@@ -35,7 +35,15 @@ params2.setAnchorId(appBarLayout.getId())
 params2.anchorGravity = Gravity.BOTTOM|Gravity.END;
 fab.setLayoutParams(params2)
 
---设置布局
+
+appBarLayout.setClipToOutline(true);
+appBarLayout.setOutlineProvider(ViewOutlineProvider({
+  getOutline = function(view,outline)
+    outline.setRoundRect(0,-48,view.getWidth(),view.getHeight(),48);
+  end
+}))
+
+--l设置布局
 function MyToolbar.setContentView(view)
   nestedScrollView.addView(view)
 end

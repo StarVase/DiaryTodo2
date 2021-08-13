@@ -25,6 +25,7 @@ if activity.getSharedData("WeatherTip")==true then
         LinearLayout,
         layout_width="fill",
         orientation="vertical";
+        id="mcardparent",
         {
           MaterialCardView;--卡片控件
           --layout_margin='3%w';--卡片边距
@@ -152,11 +153,8 @@ if activity.getSharedData("WeatherTip")==true then
       ))
       --
       graph.Ripple(wFream,淡色强调波纹)
-      task(1,function()
-        weatherSub.Visibility=8
-        weatherSubHeight=weatherSub.getHeight()
-        weatherTopHeight=weatherTop.getHeight()
-      end)
+
+
       --loadGlideBitmap('https://m.tianqi.com/'..weatherImage,weatherImg)
       function AnimationLister(a,b)
         --动画状态监听
@@ -173,61 +171,62 @@ if activity.getSharedData("WeatherTip")==true then
       end
       function openAnimation()
         --icon.setRotation(180)
-        isShow=true
+        task(1,function()
+          isShow=true
 
 
-        --mtext.Text="is show"
+          --mtext.Text="is show"
 
-        透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {0, 1})
+          透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {0, 1})
 
-        透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
-        透明动画.setDuration(500)
+          透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
+          透明动画.setDuration(500)
 
-        ObjectAnimator.ofFloat(melse, "y", {weatherTopHeight+dp2px(30),weatherTopHeight+weatherSubHeight+dp2px(30)})
-        .setDuration(300)
-        .addUpdateListener{
-          onAnimationUpdate=function(a)
-            local x=a.getAnimatedValue()
+          ObjectAnimator.ofFloat(melse, "y", {mcardparent.getHeight(),weatherTopHeight+weatherSubHeight+dp2px(30)})
+          .setDuration(300)
+          .addUpdateListener{
+            onAnimationUpdate=function(a)
+              local x=a.getAnimatedValue()
 
-            local linearParams = mcard.getLayoutParams()
-            linearParams.height =x
-            mcard.setLayoutParams(linearParams)
-          end
-        }.addListener({
-          onAnimationEnd=function(m,z)
-            weatherSub.Visibility=0
-            透明动画.start()
-          end,
+              local linearParams = mcard.getLayoutParams()
+              linearParams.height =x
+              mcard.setLayoutParams(linearParams)
+            end
+          }.addListener({
+            onAnimationEnd=function()
+              weatherSub.setVisibility(0);
+              透明动画.start()
+            end
+          }).start()
 
-        }).start()
-
+        end)
       end
 
-      function closeAnimation()
-        --icon.setRotation(0)
-        isShow=false
+      function closeAnimation(time)
+        --icon.setRotation(0)Thread(Runnable({run=function()
+        task(1,function()
+          isShow=false
 
-        透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {1, 0})
+          透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {1, 0})
 
-        透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
-        透明动画.setDuration(500)
-        weatherSub.Visibility=0
-        ValueAnimator().ofFloat({weatherTopHeight+weatherSubHeight+dp2px(30),weatherTopHeight+dp2px(30)})
-        .setDuration(300)
-        .addUpdateListener{
-          onAnimationUpdate=function(a)
-            local x=a.getAnimatedValue()
+          透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
+          透明动画.setDuration(time or 500)
+          weatherSub.Visibility=0
+          ValueAnimator().ofFloat({mcardparent.getHeight(),weatherTopHeight+dp2px(30)})
+          .setDuration(time or 300)
+          .addUpdateListener{
+            onAnimationUpdate=function(a)
+              local x=a.getAnimatedValue()
 
-            local linearParams = mcard.getLayoutParams()
-            linearParams.height =x
-            mcard.setLayoutParams(linearParams)
-          end
-        }.start()
-        透明动画.addListener({
-          onAnimationEnd=function(m,z)
-            weatherSub.Visibility=8
-          end,
-        }).start()
+              local linearParams = mcard.getLayoutParams()
+              linearParams.height =x
+              mcard.setLayoutParams(linearParams)
+            end
+          }.start()
+          透明动画.addListener({
+            onAnimationEnd = lambda -> weatherSub.setVisibility(8)
+          }).start()
+        end)
       end
 
 
@@ -248,7 +247,12 @@ if activity.getSharedData("WeatherTip")==true then
       as.start()
 
       temperature_text.getPaint().setFakeBoldText(true)
-
+      task(400,function()
+        weatherSubHeight=weatherSub.getHeight()
+        weatherTopHeight=weatherTop.getHeight()
+        closeAnimation(100)
+        --print(weatherSubHeight,weatherTopHeight)
+      end)
      else
     end
   end)

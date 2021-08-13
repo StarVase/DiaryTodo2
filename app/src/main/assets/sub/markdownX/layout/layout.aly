@@ -1,0 +1,37 @@
+{
+  CoordinatorLayout;
+  layout_height="fill";
+  layout_width="fill";
+  id="mainLay";
+  {
+    RelativeLayout;
+    layout_width="fill";
+    layout_height="fill";
+    {
+      LinearLayoutCompat;
+      layout_height="fill";
+      layout_width="fill";
+
+      {
+        PageView,
+        layout_weight="1",
+        id="page",
+        paddingBottom="56dp",
+        
+        --layout_marginBottom="56dp",
+        pages={
+          Recently,
+          Explorer,
+        },
+      },
+    };
+    {
+      BottomNavigationView;
+      layout_alignParentBottom="true";
+     -- layout_weight="1",
+      layout_width="fill";
+      layout_height="56dp";
+      background="#ddffffff";
+    };
+  };
+}

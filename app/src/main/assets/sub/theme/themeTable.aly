@@ -1,0 +1,38 @@
+{
+  {
+    name="默认白",
+    view={backgroundColor=AppTheme.table[1].mainColor},
+    ThemeId=1,
+  },
+  {
+    name="深海蓝",
+    view={backgroundColor=AppTheme.table[2].mainColor},
+    ThemeId=2,
+  },
+  {
+    name="咕鸽粉",
+    view={backgroundColor=AppTheme.table[7].mainColor},
+    ThemeId=7,
+  },
+  {
+    name="荣耀绿",
+    view={backgroundColor=AppTheme.table[4].mainColor},
+    ThemeId=4,
+  },
+  {
+    name="新年红",
+    view={backgroundColor=AppTheme.table[3].mainColor},
+    ThemeId=3,
+  },
+  {
+    name="夜空黑",
+    view={backgroundColor=AppTheme.table[5].mainColor},
+    ThemeId=5,
+  },
+
+  {
+    name="纯黑",
+    view={backgroundColor=AppTheme.table[6].mainColor},
+    ThemeId=6,
+  },
+}

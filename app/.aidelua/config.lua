@@ -1,1 +1,1 @@
-appName="DiaryTodo"
+appName="{appName}"

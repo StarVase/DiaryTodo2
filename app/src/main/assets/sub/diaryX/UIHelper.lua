@@ -1,11 +1,15 @@
 data={}
-import "com.tencent.qq.widget.ReboundEffectsView"
+import "android.widget.ExListView"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
-
-
+import "android.graphics.ColorFilter"
+import "android.content.res.ColorStateList"
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
+import "com.google.android.material.textfield.TextInputEditText"
+import "com.google.android.material.textfield.TextInputLayout"
 import "android.text.Spannable"
+import "com.StarVase.view.MaterialButton.TextButton"
+import "com.google.android.material.button.MaterialButton"
 spTitle = SpannableString("日记X")
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
@@ -20,27 +24,23 @@ function onOptionsItemSelected(item)
 end
 
 
-layout=importFile('diaryX',"layout")
-item=importFile('diaryX',"item")
+import "layout.layout"
+import "layout.item"
 
 activity.setContentView(loadlayout(layout))
 --import"fab"
 adapter=LuaAdapter(this,data,item)
 list.Adapter=adapter
 
-importFile('diaryX',"function")
+import "function"
 
-AutoSetToolTip(add,AdapLan("新建","new"))
-graph.Ripple(add,淡色强调波纹)
-
+AutoSetToolTip(fab,AdapLan("新建","new"))
 
 
 sr.setRefreshing(false);
 sr.setColorSchemeColors({icon});
-sr.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener{onRefresh=function()
-    Refresh()
-
-  end
+sr.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener{
+  onRefresh=lambda -> Refresh()
 })
 
 

@@ -1,0 +1,30 @@
+{
+  LinearLayoutCompat,
+  layout_height="fill";
+  layout_width="fill";
+  orientation="vertical";
+  
+  --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  {
+    FileTagView,
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    id="filetag",
+    layout_width="fill";
+    tabMode=TabLayout.MODE_SCROLLABLE;
+    layout_height="48dp";
+    selectedTabIndicatorHeight=0;
+    inlineLabel=true;
+    paddingLeft="16dp";
+    paddingRight="16dp";
+    clipToPadding=false;
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  },
+  {
+    ListView,
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    id="listView",
+    transcriptMode=ListView.TRANSCRIPT_MODE_NORMAL,
+    layout_height="fill";
+    layout_width="fill";
+  }
+}

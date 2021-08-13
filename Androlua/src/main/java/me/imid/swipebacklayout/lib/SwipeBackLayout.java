@@ -1,7 +1,6 @@
 package me.imid.swipebacklayout.lib;
 
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -11,9 +10,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ContentFrameLayout;
 import androidx.core.view.ViewCompat;
-import com.androlua.R;
+import com.StarVase.diaryTodo.app.R;
 import java.util.ArrayList;
 import java.util.List;
 public class SwipeBackLayout extends ContentFrameLayout {

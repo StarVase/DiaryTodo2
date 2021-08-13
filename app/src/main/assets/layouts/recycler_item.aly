@@ -1,0 +1,77 @@
+{
+    LinearLayout,
+    orientation="vertical";
+    layout_height="wrap";
+    gravity="center";
+    layout_width="41%w";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    paddingTop="8dp",
+    paddingBottom="8dp",
+
+    {
+      MaterialCardView,
+      layout_margin="2dp",
+      layout_width='fill',
+      --layout_height="200dp",
+      Elevation=0;
+      id="CardParent",
+      --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
+      cardBackgroundColor=0,
+      StrokeColor=lightForceColor,
+      StrokeWidth=math.dp2int(2),
+      radius=math.dp2int(16),
+      {
+        RelativeLayout,
+        onClick=function (v)
+        end,
+        
+        {
+          ImageView,
+          scaleType="centerCrop",
+          id="pic",
+          layout_width="fill",
+          foreground=上下渐变({getMaskColor()}),
+        },
+
+        {
+          LinearLayout,
+          id="itemlayout";
+          layout_width='fill',
+          paddingTop="6dp",
+          --backgroundDrawable=activity.Resources.getDrawable(ripples).setColor(ColorStateList(int[0].class{int{}},int{淡色强调波纹}));
+
+          paddingBottom="6dp",
+          layout_height='fill',
+          focusable="true";
+          gravity="center|left";
+          {
+            LinearLayout,
+            layout_width='fill',
+            layout_height='fill',
+            id="card",
+            orientation="vertical";
+            gravity="top|left";
+            --onClick=(lambda -> task(50,lambda -> mainItem[func].onClick())),
+            {
+              ImageView;
+              layout_height="30dp";
+              layout_width="30dp";
+              layout_margin="16dp";
+              --ImageResource=img;
+              id="img",
+              colorFilter=icon,
+            };
+            {
+              TextView;
+              textColor=textColor;
+              paddingLeft="24dp",
+              --layout_weight="1";
+              Text=text,
+              id="text";
+            };
+
+          };
+        },
+      },
+    },
+  }

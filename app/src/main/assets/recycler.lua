@@ -5,6 +5,8 @@ import "android.widget.*"
 import "android.view.*"
 import "androidx.appcompat.widget.LinearLayoutCompat"
 import "androidx.recyclerview.widget.RecyclerView"
+import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
+
 --import "muk"
 --删掉“--”注释符号以使用中文函数
 
@@ -38,7 +40,6 @@ activity.setContentView(loadlayout(layout))
 
 
 import "java.lang.String"
-import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
 import "com.google.android.material.tabs.TabLayout$OnTabSelectedListener"
 import "com.StarVase.library.adapter.MyLuaRecyclerAdapter"
 data={}

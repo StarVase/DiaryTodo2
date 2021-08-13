@@ -8,8 +8,8 @@ android {
         //applicationId "com.androlua"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 1399
-        versionName "1.3(5.0.10)"
+        versionCode 1099
+        versionName "1.0(5.0.16)"
     }
     buildTypes {
         release {
@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-	  implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'androidx.appcompat:appcompat:1.0.0'
     api 'com.google.android.material:material:1.0.0'
 }

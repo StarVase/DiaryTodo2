@@ -8,7 +8,7 @@ return {
   {
     ["text"]=activity.getString(R.string.func_todo),
     ["img"]=R.drawable.ic_check,
-    ["onClick"]=function() sub('TODO') end,
+    ["onClick"]=function() sub('todoX') end,
   },
 --[[  {
     ["text"]=AdapLan( "任务","Task"),
@@ -23,7 +23,7 @@ return {
   {
     ["text"]=activity.getString(R.string.func_markdown),
     ["img"]=R.drawable.ic_language_markdown_outline,
-    ["onClick"]=function() sub('favorite',os.clock())print(AdapLan("开发中","Developing.")) end,
+    ["onClick"]=function() sub('markdownX',os.clock())print(AdapLan("开发中","Developing.")) end,
   },
   {
     ["text"]=activity.getString(R.string.func_one_article),

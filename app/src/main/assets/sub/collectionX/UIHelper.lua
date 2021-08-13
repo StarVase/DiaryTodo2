@@ -1,5 +1,5 @@
 data={}
-import "com.tencent.qq.widget.ReboundEffectsView"
+import "android.widget.ExListView"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 
 layout=importFile('collectionX',"layout")

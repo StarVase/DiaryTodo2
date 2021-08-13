@@ -2,7 +2,6 @@ require"import"
 import "cjson"
 import "StarVase"
 import "android.widget.ExListView"
-xpcall(function()import "com.tencent.qq.widget.ReboundEffectsView"end,function()ReboundEffectsView=ListView end)
 import "androidx.coordinatorlayout.widget.CoordinatorLayout"
 import "android.os.*"
 import "android.app.*"
@@ -19,7 +18,7 @@ ch_item_checked_background = GradientDrawable()
 .setShape(GradientDrawable.RECTANGLE)
 .setColor(淡色强调波纹)
 .setCornerRadii({0,0,math.dp2px(24),math.dp2px(24),math.dp2px(24),math.dp2px(24),0,0});
-layout=importFile("settings","layout")
+import "layout"
 
 
 local main = nil
@@ -51,24 +50,22 @@ end
 
 
 listView.setOnScrollListener{
-  onScroll=function(l,s)
-    --MyToolbarStyle.AutoElevation(activity.getSupportActionBar(),listView.getFirstVisiblePosition())
-  end
+  onScroll=lambda(l,s) -> nil
 }
 
 
 
 dataset = {}
-setting=importFile('settings',"setlay")
-adp=LuaMultiAdapter(this,dataset,setting)
+import "setlay"
+adp=LuaMultiAdapter(this,dataset,setlay)
 adp.add{__type=1,title=AdapLan("界面","User Interface")}
 adp.add{__type=3,intent="ChooseTheme",img={ImageResource=R.drawable.ic_tshirt_crew_outline},subtitle=AdapLan("主题选择","Select themes")}
 adp.add{__type=3,intent="ResetFabPos",img={ImageResource=R.drawable.ic_circle},subtitle=AdapLan("重置悬浮球位置","Reset fab position")}
 adp.add{__type=1,title=AdapLan("编辑器","Editor")}
 adp.add{__type=2,intent="FontSize",p={Focusable=false},img={ImageResource=R.drawable.ic_format_size},subtitle=AdapLan("字体大小","Font Size"),message=tostring(activity.getSharedData("FontSize")or 14)}
 adp.add{__type=1,title=AdapLan("密码","Password")}
-adp.add{__type=5,intent="EncryptDiary",p={Focusable=true},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("日记加密"))}}
-adp.add{__type=2,intent="PasswordPro",p={Focusable=true},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("设置密保","Set password security"),message=AdapLan('可用密保找回密码',"The password can be recovered with security")}
+adp.add{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("日记加密"))}}
+adp.add{__type=2,intent="PasswordPro",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("设置密保","Set password security"),message=AdapLan('可用密保找回密码',"The password can be recovered with security")}
 adp.add{__type=1,title=AdapLan("展示","Showing")}
 adp.add{__type=4,intent="BingImage",img={ImageResource=R.drawable.ic_microsoft_bing},subtitle=AdapLan("每日必应","Bing images"),message=AdapLan("从必应加载每日图片","Load daily pictures from Bing"),status={Checked=Boolean.valueOf(this.getSharedData("BingImage"))}}
 adp.add{__type=5,intent="WeatherTip",p={Focusable=false},img={ImageResource=R.drawable.ic_weather},subtitle=AdapLan("天气提示","Weather tips"),status={Checked=Boolean.valueOf(this.getSharedData("WeatherTip"))}}
@@ -174,7 +171,7 @@ end
 
 
 
-importFile("settings","settingFuncs")
+import "settingFuncs"
 
 
 
@@ -193,9 +190,11 @@ themeold=activity.getSharedData("theme")
 
 
 function onResume()
-  if themeold~=activity.getSharedData("theme") then
-    --[[activity.newActivity("sub/settings/main", android.R.anim.fade_in, android.R.anim.fade_out)
+  task(1,function()
+    if themeold~=activity.getSharedData("theme") then
+      --[[activity.newActivity("sub/settings/main", android.R.anim.fade_in, android.R.anim.fade_out)
     activity.finish()]]
-    activity.recreate()
-  end
+      activity.recreate()
+    end
+  end)
 end

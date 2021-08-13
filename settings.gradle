@@ -1,2 +1,2 @@
-include ':app', ':Androlua'
-rootProject.name = "CtmPkgNameTest"
+include ':app',':androlua'
+rootProject.name = "日记与代办"

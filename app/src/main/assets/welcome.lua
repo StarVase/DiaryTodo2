@@ -62,9 +62,7 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
   activity.getSupportActionBar().setCustomView(editTitle)
   activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 
-  if not R.style.White then
-    Log.d("debug","Debug Mode Enabled.")
-  end
+
 
 
   task(1000,function()

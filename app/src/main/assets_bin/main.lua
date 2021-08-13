@@ -12,9 +12,10 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
   import "android.net.Uri"
   import "android.content.Intent"
   import "android.content.ComponentName"
+  import "java.io.File"
   intent = Intent(Intent.ACTION_MAIN);
   intent.setComponent(ComponentName("com.StarVase.diaryTodo","com.StarVase.diaryTodo.app.BaseActivity"));
-  intent.setData(Uri.parse(activity.getLuaDir().."/../assets/MainActivity.lua"));
+  intent.setData(Uri.parse(File(activity.getLuaDir()).getParent().."/assets/MainActivity.lua"));
   this.startActivity(intent)
   this.finish()
  else

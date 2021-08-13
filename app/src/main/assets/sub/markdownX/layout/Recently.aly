@@ -1,0 +1,12 @@
+{
+ LinearLayoutCompat;
+  layout_height="fill";
+  layout_width="fill";
+  {
+    TextView;
+    gravity="center";
+    text="Recently";
+    layout_height="fill";
+    layout_width="fill";
+  };
+}

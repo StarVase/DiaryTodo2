@@ -69,8 +69,8 @@ function Refresh()
       key = cursor.getString(7);
       date=tostring(year)..tostring(month)..tostring(day)
       if toBoolean(isEmp) then
-        img='images/lock.png'
-       else img='images/unlock.png'
+        img=R.drawable.ic_lock_outline
+       else img=R.drawable.ic_lock_open_variant_outline
       end
       adapter.add(
       {
@@ -78,7 +78,7 @@ function Refresh()
           Text=title,
         },
         image={
-          src=img,
+          ImageResource=img,
         },
         id=id,
         date={y=year,m=month,d=day},

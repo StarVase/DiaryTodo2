@@ -19,7 +19,7 @@
     layout_height="fill";
     gravity="center";
     layout_width="fill";
-    backgroundColor=BGC,
+    --backgroundColor=BGC,
     layout_marginTop="24dp",
     layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
@@ -47,7 +47,7 @@
             layout_width="wrap";
             layout_height="fill";
             layout_marginRight="8dp";
-            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
               TextView;
@@ -78,11 +78,11 @@
 
             {
               TextView;
-              textSize="24";
+              --textSize="24";
               layout_margin="4dp",
               layout_width="fill";
-              text="凌晨好！注意休息哟！",
-              layout_height="wrap";
+              --text="凌晨好！注意休息哟！",
+              layout_height="0";
               gravity="center",
               Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
               textColor=textColor;
@@ -120,8 +120,9 @@
             };
           };
           {
-            FlowLayout;
-            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            RecyclerView;
+            -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            LayoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL),
 
             id="mainGrid";
             -- orientation="vertical";
