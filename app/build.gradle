@@ -8,8 +8,8 @@ android {
         applicationId "com.StarVase.diaryTodo"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2021073102
-        versionName "2.0.1 Preview"
+        versionCode 2021081401
+        versionName "2.0.1 Preview-1"
     }
 
     buildTypes {
