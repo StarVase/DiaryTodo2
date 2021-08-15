@@ -1,2 +1,2 @@
-include ':app',':androlua'
-rootProject.name = "日记与代办"
+rootProject.name = "DiaryTodo"
+include ':app'

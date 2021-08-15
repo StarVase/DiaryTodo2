@@ -1,15 +1,19 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         applicationId "com.StarVase.diaryTodo"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 2021081401
         versionName "2.0.1 Preview-1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -25,15 +29,26 @@ android {
         }
 
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-	api 'com.google.android.material:material:1.0.0'
-	api project(':StarVaseLibrary')
-	api project(':subtitlecollapsingtoolbarlayout')
-	api project(':Androlua')
-    api 'androidx.appcompat:appcompat:1.0.0'
-    //api 'com.google.android.material:material:1.0.0'
-    
-	implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(':StarVaseLibrary')
+    api project(':subtitlecollapsingtoolbarlayout')
+    api project(':Androlua')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation fileTree(dir: "libs", include: ["*.jar"])
 }
