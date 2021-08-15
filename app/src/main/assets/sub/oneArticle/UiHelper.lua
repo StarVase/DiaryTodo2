@@ -1,15 +1,16 @@
-data={}
-import "android.widget.ExListView"
-import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+import "android.app.*"
+import "android.os.*"
+import "android.widget.*"
+import "android.view.*"
 
 import "layout"
-import "item"
 
+activity.setContentView(loadlayout(layout))
 
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
-spTitle = SpannableString("收藏X")
+spTitle = SpannableString("一文")
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
@@ -23,35 +24,21 @@ function onOptionsItemSelected(item)
 end
 
 
-activity.setContentView(loadlayout(layout))
---import"fab"
-adapter=LuaAdapter(this,data,item)
-list.Adapter=adapter
-
-import "function"
-
-AutoSetToolTip(add,AdapLan("新建","new"))
-graph.Ripple(add,淡色强调波纹)
-
-
 
 sr.setRefreshing(false);
 sr.setColorSchemeColors({icon});
 sr.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener{onRefresh=function()
-    Refresh()
+    getArticle()
+    sr.setRefreshing(false);
+  end})
 
-  end
-})
 
-
---监听list是否到顶
-list.setOnScrollListener{
-  onScrollStateChanged=function(l,s)
-    if list.getFirstVisiblePosition()==0 then
+scroll.setOnScrollChangeListener({
+  onScrollChange=function(v,scrollx,scrolly,lastscrollx,lastscrolly)
+    if scrolly==0 then
       sr.setEnabled(true)
      else
       sr.setEnabled(false)
     end
-  end
-}
-
+  end,
+})

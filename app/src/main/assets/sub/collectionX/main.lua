@@ -7,7 +7,7 @@ import "StarVase"
 
 import "com.bumptech.glide.Glide"
 
-importFile('collectionX',"UIHelper")
+import "UIHelper"
 
 
 
@@ -26,14 +26,43 @@ end
 
 
 
-add.onClick=function()
-  tab={
-    title="hello",
-    content=""
-    
-    }
-  createCollection(tab)
-  Refresh()
+--没注释，不解释不抱怨
+function fab.onClick()
+  task(1,function()
+    import "android.icu.util.Calendar"
+    calendar = Calendar.getInstance();
+    year = calendar.get(Calendar.YEAR);
+    month = calendar.get(Calendar.MONTH)+1;
+    day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+    local dann=import "layout.add_dialog"
+
+    dl=BottomSheetDialog(activity)
+    dl.setContentView(loadlayout(dann))
+    an=dl.show()
+    bottom = dl.findViewById(R.id.design_bottom_sheet);
+    if (bottom != nil) then
+      bottom
+      .setBackgroundResource(android.R.color.transparent)
+      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+    end
+
+    okey.onClick=function()
+      if edit.getText() then
+        CreateFileUtil.collection({
+          title=edit.getText(),
+          timestamp=os.time()
+        })
+        MyToast.showSnackBar("Done")
+      end
+      dl.dismiss()
+      Refresh()
+    end
+    cancel.onClick=lambda -> dl.dismiss()
+    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+  end)
 end
 
 

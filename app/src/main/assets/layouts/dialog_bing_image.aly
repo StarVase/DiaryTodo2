@@ -5,6 +5,32 @@
   gravity="left";
   layout_height="wrap";
   backgroundColor=BGC,
+  ClipToOutline=true;
+  OutlineProvider=ViewOutlineProvider({
+    getOutline = function(view,outline)
+      outline.setRoundRect(0,0,view.getWidth(),view.getHeight()+72,72);
+    end
+  });
+
+  {
+    LinearLayout;
+    layout_width="fill";
+    layout_height=72,
+    orientation="horizontal";
+    Gravity="center",
+    {
+      View,
+      backgroundColor=icon,
+      layout_height="4dp",
+      layout_width="25%w",
+      ClipToOutline=true;
+      OutlineProvider=ViewOutlineProvider({
+        getOutline = function(view,outline)
+          outline.setRoundRect(0,0,view.getWidth(),view.getHeight(),math.dp2int(2));
+        end
+      });
+    };
+  },
   {
     FrameLayout;
     layout_height="305dp";

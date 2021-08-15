@@ -11,7 +11,7 @@
   layout_height="fill";
   layout_width="fill";
   id="mainLay1";
-  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
   {
     LinearLayout;
@@ -21,7 +21,7 @@
     layout_width="fill";
     --backgroundColor=BGC,
     layout_marginTop="24dp",
-    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       RelativeLayout;
@@ -33,7 +33,7 @@
         layout_width="fill";
         layout_height="fill";
         fillViewport=true;
-        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
           LinearLayout;
@@ -74,7 +74,7 @@
             layout_margin="16dp",
             paddingLeft="16dp";
             paddingRight="16dp";
-            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
               TextView;
@@ -102,7 +102,7 @@
             layout_width="wrap";
             layout_height="fill";
             layout_marginRight="8dp";
-            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
               TextView;
@@ -123,6 +123,7 @@
             RecyclerView;
             -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             LayoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL),
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             id="mainGrid";
             -- orientation="vertical";

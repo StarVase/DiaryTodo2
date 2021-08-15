@@ -1,0 +1,2 @@
+appname="oneArticle"
+debugMode=true

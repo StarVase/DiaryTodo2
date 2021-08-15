@@ -111,8 +111,8 @@ function 上下渐变(color)
 end
 function getMaskColor()
   if AppTheme.isDarkTheme() then
-    return 0xFF000000,0x44000000
+    return 0xee000000,0x00000000
    else
-    return 0xFFFFFFFF,0x44FFFFFF
+    return 0xeeFFFFFF,0x00FFFFFF
   end
 end

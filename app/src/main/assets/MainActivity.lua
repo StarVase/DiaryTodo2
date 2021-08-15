@@ -84,7 +84,7 @@ MyToolbar.setCollapsedTitleColor(titleColor)
 local adapter=require("adapters.main_recycler")
 mainGrid.adapter=adapter
 
-task(1,lambda ->adapter.submitList(import "tables.mainItem"))
+task(50,lambda ->adapter.submitList(import "tables.mainItem"))
 
 
 --没注释，不解释不抱怨
@@ -266,7 +266,11 @@ imageFrame.onClick=function()
       dialog_download.onClick=function()
         file.download(info.uri,path.picture,"Bing_Dtd_"..os.date())
       end
-
+      bottom = bsd.findViewById(R.id.design_bottom_sheet);
+      if (bottom != null) then
+        bottom.setBackgroundResource(android.R.color.transparent)
+        --.setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+      end
     end
   end)
 end

@@ -5,101 +5,23 @@
   orientation="vertical",
   backgroundColor=mainColor,
   Gravity="center",
-  
-  
+
+
   {
     FrameLayout;
     layout_height="fill";
     layout_width="fill";
 
+    {
+      LinearLayout,
+      layout_width="fill",
+      layout_height="fill",
+      orientation="vertical",
+      backgroundColor=BGC,
+      Gravity="center",
       {
-        LinearLayout,
-        layout_width="fill",
-        layout_height="fill",
-        orientation="vertical",
-        backgroundColor=BGC,
-        Gravity="center",
-
-        {
-          RelativeLayout;
-          layout_width="fill";
-          paddingBottom="4dp";
-          layout_height="56dp";
-          paddingTop="4dp";
-          backgroundColor=mainColor,
-          id="toolbar",
-          gravity="left";
-          {
-            ImageButton;
-            layout_width="30dp";
-            style="?android:attr/buttonBarButtonStyle";
-            layout_centerVertical="true";
-            padding="0dp";
-            id="back";
-            layout_marginLeft="10dp";
-            paddingRight="2dp";
-            layout_marginRight="12dp";
-            layout_height="fill";
-            paddingLeft="2dp";
-            src=lp..'/images/back.png';
-            background="#00000000";
-            colorFilter=titleColor;
-          };
-          {
-            TextView;
-            layout_width="wrap_content";
-            text="一文";
-            layout_centerVertical="true";
-            textColor=titleColor;
-            layout_height="fill";
-            gravity="center";
-            textSize="20dp";
-            layout_toRightOf="back";
-          };
-
-          {
-            ImageButton;
-            layout_width="30dp";
-            style="?android:attr/buttonBarButtonStyle";
-            padding="0dp";
-            id="star";
-            layout_marginLeft="10dp";
-            visibility=View.GONE,
-            paddingRight="2dp";
-            layout_marginRight="12dp";
-            layout_height="fill";
-            paddingLeft="2dp";
-            layout_alignParentRight=true,
-            src=lp..'/images/star_outline.png';
-            background="#00000000";
-            colorFilter=titleColor;
-          };
-        },
-
-        {
-          RelativeLayout,
-          layout_width="fill",
-          layout_height="45dp",
-          layout_marginTop="0dp",
-          backgroundColor=BGC,
-          {
-            HorizontalScrollView,
-            layout_width="fill",
-            layout_height="fill",
-            layout_marginLeft="12dp",
-
-            {
-              LinearLayout,
-              id="toolbar",
-              layout_width="fill",
-              layout_height="fill",
-              layout_gravity="left|center",
-            },
-          },
-        },
-          {
-      SwipeRefreshLayout,
-      id="sr",
+        SwipeRefreshLayout,
+        id="sr",
         {
           RelativeLayout,
           layout_width="fill",
@@ -108,7 +30,7 @@
           {
             ScrollView,
             id="scroll",
-            
+
             {
               LinearLayout,
               layout_width="fill",
@@ -164,6 +86,16 @@
           },
         },
       },
+    },
+    {
+      import "com.google.android.material.floatingactionbutton.FloatingActionButton",
+      id="star",
+      layout_margin="16dp",
+      layout_gravity="bottom|right";
+      SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
+      ColorFilter=(titleColor),
+      ImageResource=(R.drawable.ic_star_outline),
+      RippleColor=(ColorStateList.valueOf(普通波纹)),
     },
   };
 }

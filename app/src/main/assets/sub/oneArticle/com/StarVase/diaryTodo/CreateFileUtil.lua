@@ -63,8 +63,9 @@ function collection(config)
   values.put("timestamp",timestamp);
   db.insert("collection", nil, values);
 
-  cursor=raw("select last_insert_rowid() from collection",nil)
-  return cursor.moveToFirst()
+  cursor=raw("select MAX(id) from collection",nil)
+  cursor.moveToFirst()
+  return cursor.getInt(0)
 end
 
 
