@@ -120,8 +120,7 @@
             android:label="@string/app_name"
             android:screenOrientation="behind"
             android:theme="@style/DefaultWhite"
-            android:name="com.StarVase.diaryTodo.app.DtdWelcome
-        />
+            android:name="com.StarVase.diaryTodo.app.DtdWelcome"/>
         
         <activity
             android:label="@string/app_name"
