@@ -1,2 +1,5 @@
 rootProject.name = "DiaryTodo"
 include ':app'
+include ':StarVaseLibrary'
+include ':subtitlecollapsingtoolbarlayout'
+include ':Androlua'
