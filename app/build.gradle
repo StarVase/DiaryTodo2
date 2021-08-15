@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':StarVaseLibrary')
+    //implementation project(path: ':StarVaseLibrary')
     implementation project(path: ':subtitlecollapsingtoolbarlayout')
     implementation project(path: ':Androlua')
     implementation 'androidx.appcompat:appcompat:1.2.0'
