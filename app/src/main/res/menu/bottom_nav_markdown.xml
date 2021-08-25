@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recently"
+        android:icon="@drawable/ic_folder_clock"
+        android:title="@string/text_recently" />
+
+    <item
+        android:id="@+id/navigation_explorer"
+        android:icon="@drawable/ic_folder"
+        android:title="@string/text_explorer" />
+</menu>
+
+
+

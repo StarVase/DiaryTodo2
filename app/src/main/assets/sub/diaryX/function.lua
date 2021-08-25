@@ -91,7 +91,6 @@ function Refresh()
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);
 end
-Refresh()
 
 function delete(id)
   db.delete("diary", "id=?", {tostring(id)});

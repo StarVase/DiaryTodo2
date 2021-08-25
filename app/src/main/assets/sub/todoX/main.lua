@@ -25,17 +25,6 @@ list.onItemLongClick=function(id,v,zero,one)
 end
 
 
-
---[[add.onClick=function()
-
-  values = ContentValues();
-  values.put("title",'灵感');
-  values.put("content", "");
-  values.put("timestamp",tostring(os.time()));
-  db.insert("inspiration", nil, values);
-
-  Refresh()
-end]]
 add.onClick=function()
   输入对话框("新建","标题",nil,"创建","取消",function() onEditDialogCallback(edit.getText()) 关闭对话框(an) return edit.Text end,function() 关闭对话框(an) return nil end )
 

@@ -8,6 +8,12 @@ function saveDiary(id,title,content)
           values.put("title",title);
           values.put("content", content);
           db.update("diary", values, "id=?", {tostring(id)});
+         else
+          --如果密码错误只保存标题
+          values = ContentValues();
+          values.put("title",title);
+          db.update("diary", values, "id=?", {tostring(id)});
+
         end
        else
         values = ContentValues();
@@ -26,6 +32,7 @@ function saveInspiration(id,title,content)
       values = ContentValues();
       values.put("title",title);
       values.put("content", content);
+      values.put("updated",tostring(os.time()));
       db.update("inspiration", values, "id=?", {tostring(id)});
     end
   })).run()
@@ -35,27 +42,39 @@ function saveCollection(id,title,content)
   Thread(Runnable({
     run=function()
       values = ContentValues();
-      values.put("title",title);
-      values.put("content", content);
+      values.put("title",tostring(title));
+      values.put("content", tostring(content));
+      values.put("updated",tostring(os.time()));
       db.update("collection", values, "id=?", {tostring(id)});
     end
   })).run()
 end
 
 
+function saveNormalFile(title,content)
+  Thread(Runnable({run=function()
+      filepath=details.path
+      newpath=File(filepath).getParent().."/"..title
+      file.writeFile(newpath,content)
+    end})).run()
+end
 
 
 function save()
-  Thread(Runnable({
-    run=function()
-      switch doctype
-       case "diaryX" then
-        saveDiary(details.id,Widgettitle.Text,Widgetcontent.text)
-       case "inspirationX" then
-        saveInspiration(details.id,Widgettitle.Text,Widgetcontent.text)
-       case "collectionX" then
-        saveCollection(details.id,Widgettitle.Text,Widgetcontent.text)
+  if (_INITCONTENT!=Widgetcontent.text) then
+    Thread(Runnable({
+      run=function()
+        switch doctype
+         case "diaryX" then
+          saveDiary(details.id,Widgettitle.Text,Widgetcontent.text)
+         case "inspirationX" then
+          saveInspiration(details.id,Widgettitle.Text,Widgetcontent.text)
+         case "collectionX" then
+          saveCollection(details.id,Widgettitle.Text,Widgetcontent.text)
+          case "markdownX" then
+          saveNormalFile(Widgettitle.Text,Widgetcontent.text)
+        end
       end
-    end
-  })).run()
+    })).run()
+  end
 end

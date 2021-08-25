@@ -18,7 +18,7 @@ ch_item_checked_background = GradientDrawable()
 .setShape(GradientDrawable.RECTANGLE)
 .setColor(淡色强调波纹)
 .setCornerRadii({0,0,math.dp2px(24),math.dp2px(24),math.dp2px(24),math.dp2px(24),0,0});
-import "layout"
+import "layout.layout"
 
 
 local main = nil
@@ -56,7 +56,7 @@ listView.setOnScrollListener{
 
 
 dataset = {}
-import "setlay"
+import "layout.setlay"
 adp=LuaMultiAdapter(this,dataset,setlay)
 adp.add{__type=1,title=AdapLan("界面","User Interface")}
 adp.add{__type=3,intent="ChooseTheme",img={ImageResource=R.drawable.ic_tshirt_crew_outline},subtitle=AdapLan("主题选择","Select themes")}

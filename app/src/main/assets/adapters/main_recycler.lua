@@ -30,7 +30,10 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     graph.Ripple(tag.card,淡色强调波纹)
     --pic.setImageBitmap(loadbitmap(piclist[math.random(1,#piclist)]))
     imgPos=math.random(1,#piclist)
-    Glide.with(this).load(piclist[imgPos]).into(tag.pic)
+    Glide.with(activity)
+    .load(piclist[imgPos])
+    .into(tag.pic);
+    --Glide.with(activity.getContext()).into(tag.pic).get(piclist[imgPos])
     table.remove(piclist,imgPos)
 
     --动画！

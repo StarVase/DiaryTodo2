@@ -1,12 +1,40 @@
 {
- LinearLayoutCompat;
+  LinearLayoutCompat;
   layout_height="fill";
   layout_width="fill";
+
   {
-    TextView;
-    gravity="center";
-    text="Recently";
-    layout_height="fill";
-    layout_width="fill";
-  };
+    SwipeRefreshLayout,
+    id="sr1",
+    {
+      RelativeLayout,
+      layout_width="fill",
+      layout_height="fill",
+
+      {
+        FlexibleListView,
+        id="listView1",
+        layout_width="fill",
+        layout_marginTop="0dp",
+        --  Gravity='center',
+        layout_marginLeft="0dp",
+        --paddingBottom="88dp";
+        layout_marginRight="0dp",
+        dividerHeight="0px",
+        FastScrollEnabled=true;
+      },
+      {
+        LinearLayout;
+        layout_width="fill";
+        layout_height="fill";
+        gravity="center";
+        {
+          ProgressBar;
+          --layout_height="fill";
+          --layout_gravity="center";
+          id="loading1";
+        };
+      };
+    },
+  }
 }

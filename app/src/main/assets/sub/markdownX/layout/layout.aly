@@ -8,30 +8,51 @@
     layout_width="fill";
     layout_height="fill";
     {
-      LinearLayoutCompat;
+      FrameLayout;
       layout_height="fill";
       layout_width="fill";
 
       {
-        PageView,
-        layout_weight="1",
-        id="page",
-        paddingBottom="56dp",
-        
-        --layout_marginBottom="56dp",
-        pages={
-          Recently,
-          Explorer,
+        LinearLayoutCompat;
+        layout_height="fill";
+        layout_width="fill";
+
+        {
+          PageView,
+          layout_weight="1",
+          id="page",
+          paddingBottom="56dp",
+
+          --layout_marginBottom="56dp",
+          pages={
+            Recently,
+            Explorer,
+          },
         },
       },
+
     };
     {
       BottomNavigationView;
       layout_alignParentBottom="true";
-     -- layout_weight="1",
+      id="nav",
+      -- layout_weight="1",
       layout_width="fill";
       layout_height="56dp";
-      background="#ddffffff";
+      backgroundColor=BGC;
     };
+    {
+      import "com.google.android.material.floatingactionbutton.FloatingActionButton",
+      id="fab",
+      layout_marginBottom="64dp",
+      layout_margin="16dp",
+      layout_alignParentBottom="true";
+      layout_alignParentRight="true";
+      --layout_gravity="bottom|right";
+      SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
+      ColorFilter=(titleColor),
+      ImageResource=(R.drawable.ic_plus),
+      RippleColor=(ColorStateList.valueOf(普通波纹)),
+    }
   };
 }

@@ -1,25 +1,30 @@
 data={}
-import "com.tencent.qq.widget.ReboundEffectsView"
+import "android.widget.ExListView"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
-
-layout=importFile('inspirationX',"layout")
-item=importFile('inspirationX',"item")
+import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+import "android.graphics.ColorFilter"
+import "android.content.res.ColorStateList"
+import "android.text.SpannableString"
+import "android.text.style.ForegroundColorSpan"
+import "com.google.android.material.textfield.TextInputEditText"
+import "com.google.android.material.textfield.TextInputLayout"
+import "android.text.Spannable"
+import "com.StarVase.view.MaterialButton.TextButton"
+import "com.google.android.material.button.MaterialButton"
+import "layout.layout"
+import "layout.item"
 
 activity.setContentView(loadlayout(layout))
---import"fab"
 adapter=LuaAdapter(this,data,item)
 list.Adapter=adapter
-
-importFile('inspirationX',"function")
-
-AutoSetToolTip(add,AdapLan("新建","new"))
-graph.Ripple(add,淡色强调波纹)
+import "function"
+AutoSetToolTip(fab,AdapLan("新建","new"))
 
 
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
-spTitle = SpannableString("灵感X")
+spTitle = SpannableString("灵感")
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)

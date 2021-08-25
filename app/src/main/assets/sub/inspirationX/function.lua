@@ -20,23 +20,18 @@ function toBoolean(int)
     return false
   end
 end
---[[file_name=name,
-        title=title,
-        path=tostring(path),
-        content=content,
-        timestamp=ts,
-   ]]
-
---title text,content text,timestamp int
 
 CreatrTableSql="create table inspiration(id integer primary key,title text,content text,timestamp int)"
 pcall(exec,CreatrTableSql)
 
-values = ContentValues();
-values.put("title",'灵感');
-values.put("content", "我没有内容");
-values.put("timestamp",tostring(os.time()));
---db.insert("inspiration", nil, values);
+
+function getTimeStr(ts,updated)
+  if (updated > 0 && ts != updated) then
+    return string.format("%s->%s",math.ts2t(tonumber(ts)),math.ts2t(tonumber(updated)))
+   else
+    return math.ts2t(tonumber(ts))
+  end
+end
 
 
 function Refresh()
@@ -52,10 +47,14 @@ function Refresh()
       title = cursor.getString(1);--获取第二列的值
       content = cursor.getString(2);
       ts= cursor.getInt(3);
+      updated = cursor.getInt(4)
       adapter.add(
       {
         title={
           Text=title,
+        },
+        sub={
+          Text=getTimeStr(ts,updated),
         },
         id=id,
         date=ts,

@@ -38,3 +38,8 @@ function download(url,path,name)
   request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
   downloadManager.enqueue(request);
 end
+
+
+function getExtensionName(str)
+    return str:match(".+%.(%w+)$") or str
+end

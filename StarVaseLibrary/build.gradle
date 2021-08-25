@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
@@ -6,11 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.StarVase.library"
-        //Library Project Cannot set applicationid
-        minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 2021050101
-        versionName "1.0(Beta01)"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 20210820
+        versionName "2.0(Beta01)"
     }
     buildTypes {
         release {

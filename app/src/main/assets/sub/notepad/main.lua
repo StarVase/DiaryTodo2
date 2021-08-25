@@ -84,15 +84,9 @@ function onKeyUp(code,event)
   end
 end
 webView.setWebViewClient({
-  shouldOverrideUrlLoading=(lambda(view,url) -> import "previewerDarkMode"),
-  onPageFinished=(lambda(view,url) -> import "previewerDarkMode"),
-  onPageStarted=function(view,url,favicon)
-    --网页加载
-    if AppTheme.isDarkTheme() then
-
-      import "previewerDarkMode"
-    end
-  end
+  shouldOverrideUrlLoading=(lambda(view,url) -> autoDark()),
+  onPageFinished=(lambda(view,url) -> autoDark()),
+  onPageStarted=lambda(view,url,favicon) -> autoDark()
 })
 page.setOnPageChangeListener(PageView.OnPageChangeListener{
   --页面状态改变监听
@@ -143,4 +137,10 @@ function onKeyShortcut(keyCode, event)
     end
   end
   return false;
+end
+
+function autoDark()
+  if AppTheme.isDarkTheme() then
+      import "previewerDarkMode"
+    end
 end

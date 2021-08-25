@@ -5,9 +5,7 @@ import "android.widget.*"
 import "android.view.*"
 import "StarVase"
 
-import "com.bumptech.glide.Glide"
-
-importFile('inspirationX',"UIHelper")
+import "UIHelper"
 
 
 
@@ -25,29 +23,37 @@ end
 
 
 
+fab.onClick=function()
+  task(1,function()
 
---[[add.onClick=function()
+    import "com.google.android.material.bottomsheet.BottomSheetDialog"
 
-  values = ContentValues();
-  values.put("title",'灵感');
-  values.put("content", "");
-  values.put("timestamp",tostring(os.time()));
-  db.insert("inspiration", nil, values);
+    local dann=import "layout.add_dialog"
 
-  Refresh()
-end]]
-add.onClick=function()
-  输入对话框("新建","标题",nil,"创建","取消",function() onEditDialogCallback(edit.getText()) 关闭对话框(an) return edit.Text end,function() 关闭对话框(an) return nil end )
+    dl=BottomSheetDialog(activity)
+    dl.setContentView(loadlayout(dann))
+    an=dl.show()
+    bottom = dl.findViewById(R.id.design_bottom_sheet);
+    if (bottom != nil) then
+      bottom
+      .setBackgroundResource(android.R.color.transparent)
+      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+    end
 
-  function onEditDialogCallback(edit)
-    values = ContentValues();
-    values.put("title",tostring(edit));
-    values.put("content", "创建成功");
-    values.put("timestamp",tostring(os.time()));
-    db.insert("inspiration", nil, values);
-
-    Refresh()
-  end
+    okey.onClick=function()
+      if edit.getText() then
+        CreateFileUtil.inspiration({
+          title=edit.getText(),
+          timestamp=os.time()
+        })
+        MyToast.showSnackBar("Done")
+      end
+      dl.dismiss()
+      Refresh()
+    end
+    cancel.onClick=lambda -> dl.dismiss()
+    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+  end)
 end
 
 
@@ -61,7 +67,7 @@ list.onItemClick=function(id,v,zero,one)
     title = cursor.getString(1);--获取第二列的值
 
   end
-  sub("notepad","inspirationX",title,{
+  subed("notepad","inspirationX",title,{
     id=id,
   })
 

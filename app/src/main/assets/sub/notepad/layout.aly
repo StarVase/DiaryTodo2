@@ -45,6 +45,9 @@
           layout_width='fill',
           clipToPadding=true,
           fitsSystemWindows=true,
+          paddingTop="8dp",
+          paddingLeft="10dp",
+          paddingRight="10dp",
           --touchEnabled=false;--禁止触摸
           pages={
             {
@@ -62,6 +65,8 @@
                 layout_height="fill";
                 {
                   AppCompatEditText,
+                  focusable=false;
+                  FocusableInTouchMode=false,
                   text="# Markdown Editor",
                   gravity="top";
                   hint="内容";
@@ -87,7 +92,7 @@
               layout_height="fill",
               --gravity="center",
               backgroundColor=BGC,
-              
+
 
               {
                 LinearLayout,
@@ -118,7 +123,7 @@
     layout_gravity="bottom|right";
     layout_width="56dp";
     id="fab",
-   -- backgroundColor=graph.修改颜色强度(50,mainColor);
+    -- backgroundColor=graph.修改颜色强度(50,mainColor);
     layout_margin="16dp";
     layout_height="56dp";
     alpha=0.86

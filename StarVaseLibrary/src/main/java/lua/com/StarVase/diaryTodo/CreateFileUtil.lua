@@ -1,20 +1,39 @@
 require "import"
 module(...,package.seeall)
 
-
-
+import "android.database.sqlite.*"
+import "com.StarVase.app.path"
 --打开数据库(没有自动创建)
 function getDatabase()
-  import "android.database.sqlite.*"
+  local path = import "com.StarVase.app.path"
   db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
   return db
 end
 
---rawQuery()方法用于执行select语句。
-local function raw(sql,text)
-  cursor=getDatabase().rawQuery(sql,text)
-  return cursor
+
+--execSQL()方法可以执行insert、delete、update和CREATE TABLE之类有更改行为的SQL语句
+function exec(sql)
+  getDatabase().execSQL(sql);
 end
+
+--rawQuery()方法用于执行select语句。
+function raw(sql,text)
+  cursor=getDatabase().rawQuery(sql,text)
+end
+
+tables={
+  "create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)",
+  "create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)",
+  "create table inspiration(id integer primary key,title text,content text,timestamp int,updated int)",
+  "create table collection(id integer primary key,title text,content text,timestamp int,updated int)",
+  "create table markdown(id integer primary key,path text,timestamp int)",
+}
+  
+for k,v in ipairs(tables)
+  pcall(exec,v)
+end
+
+
 
 function diary(config)
   db=getDatabase()
@@ -44,8 +63,11 @@ function diary(config)
   values.put("content", content);
   db.insert("diary", nil, values);
 
-  cursor=raw("select last_insert_rowid() from diary",nil)
-  return cursor.moveToFirst()
+  cursor=raw("select max(id) from diary",nil)
+  if cursor&&cursor.moveToFirst() then
+    targetId=cursor.getInt(0)
+  end
+  return targetId
 end
 
 
@@ -63,8 +85,11 @@ function collection(config)
   values.put("timestamp",timestamp);
   db.insert("collection", nil, values);
 
-  cursor=raw("select last_insert_rowid() from collection",nil)
-  return cursor.moveToFirst()
+  cursor=raw("select max(id) from collection",nil)
+  if cursor&&cursor.moveToFirst() then
+    targetId=cursor.getInt(0)
+  end
+  return targetId
 end
 
 
@@ -81,8 +106,11 @@ function inspiration(config)
   values.put("timestamp",timestamp);
   db.insert("inspiration", nil, values);
 
-  cursor=raw("select last_insert_rowid() from inspiration",nil)
-  return cursor.moveToFirst()
+  cursor=raw("select max(id) from inspiration",nil)
+  if cursor&&cursor.moveToFirst() then
+    targetId=cursor.getInt(0)
+  end
+  return targetId
 end
 
 
@@ -105,8 +133,27 @@ function todo(config)
   values.put("data", cjson.encode{});
   values.put("timestamp",timestamp);
   values.put("noticeat",nil);
-  db.insert("todo", nil, values);;
+  db.insert("todo", nil, values);
 
-  cursor=raw("select last_insert_rowid() from todo",nil)
-  return cursor.moveToFirst()
+  cursor=raw("select max(id) from todo",nil)
+  if cursor&&cursor.moveToFirst() then
+    targetId=cursor.getInt(0)
+  end
+  return targetId
+end
+
+function markdownToDb(config)
+  db=getDatabase()
+  import "android.content.ContentValues"
+  filepath=tostring(config.path)
+
+  values = ContentValues();
+  values.put("path",filepath);
+  db.insert("markdown", nil, values);
+
+  cursor=raw("select max(id) from markdown",nil)
+  if cursor&&cursor.moveToFirst() then
+    targetId=cursor.getInt(0)
+  end
+  return targetId
 end

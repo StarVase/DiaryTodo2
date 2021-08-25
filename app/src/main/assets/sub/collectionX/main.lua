@@ -5,8 +5,6 @@ import "android.widget.*"
 import "android.view.*"
 import "StarVase"
 
-import "com.bumptech.glide.Glide"
-
 import "UIHelper"
 
 
@@ -29,11 +27,6 @@ end
 --没注释，不解释不抱怨
 function fab.onClick()
   task(1,function()
-    import "android.icu.util.Calendar"
-    calendar = Calendar.getInstance();
-    year = calendar.get(Calendar.YEAR);
-    month = calendar.get(Calendar.MONTH)+1;
-    day = calendar.get(Calendar.DAY_OF_MONTH);
 
     import "com.google.android.material.bottomsheet.BottomSheetDialog"
 
@@ -75,14 +68,11 @@ list.onItemClick=function(id,v,zero,one)
     title = cursor.getString(1);--获取第二列的值
 
   end
-  sub("notepad","collectionX",title,{
+  subed("notepad","collectionX",title,{
     id=id,
   })
 
 end
 
 
-function onResume()
-  Refresh()
-end
-
+onResume= lambda -> Refresh()

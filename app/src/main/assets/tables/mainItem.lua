@@ -23,7 +23,7 @@ return {
   {
     ["text"]=activity.getString(R.string.func_markdown),
     ["img"]=R.drawable.ic_language_markdown_outline,
-    ["onClick"]=function() sub('markdownX',os.clock())print(AdapLan("开发中","Developing.")) end,
+    ["onClick"]=function() sub('markdownX',os.clock()) end,
   },
   {
     ["text"]=activity.getString(R.string.func_one_article),

@@ -3,12 +3,13 @@
   layout_height="fill";
   layout_width="fill";
   orientation="vertical";
-  
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
   {
     FileTagView,
-    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
     id="filetag",
+    backgroundColor=mainColor,
     layout_width="fill";
     tabMode=TabLayout.MODE_SCROLLABLE;
     layout_height="48dp";
@@ -19,12 +20,42 @@
     clipToPadding=false;
     layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
   },
+
   {
-    ListView,
+    SwipeRefreshLayout,
+    id="sr2",
     layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-    id="listView",
-    transcriptMode=ListView.TRANSCRIPT_MODE_NORMAL,
-    layout_height="fill";
-    layout_width="fill";
+
+    {
+      RelativeLayout,
+      layout_width="fill",
+      layout_height="fill",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+      {
+        FlexibleListView,
+        id="listView2",
+        layout_width="fill",
+        layout_marginTop="0dp",
+        --  Gravity='center',
+        layout_marginLeft="0dp",
+        --paddingBottom="88dp";
+        layout_marginRight="0dp",
+        dividerHeight="0px",
+        FastScrollEnabled=true;
+      },
+      {
+        LinearLayout;
+        layout_width="fill";
+        layout_height="fill";
+        gravity="center";
+        {
+          ProgressBar;
+          --layout_height="fill";
+          --layout_gravity="center";
+          id="loading2";
+        };
+      };
+    },
   }
 }

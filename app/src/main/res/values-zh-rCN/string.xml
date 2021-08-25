@@ -12,16 +12,23 @@
 	<string name="func_one_article">一文</string>
 	<string name="func_collection">收藏</string>
 	<string name="func_logcat">LogCat</string>
+    <string name="func_settings">设置</string>
+    <string name="func_about">关于</string>
+    <string name="func_theme">主题</string>
 	<!--Main page strings-->
 	<string name="menu_main_new">新建</string>
 	<string name="menu_main_sync">同步</string>
  	<string name="menu_main_settings">设置</string> 
   	<string name="menu_main_about">关于</string>
   	<string name="menu_main_exit">退出</string>
-    
+    <!--Main page labels-->
   	<string name="lab_focusing">聚焦</string>
 	<string name="lab_functions">功能</string>
-	
+	<!--Markdown page Bottom navigation bar-->
+    <string name="text_recently">最近</string>
+    <string name="text_explorer">浏览</string>
+    <string name="back_to_sdcard">回到SD卡</string>
+    
   
   
 </resources>

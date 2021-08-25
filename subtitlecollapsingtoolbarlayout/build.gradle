@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.hendraanggrian.material.subtitlecollapsingtoolbarlayout"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }

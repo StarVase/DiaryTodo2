@@ -25,9 +25,14 @@ function decrypt(key,content)
         _TRUEKEY=true
         content=minicrypto.decrypt(content,usrKey)
         Widgetcontent.text=content
+        _INITCONTENT=content
+        Widgetcontent.focusable=true
+        Widgetcontent.FocusableInTouchMode=true
+
        else
         _TRUEKEY=false
-        Widgetcontent.text="密钥错误。"
+        Widgetcontent.text="Permission denied"
+        _INITCONTENT="Permission denied"
         Widgetcontent.setFocusable(false)
       end
     end})).run()
@@ -49,6 +54,9 @@ function startLoadDiary()
         decrypt(key,content)
        elseif content then
         Widgetcontent.text=content
+        _INITCONTENT=content
+        Widgetcontent.focusable=true
+        Widgetcontent.FocusableInTouchMode=true
         __EMP=false
       end
     end})).run()
@@ -63,11 +71,14 @@ function startLoadInspiration()
         content = cursor.getString(2);
       end
       Widgetcontent.text=content
+      _INITCONTENT=content
+      Widgetcontent.focusable=true
+      Widgetcontent.FocusableInTouchMode=true
     end})).run()
 end
 
 function startLoadCollection()
-    Thread(Runnable({run=function()
+  Thread(Runnable({run=function()
       id=details.id
       sql="select * from collection WHERE id=?"
       raw(sql,{tostring(id)})
@@ -75,9 +86,21 @@ function startLoadCollection()
         content = cursor.getString(2);
       end
       Widgetcontent.text=content
+      _INITCONTENT=content
+      Widgetcontent.setFocusable(true)
+      Widgetcontent.FocusableInTouchMode=true
     end})).run()
 end
 
+function startLoadNormalFile()
+  Thread(Runnable({run=function()
+      filepath=details.path
+      Widgetcontent.text=file.readFile(filepath)
+      _INITCONTENT=file.readFile(filepath)
+      Widgetcontent.setFocusable(true)
+      Widgetcontent.FocusableInTouchMode=true
+    end})).run()
+end
 
 switch doctype
  case "diaryX" then
@@ -87,6 +110,8 @@ switch doctype
   end)
  case "inspirationX" then
   startLoadInspiration()
-  case "collectionX" then
+ case "collectionX" then
   startLoadCollection()
+ case "markdownX" then
+  startLoadNormalFile()
 end

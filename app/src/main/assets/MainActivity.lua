@@ -3,6 +3,7 @@ require "import"
 --error()
 --设置基础路径，不设置会有想不到的后果
 activity.setSharedData("BaseLuaPath",activity.getLuaDir())
+import "com.StarVase.diaryTodo.CreateFileUtil"
 --[[
 activity.newActivity("debug")
 activity.finish()]]
@@ -38,16 +39,16 @@ themeo=activity.getSharedData("theme")
 yiyanTypeo=activity.getSharedData("YiyanType")
 yiyanEnabledo=activity.getSharedData("YiyanEnabled")
 import "intentCallback"
-import "mods"
+import "models.mods"
 import "layouts.recycler_item"
-import "layout"
-import "MyToolbar"
+import "layouts.layout"
+import "models.MyToolbar"
 
 --标题栏下头的布局(先入为主)
 MyToolbar.setContentView(loadlayout(layout))
 
-import "weather"
-import "bing"
+import "models.weather"
+import "models.bing"
 
 --禁用滑动返回
 pcall(function()activity.setSwipeBackEnable(false);end)
