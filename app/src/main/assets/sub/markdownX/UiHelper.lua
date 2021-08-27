@@ -96,7 +96,7 @@ listView1.setOnScrollListener{
 
 appliedToSwipeRefreshLayout(sr2)
 sr2.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener{
-  onRefresh = lambda -> task(10,lambda -> refresh(path))
+  onRefresh = lambda -> task(10,lambda -> refresh(crtpath))
 })
 
 listView2.setOnScrollListener{

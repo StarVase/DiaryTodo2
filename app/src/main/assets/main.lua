@@ -18,7 +18,7 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
   Intent=import "android.content.Intent"
   ComponentName=import "android.content.ComponentName"
   intent = Intent(Intent.ACTION_MAIN);
-  intent.setComponent(ComponentName("com.StarVase.diaryTodo","com.StarVase.diaryTodo.app.BaseActivity"));
+  intent.setComponent(ComponentName("com.StarVase.diaryTodo","com.StarVase.diaryTodo.app.DtdDebugActivity"));
   intent.setData(Uri.parse(activity.getLuaDir().."/MainActivity.lua"));
   this.startActivity(intent)
   this.finish()

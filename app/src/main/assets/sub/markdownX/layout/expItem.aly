@@ -69,7 +69,7 @@
         id="sub";
         textSize="10dp";
         singleLine="true";
-        textColor=textColor;
+        textColor=subTextColor;
         paddingBottom="8dp",
         layout_weight="1";
       };

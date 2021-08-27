@@ -19,6 +19,7 @@ end
 --rawQuery()方法用于执行select语句。
 function raw(sql,text)
   cursor=getDatabase().rawQuery(sql,text)
+  return cursor
 end
 
 tables={
@@ -149,6 +150,7 @@ function markdownToDb(config)
 
   values = ContentValues();
   values.put("path",filepath);
+  values.put("timestamp",tostring(os.time()));
   db.insert("markdown", nil, values);
 
   cursor=raw("select max(id) from markdown",nil)
@@ -157,3 +159,4 @@ function markdownToDb(config)
   end
   return targetId
 end
+

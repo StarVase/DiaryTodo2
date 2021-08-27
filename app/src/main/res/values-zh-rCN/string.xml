@@ -3,7 +3,7 @@
 <resources> 
 	<string name="accsibility_service_description">日记与待办</string>  
   	<string name="app_name">日记与待办</string> 
-
+    <string name="debug">注意！该页面仅供调试，它不安全。请不要用它支付！</string>
 	<!--Global functions name-->
 	<string name="func_diary">日记</string>
 	<string name="func_todo">待办</string>

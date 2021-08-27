@@ -8,21 +8,21 @@
   ClipToOutline=true;
   OutlineProvider=ViewOutlineProvider({
     getOutline = function(view,outline)
-      outline.setRoundRect(0,0,view.getWidth(),view.getHeight()+72,72);
+      outline.setRoundRect(0,0,view.getWidth(),view.getHeight()+math.dp2int(16),math.dp2int(16));
     end
   });
 
   {
     LinearLayout;
     layout_width="fill";
-    layout_height=72,
+    layout_height=math.dp2int(16),
     orientation="horizontal";
     Gravity="center",
     {
       View,
-      backgroundColor=icon,
+      backgroundColor=subTextColor,
       layout_height="4dp",
-      layout_width="25%w",
+      layout_width="16%w",
       ClipToOutline=true;
       OutlineProvider=ViewOutlineProvider({
         getOutline = function(view,outline)

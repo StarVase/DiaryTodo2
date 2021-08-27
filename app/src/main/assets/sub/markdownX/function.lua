@@ -26,7 +26,7 @@ end
 function isSupportedFile(filename)
   extensionName=file.getExtensionName(tostring(filename))
   supportedExtensionName=[[
-  |md|mdx|sh|lua|txt|bat|java|aly|py|html|htm|php|js|lrc|xml|log|
+  |md|mdx|sh|txt|html|htm|lrc|log|
   ]]
   if (supportedExtensionName:find("|"..extensionName.."|"))then
     return true
@@ -42,8 +42,8 @@ function getFileInfo(file)
   lastModified=math.ts2t(file.lastModified()/1000)
   return size.."\t|\t"..lastModified
 end
-function listFile(nowPath)
-  pcall(function() fileList=luajava.astable(File(nowPath).listFiles())end)--获取文件列表
+function listFile(strpath)
+  pcall(function() fileList=luajava.astable(File(strpath).listFiles())end)--获取文件列表
   if (!fileList) then
     fileList={}
   end
@@ -71,11 +71,11 @@ function openFile(filepath)
   })
 end
 
-function refresh(path)
+function refresh(argpath)
   sr2.setRefreshing(true);
   loading2.setVisibility(View.VISIBLE)
-  fileList=listFile(path)
-  nowPath=path
+  fileList=listFile(argpath)
+
   adp2.clear()
   dir={}
   files={}
@@ -89,11 +89,10 @@ function refresh(path)
       table.insert(files,{n=name,p=value})
     end
   end
-
-  if #luajava.astable((path).split("/")) > 4 then
-    adp2.add({__type=3,text=".../",path=File(path).getParentFile(),type="back"})
+  if #luajava.astable(String(argpath).split("/")) > 4 then
+    adp2.add({__type=3,text=".../",path=File(argpath).getParentFile(),type="back"})
     filetag.setVisibility(View.VISIBLE)
-   elseif #luajava.astable(String(path).split("/")) < 4 then
+   elseif #luajava.astable(String(argpath).split("/")) < 4 then
     adp2.add({__type=4,text="---",path=Environment.getExternalStorageDirectory(),type="dir"})
     filetag.setVisibility(View.GONE)
    else
@@ -146,7 +145,3 @@ function delete(id)
   recent()
 end
 
-
-
-
---debug

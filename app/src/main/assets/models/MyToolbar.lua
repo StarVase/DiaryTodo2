@@ -39,7 +39,7 @@ fab.setLayoutParams(params2)
 appBarLayout.setClipToOutline(true);
 appBarLayout.setOutlineProvider(ViewOutlineProvider({
   getOutline = function(view,outline)
-    outline.setRoundRect(0,-48,view.getWidth(),view.getHeight(),48);
+    outline.setRoundRect(0,-math.dp2int(16),view.getWidth(),view.getHeight(),math.dp2int(16));
   end
 }))
 

@@ -37,7 +37,6 @@
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
-            android:screenOrientation="behind"
             android:theme="@style/DefaultWhite"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden"
@@ -47,35 +46,16 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name"
-            android:screenOrientation="behind"
             android:name="com.StarVase.diaryTodo.app.BaseActivity">
-            <intent-filter>
-                <action 
-                    android:name="android.intent.action.VIEW" />
-                <action 
-                    android:name="android.intent.action.EDIT" />
-                <category 
-                    android:name="android.intent.category.DEFAULT" />
-                <category 
-                    android:name="android.intent.category.BROWSABLE" />
-                <data android:mimeType="application/lua" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:host="*" />
-            </intent-filter>
-            <intent-filter>
-                <action 
-                    android:name="android.intent.action.VIEW" />
-                <category 
-                    android:name="android.intent.category.DEFAULT" />
-                <category 
-                    android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:mimeType="text/*" />
-                <data android:host="*" />
-                <data android:pathPattern=".*\\.lua" />
-            </intent-filter>
+           
+        </activity>
+        
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/app_name"
+            android:name="com.StarVase.diaryTodo.app.DtdDebugActivity"
+            android:exported="true">
         </activity>
 
         <activity
@@ -84,47 +64,28 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:excludeFromRecents="false"
             android:label="@string/app_name"
-            android:screenOrientation="behind"
+            android:name="com.StarVase.diaryTodo.app.DtdDebugActivityX">
+
+        </activity>
+        
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:documentLaunchMode="intoExisting"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:excludeFromRecents="false"
+            android:label="@string/app_name"
             android:name="com.StarVase.diaryTodo.app.SubActivity">
-            <intent-filter>
-                <action 
-                    android:name="android.intent.action.VIEW" />
-                <action 
-                    android:name="android.intent.action.EDIT" />
-                <category 
-                    android:name="android.intent.category.DEFAULT" />
-                <category 
-                    android:name="android.intent.category.BROWSABLE" />
-                <data android:mimeType="application/lua" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:host="*" />
-            </intent-filter>
-            <intent-filter>
-                <action 
-                    android:name="android.intent.action.VIEW" />
-                <category 
-                    android:name="android.intent.category.DEFAULT" />
-                <category 
-                    android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:mimeType="text/*" />
-                <data android:host="*" />
-                <data android:pathPattern=".*\\.lua" />
-            </intent-filter>
+           
         </activity>
         
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
-            android:screenOrientation="behind"
             android:theme="@style/DefaultWhite"
             android:name="com.StarVase.diaryTodo.app.DtdWelcome"/>
         
         <activity
             android:label="@string/app_name"
-            android:screenOrientation="behind"
             android:theme="@style/DefaultWhite"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:name="com.StarVase.diaryTodo.app.Welcome">
@@ -133,17 +94,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <provider
-            android:authorities="com.StarVase.diaryTodo"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            android:name="android.content.FileProvider">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/androlua_filepaths"/>
-
-        </provider>
 
     </application>
 
