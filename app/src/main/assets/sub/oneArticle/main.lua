@@ -1,7 +1,5 @@
 require "import"
 import "StarVase"
-import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
-import "com.StarVase.library.view.*"
 import "UiHelper"
 import "functions"
 
@@ -21,8 +19,7 @@ star.onClick=function()
    else
     --pcall(function()
       local index=getPath()
-      print(index)
-      CreateFileUtil.delete("collection",index)
+      CreateFileUtil.getDatabase().delete("collection", "id=?", {tostring(index)});
       setStarfalse(index)
     --end)
   end

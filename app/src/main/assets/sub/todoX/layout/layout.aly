@@ -5,8 +5,8 @@
   orientation="vertical",
   backgroundColor=mainColor,
   Gravity="center",
-  
-  
+
+
   {
     FrameLayout;
     layout_height="fill";
@@ -57,29 +57,14 @@
       },
     },
     {
-      CardView;
-      layout_gravity="bottom|right";
-      layout_width="56dp";
-      backgroundColor=mainColor;
+      import "com.google.android.material.floatingactionbutton.FloatingActionButton",
       id="fab",
-      layout_margin="16dp";
-      layout_height="56dp";
-      radius="28dp";
-      {
-        LinearLayout;
-        layout_width="fill";
-        gravity="center";
-        layout_height="fill";
-        backgroundColor=mainColor;
-        id="add";
-        {
-          ImageView;
-          layout_width="24dp";
-          colorFilter=titleColor;
-          layout_height="24dp";
-          src="images/plus_512x512.png";
-        };
-      };
-    };
+      layout_margin="16dp",
+      layout_gravity="bottom|right";
+      SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
+      ColorFilter=(titleColor),
+      ImageResource=(R.drawable.ic_plus),
+      RippleColor=(ColorStateList.valueOf(普通波纹)),
+    }
   },
 }

@@ -2,14 +2,17 @@ import "android.app.*"
 import "android.os.*"
 import "android.widget.*"
 import "android.view.*"
-
+import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+import "com.google.android.material.tabs.TabLayout"
+import "com.StarVase.library.view.*"
+import "android.text.SpannableString"
+import "android.text.style.ForegroundColorSpan"
+import "android.text.Spannable"
 import "layout"
 
 activity.setContentView(loadlayout(layout))
 
-import "android.text.SpannableString"
-import "android.text.style.ForegroundColorSpan"
-import "android.text.Spannable"
+
 spTitle = SpannableString("一文")
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)

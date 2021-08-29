@@ -1,18 +1,11 @@
 require "import"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
 import "StarVase"
-import "android.graphics.Paint"
-import "com.bumptech.glide.Glide"
+import "UIHelper"
 
-importFile('todoX',"UIHelper")
---importFile('todoX',"UIHelper")
 
 
 list.onItemLongClick=function(id,v,zero,one)
---print(dump(data))
+  --print(dump(data))
   id=data[one].id
 
   pop=PopupMenu(activity,v)
@@ -23,43 +16,59 @@ list.onItemLongClick=function(id,v,zero,one)
   pop.show()
   return true
 end
+import "java.lang.String"
 
+function fab.onClick()
+  task(1,function()
 
-add.onClick=function()
-  输入对话框("新建","标题",nil,"创建","取消",function() onEditDialogCallback(edit.getText()) 关闭对话框(an) return edit.Text end,function() 关闭对话框(an) return nil end )
+    import "com.google.android.material.bottomsheet.BottomSheetDialog"
 
-  function onEditDialogCallback(edit)
-    values = ContentValues();
-    values.put("title",edit);
-    values.put("isHighlight",true);
-    values.put("data", cjson.encode{});
-    values.put("timestamp",tostring(os.time()));
-    values.put("noticeat",nil);
-    db.insert("todo", nil, values);
+    local dann=import "layout.add_dialog"
 
-    Refresh()
-  end
+    dl=BottomSheetDialog(activity)
+    dl.setContentView(loadlayout(dann))
+    an=dl.show()
+    bottom = dl.findViewById(R.id.design_bottom_sheet);
+    if (bottom != nil) then
+      bottom
+      .setBackgroundResource(android.R.color.transparent)
+      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+    end
+
+    okey.onClick=function()
+      if edit.getText() then
+        CreateFileUtil.todo({
+          title=tostring(edit.getText()),
+          timestamp=tostring(os.time()),
+          isHighlight="false",
+          highlightColor=0
+        })
+        MyToast.showSnackBar("Done")
+      end
+      dl.dismiss()
+      Refresh()
+    end
+    cancel.onClick=lambda -> dl.dismiss()
+  end)
 end
 
 
 
-list.onItemClick=function(id,v,zero,one)
-  id=data[one].id
-  sql="select * from inspiration WHERE id=?"
 
-  raw(sql,{tostring(id)})
-  if cursor.moveToFirst() then
-    title = cursor.getString(1);--获取第二列的值
+list.onItemClick=lambda(id,v,zero,one)=>
+do
+id=data[one].id
+sql="select * from inspiration WHERE id=?"
 
-  end
-  sub("notepad","inspirationX",title,{
-    id=id,
-  })
+raw(sql,{tostring(id)})
+if cursor.moveToFirst() then
+  title = cursor.getString(1);--获取第二列的值
+
+end
+sub("notepad","inspirationX",title,{
+  id=id,
+})
 
 end
 
-
-function onResume()
-  Refresh()
-end
-
+onResume = lambda -> Refresh()

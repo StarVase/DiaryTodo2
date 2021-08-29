@@ -14,6 +14,7 @@ import "android.graphics.drawable.*"
 import "android.app.ActionBar"
 
 
+
 ch_item_checked_background = GradientDrawable()
 .setShape(GradientDrawable.RECTANGLE)
 .setColor(淡色强调波纹)

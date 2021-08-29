@@ -24,20 +24,6 @@ function toBoolean(int)
     return false
   end
 end
---[[file_name=name,
-        title=title,
-        path=tostring(path),
-        content=content,
-        timestamp=ts,
-   ]]
-
---id integer primary key,
--- title text,
--- isHighlight boolean,
--- data text,
--- timestamp int,
--- noticeat int
-
 
 function computeProgress(data)
   xpcall(function()
@@ -61,20 +47,11 @@ end
 
 
 
-CreatrTableSql="create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)"
-pcall(exec,CreatrTableSql)
 
-
-values = ContentValues();
-values.put("title",'标题');
-values.put("isHighlight",true);
---values.put("data", data0);
-values.put("timestamp",tostring(os.time()));
-values.put("noticeat",nil);
---db.insert("todo", nil, values);
 
 function autoHighLight(word,type)
-  if Boolean.valueOf(type) then
+  print(word)
+  if Boolean.valueOf(type) && word && word != "" then
     return MyTextStyle.TextColor(word,0,utf8.len(word),0xFFF44336)
    else
     return word
@@ -115,7 +92,7 @@ function Refresh()
         isHighlight=isHighlight,
         progress={progress=computeProgress(data0)},
       })
-    --print(dump(data))
+    
     end
     cursor.close()
    else
@@ -123,7 +100,7 @@ function Refresh()
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);
 end
-Refresh()
+
 
 function delete(id)
   db.delete("todo", "id=?", {tostring(id)});

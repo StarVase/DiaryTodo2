@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.StarVase.library"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 29
         versionCode 20210820
         versionName "2.0(Beta01)"
     }

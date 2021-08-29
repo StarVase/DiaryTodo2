@@ -7,7 +7,8 @@
   {
     LinearLayout;
     orientation="horizontal";
-
+    layout_width="fill";
+    layout_marginRight="8dp";
     gravity="left|center";
     {
       ImageView;
@@ -15,7 +16,7 @@
       layout_width="24dp";
       layout_margin="14dp";
       layout_height="24dp";
-      src="images/inspiration.png";
+      ImageResource=R.drawable.ic_check
     };
     {
       LinearLayout;
@@ -32,18 +33,22 @@
         },]]
         --layout_weight="1";
         layout_marginRight="16dp";
+        textColor=textColor,
         singleLine="true";
         layout_marginLeft="16dp";
         textSize="16sp";
       };
-        {
-      ProgressBar;
-      id="progress",
-      style="?android:attr/progressBarStyleHorizontal",
-      --progress=050,
-      layout_height="4dp";
-      layout_width="fill";
-    };
+      {
+        ProgressBar;
+        id="progress",
+        style="?android:attr/progressBarStyleHorizontal",
+        --progress=050,
+        layout_marginRight="16dp";
+        layout_marginLeft="16dp";
+        layout_marginTop="2dp",
+        layout_height="4dp";
+        layout_width="fill";
+      };
     };
 
 

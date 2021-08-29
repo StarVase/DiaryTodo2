@@ -46,26 +46,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name"
-            android:name="com.StarVase.diaryTodo.app.BaseActivity">
-           
-        </activity>
-        
-        <activity
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/app_name"
-            android:name="com.StarVase.diaryTodo.app.DtdDebugActivity"
+            android:name="com.StarVase.diaryTodo.app.BaseActivity"
             android:exported="true">
-        </activity>
-
-        <activity
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:documentLaunchMode="intoExisting"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:excludeFromRecents="false"
-            android:label="@string/app_name"
-            android:name="com.StarVase.diaryTodo.app.DtdDebugActivityX">
-
+           
         </activity>
         
         <activity

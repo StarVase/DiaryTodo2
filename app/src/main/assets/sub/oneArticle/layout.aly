@@ -20,6 +20,11 @@
       backgroundColor=BGC,
       Gravity="center",
       {
+        TabLayout,
+        layout_width="fill",
+        layout_height="36dp",
+      },
+      {
         SwipeRefreshLayout,
         id="sr",
         {
@@ -41,7 +46,7 @@
               orientation="vertical",
               backgroundColor=BGC,
               Gravity="center",
-              --            layout_gravity="center",
+
               {
                 TextView,
                 id="Title",
@@ -92,6 +97,7 @@
       id="star",
       layout_margin="16dp",
       layout_gravity="bottom|right";
+      alpha=0.86,
       SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
       ColorFilter=(titleColor),
       ImageResource=(R.drawable.ic_star_outline),

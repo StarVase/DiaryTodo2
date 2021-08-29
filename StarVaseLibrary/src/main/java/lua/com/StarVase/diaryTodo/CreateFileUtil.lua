@@ -125,7 +125,7 @@ function todo(config)
   title=tostring(config.title)
   timestamp=tostring(config.timestamp)
   isHighlight=tostring(config.isHighlight)
-  highlightColor=tonumber(config.highlightColor)
+  highlightColor=tostring(config.highlightColor)
 
   values = ContentValues();
   values.put("title",title);

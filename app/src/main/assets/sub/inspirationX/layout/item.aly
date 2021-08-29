@@ -7,7 +7,7 @@
     ImageView,
     id="img",
     layout_margin="16dp",
-    src="images/inspiration.png",
+    ImageResource=R.drawable.ic_lightbulb_outline,
     layout_width="24dp",
     layout_height="24dp",
     colorFilter=icon,

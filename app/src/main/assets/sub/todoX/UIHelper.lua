@@ -3,22 +3,20 @@ import "com.tencent.qq.widget.*"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "com.google.android.material.textfield.TextInputEditText"
 import "com.google.android.material.textfield.TextInputLayout"
+import "com.StarVase.view.MaterialButton.TextButton"
+import "com.google.android.material.button.MaterialButton"
 
-layout=importFile('todoX',"layout")
-item=importFile('todoX',"item")
+layout=import "layout.layout"
+item=import "layout.item"
 
 activity.setContentView(loadlayout(layout))
 --import"fab"
 adapter=LuaAdapter(this,data,item)
 list.Adapter=adapter
 
-importFile('todoX',"function")
+import "function"
 
-AutoSetToolTip(add,AdapLan("新建","new"))
-graph.Ripple(add,淡色强调波纹)
-graph.Ripple(back,普通波纹)
-
-
+AutoSetToolTip(fab,AdapLan("新建","new"))
 
 
 sr.setRefreshing(false);

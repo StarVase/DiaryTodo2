@@ -49,7 +49,7 @@ MyToolbar.setContentView(loadlayout(layout))
 
 import "models.weather"
 import "models.bing"
-
+print(activity)
 --禁用滑动返回
 pcall(function()activity.setSwipeBackEnable(false);end)
 width=activity.getWidth()

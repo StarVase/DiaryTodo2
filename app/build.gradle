@@ -6,9 +6,10 @@ android {
     defaultConfig {
         applicationId "com.StarVase.diaryTodo"
         minSdkVersion 21
-        targetSdkVersion 31
-        versionCode 2021082701
+        targetSdkVersion 29
+        versionCode 2021082704
         versionName "2.0.1 Preview04"
+        //请在发行版中禁止调试
     }
 
     buildTypes {
