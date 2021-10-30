@@ -179,8 +179,8 @@ public class Welcome extends Activity {
             }
 
             try {
-                //LuaUtil.rmDir(new File(localDir),".lua");
-                //LuaUtil.rmDir(new File(luaMdDir),".lua");
+                LuaUtil.rmDir(new File(localDir),".lua");
+                LuaUtil.rmDir(new File(luaMdDir),".lua");
 
 
                 unApk("assets", localDir);
