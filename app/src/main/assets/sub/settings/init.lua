@@ -1,2 +1,2 @@
-appname="设置"
+appname="Settings"
 debugmode=true

@@ -1,6 +1,5 @@
 require "import"
-import "android.widget.*"
-import "android.view.*"
+
 xpcall(function()R=luajava.bindClass(activity.getPackageName()..".R")end,
 function()R={style={}}end)
 

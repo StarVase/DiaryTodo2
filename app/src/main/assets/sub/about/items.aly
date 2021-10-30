@@ -4,9 +4,10 @@
     layout_width="fill",
     Focusable=true,
     {
-      CardView;
-      layout_margin="26dp";
+      MaterialCardView;
+      layout_margin="10dp";
       layout_width="fill";
+      radius="20dp",
       CardBackgroundColor=BGC,
       --layout_gravity="center",
       {
@@ -14,7 +15,7 @@
         layout_width="fill";
         layout_gravity="center",
         {
-          ImageView;
+          AppCompatImageView;
           layout_height="108dp";
           layout_width="108dp";
           src="icon.png";
@@ -25,7 +26,7 @@
           layout_width="fill";
           gravity="center|left";
           {
-            TextView;
+            AppCompatTextView;
             textSize="24sp";
             text="日记与待办";
             textColor=textColor,
@@ -39,7 +40,7 @@
     layout_width="wrap";
     layout_height="fill";
     {
-      TextView;
+      AppCompatTextView;
       textSize="16sp";
       layout_width="wrap";
       layout_height="fill";
@@ -66,7 +67,7 @@
       layout_marginLeft="16dp",
       layout_margin="4dp",
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_margin="10dp",
         layout_width="30dp",
@@ -80,13 +81,13 @@
         layout_marginRight="10dp",
         orientation="vertical",
         {
-          TextView,
+          AppCompatTextView,
           id="title",
           textColor=textColor,
           textSize="16sp",
         },
         {
-          TextView,
+          AppCompatTextView,
           id="content",
           textColor=textColor,
           textSize="12sp",
@@ -108,7 +109,7 @@
       layout_marginLeft="16dp",
       layout_margin="4dp",
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_margin="10dp",
         layout_width="30dp",
@@ -122,7 +123,7 @@
         layout_marginRight="10dp",
         orientation="vertical",
         {
-          TextView,
+          AppCompatTextView,
           id="title",
           textColor=textColor,
           textSize="16sp",

@@ -54,8 +54,16 @@ end
 function saveNormalFile(title,content)
   Thread(Runnable({run=function()
       filepath=details.path
-      newpath=File(filepath).getParent().."/"..title
-      file.writeFile(newpath,content)
+      newpath=File(filepath).getParent().."/"..tostring(title)
+      file.writeFile(newpath,tostring(content))
+    end})).run()
+end
+
+function saveTodoDetail(title,contet)
+  Thread(Runnable({run=function()
+      filepath=path.data.."temp/temp_"..tostring(title)
+      newpath=File(filepath).toString().."/"..tostring(os.date)
+      file.writeFile(newpath,tostring(content))
     end})).run()
 end
 
@@ -73,6 +81,8 @@ function save()
           saveCollection(details.id,Widgettitle.Text,Widgetcontent.text)
           case "markdownX" then
           saveNormalFile(Widgettitle.Text,Widgetcontent.text)
+          case "todoDetail" then
+          saveTodoDetail(Widgettitle.Text,Widgetcontent.text)
         end
       end
     })).run()

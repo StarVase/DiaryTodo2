@@ -89,7 +89,7 @@ MyEditText._defaultConfig.layout={
       layout_gravity="top|left";
       backgroundColor=0;
       {
-        TextView;
+        AppCompatTextView;
         layout_marginLeft="4dp";
         layout_marginRight="4dp";
         backgroundColor=0;
@@ -105,7 +105,7 @@ function MyEditText.OpenAnim(id)
   .setInterpolator(DecelerateInterpolator())
   .setDuration(150)
   .start()
-  ObjectAnimator.ofFloat(id.HintTextView,"textSize",{math.px2sp(id.EditText.textSize),12})
+  ObjectAnimator.ofFloat(id.HintAppCompatTextView,"textSize",{math.px2sp(id.EditText.textSize),12})
   .setInterpolator(DecelerateInterpolator())
   .setDuration(150)
   .start()
@@ -116,7 +116,7 @@ function MyEditText.CloseAnim(id)
   --.setInterpolator(DecelerateInterpolator())
   .setDuration(150)
   .start()
-  ObjectAnimator.ofFloat(id.HintTextView,"textSize",{math.px2sp(id.HintTextView.textSize),math.px2sp(id.EditText.textSize)})
+  ObjectAnimator.ofFloat(id.HintAppCompatTextView,"textSize",{math.px2sp(id.HintAppCompatTextView.textSize),math.px2sp(id.EditText.textSize)})
   --.setInterpolator(DecelerateInterpolator())
   .setDuration(150)
   .start()
@@ -155,12 +155,12 @@ end
 function MyEditText._build:setTextSize(size)
   self.EditText.setTextSize(size)
   if not(self.EditText.hasFocus() and self.EditText.text=="") then
-    self.HintTextView.setTextSize(size)
+    self.HintAppCompatTextView.setTextSize(size)
   end
   return self
 end
 function MyEditText._build:getHint()
-  return self.HintTextView.text
+  return self.HintAppCompatTextView.text
 end
 function MyEditText._build:setHint(text)
   if text and text~="" then
@@ -168,7 +168,7 @@ function MyEditText._build:setHint(text)
    else
     self.HintView.setVisibility(View.GONE)
   end
-  self.HintTextView.text=text or ""
+  self.HintAppCompatTextView.text=text or ""
   return self
 end
 
@@ -190,14 +190,14 @@ function MyEditText:build(config)
   localid.MainView=loadlayout(MyEditText._defaultConfig.layout)
   localid.EditText=localid.MainView.getChildAt(0).getChildAt(1).getChildAt(0)
   localid.HintView=localid.MainView.getChildAt(0).getChildAt(2)
-  localid.HintTextView=localid.MainView.getChildAt(0).getChildAt(2).getChildAt(0)
+  localid.HintAppCompatTextView=localid.MainView.getChildAt(0).getChildAt(2).getChildAt(0)
   localid.HintLine=localid.MainView.getChildAt(0).getChildAt(0)
 
   localid.MainView.onClick=function()
     localid.EditText.requestFocus()
   end
 
-  localid.HintTextView.textColor=config.HintTextColor or MyEditText.AutoHintColor(config)
+  localid.HintAppCompatTextView.textColor=config.HintTextColor or MyEditText.AutoHintColor(config)
   MyEditText.DrawCloseLine(localid,config)
   localid.HintView.backgroundColor=config.backgroundColor or MyEditText._defaultConfig.backgroundColor
   if config.text or config.Text then
@@ -223,13 +223,13 @@ function MyEditText:build(config)
   localid.EditText.setOnFocusChangeListener{
     onFocusChange=function(view,hasFocus)
       if hasFocus then--判断焦点是否存在
-        localid.HintTextView.textColor=config.HintTextColor or MyEditText._defaultConfig.colorAccent
+        localid.HintAppCompatTextView.textColor=config.HintTextColor or MyEditText._defaultConfig.colorAccent
         MyEditText.DrawOpenLine(localid,config)
         if view.text=="" then
           MyEditText.OpenAnim(localid)
         end
        else
-        localid.HintTextView.textColor=config.HintTextColor or MyEditText.AutoHintColor(config)
+        localid.HintAppCompatTextView.textColor=config.HintTextColor or MyEditText.AutoHintColor(config)
         MyEditText.DrawCloseLine(localid,config)
         if view.text=="" then
           MyEditText.CloseAnim(localid)

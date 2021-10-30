@@ -5,7 +5,7 @@
     layout_width="fill";
     layout_height="wrap";
     {
-      TextView;
+      AppCompatTextView;
       id="title";
       Typeface=Bold;
       textSize="14dp";
@@ -22,14 +22,14 @@
     orientation="vertical";
     gravity="center_vertical";
     {
-      TextView;
+      AppCompatTextView;
       id="subtitle";
       textSize="16dp";
       textColor="#AA000000";
       layout_marginLeft="16dp";
     };
     {
-      TextView;
+      AppCompatTextView;
       id="message";
       layout_marginLeft="16dp";
     };
@@ -41,7 +41,7 @@
     layout_height="56dp";
     gravity="center|left";
     {
-      TextView;
+      AppCompatTextView;
       id="subtitle";
       textSize="16dp";
       textColor="#AA000000";
@@ -62,14 +62,14 @@
       gravity="center_vertical";
       layout_weight="1";
       {
-        TextView;
+        AppCompatTextView;
         layout_marginLeft="16dp";
         textSize="16dp";
         textColor="#AA000000";
         id="subtitle";
       };
       {
-        TextView;
+        AppCompatTextView;
         id="message";
         layout_marginLeft="16dp";
       };
@@ -90,7 +90,7 @@
     layout_width="fill";
     layout_height="56dp";
     {
-      TextView;
+      AppCompatTextView;
       id="subtitle";
       textSize="16dp";
       gravity="center_vertical";

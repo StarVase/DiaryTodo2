@@ -82,7 +82,7 @@ gd2=GradientDrawable()
       --background=dialog,
       id="ztbj";
       {
-        TextView;
+        AppCompatTextView;
         layout_width="-1";
         layout_height="-2";
         textSize="20sp";
@@ -132,7 +132,7 @@ gd2=GradientDrawable()
             MyBitmap.saveAsPng(bitmap,tostring(os.time())..".png")
           end;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";
@@ -159,7 +159,7 @@ gd2=GradientDrawable()
           Elevation="1dp";
           onClick=qdnr;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";

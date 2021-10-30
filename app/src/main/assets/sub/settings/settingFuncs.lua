@@ -1,4 +1,14 @@
-listView.onItemClick=function(id,v,zero,one)
+function unBoolean(blin)
+  if blin == true then
+    return false
+   elseif blin == false then
+    return true
+   else
+    return blin
+  end
+end
+onItemClick=function(one,SwitchIn)
+  print(SwitchIn)
   task(1,function()
     state=dataset[one].intent
     --print(state)
@@ -18,13 +28,9 @@ listView.onItemClick=function(id,v,zero,one)
      case "FontSize"
       MyToast.showSnackBar("Developing...")
      case "EncryptDiary"
-  --[[    if dataset[one].status["Checked"]==true then
-        this.setSharedData(state,false)
-        dataset[one].status["Checked"]=false
-       else
-        this.setSharedData(state,true)
-        dataset[one].status["Checked"]=true
-      end]]
+      activity.newActivity("models/setPassword.lua")
+      dataset[one].status["Checked"]=this.getSharedData(state)
+
      case "PasswordPro"
 
      case "BingImage"
@@ -35,7 +41,7 @@ listView.onItemClick=function(id,v,zero,one)
         this.setSharedData(state,true)
         dataset[one].status["Checked"]=true
       end
-
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
      case "WeatherTip"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -44,6 +50,7 @@ listView.onItemClick=function(id,v,zero,one)
         this.setSharedData(state,true)
         dataset[one].status["Checked"]=true
       end
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
      case "YiyanEnabled"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -52,6 +59,7 @@ listView.onItemClick=function(id,v,zero,one)
         this.setSharedData(state,true)
         dataset[one].status["Checked"]=true
       end
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
      case "YiyanType"
       local yiyan_type_chooser=AlertDialog.Builder(this)
       .setTitle("一言类型")
@@ -62,7 +70,7 @@ listView.onItemClick=function(id,v,zero,one)
       .setPositiveButton("确定",{onClick=function()
           activity.setSharedData(state,selectType)
           dataset[one].message=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]]
-          adp.notifyDataSetChanged()
+          adapter.submitList(dataset)
         end})
       .setNegativeButton("取消",nil)
       .show();
@@ -77,11 +85,16 @@ listView.onItemClick=function(id,v,zero,one)
         this.setSharedData(state,true)
         dataset[one].status["Checked"]=true
       end
-
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
      case "AboutApp"
-      subed("about")
+      subed("aboutX")
 
     end
-    adp.notifyDataSetChanged()--更新列表
+    --recycler.refresh()
+    -- dataset={}
+    task(100,lambda->nil
+    --adapter.notifyDataSetChanged()
+    )
+
   end)
 end

@@ -43,6 +43,10 @@ appBarLayout.setOutlineProvider(ViewOutlineProvider({
   end
 }))
 
+--appBarLayout.getChildAt(0).getChildAt(1).getChildAt(0).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+collapsingToolbarLayout.setCollapsedTitleTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+collapsingToolbarLayout.setExpandedTitleTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+
 --l设置布局
 function MyToolbar.setContentView(view)
   nestedScrollView.addView(view)
@@ -89,12 +93,12 @@ end
 
 --设置主图片bitmap
 function MyToolbar.setImageBitmap(bitmap)
-  mainImageView.setImageBitmap(bitmap)
+  mainAppCompatImageView.setImageBitmap(bitmap)
 end
 
 --设置后衬图片bitmap
 function MyToolbar.setSubImageBitmap(bitmap)
-  subImageView.setImageBitmap(bitmap);
+  subAppCompatImageView.setImageBitmap(bitmap);
 end
 
 --设置折叠时标题颜色

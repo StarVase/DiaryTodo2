@@ -8,7 +8,7 @@
   --layout_marginBottom="8dp";
   gravity="center";
   {
-    ImageView;
+    AppCompatImageView;
     src="images/backup.png",
     layout_width="24dp";
     layout_margin="16dp";
@@ -17,7 +17,7 @@
   };
 
   {
-    TextView;
+    AppCompatTextView;
     id="title";
     textSize="16dp";
     singleLine="true";
@@ -27,7 +27,7 @@
     layout_weight="1";
   };
   {
-    ImageView;
+    AppCompatImageView;
     layout_margin="16dp";
     layout_height="24dp";
     layout_width="24dp";

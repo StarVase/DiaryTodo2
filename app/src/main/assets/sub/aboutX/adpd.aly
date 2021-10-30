@@ -1,0 +1,55 @@
+{
+  {__type=1,title={text="应用"}},
+  {
+    __type=2,
+    img={
+      ImageResource=R.drawable.ic_information_outline,
+    },
+    title={
+      text="版本",
+    },
+    content={
+      text=banbenming,
+    },
+    onClick=update,
+  },
+  {__type=1,title={text="开发"}},
+  {
+    __type=2,
+    img={
+      ImageResource=R.drawable.ic_account,
+    },
+    title={
+      text="作者",
+    },
+    content={
+      text="@StarVase",
+    },
+    onClick=contactDev,
+  },
+  {
+    __type=3,
+    img={
+      ImageResource=R.drawable.ic_license,
+    },
+    title={
+      text="开源协议",
+    },
+    onClick=(lambda -> subed("openSource")),
+  },
+  {__type=1,title={text="其他"}},
+  {
+    __type=2,
+    img={
+      ImageResource=R.drawable.ic_credit_card_outline,
+    },
+    title={
+      text="捐赠",
+    },
+    content={
+      text="若你喜欢，随意捐赠",
+    },
+    onClick=(lambda -> subed("donate")),
+  },
+
+}

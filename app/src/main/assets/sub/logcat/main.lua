@@ -100,7 +100,7 @@ scroll=ScrollView(activity)
 scroll=ListView(activity)
 
 scroll.FastScrollEnabled=true
-logview=TextView(activity)
+logview=AppCompatTextView(activity)
 logview.TextIsSelectable=true
 --scroll.addView(logview)
 --scroll.addHeaderView(logview)
@@ -109,9 +109,12 @@ local r="%[ *%d+%-%d+ *%d+:%d+:%d+%.%d+ *%d+: *%d+ *%a/[^ ]+ *%]"
 function show(s)
   -- logview.setText(s)
   --print(s)
-  local a=LuaArrayAdapter(activity,{TextView,
+  local a=LuaArrayAdapter(activity,{
+    AppCompatTextView,
     textIsSelectable=true,
-    textSize="18sp",
+    TextColor=textColor,
+    textSize="14sp",
+    padding="8dp",
   })
   local l=1
   for i in s:gfind(r) do

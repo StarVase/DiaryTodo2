@@ -8,7 +8,7 @@
     --layout_marginBottom="8dp";
     gravity="center";
     {
-      ImageView;
+      AppCompatImageView;
       ImageResource=R.drawable.ic_folder_outline,
       layout_width="24dp";
       layout_margin="16dp";
@@ -16,7 +16,7 @@
       layout_height="24dp";
     };
     {
-      TextView;
+      AppCompatTextView;
       id="text";
       textSize="16sp";
       --gravity="center";
@@ -38,7 +38,7 @@
     --layout_marginBottom="8dp";
     gravity="center";
     {
-      ImageView;
+      AppCompatImageView;
       ImageResource=R.drawable.ic_file_outline,
       layout_width="24dp";
       layout_margin="16dp";
@@ -55,7 +55,7 @@
       layout_marginRight="16dp";
 
       {
-        TextView;
+        AppCompatTextView;
         id="text";
         textSize="16dp";
         singleLine="true";
@@ -65,7 +65,7 @@
       };
 
       {
-        TextView;
+        AppCompatTextView;
         id="sub";
         textSize="10dp";
         singleLine="true";
@@ -85,7 +85,7 @@
     --layout_marginBottom="8dp";
     gravity="center";
     {
-      ImageView;
+      AppCompatImageView;
       ImageResource=R.drawable.ic_folder_upload_outline,
       layout_width="24dp";
       layout_margin="16dp";
@@ -93,7 +93,7 @@
       layout_height="24dp";
     };
     {
-      TextView;
+      AppCompatTextView;
       id="title";
       textSize="16sp";
       text="...",
@@ -116,7 +116,7 @@
     --layout_marginBottom="8dp";
     gravity="center";
     {
-      ImageView;
+      AppCompatImageView;
       ImageResource=R.drawable.ic_folder_home_outline,
       layout_width="24dp";
       layout_margin="16dp";
@@ -124,7 +124,7 @@
       layout_height="24dp";
     };
     {
-      TextView;
+      AppCompatTextView;
       id="title";
       textSize="16sp";
       text=activity.getString(R.string.back_to_sdcard),

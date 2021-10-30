@@ -9,7 +9,7 @@
   .setCornerRadii({math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16)})
   .setShape(0),
   {
-    TextView;
+    AppCompatTextView;
     layout_width="-1";
     layout_height="-2";
     textSize="20sp";

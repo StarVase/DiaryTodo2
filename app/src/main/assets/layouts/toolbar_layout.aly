@@ -40,20 +40,20 @@
         --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
-          ImageView,
+          AppCompatImageView,
           layout_width="fill",
           layout_height="305dp";
           scaleType="centerCrop";
-          id="mainImageView",
+          id="mainAppCompatImageView",
           
         },
         {
-          ImageView,
+          AppCompatImageView,
           layout_width="fill",
           layout_height="305dp";
           scaleType="centerCrop";
           alpha=0,
-          id="subImageView",
+          id="subAppCompatImageView",
           
         },
       },

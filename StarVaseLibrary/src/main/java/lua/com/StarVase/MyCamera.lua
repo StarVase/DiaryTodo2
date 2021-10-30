@@ -1,6 +1,4 @@
 require "import"
-import "android.widget.*"
-import "android.view.*"
 Thread(Runnable({
   run=function()
     pcall(function()

@@ -4,7 +4,7 @@
   layout_width="fill";
   layout_height="56dp";
   {
-    ImageView,
+    AppCompatImageView,
     id="img",
     layout_margin="16dp",
     ImageResource=R.drawable.ic_diary,
@@ -13,7 +13,7 @@
     colorFilter=icon,
   },
   {
-    TextView;
+    AppCompatTextView;
     id="title";
     textSize="16sp";
     --gravity="center";
@@ -25,7 +25,7 @@
     singleLine="true";
   };
   {
-    ImageView;
+    AppCompatImageView;
     layout_margin="16dp";
     layout_height="24dp";
     layout_width="24dp";

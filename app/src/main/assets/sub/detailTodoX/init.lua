@@ -1,0 +1,2 @@
+appname="detailTodoX"
+debugmode=true

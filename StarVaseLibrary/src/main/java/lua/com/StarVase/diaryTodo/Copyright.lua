@@ -1,5 +1,5 @@
 APKVersionInfoUtils=luajava.bindClass("com.StarVase.diaryTodo.util.APKVersionInfoUtils")
-TextViewCompat = luajava.bindClass("androidx.core.widget.TextViewCompat")
+AppCompatTextViewCompat = luajava.bindClass("androidx.appcompat.widget.AppCompatTextView")
 Author="StarVase"
 AndroidVersion=Build.VERSION.RELEASE
 DeviceModel=Build.MANUFACTURER.." "..Build.MODEL
@@ -27,7 +27,7 @@ if (string.find(versionName,"Preview") or string.find(versionName,"Dev") or stri
 end
 
 if (debugModeEnable) then
-  copyrightText=TextView(activity)
+  copyrightText=AppCompatTextView(activity)
   .setText(info)
   .setTextColor(textColor)
   .setGravity(Gravity.BOTTOM|Gravity.CENTER)

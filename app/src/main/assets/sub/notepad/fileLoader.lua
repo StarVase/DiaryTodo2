@@ -102,6 +102,16 @@ function startLoadNormalFile()
     end})).run()
 end
 
+function startLoadTodoDetail()
+  Thread(Runnable({run=function()
+      Widgetcontent.text=details.content
+      _INITCONTENT=details.content
+      Widgetcontent.setFocusable(true)
+      Widgetcontent.FocusableInTouchMode=true
+    end})).run()
+end
+
+
 switch doctype
  case "diaryX" then
   task(500,function()
@@ -114,4 +124,6 @@ switch doctype
   startLoadCollection()
  case "markdownX" then
   startLoadNormalFile()
+ case "todoDetail" then
+  startLoadTodoDetail()
 end

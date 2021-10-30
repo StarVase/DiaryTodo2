@@ -78,7 +78,7 @@ end
         orientation="horizontal",
         id="mytab";
         {
-          ImageView;
+          AppCompatImageView;
           layout_height="22dp";
           layout_marginRight="1dp";
           ImageResource=src,
@@ -87,7 +87,7 @@ end
         };
 
         {
-          TextView;
+          AppCompatAppCompatAppCompatAppCompatTextView;
           layout_marginRight="16dp";
           text=text;
           layout_marginLeft="1dp";

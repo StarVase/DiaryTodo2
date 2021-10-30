@@ -1,7 +1,7 @@
 
 if activity.getSharedData("WeatherTip")==true then
   import "okhttp3.*"
-  BASE_URL="https://www.tianqiapi.com/free/day?appid=55261352&appsecret=9cURW4VJ&unescape=1"
+  BASE_URL="https://www.tianqiapi.com/free/day?appid=55261352&appsecret=9cURW4VJ&unescape=1&cityid="
 
   cjson=require "cjson"
   request=Request.Builder()
@@ -35,7 +35,8 @@ if activity.getSharedData("WeatherTip")==true then
             winmeter=result.win_meter
             air=result.air
             weather.addView(loadlayout(require"layouts.weather"))
-            graph.Ripple(wFream,淡色强调波纹)
+            --graph.Ripple(wFream,淡色强调波纹)
+            wFream.background=graph.Ripple(nil,淡色强调波纹,"方"),
             function AnimationLister(a,b)
               --动画状态监听
               import "android.animation.Animator$AnimatorListener"
@@ -62,7 +63,7 @@ if activity.getSharedData("WeatherTip")==true then
                 透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
                 透明动画.setDuration(500)
 
-                ObjectAnimator.ofFloat(melse, "y", {mcardparent.getHeight(),weatherTopHeight+weatherSubHeight+dp2px(30)})
+                ObjectAnimator.ofFloat(melse, "y", {mcard.getHeight(),weatherTopHeight+weatherSubHeight+dp2px(30)})
                 .setDuration(300)
                 .addUpdateListener{
                   onAnimationUpdate=function(a)
@@ -92,7 +93,7 @@ if activity.getSharedData("WeatherTip")==true then
                 透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
                 透明动画.setDuration(time or 500)
                 weatherSub.Visibility=0
-                ValueAnimator().ofFloat({mcardparent.getHeight(),weatherTopHeight+dp2px(30)})
+                ValueAnimator().ofFloat({mcard.getHeight(),weatherTopHeight+dp2px(30)})
                 .setDuration(time or 300)
                 .addUpdateListener{
                   onAnimationUpdate=function(a)
@@ -116,7 +117,7 @@ if activity.getSharedData("WeatherTip")==true then
             Translate_up_down=TranslateAnimation(weather.getWidth(), 0, 0, 0)
             Translate_up_down.setDuration(600)
             Translate_up_down.setFillAfter(true)
-            Translate_up_down.setInterpolator(AnimationUtils.loadInterpolator(this,android.R.anim.decelerate_interpolator));
+            --Translate_up_down.setInterpolator(AnimationUtils.loadInterpolator(this,android.R.anim.decelerate_interpolator));
             Alpha=AlphaAnimation(0,1)
             Alpha.setDuration(800)
 
@@ -127,12 +128,24 @@ if activity.getSharedData("WeatherTip")==true then
             as.start()
 
             temperature_text.getPaint().setFakeBoldText(true)
-            task(400,function()
+            --[[task(400,function()
               weatherSubHeight=weatherSub.getHeight()
               weatherTopHeight=weatherTop.getHeight()
               closeAnimation(100)
               --print(weatherSubHeight,weatherTopHeight)
-            end)
+            end)]]
+
+            w = View.MeasureSpec.makeMeasureSpec(0,
+            View.MeasureSpec.UNSPECIFIED);
+            h = View.MeasureSpec.makeMeasureSpec(0,
+            View.MeasureSpec.UNSPECIFIED);
+            weatherSub.measure(w, h);
+            weatherTop.measure(w, h);
+            weatherSubHeight = weatherSub.getMeasuredHeight();
+            weatherTopHeight = weatherTop.getMeasuredHeight()
+            --mcardparentHeight = mcardparent.getMeasuredHeight()
+            --mcardparentHeight = mcardparent.getMeasuredHeight()
+            closeAnimation(0)
           end
         })
       end
@@ -141,3 +154,4 @@ if activity.getSharedData("WeatherTip")==true then
 
 
 end
+

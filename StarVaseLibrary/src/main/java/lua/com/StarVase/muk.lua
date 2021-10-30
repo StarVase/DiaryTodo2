@@ -1,64 +1,10 @@
 require "import"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
-
 --import "muk"
 --删掉“--”注释符号以使用中文函数
 
-require "import"
---import "mods.imports"
-import "android.graphics.drawable.GradientDrawable"
-require "import"
-import "android.content.pm.PackageManager"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.graphics.drawable.ColorDrawable"
-import "android.view.*"
-
-import "android.animation.*"
-
-import "android.net.*"
-
-import "android.text.*"
-
-import "android.content.*"
-
-import "android.graphics.*"
-
-import "android.renderscript.*"
-
-import "java.lang.Math"
-
-import "java.security.*"
-
-import "java.io.*"
-
-import "java.util.*"
-
-import "java.net.URL"
-
-import "android.content.res.ColorStateList"
-
-import "android.net.Uri"
-
-import "android.util.Base64"
-
-
-import "androidx.*"
-
-import "android.webkit.WebSettings"
-
-import "android.provider.Settings"
-
-import "android.Manifest"
-
-import "android.animation.Animator"
 
 --import 'activities.theme'
-
+import "android.content.pm.PackageManager"
 function svd(url,path,name)
   import "android.content.Context"
   import "android.net.Uri"
@@ -71,6 +17,7 @@ function svd(url,path,name)
   request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
   downloadManager.enqueue(request);
 end
+
 
 
 
@@ -297,7 +244,7 @@ function 提示(t)
         layout_width=activity.getWidth()-16;
         layout_height="-1";
         {
-          TextView;
+          AppCompatTextView;
           layout_width="-1";
           layout_height="-1";
           textSize="14sp";
@@ -342,7 +289,7 @@ function Snakebar(fill)
         --paddingTop="12dp";
         --paddingBottom="12dp";
         {
-          TextView,
+          AppCompatTextView,
           textColor=0xffffffff,
           textSize="14sp";
           layout_height=-2,
@@ -600,7 +547,7 @@ function 双按钮对话框(bt,nr,qd,qx,qdnr,qxnr,gb)
       --background=dialog,
       id="ztbj";
       {
-        TextView;
+        AppCompatTextView;
         layout_width="-1";
         layout_height="-2";
         textSize="20sp";
@@ -616,7 +563,7 @@ function 双按钮对话框(bt,nr,qd,qx,qdnr,qxnr,gb)
         layout_width="-1";
         layout_height="-1";
         {
-          TextView;
+          AppCompatTextView;
           layout_width="-1";
           layout_height="-2";
           textSize="14sp";
@@ -648,7 +595,7 @@ function 双按钮对话框(bt,nr,qd,qx,qdnr,qxnr,gb)
           Elevation="0";
           onClick=qxnr;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";
@@ -675,7 +622,7 @@ function 双按钮对话框(bt,nr,qd,qx,qdnr,qxnr,gb)
           Elevation="1dp";
           onClick=qdnr;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";
@@ -733,7 +680,7 @@ function 单按钮对话框(bt,nr,qd,qdnr,gb)
       BackgroundDrawable=gd2;
       id="ztbj";
       {
-        TextView;
+        AppCompatTextView;
         layout_width="-1";
         layout_height="-2";
         textSize="20sp";
@@ -754,7 +701,7 @@ function 单按钮对话框(bt,nr,qd,qdnr,gb)
           layout_height="-1";
           layout_marginBottom=dp2px(24+8+16+8)+sp2px(16);
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="14sp";
@@ -793,7 +740,7 @@ function 单按钮对话框(bt,nr,qd,qdnr,gb)
               Elevation="1dp";
               onClick=qdnr;
               {
-                TextView;--16+8
+                AppCompatTextView;--16+8
                 layout_width="-1";
                 layout_height="-2";
                 textSize="16sp";
@@ -1063,7 +1010,7 @@ function 下载文件对话框(title,url,path,ex)
     orientation="vertical",
     BackgroundDrawable=gd2;
     {
-      TextView,
+      AppCompatTextView,
       id="appdownsong",
       text=title,
       --  typeface=Typeface.DEFAULT_BOLD,
@@ -1075,7 +1022,7 @@ function 下载文件对话框(title,url,path,ex)
       textSize="20sp",
     },
     {
-      TextView,
+      AppCompatTextView,
       id="appdowninfo",
       text="已下载：0MB/0MB\n下载状态：准备下载",
       --id="显示信息",
@@ -1617,7 +1564,7 @@ function 输入对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb,type)
       --background=dialog,
       id="ztbj";
       {
-        TextView;
+        AppCompatTextView;
         layout_width="-1";
         layout_height="-2";
         textSize="20sp";
@@ -1689,7 +1636,7 @@ function 输入对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb,type)
           Elevation="0";
           onClick=qxnr;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";
@@ -1716,7 +1663,7 @@ function 输入对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb,type)
           Elevation="1dp";
           onClick=qdnr;
           {
-            TextView;
+            AppCompatTextView;
             layout_width="-1";
             layout_height="-2";
             textSize="16sp";
@@ -1773,7 +1720,7 @@ function 新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb,type)
     .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
   end
   itemins={
-    TextView,
+    AppCompatTextView,
     id="instext",
     layout_height="42dp",
     layout_width="fill",

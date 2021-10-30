@@ -1,43 +1,31 @@
 require "import"
---activity.newActivity("sub/logcat/main")
---error()
---设置基础路径，不设置会有想不到的后果
-activity.setSharedData("BaseLuaPath",activity.getLuaDir())
-import "com.StarVase.diaryTodo.CreateFileUtil"
---[[
-activity.newActivity("debug")
-activity.finish()]]
---关闭activity自带标题栏，此字段优先级高于一切
-import "android.view.Window"
-activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-import "StarVase"
-import "androidx.appcompat.app.*"
-import "androidx.appcompat.view.*"
-import "androidx.appcompat.widget.*"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
-import "androidx.appcompat.widget.Toolbar"
-import "com.google.android.material.button.MaterialButton"
-import "com.google.android.material.appbar.CollapsingToolbarLayout"
-import "com.google.android.material.appbar.SubtitleCollapsingToolbarLayout"
-import "com.google.android.material.appbar.AppBarLayout"
-import "androidx.coordinatorlayout.widget.CoordinatorLayout"
-import "com.google.android.material.floatingactionbutton.FloatingActionButton"
-import "androidx.core.widget.NestedScrollView"
-import "com.google.android.material.card.MaterialCardView"
-import "android.graphics.drawable.BitmapDrawable"
-import "com.google.android.material.internal.FlowLayout"
 import "com.bumptech.glide.*"
-import "androidx.recyclerview.widget.RecyclerView"
-import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
+import "android.view.Window"
 --保存设置参数
 bingimgo=activity.getSharedData("BingImage")
 weathero=activity.getSharedData("WeatherTip")
 themeo=activity.getSharedData("theme")
 yiyanTypeo=activity.getSharedData("YiyanType")
 yiyanEnabledo=activity.getSharedData("YiyanEnabled")
+
+--设置基础路径，不设置会有想不到的后果
+activity.setSharedData("BaseLuaPath",activity.getLuaDir())
+
+--优先关闭自带标题栏
+activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
+import "StarVase"
+import "com.StarVase.diaryTodo.CreateFileUtil"
+import "android.widget.ExListView"
+import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+import "android.graphics.ColorFilter"
+import "android.content.res.ColorStateList"
+import "com.google.android.material.textfield.TextInputEditText"
+import "com.google.android.material.textfield.TextInputLayout"
+import "com.StarVase.view.MaterialButton.TextButton"
+import "com.google.android.material.button.MaterialButton"
+
+
 import "intentCallback"
 import "models.mods"
 import "layouts.recycler_item"
@@ -49,14 +37,14 @@ MyToolbar.setContentView(loadlayout(layout))
 
 import "models.weather"
 import "models.bing"
-print(activity)
+
 --禁用滑动返回
 pcall(function()activity.setSwipeBackEnable(false);end)
 width=activity.getWidth()
 
 --顾名思义
 沉浸状态栏()
---thread(Runnable({run=function()
+
 --设置初始标题  尊重著作权！！
 MyToolbar.setTitle("DiaryTodo")
 MyToolbar.setSubtitle("Be a knight of your own glory and bravely pursue the red sun of your dreams")
@@ -86,12 +74,9 @@ local adapter=require("adapters.main_recycler")
 mainGrid.adapter=adapter
 
 task(50,lambda ->adapter.submitList(import "tables.mainItem"))
-
-
---没注释，不解释不抱怨
-function fab.onClick()
+function new()
   task(50,function()
-    import "addgb"
+    import "models.addgb"
     bt=AdapLan("新建","New")
     nr=AdapLan("内容","Content")
     qd=AdapLan("确定","OK")
@@ -131,7 +116,7 @@ function fab.onClick()
       .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
     end
     itemins={
-      TextView,
+      AppCompatTextView,
       id="instext",
       layout_height="42dp",
       layout_width="fill",
@@ -150,6 +135,11 @@ function fab.onClick()
       end
     end
   end)
+end
+
+--没注释，不解释不抱怨
+function fab.onClick()
+  new()
   --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
 end
 
@@ -168,7 +158,7 @@ appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener({
         local collapsingToolbarLayoutHeight=collapsingToolbarLayout.getHeight()
         local toolBarHeight=toolBar.getHeight()
         local scale=-verticalOffset/(collapsingToolbarLayoutHeight-toolBarHeight)
-        subImageView.alpha=scale*2.5
+        subAppCompatImageView.alpha=scale*2.5
       end})).start()
   end
 }))
@@ -206,6 +196,8 @@ function onOptionsItemSelected(item)
   task(1,function()
     local id=item.getItemId()
     switch id
+     case R.id.menu_main_new
+      new()
      case
       android.R.id.home
       activity.finish()
@@ -214,7 +206,7 @@ function onOptionsItemSelected(item)
       sub("settings")
      case
       R.id.menu_main_about
-      sub("about")
+      sub("aboutX")
      case
       R.id.menu_main_exit
       activity.finish()
@@ -256,7 +248,7 @@ imageFrame.onClick=function()
       --print(MainImageType)
       import"com.StarVase.view.MaterialButton.TextButton"
       import "com.google.android.material.bottomsheet.BottomSheetDialog"
-      bitmap=mainImageView.getDrawable().getBitmap()
+      bitmap=mainAppCompatImageView.getDrawable().getBitmap()
       bsd=BottomSheetDialog(this)
 
       .setContentView(loadlayout(import "layouts.dialog_bing_image"))
@@ -320,3 +312,4 @@ function onKeyUp(code,event)
     return true
   end
 end
+MyToast.showSnackBar((activity.getLocation()))

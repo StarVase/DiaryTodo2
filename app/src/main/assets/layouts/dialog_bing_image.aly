@@ -19,7 +19,7 @@
     orientation="horizontal";
     Gravity="center",
     {
-      View,
+      import "android.view.View",
       backgroundColor=subTextColor,
       layout_height="4dp",
       layout_width="16%w",
@@ -36,7 +36,7 @@
     layout_height="305dp";
     layout_width="fill";
     {
-      ImageView;
+      AppCompatImageView;
       layout_width="fill";
       scaleType="centerCrop";
       layout_height="fill";
@@ -48,7 +48,7 @@
       layout_width="fill";
       layout_height="fill";
       {
-        TextView;
+        AppCompatTextView;
         layout_gravity="bottom";
         id="dialog_detail_text",
         --text="塔霍河上空的银河，西班牙蒙弗拉圭国家公园 (© Miguel Angel Muñoz Ruiz/Cavan Images)";
@@ -64,7 +64,7 @@
     layout_width="fill";
     orientation="horizontal";
     {
-      ImageView;
+      AppCompatImageView;
       -- id="dialog_image",
       layout_width="42dp";
       layout_height="42dp";
@@ -72,7 +72,7 @@
       colorFilter=icon,
     };
     {
-      HorizontalScrollView;
+      import "android.widget.HorizontalScrollView";
       layout_width="fill";
       layout_height="wrap";
       {

@@ -50,7 +50,7 @@
             --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
-              TextView;
+              AppCompatTextView;
               textSize="16sp";
               layout_width="wrap";
               text=AdapLan("聚焦","Focusing"),
@@ -77,7 +77,7 @@
             --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
-              TextView;
+              AppCompatTextView;
               --textSize="24";
               layout_margin="4dp",
               layout_width="fill";
@@ -105,7 +105,7 @@
             -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
-              TextView;
+              AppCompatTextView;
               textSize="16sp";
               layout_width="wrap";
               text=AdapLan("功能","Functions"),
@@ -122,8 +122,8 @@
           {
             RecyclerView;
             -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-            LayoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL),
-            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            LayoutManager=luajava.bindClass("androidx.recyclerview.widget.StaggeredGridLayoutManager")(2,StaggeredGridLayoutManager.VERTICAL),
+            --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             id="mainGrid";
             -- orientation="vertical";

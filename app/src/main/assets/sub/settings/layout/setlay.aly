@@ -7,7 +7,7 @@
     layout_height="48dp";
     gravity="center";]]
     RelativeLayout;
-    layout_width="-1";
+    layout_width="fill";
     layout_height="48dp";
     Focusable=true;
     {
@@ -17,7 +17,7 @@
       layout_marginRight="8dp";
       BackgroundDrawable=ch_item_checked_background;
       {
-        TextView;
+        AppCompatTextView;
         id="title";
         textSize="14sp";
         layout_width="wrap";
@@ -40,16 +40,16 @@
     gravity="center";
     id="p",
     {
-      CardView;
+      MaterialCardView;
       layout_marginLeft="16dp";
       layout_width="40dp";
       layout_height="40dp";
-      backgroundColor=icon,
+      CardBackgroundColor=icon,
       id="imgFream",
       radius="20dp";
       elevation=0;
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_width="40dp",
         padding="10dp",
@@ -65,7 +65,7 @@
       layout_marginLeft="16dp";
       layout_marginRight="16dp";
       {
-        TextView;
+        AppCompatTextView;
         id="subtitle";
         textSize="16sp";
         layout_width="fill";
@@ -74,7 +74,7 @@
         singleLine="true";
       };
       {
-        TextView;
+        AppCompatTextView;
         textSize="14sp";
         id="message";
         textColor=subTextColor;
@@ -93,16 +93,16 @@
     gravity="center";
     id="p",
     {
-      CardView;
+      MaterialCardView;
       layout_marginLeft="16dp";
       layout_width="40dp";
       layout_height="40dp";
-      backgroundColor=icon,
+      CardBackgroundColor=icon,
       id="imgFream",
       radius="20dp";
       elevation=0;
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_width="40dp",
         padding="10dp",
@@ -112,7 +112,7 @@
     },
 
     {
-      TextView;
+      AppCompatTextView;
       id="subtitle";
       textSize="16sp";
       textColor=textColor;
@@ -131,16 +131,16 @@
     layout_height="72dp";
     id="p",
     {
-      CardView;
+      MaterialCardView;
       layout_marginLeft="16dp";
       layout_width="40dp";
       layout_height="40dp";
       id="imgFream",
-      backgroundColor=icon,
+      CardBackgroundColor=icon,
       radius="20dp";
       elevation=0;
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_width="40dp",
         padding="10dp",
@@ -157,7 +157,7 @@
       layout_marginLeft="16dp";
       layout_marginRight="16dp";
       {
-        TextView;
+        AppCompatTextView;
         --layout_marginLeft="8dp";
         textSize="16sp";
         textColor=textColor;
@@ -166,7 +166,7 @@
         singleLine="true";
       };
       {
-        TextView;
+        AppCompatTextView;
         layout_width="fill";
         textSize="14sp";
         textColor=subTextColor;
@@ -177,7 +177,7 @@
       };
     };
     {
-      Switch;
+      SwitchCompat;
       clickable=false;
       Focusable=false;
       layout_marginRight="16dp";
@@ -193,16 +193,16 @@
     layout_height="56dp";
     id="p",
     {
-      CardView;
+      MaterialCardView;
       layout_marginLeft="16dp";
       layout_width="40dp";
       layout_height="40dp";
-      backgroundColor=icon,
+      CardBackgroundColor=icon,
       id="imgFream",
       radius="20dp";
       elevation=0;
       {
-        ImageView,
+        AppCompatImageView,
         id="img",
         layout_width="40dp",
         padding="10dp",
@@ -211,7 +211,7 @@
       },
     },
     {
-      TextView;
+      AppCompatTextView;
       id="subtitle";
       textSize="16sp";
       --gravity="center";
@@ -223,7 +223,7 @@
       singleLine="true";
     };
     {
-      Switch;
+      SwitchCompat;
       id="status";
       Focusable=false;
       clickable=false;

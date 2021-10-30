@@ -1,38 +1,55 @@
 {
-    LinearLayout,
-    orientation="vertical";
-    layout_height="wrap";
-    gravity="center";
-    layout_width="41%w";
-    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-    paddingTop="8dp",
-    paddingBottom="8dp",
+  LinearLayout,
+  orientation="vertical";
+  layout_height="wrap";
+  gravity="center";
+  layout_width="-1";
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  paddingTop="8dp",
+  paddingBottom="8dp",
 
+  {
+    MaterialCardView,
+    layout_margin="4dp",
+    layout_width='-1',
+    --layout_height="200dp",
+    Elevation=0;
+    id="CardParent",
+    --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
+    cardBackgroundColor=0,
+    StrokeColor=lightForceColor,
+    StrokeWidth=math.dp2int(2),
+    radius=math.dp2int(16),
     {
-      MaterialCardView,
-      layout_margin="2dp",
-      layout_width='fill',
-      --layout_height="200dp",
-      Elevation=0;
-      id="CardParent",
-      --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
-      cardBackgroundColor=0,
-      StrokeColor=lightForceColor,
-      StrokeWidth=math.dp2int(2),
-      radius=math.dp2int(16),
+      FrameLayout,
+      id="frame",
+      {
+        View,
+        layout_width='fill',
+        layout_height='fill',
+        id="ripple",
+      },
       {
         RelativeLayout,
-        onClick=function (v)
-        end,
-        
+        layout_width='fill',
+        layout_height='fill',
         {
-          ImageView,
-          scaleType="centerCrop",
-          id="pic",
-          layout_width="fill",
-          foreground=上下渐变({getMaskColor()}),
-        },
+          FrameLayout,
+          --  background=graph.Ripple(nil,淡色强调波纹,"方"),
 
+          {
+            AppCompatImageView,
+            scaleType="centerCrop",
+            id="pic",
+            layout_width="fill",
+          },
+          {
+            View,
+            layout_width='fill',
+            layout_height='fill',
+            background=上下渐变({getMaskColor()}),
+          },
+        },
         {
           LinearLayout,
           id="itemlayout";
@@ -53,7 +70,7 @@
             gravity="top|left";
             --onClick=(lambda -> task(50,lambda -> mainItem[func].onClick())),
             {
-              ImageView;
+              AppCompatImageView;
               layout_height="30dp";
               layout_width="30dp";
               layout_margin="16dp";
@@ -62,9 +79,10 @@
               colorFilter=icon,
             };
             {
-              TextView;
+              AppCompatTextView;
               textColor=textColor;
               paddingLeft="24dp",
+              typeface=Typeface.defaultFromStyle(Typeface.BOLD);
               --layout_weight="1";
               Text=text,
               id="text";
@@ -74,4 +92,11 @@
         },
       },
     },
-  }
+    {
+      View,
+      layout_width='fill',
+      layout_height='fill',
+      background=graph.Ripple(nil,淡色强调波纹,"方"),
+    },
+  },
+}

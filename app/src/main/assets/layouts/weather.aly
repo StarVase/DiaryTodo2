@@ -10,14 +10,16 @@
     elevation=0;--阴影属性
     layout_width='fill';--卡片宽度
     StrokeColor=lightForceColor,
+
     StrokeWidth=math.dp2int(2),
     --CardBackgroundColor=graph.修改颜色强度(5,mainColor);--卡片背景颜色
     layout_height='wrap';--卡片高度
     radius='16dp';--卡片圆角
     id="mcard",
+
     {
       LinearLayout;--线性布局
-      layout_margin=dp2px(15);
+      padding=dp2px(14);
       orientation='vertical';--重力属性
       layout_width='fill';--布局宽度
       layout_height='fill';--布局高度
@@ -35,17 +37,17 @@
         orientation='horizontal';--重力属性
         layout_width='fill';--布局宽度
         layout_height='wrap';--布局高度
-        background='';--布局背景颜色(或者图片路径)
+        --background='';--布局背景颜色(或者图片路径)
         id="weatherTop",
         {
-          ImageView;--图片控
+          AppCompatImageView;--图片控
           id="weatherImg",
           --src='https://m.tianqi.com/'..weatherImage;--图片路径
           scaleType='fitXY';--图片显示类型
           ColorFilter=icon;--图片着色
         };
         {
-          TextView;--文本控件
+          AppCompatTextView;--文本控件
           id="temperature_text";
           layout_marginLeft="15dp";
           layout_gravity="center";
@@ -57,16 +59,18 @@
           LinearLayout;--线性布局
           layout_marginLeft="15dp";
           layout_gravity="center";
+          layout_height="fill",
           orientation='vertical';--重力属性
 
           {
-            TextView;--文本控件
+            AppCompatTextView;--文本控件
             textColor=textColor;--文字颜色
             text=wea;--显示的文字
+            
             textSize='20sp';--文字大小
           };
           {
-            TextView;--文本控件
+            AppCompatTextView;--文本控件
             textColor=textColor-0x77000000;--文字颜色
             text=city;--显示的文字
             textSize='15sp';--文字大小
@@ -78,15 +82,16 @@
         layout_height='wrap',
         layout_width='fill',
         id="weatherSub",
-        padding="2dp",
+        --padding="2dp",
         --
         orientation="horizontal";
         Gravity="center",
+        paddingTop="15dp";
         --paddingBottom="10dp",
         {
-          TextView;--文本控件
-          paddingTop="15dp";
-          padding="1dp",
+          AppCompatTextView;--文本控件
+          --paddingTop="15dp";
+          --padding="1dp",
           layout_weight='1';--文本宽度
           textColor=textColor;--文字颜色
           text='温度 \n'..temrange,
@@ -94,19 +99,19 @@
           textSize='14sp';--文字大小
         },
         {
-          TextView;--文本控件
-          paddingTop="15dp";
+          AppCompatTextView;--文本控件
+          --paddingTop="15dp";
           layout_weight='1';
-          padding="1dp",
+          --padding="1dp",
           textColor=textColor;--文字颜色
           text="空气质量 \n"..air,--显示的文字
           Gravity="center",
           textSize='14sp';--文字大小
         },
         {
-          TextView;--文本控件
-          paddingTop="15dp";
-          padding="1dp",
+          AppCompatTextView;--文本控件
+          --paddingTop="15dp";
+          -- padding="1dp",
           layout_weight='1';--文本宽度
           textColor=textColor;--文字颜色
           text="风向 \n"..win,
@@ -114,9 +119,9 @@
           textSize='14sp';--文字大小
         },
         {
-          TextView;--文本控件
-          paddingTop="15dp";
-          padding="1dp",
+          AppCompatTextView;--文本控件
+          -- paddingTop="15dp";
+          -- padding="1dp",
           layout_weight='1';--文本宽度
           textColor=textColor;--文字颜色
           text="风力 \n"..winspeed,
@@ -126,4 +131,4 @@
       };
     };
   };
-}
+};

@@ -3,16 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.StarVase.diaryTodo">
 
-
-    <!-- read the contents of your SD card -->
+    <!-- 读取内部存储 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <!-- modify or delete the contents of your SD card -->
+    <!-- 写入/删除内部存储 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <!-- have full network access -->
+    <!-- 拥有完全的网络访问权限 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+
+    <!-- 精确位置（基于GPS） -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- 访问大致位置信息（以网络为依据） -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- 获取额外的位置信息提供程序命令 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+
     <application
         android:largeHeap="true"
         android:name="com.StarVase.diaryTodo.app.DtdApplication"
@@ -41,16 +49,16 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:name="com.StarVase.diaryTodo.app.MainActivity"/>
-            
+
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name"
             android:name="com.StarVase.diaryTodo.app.BaseActivity"
             android:exported="true">
-           
+
         </activity>
-        
+
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:documentLaunchMode="intoExisting"
@@ -58,24 +66,29 @@
             android:excludeFromRecents="false"
             android:label="@string/app_name"
             android:name="com.StarVase.diaryTodo.app.SubActivity">
-           
+
         </activity>
-        
+
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/DefaultWhite"
             android:name="com.StarVase.diaryTodo.app.DtdWelcome"/>
-        
+
         <activity
             android:label="@string/app_name"
             android:theme="@style/DefaultWhite"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:name="com.StarVase.diaryTodo.app.Welcome">
+
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
+
         </activity>
 
     </application>

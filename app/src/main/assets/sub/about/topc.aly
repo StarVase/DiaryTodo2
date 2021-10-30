@@ -5,14 +5,15 @@
   layout_height="fill";
   gravity="center";
   {
-    CardView;
+    MaterialCardView;
     layout_margin="16dp";
     layout_width="fill";
+    radius="20dp",
     {
       LinearLayout;
       layout_width="fill";
       {
-        ImageView;
+        AppCompatImageView;
         layout_height="128dp";
         layout_width="128dp";
         src="icon.png";
@@ -23,7 +24,7 @@
         layout_width="fill";
         gravity="center";
         {
-          TextView;
+          AppCompatTextView;
           textSize="24sp";
           text="日记与待办";
         };

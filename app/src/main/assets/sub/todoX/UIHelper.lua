@@ -1,5 +1,4 @@
 data={}
-import "com.tencent.qq.widget.*"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "com.google.android.material.textfield.TextInputEditText"
 import "com.google.android.material.textfield.TextInputLayout"
@@ -8,6 +7,21 @@ import "com.google.android.material.button.MaterialButton"
 
 layout=import "layout.layout"
 item=import "layout.item"
+import "android.text.SpannableString"
+import "android.text.style.ForegroundColorSpan"
+import "android.text.Spannable"
+spTitle = SpannableString("待办")
+spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+activity.getSupportActionBar().setTitle(spTitle)
+activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
+activity.getSupportActionBar().setCustomView(editTitle)
+activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
+function onOptionsItemSelected(item)
+  local id=item.getItemId()
+  if id==android.R.id.home then
+    activity.finish()
+  end
+end
 
 activity.setContentView(loadlayout(layout))
 --import"fab"

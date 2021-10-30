@@ -8,7 +8,7 @@
   --layout_marginBottom="8dp";
   gravity="center";
   {
-    ImageView;
+    AppCompatImageView;
     ImageResource=R.drawable.ic_star,
     layout_width="24dp";
     layout_margin="16dp";
@@ -25,7 +25,7 @@
     layout_marginRight="16dp";
 
     {
-      TextView;
+      AppCompatTextView;
       id="title";
       textSize="16dp";
       singleLine="true";
@@ -35,7 +35,7 @@
     };
 
     {
-      TextView;
+      AppCompatTextView;
       id="sub";
       textSize="10dp";
       singleLine="true";

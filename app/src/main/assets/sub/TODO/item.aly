@@ -10,7 +10,7 @@
   paddingRight="26dp",
 
   {
-    ImageView;
+    AppCompatImageView;
     src="images/check.png",
     layout_width="24dp";
     layout_margin="16dp";
@@ -19,7 +19,7 @@
   };
 
   {
-    TextView;
+    AppCompatTextView;
     id="title";
     textSize="16dp";
     singleLine="true";

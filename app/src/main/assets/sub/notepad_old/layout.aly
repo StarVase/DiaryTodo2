@@ -207,7 +207,7 @@
       backgroundColor=mainColor;
       id="change";
       {
-        ImageView;
+        AppCompatImageView;
         layout_width="24dp";
         colorFilter=titleColor;
         layout_height="24dp";

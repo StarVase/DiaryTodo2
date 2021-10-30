@@ -4,7 +4,7 @@
   gravity="center|left";
   layout_width="fill";
   {
-    CardView;
+    MaterialCardView;
     layout_height="40dp";
     radius="20dp";
     elevation=0;
@@ -19,7 +19,7 @@
       background="#22000000";
       id="istrue";
       {
-        ImageView;
+        AppCompatImageView;
         layout_width="24dp";
         layout_height="24dp";
         imageResource=R.drawable.ic_check;
@@ -28,7 +28,7 @@
     };
   };
   {
-    TextView;
+    AppCompatTextView;
     layout_marginLeft="16dp";
     textColor=textColor;
     id="name";

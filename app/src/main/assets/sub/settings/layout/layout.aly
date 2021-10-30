@@ -1,38 +1,17 @@
+
 {
-  CoordinatorLayout;
-  layout_width="fill";
-  layout_height="fill";
-  id="mainLay";
-  backgroundColor=BGC,
-  -- paddingTop=状态栏高度,
+  LinearLayout,
+  layout_width="fill",
+  layout_height="fill",
+  orientation="vertical";
   {
-    LinearLayout,
+    RecyclerView,
+    id="recycler",
+    --DividerHeight=0;
     layout_width="fill",
+    LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
+    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     layout_height="fill",
-    orientation="vertical",
-    backgroundColor=BGC,
-    Gravity="center",
-
-
-
-    {
-      RelativeLayout,
-      layout_width="fill",
-      layout_height="fill",
-
-      {
-        LinearLayout,
-        layout_width="fill",
-        layout_height="fill",
-        orientation="vertical";
-        {
-          FlexibleListView,
-          id="listView",
-          DividerHeight=0;
-          layout_width="fill",
-          layout_height="fill",
-        }
-      }
-    }
-  },
+  }
 }

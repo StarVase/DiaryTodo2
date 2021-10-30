@@ -22,17 +22,31 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     tag.card.onClick=lambda -> task(50,lambda -> data.onClick())
     --    tag.title.text=data.title
     --    tag.text.text=data.text
-    
-    
+
     headerParams = tag.CardParent.getLayoutParams()
     headerParams.height=(math.dp2int(math.random(200,280)))
     tag.CardParent.setLayoutParams(headerParams);
-    graph.Ripple(tag.card,淡色强调波纹)
+    --graph.Ripple(tag.card,淡色强调波纹)
+    --tag.frame.foreground=graph.Ripple(nil,淡色强调波纹,"方")
+
     --pic.setImageBitmap(loadbitmap(piclist[math.random(1,#piclist)]))
     imgPos=math.random(1,#piclist)
+    import "com.bumptech.glide.request.RequestOptions";
+    import "com.bumptech.glide.request.target.SimpleTarget"
+    import "com.StarVase.library.util.BlurTransformation"
+    import "com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions"
     Glide.with(activity)
     .load(piclist[imgPos])
-    .into(tag.pic);
+    .transition(DrawableTransitionOptions.withCrossFade())
+    .apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
+    .into(tag.pic)
+    --[[.into(SimpleTarget({
+      onResoureReady=function(resource, Transititransition)
+        --viewGroup.setBackground(resource);
+        print(resource)
+        tag.pic.setImageBitmap(resource)
+      end
+    }))]]
     --Glide.with(activity.getContext()).into(tag.pic).get(piclist[imgPos])
     table.remove(piclist,imgPos)
 

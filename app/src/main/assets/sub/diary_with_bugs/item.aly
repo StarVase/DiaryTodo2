@@ -21,7 +21,7 @@
         layout_margin="3dp";
         orientation="horizontal";
         {
-          ImageView;
+          AppCompatImageView;
           layout_height="30dp";
           ColorFilter=4280391411;
           layout_width="30dp";
@@ -29,13 +29,13 @@
           layout_gravity="left";
         };
         {
-          TextView;
+          AppCompatTextView;
           layout_weight="1";
           layout_height="30dp";
           layout_gravity="left";
         };
         {
-          ImageView;
+          AppCompatImageView;
           layout_height="25dp";
           id="lock";
           layout_width="25dp";
@@ -50,13 +50,13 @@
         orientation="horizontal";
         gravity="center";
         {
-          TextView;
+          AppCompatTextView;
           id="mmdd";
           TextColor=4280391411;
           textSize="22";
         };
         {
-          TextView;
+          AppCompatTextView;
           textSize="12";
           layout_marginLeft="2dp";
           id="yyyy";
@@ -69,7 +69,7 @@
         orientation="horizontal";
         layout_width="fill";
         {
-          TextView;
+          AppCompatTextView;
           layout_marginTop="10dp";
           layout_margin="4dp";
           textColor="0xff000000";

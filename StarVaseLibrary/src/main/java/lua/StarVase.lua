@@ -4,10 +4,10 @@ R=luajava.bindClass(activity.getPackageName()..".R")
 
 import "android.app.*"
 import "android.os.*"
-import "android.widget.*"
+--import "android.widget.*"
 import "android.view.*"
 import "android.util.Log"
-
+import "com.StarVase.app.androidx"
 import "com.StarVase.app.activity"
 import "com.StarVase.utils.ai"
 import "com.StarVase.utils.string"
@@ -38,7 +38,8 @@ import "com.StarVase.yiyan"
 import "com.StarVase.library.view.*"
 import "com.StarVase.utils.NetErrorStr"
 import "com.StarVase.utils.ScreenFixUtil"
-
+import "com.StarVase.view.RadioCheckBox"
+import "com.StarVase.view.MaterialButton.TextButton"
 import "com.StarVase.diaryTodo.CreateFileUtil"
 import "com.StarVase.diaryTodo.Copyright"
 --import "com.StarVase.MyCamera"

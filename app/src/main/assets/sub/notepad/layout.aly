@@ -34,7 +34,7 @@
         RelativeLayout,
         layout_width="fill",
         layout_height="fill",
-        layout_marginTop="1dp",
+        layout_marginTop="0dp",
 
 
 
@@ -45,9 +45,9 @@
           layout_width='fill',
           clipToPadding=true,
           fitsSystemWindows=true,
-          paddingTop="8dp",
-          paddingLeft="10dp",
-          paddingRight="10dp",
+          paddingTop="0dp",
+          paddingLeft="2dp",
+          paddingRight="2dp",
           --touchEnabled=false;--禁止触摸
           pages={
             {
@@ -129,4 +129,5 @@
     alpha=0.86
     --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
   };
+
 }

@@ -12,6 +12,55 @@ end
 
 crtpath=basepath
 
+fab.onClick=function()
+  task(1,function()
+
+    import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+    local dann=import "layout.add_dialog"
+
+    dl=BottomSheetDialog(activity)
+    dl.setContentView(loadlayout(dann))
+    an=dl.show()
+    bottom = dl.findViewById(R.id.design_bottom_sheet);
+    if (bottom != nil) then
+      bottom
+      .setBackgroundResource(android.R.color.transparent)
+      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+    end
+    pathD.setText(crtpath)
+    okey.onClick=function()
+      if tostring(titleD.getText())=="" then
+        titleD.setError("Null")
+       elseif tostring(pathD.getText())=="" then
+        pathD.setError("Null")
+       else
+        --print(file.getExtensionName(tostring(titleD.getText())))
+        if file.getExtensionName(tostring(titleD.getText()))=="md" or file.getExtensionName(tostring(titleD.getText()))=="mdx" then
+
+          Thread(Runnable({run=function()
+              newpath=tostring(pathD.getText()).."/"..tostring(titleD.getText())
+              file.writeFile(newpath,tostring(""))
+            end})).run()
+         else
+
+          Thread(Runnable({run=function()
+              newpath=tostring(pathD.getText()).."/"..tostring(titleD.getText())..".mdx"
+              file.writeFile(newpath,tostring(""))
+            end})).run()
+        end
+        MyToast.showSnackBar("Done")
+
+        dl.dismiss()
+        refresh(crtpath)
+      end
+    end
+    cancel.onClick=lambda -> dl.dismiss()
+    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+  end)
+end
+
+
 
 
 filetag.addOnTabSelectedListener(OnTabSelectedListener{

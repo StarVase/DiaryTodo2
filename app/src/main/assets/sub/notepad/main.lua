@@ -1,13 +1,8 @@
 require "import"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
 import "StarVase"
 import "com.google.android.material.floatingactionbutton.FloatingActionButton"
 import "android.animation.LayoutTransition"
 import "android.webkit.*"
-import "android.support.v4.widget.*"
 import "java.io.*"
 import "ren.qinc.edit.*"
 import "com.jsdroid.editor.HVScrollView"
@@ -42,7 +37,11 @@ function AUTO_SWITCH_OR_FINISH()
     page.showPage(0)
    else
     if arg+2 > tonumber(os.time()) then
-      activity.finish()
+      if doctype == "todoDetail" then
+        activity.result({tostring(Widgettitle.Text),tostring(Widgetcontent.text)})
+       else
+        activity.finish()
+      end
      else
       MyToast.showSnackBar("已保存，再按一次后关闭")
 
@@ -55,6 +54,9 @@ end
 
 function onPause()
   save()
+  if doctype == "todoDetail" then
+    activity.result({tostring(Widgettitle.Text),tostring(Widgetcontent.text)})
+  end
 end
 
 function MarkText(text)
@@ -98,10 +100,6 @@ function onKeyShortcut(keyCode, event)
   if (KeyEvent.metaStateHasNoModifiers(filteredMetaState)) then
     switch(keyCode)
      case
-      KeyEvent.KEYCODE_O
-
-      return true;
-     case
       KeyEvent.KEYCODE_P
       --预览
       page.showPage(1)
@@ -120,16 +118,8 @@ function onKeyShortcut(keyCode, event)
       mPerformEdit.redo();
       return true;
      case
-      KeyEvent.KEYCODE_N
-
-      return true;
-     case
-      KeyEvent.KEYCODE_U
+      KeyEvent.KEYCODE_Z
       mPerformEdit.undo();
-      return true;
-     case
-      KeyEvent.KEYCODE_I
-
       return true;
      case
       KeyEvent.KEYCODE_M
@@ -141,6 +131,7 @@ end
 
 function autoDark()
   if AppTheme.isDarkTheme() then
-      import "previewerDarkMode"
-    end
+    import "previewerDarkMode"
+  end
 end
+

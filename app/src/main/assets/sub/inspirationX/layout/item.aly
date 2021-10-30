@@ -4,7 +4,7 @@
   layout_width="fill";
   layout_height="56dp";
   {
-    ImageView,
+    AppCompatImageView,
     id="img",
     layout_margin="16dp",
     ImageResource=R.drawable.ic_lightbulb_outline,
@@ -22,7 +22,7 @@
     layout_marginRight="16dp";
 
     {
-      TextView;
+      AppCompatTextView;
       id="title";
       textSize="16dp";
       singleLine="true";
@@ -32,7 +32,7 @@
     };
 
     {
-      TextView;
+      AppCompatTextView;
       id="sub";
       textSize="10dp";
       singleLine="true";

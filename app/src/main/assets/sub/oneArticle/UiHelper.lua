@@ -1,7 +1,4 @@
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
+
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "com.google.android.material.tabs.TabLayout"
 import "com.StarVase.library.view.*"

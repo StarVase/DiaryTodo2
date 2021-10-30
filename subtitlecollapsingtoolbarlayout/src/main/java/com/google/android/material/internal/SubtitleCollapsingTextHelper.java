@@ -480,7 +480,7 @@ public final class SubtitleCollapsingTextHelper {
         return null;
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     public void setCollapsedTitleTypeface(Typeface typeface) {
         if (collapsedTitleTypeface != typeface) {
             collapsedTitleTypeface = typeface;
@@ -488,7 +488,7 @@ public final class SubtitleCollapsingTextHelper {
         }
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     public void setExpandedTitleTypeface(Typeface typeface) {
         if (expandedTitleTypeface != typeface) {
             expandedTitleTypeface = typeface;
@@ -509,7 +509,7 @@ public final class SubtitleCollapsingTextHelper {
         return expandedTitleTypeface != null ? expandedTitleTypeface : Typeface.DEFAULT;
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     public void setCollapsedSubtitleTypeface(Typeface typeface) {
         if (collapsedSubtitleTypeface != typeface) {
             collapsedSubtitleTypeface = typeface;
@@ -517,7 +517,7 @@ public final class SubtitleCollapsingTextHelper {
         }
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     public void setExpandedSubtitleTypeface(Typeface typeface) {
         if (expandedSubtitleTypeface != typeface) {
             expandedSubtitleTypeface = typeface;
@@ -940,7 +940,7 @@ public final class SubtitleCollapsingTextHelper {
         ViewCompat.postInvalidateOnAnimation(view);
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     private void calculateUsingTitleSize(final float size) {
         if (title == null) {
             return;
@@ -1056,7 +1056,7 @@ public final class SubtitleCollapsingTextHelper {
         ViewCompat.postInvalidateOnAnimation(view);
     }
 
-    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in TextView
+    @SuppressWarnings("ReferenceEquality") // Matches the Typeface comparison in AppCompatTextView
     private void calculateUsingSubtitleSize(final float size) {
         if (subtitle == null) {
             return;

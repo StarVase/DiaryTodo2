@@ -46,7 +46,7 @@
           colorFilter=titleColor;
         };
         {
-          TextView;
+          AppCompatTextView;
           layout_width="wrap_content";
           text="日记";
           layout_centerVertical="true";
@@ -110,7 +110,7 @@
         backgroundColor=mainColor;
         id="add";
         {
-          ImageView;
+          AppCompatImageView;
           layout_width="24dp";
           colorFilter=titleColor;
           layout_height="24dp";

@@ -11,12 +11,13 @@
     layout_marginRight="8dp";
     gravity="left|center";
     {
-      ImageView;
+      AppCompatImageView;
       id="img";
       layout_width="24dp";
       layout_margin="14dp";
       layout_height="24dp";
-      ImageResource=R.drawable.ic_check
+      ImageResource=R.drawable.ic_check,
+      colorFilter=icon,
     };
     {
       LinearLayout;
@@ -25,7 +26,7 @@
       gravity="left|center";
       orientation="vertical";
       {
-        TextView;
+        AppCompatTextView;
         id="title";
         ellipsize="end";
         --[[getPaint={

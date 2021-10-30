@@ -15,3 +15,4 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
   this.startActivity(intent)
   this.finish()
  end
+

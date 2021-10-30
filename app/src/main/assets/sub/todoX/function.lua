@@ -28,9 +28,10 @@ end
 function computeProgress(data)
   xpcall(function()
     tab=cjson.decode(data)
+   -- print(dump(tab))
     local val1=0
     for key,value in pairs(tab) do
-      if toBoolean(value.statue) then
+      if toBoolean(value.istrue) then
         val1=val1+1
       end
     end
@@ -39,7 +40,7 @@ function computeProgress(data)
       result = (val1/#tab)*100
      else result = 0
     end
-    end,function()
+  end,function()
     result=0
   end)
   return result
@@ -50,7 +51,6 @@ end
 
 
 function autoHighLight(word,type)
-  print(word)
   if Boolean.valueOf(type) && word && word != "" then
     return MyTextStyle.TextColor(word,0,utf8.len(word),0xFFF44336)
    else
@@ -92,7 +92,7 @@ function Refresh()
         isHighlight=isHighlight,
         progress={progress=computeProgress(data0)},
       })
-    
+
     end
     cursor.close()
    else

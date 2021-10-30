@@ -10,15 +10,13 @@ activity.setContentView(loadlayout(layout))
 
 editTitle=loadlayout({
   RelativeLayout;
-  layout_width="fill";
   paddingBottom="4dp";
   layout_height="56dp";
   paddingTop="4dp";
   backgroundColor=mainColor,
   gravity="left";
   {
-    AppCompatEditText;
-    layout_width="fill";
+    TextInputEditText;
     Hint="标题";
     singleLine=true;
     textIsSelectable=true;
@@ -34,42 +32,6 @@ editTitle=loadlayout({
     layout_height="48dp";
     gravity="center|left";
   },
-  {
-    LinearLayout,
-    layout_height="fill",
-    layout_width="wrap",
-    orientation="horizontal",
-    layout_alignParentRight=true,
-    {
-      ImageButton;
-      layout_width="30dp";
-      style="?android:attr/buttonBarButtonStyle";
-      padding="0dp";
-      id="undo";
-      layout_marginLeft="10dp";
-      paddingRight="2dp";
-      layout_marginRight="12dp";
-      layout_height="fill";
-      src=lp..'/images/last.png';
-      background="#00000000";
-      colorFilter=titleColor;
-    };
-    {
-      ImageButton;
-      layout_width="30dp";
-      style="?android:attr/buttonBarButtonStyle";
-      padding="0dp";
-      id="redo";
-      layout_marginLeft="10dp";
-      paddingRight="2dp";
-      layout_marginRight="12dp";
-      layout_height="fill";
-      src=lp..'/images/next.png';
-      background="#00000000";
-      colorFilter=titleColor;
-    };
-
-  },
 })
 activity.getSupportActionBar().setTitle(nil)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
@@ -80,46 +42,29 @@ activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 mEditText = (Widgetcontent);
 mPerformEdit = PerformEdit(mEditText);
 
-
-m = {
-  { MenuItem,
-    title = "撤销",
-    id = "undo",
-    icon = "/images/last.png ", },
-  { MenuItem,
-    title = "重做",
-    id = "redo",
-    icon = "/images/next.png", },
-  { MenuItem,
-    title = "保存",
-    id = "save",
-    icon = "ic_content_save.png", },
-  { SubMenu,
-    title = "文件...",
-    { MenuItem,
-      title = "保存",
-      id = "file_save", },
-  },
-  { SubMenu,
-    title = "导出...",
-    { MenuItem,
-      title = "As Markdown(.md)",
-      id = "output_asmd", },
-  },
-}
-optmenu = {}
+--创建菜单
 function onCreateOptionsMenu(menu)
-  loadmenu(menu, m, optmenu, 3)
+  local inflater=activity.getMenuInflater()
+  inflater.inflate(R.menu.menu_npd,menu)
+
 end
 
-
-
-
 function onOptionsItemSelected(item)
-  local id=item.getItemId()
-  if id==android.R.id.home then
-    AUTO_SWITCH_OR_FINISH()
-  end
+  task(1,function()
+    local id=item.getItemId()
+    switch id
+     case android.R.id.home
+      AUTO_SWITCH_OR_FINISH()
+     case R.id.menu_npd_undo
+     mPerformEdit.undo();
+     case R.id.menu_npd_redo
+     mPerformEdit.redo();
+     case R.id.menu_npd_save
+     save()
+     case R.id.menu_npd_asimage
+
+    end
+  end)
 end
 --[[back.onClick=function()
   activity.finish()
@@ -132,8 +77,8 @@ import "android.content.res.ColorStateList"
 fab.setSupportBackgroundTintList(ColorStateList.valueOf(mainColor))
 --fab图标颜色
 fab.setColorFilter(titleColor)
---fab图标bitmap
-fab.setImageBitmap(loadbitmap("drawable/file-swap-outline.png"))
+--fab图标
+fab.setImageResource(R.drawable.ic_file_swap_outline)
 --fab波纹颜色
 fab.setRippleColor(ColorStateList.valueOf(普通波纹))
 
@@ -158,10 +103,7 @@ function 连续重做()
 end
 
 
-
-graph.Ripple(undo,普通波纹)
-graph.Ripple(redo,普通波纹)
-
+--[[
 undo.onClick=function()
   mPerformEdit.undo();
 end
@@ -185,7 +127,7 @@ redo.onTouch=function(view,event,JDPUK)
   if event.action==1 then
     连续2=false
   end
-end
+end]]
 fab.onClick=function()
   local nowPage=page.getCurrentItem()
   if nowPage==0 then

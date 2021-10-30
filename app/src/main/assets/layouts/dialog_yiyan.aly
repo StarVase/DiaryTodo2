@@ -10,7 +10,7 @@
     .setCornerRadii({math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16)})
     .setShape(0),
   {
-    TextView;
+    AppCompatTextView;
     id="content",
     layout_marginBottom="24dp";
     layout_marginTop="24dp";
@@ -19,7 +19,7 @@
     layout_width="fill";
   };
   {
-    TextView;
+    AppCompatTextView;
     id="source",
     paddingBottom="36dp",
     textColor=subTextColor,

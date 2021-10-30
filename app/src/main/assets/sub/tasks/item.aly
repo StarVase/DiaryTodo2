@@ -4,7 +4,7 @@
   layout_width="fill";
   layout_height="56dp";
   {
-    ImageView,
+    AppCompatImageView,
     id="img",
     layout_margin="16dp",
     src="images/check.png",
@@ -13,7 +13,7 @@
     colorFilter=icon,
   },
   {
-    TextView;
+    AppCompatTextView;
     id="title";
     textSize="16sp";
     --gravity="center";

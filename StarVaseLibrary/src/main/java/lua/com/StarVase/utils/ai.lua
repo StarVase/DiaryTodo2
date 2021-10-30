@@ -1,8 +1,4 @@
 require "import"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
 module(...,package.seeall)
 function TTS(T)
   import "android.speech.tts.*"

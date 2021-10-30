@@ -1,13 +1,11 @@
 require "import"
-import "android.app.*"
-import "android.os.*"
-import "android.widget.*"
-import "android.view.*"
 import "StarVase"
 import "com.bumptech.glide.Glide"
-import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
-import "androidx.coordinatorlayout.widget.CoordinatorLayout"
+--import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
+--import "androidx.coordinatorlayout.widget.CoordinatorLayout"
 
+--import "androidx.coordinatorlayout.widget.CoordinatorLayout"
+--import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "UIHelper"
 
 
@@ -17,7 +15,28 @@ list.onItemLongClick=function(id,v,zero,one)
   pop=PopupMenu(activity,v)
   menu=pop.Menu
   menu.add("删除").onMenuItemClick=function()
-    delete(id)
+    task(100,function()
+
+      import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+      local dann=import("layout.delete_dialog")
+
+      dl=BottomSheetDialog(activity)
+      dl.setContentView(loadlayout(dann))
+      an=dl.show()
+      bottom = dl.findViewById(R.id.design_bottom_sheet);
+      if (bottom != nil) then
+        bottom
+        .setBackgroundResource(android.R.color.transparent)
+        .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+      end
+
+      okey.onClick=function()
+        delete(id)
+        dl.dismiss()
+      end
+      cancel.onClick=lambda -> dl.dismiss()
+    end)
   end
   pop.show()
   return true

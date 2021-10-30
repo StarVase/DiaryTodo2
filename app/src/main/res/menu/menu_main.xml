@@ -6,11 +6,11 @@
 		android:showAsAction="always"
 		android:icon="@drawable/ic_plus"
 		android:title="@string/menu_main_new"/>
-	<item
+	<!--<item
 		android:id="@+id/menu_main_sync"
 		android:showAsAction="always"
 		android:icon="@drawable/ic_sync"
-		android:title="@string/menu_main_sync"/>
+		android:title="@string/menu_main_sync"/>-->
     <item
         android:id="@+id/menu_main_settings"
 		android:showAsAction="never"

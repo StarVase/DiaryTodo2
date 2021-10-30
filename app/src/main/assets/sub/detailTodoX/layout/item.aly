@@ -1,0 +1,28 @@
+{--设置项(图片,标题,开关)
+  LinearLayout;
+  gravity="center";
+  layout_width="fill";
+  layout_height="56dp";
+  {
+    AppCompatCheckBox;
+    id="status";
+    Focusable=false;
+    clickable=false;
+    layout_marginRight="16dp";
+    layout_marginLeft="16dp";
+    --style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+  };
+  {
+    AppCompatTextView;
+    id="title";
+    textSize="16sp";
+    --gravity="center";
+    --layout_height="fill";
+    layout_weight="1";
+    layout_marginLeft="16dp";
+    layout_marginRight="16dp";
+    textColor=textColor;
+    singleLine="true";
+  };
+
+};
