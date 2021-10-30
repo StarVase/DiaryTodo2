@@ -9,14 +9,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import com.StarVase.diaryTodo.app.MainActivity;
+import com.StarVase.diaryTodo.app.R;
 import com.StarVase.diaryTodo.manager.AppManager;
 import com.StarVase.util.OreoFixUtil;
 import java.util.ArrayList;
 import java.util.List;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class LuaBaseActivityX extends AppCompatActivity {
 
@@ -25,6 +24,7 @@ public class LuaBaseActivityX extends AppCompatActivity {
         OreoFixUtil.hookOrientation(this);
         AppManager.getAppManager().addActivity(this);
         super.onCreate(savedInstanceState);
+		overridePendingTransition(R.anim.in_from_right,R.anim.out_to_right);
     }
 
     //入口是getLocation
@@ -99,6 +99,25 @@ public class LuaBaseActivityX extends AppCompatActivity {
         }
         return bestLocation;
     }
+
+    /**
+     * 跳转activity
+     *
+     * @param clz the clz
+     */
+    public void startActivity(Class<?> clz) {
+        startActivity(clz);
+        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+    }
+
+	@Override
+	public void finish() {
+		super.finish();
+		overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+	}
+	
+	
+    
 	
 	public boolean setSwipeBackEnable(boolean p1){
 		return false;

@@ -19,7 +19,7 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     local tag=holder.itemView.tag
     tag.text.text=data.text
     tag.img.ImageResource=data.img
-    tag.card.onClick=lambda -> task(50,lambda -> data.onClick())
+    tag.card.onClick=lambda -> task(1,lambda -> data.onClick())
     --    tag.title.text=data.title
     --    tag.text.text=data.text
 
