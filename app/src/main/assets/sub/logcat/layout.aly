@@ -1,0 +1,14 @@
+{
+  LinearLayout,
+  orientation="vertical",
+  layout_width="fill",
+  layout_height="fill",
+  gravity="center",
+  backgroundColor=BGC,
+  {
+    ListView,
+    id="scroll",
+    FastScrollEnabled=true,
+    layout_width="fill",
+  },
+}

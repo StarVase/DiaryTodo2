@@ -4,6 +4,7 @@
   gravity="left|center";
   layout_height="56dp";
   layout_width="fill";
+  id="p",
   {
     LinearLayout;
     orientation="horizontal";

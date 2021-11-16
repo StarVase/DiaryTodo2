@@ -28,7 +28,7 @@ end
 function computeProgress(data)
   xpcall(function()
     tab=cjson.decode(data)
-   -- print(dump(tab))
+    -- print(dump(tab))
     local val1=0
     for key,value in pairs(tab) do
       if toBoolean(value.istrue) then
@@ -81,9 +81,15 @@ function Refresh()
       ts = cursor.getInt(4);
       noticeat = cursor.getInt(5);
       highlightColor=cursor.getInt(6);
+      if computeProgress(data0)==100 then
+        alpha=0.4
+       else
+        alpha=1
+      end
       -- print(id,title,isHighlight,data,ts,noticeat)
       adapter.add(
       {
+        p={alpha=alpha},
         title={
           Text=autoHighLight(title,int2Boolean(isHighlight)),
         },

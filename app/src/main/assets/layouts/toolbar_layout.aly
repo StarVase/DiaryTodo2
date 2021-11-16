@@ -9,7 +9,7 @@
   layout_width="fill";
   layout_height="fill";
   id="mainLay";
-  --backgroundColor=BGC,
+  backgroundColor=BGC,
   --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
   --fitsSystemWindows=true,

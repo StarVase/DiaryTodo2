@@ -1,5 +1,5 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "com.StarVase.library.adapter.MyLuaAdapter"
 --import "android.graphics.Typeface"
 import "layout"

@@ -1,5 +1,5 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "android.text.style.ForegroundColorSpan"
 --设置
 --显示对话框

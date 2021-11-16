@@ -39,6 +39,7 @@
     layout_height="72dp";
     gravity="center";
     id="p",
+   -- background=graph.Ripple(nil,普通波纹,"方")
     {
       MaterialCardView;
       layout_marginLeft="16dp";
@@ -92,6 +93,7 @@
     layout_height="56dp";
     gravity="center";
     id="p",
+  --  background=graph.Ripple(nil,普通波纹,"方")
     {
       MaterialCardView;
       layout_marginLeft="16dp";
@@ -130,6 +132,7 @@
     layout_width="fill";
     layout_height="72dp";
     id="p",
+    --background=graph.Ripple(nil,普通波纹,"方")
     {
       MaterialCardView;
       layout_marginLeft="16dp";
@@ -192,6 +195,7 @@
     layout_width="fill";
     layout_height="56dp";
     id="p",
+    --background=graph.Ripple(nil,普通波纹,"方")
     {
       MaterialCardView;
       layout_marginLeft="16dp";

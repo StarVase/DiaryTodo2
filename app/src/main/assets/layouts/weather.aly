@@ -52,7 +52,7 @@
           layout_marginLeft="15dp";
           layout_gravity="center";
           textColor=icon;--文字颜色
-          text=tem.."°";--显示的文字
+          text=tem.."℃";--显示的文字
           textSize='40sp';--文字大小
         };
         {

@@ -1,4 +1,15 @@
 import "com.StarVase.diaryTodo.CreateFileUtil"
+function TrueAndFalseColor(text,word)
+  if text then
+    return MyTextStyle.TextColor(word,0,utf8.len(word),0xFFF44336)
+   else
+    return word
+  end
+end
+
+function highLight(word)
+  return MyTextStyle.TextColor(word,0,utf8.len(word),0xFFF44336)
+end
 
 
 function Refresh(id)

@@ -11,8 +11,6 @@ import "android.content.res.ColorStateList"
 
 import "layouts.toolbar_layout"
 activity.setContentView(loadlayout(toolbar_layout))
-
-
 pcall(function()activity.setSupportActionBar(toolBar)end)
 
 layoutParams=imageFrame.getLayoutParams();

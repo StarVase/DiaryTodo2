@@ -20,14 +20,8 @@ function AppTheme.setByUser(id)
   activity.setSharedData("LastUserTheme",tonumber(id))
 end
 
+tablechild=require "app.ThemeTable"[AppTheme.getid()]
 
-AppTheme.table=import "app.ThemeTable"
-
-
-
-
-
-tablechild=AppTheme.table[AppTheme.getid()]
 
 function AppTheme.isDarkTheme()
   if tablechild.type=="Night" then
@@ -44,6 +38,7 @@ local function getNormalRipple()
     return 0x44000000
   end
 end
+
 forceColor=tablechild.forceColor
 mainColor=tablechild.mainColor
 titleColor=tablechild.titleColor
@@ -59,8 +54,6 @@ subTextColor=textColor-0x77000000
 themea=tablechild.themea
 淡色强调波纹=graph.修改颜色强度(0x1A,icon)
 普通波纹=getNormalRipple()
-主题(tablechild.type)
-
 
 
 function isNightMode(context)
@@ -70,24 +63,26 @@ function isNightMode(context)
 end
 
 function initToolbar(string)
-  activity.getSupportActionBar().show()
-  import "android.graphics.drawable.ColorDrawable"
-  --activity.getSupportActionBar().setBackgroundDrawable(ColorDrawable(mainColor))
-  import "android.text.SpannableString"
-  import "android.text.style.ForegroundColorSpan"
-  import "android.text.Spannable"
-  sp=SpannableString(string)
-  sp.setSpan(ForegroundColorSpan(titleColor),0,#sp,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-  activity.getSupportActionBar().setTitle(sp)
+  if activity.getSupportActionBar() then
+    activity.getSupportActionBar().show()
+    import "android.graphics.drawable.ColorDrawable"
+    activity.getSupportActionBar().setBackgroundDrawable(ColorDrawable(mainColor))
+    import "android.text.SpannableString"
+    import "android.text.style.ForegroundColorSpan"
+    import "android.text.Spannable"
+    sp=SpannableString(string)
+    sp.setSpan(ForegroundColorSpan(titleColor),0,#sp,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+    activity.getSupportActionBar().setTitle(sp)
+  end
 end
 
 if not 导航栏颜色 then
   导航栏颜色=mainColor
 end
---activity.setTheme(themea)
+
 function isDarkColor(color)
   import "android.graphics.Color"
-  --local color=Integer.toHexString(color)
+
   return (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) <192
 end
 
@@ -128,8 +123,6 @@ function 沉浸状态栏()
     end)
   end
 end
-window=activity.getWindow()
-window.setStatusBarColor(mainColor)
 
 
 function setNavigationBar()
@@ -139,23 +132,14 @@ function setNavigationBar()
     if not(isDarkColor(mainColor)) then
       systemUIInfo=systemUIInfo.."|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR"--暗色状态栏
     end
-
     activity.getWindow().setNavigationBarColor(BGC)
-
     if (tonumber(Build.VERSION.SDK) >= 26) and not(isDarkColor(BGC)) then
       systemUIInfo=systemUIInfo.."|View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR"--暗色导航栏
     end
   end
-
   loadstring([[activity.getWindow().getDecorView().setSystemUiVisibility(]]..systemUIInfo..[[)]])()--设置SystemUI
-
-
-  --pcall(function()activity.getWindow().setNavigationBarDividerColor(0xff000000)end)
-
 end
---沉浸状态栏()
-setNavigationBar()
 
-task(1,function()
-  
-end)
+--task(1,function()
+setNavigationBar()
+--end)

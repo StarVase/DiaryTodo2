@@ -8,7 +8,6 @@ function unBoolean(blin)
   end
 end
 onItemClick=function(one,SwitchIn)
-  print(SwitchIn)
   task(1,function()
     state=dataset[one].intent
     --print(state)
@@ -70,7 +69,7 @@ onItemClick=function(one,SwitchIn)
       .setPositiveButton("确定",{onClick=function()
           activity.setSharedData(state,selectType)
           dataset[one].message=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]]
-          adapter.submitList(dataset)
+          --adapter.submitList(dataset)
         end})
       .setNegativeButton("取消",nil)
       .show();

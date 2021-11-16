@@ -1,9 +1,8 @@
 require "import"
 import "android.widget.*"
 import "android.view.*"
-import "StarVase"
-activity.setTheme(themea)
-
+require "StarVase"(this,{})
+activity.setContentView(loadlayout(require("layout")))
 activity.setTitle("LogCat")
 edit=EditText(activity)
 
@@ -96,10 +95,6 @@ func.Clear=function()
   task(clearlog,show)
 end
 
-scroll=ScrollView(activity)
-scroll=ListView(activity)
-
-scroll.FastScrollEnabled=true
 logview=AppCompatTextView(activity)
 logview.TextIsSelectable=true
 --scroll.addView(logview)
@@ -129,7 +124,7 @@ function show(s)
 end
 
 func.All()
-activity.setContentView(scroll)
+
 import "android.content.*"
 cm=activity.getSystemService(activity.CLIPBOARD_SERVICE)
 

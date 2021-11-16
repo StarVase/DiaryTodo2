@@ -10,11 +10,13 @@ return function(data)
     onCreateViewHolder=function(parent,type)
       local tag={}
       local view=loadlayout(import "layout.setlay"[type],tag)
+
       holder=LuaCustRecyclerHolder(view)
       view.tag=tag
-      view.background=graph.Ripple(nil,普通波纹,"方")
-      --print(parent)
-
+      if type != 1 then
+        view.background=graph.Ripple(nil,普通波纹,"方")
+        --print(parent)
+      end
       return holder
     end,
     --[[onCreateViewHolder=function(parent,viewType)

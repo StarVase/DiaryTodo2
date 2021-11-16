@@ -16,7 +16,7 @@ import "android.renderscript.*"
 import "android.graphics.drawable.*"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "com.tencent.qq.widget.ReboundEffectsView"
 item=importFile('TODO',"item")
 importFile('TODO','function')

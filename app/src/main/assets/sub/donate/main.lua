@@ -4,7 +4,7 @@
 ]]
 
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "loadlayout"
 import "android.app.*"
 import "android.os.*"

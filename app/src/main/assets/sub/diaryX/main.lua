@@ -1,5 +1,5 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{})
 import "com.bumptech.glide.Glide"
 --import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 --import "androidx.coordinatorlayout.widget.CoordinatorLayout"

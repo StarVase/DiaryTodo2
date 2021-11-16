@@ -1,7 +1,7 @@
-require "import"
+﻿require "import"
 import "android.widget.*"
 import "android.view.*"
-import "StarVase"
+require "StarVase"(this,{})
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "com.google.android.material.textfield.TextInputEditText"
 import "com.google.android.material.textfield.TextInputLayout"

@@ -6,7 +6,7 @@ import "android.net.Uri"
 import "android.provider.*"
 import "com.StarVase.library.adapter.MyLuaMultiAdapter"
 
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "function"
 
 import "layout"

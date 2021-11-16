@@ -1,4 +1,4 @@
-require "import"
+﻿require "import"
 import "com.bumptech.glide.*"
 import "android.view.Window"
 --保存设置参数
@@ -14,7 +14,9 @@ activity.setSharedData("BaseLuaPath",activity.getLuaDir())
 --优先关闭自带标题栏
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
-import "StarVase"
+
+  
+require "StarVase"(this,{enableTheme=true})
 import "com.StarVase.diaryTodo.CreateFileUtil"
 import "android.widget.ExListView"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
@@ -82,7 +84,7 @@ function new()
     qd=AdapLan("确定","OK")
     qx=AdapLan("取消","Cancel")
     gb=function(one)
-      关闭对话框(an)
+      an.dismiss()
 
       if one==1 then
         addDiary()
@@ -99,7 +101,7 @@ function new()
       end
     end
     qdnr=function()
-      关闭对话框(an)
+      an.dismiss()
     end
 
 

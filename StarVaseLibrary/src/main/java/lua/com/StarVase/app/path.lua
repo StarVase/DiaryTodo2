@@ -1,13 +1,17 @@
 path={}
 import "android.os.Environment"
-path.data=Environment.getExternalStorageDirectory().toString().. "/Android/data/"..activity.getPackageName().."/data/"
-path.app=Environment.getExternalStorageDirectory().toString().. "/Android/data/"..activity.getPackageName().."/"
+
+envdir=Environment.getExternalStorageDirectory().toString()
+pkgname=activity.getPackageName()
+
+path.data=envdir.. "/Android/data/"..pkgname.."/data/"
+path.app=envdir.. "/Android/data/"..pkgname.."/"
 
 path.diary=path.data..".diary/"
 path.todo=path.data..".todo/"
 path.favorote=path.data..".favorite/"
-path.backup=Environment.getExternalStorageDirectory().toString().."/StarVase/diary&todo/backup/"
-path.dustbin=Environment.getExternalStorageDirectory().toString().."/StarVase/diary&todo/.dustbin/"
-path.StarVase=Environment.getExternalStorageDirectory().toString().."/StarVase/"
-path.picture=Environment.getExternalStorageDirectory().toString().."/Picture/DiaryTodo/"
+path.backup=envdir.."/StarVase/diary&todo/backup/"
+path.dustbin=envdir.."/StarVase/diary&todo/.dustbin/"
+path.StarVase=envdir.."/StarVase/"
+path.picture=envdir.."/Picture/DiaryTodo/"
 return path

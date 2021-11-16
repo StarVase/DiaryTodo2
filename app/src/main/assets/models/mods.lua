@@ -1,3 +1,7 @@
+ripple = activity.obtainStyledAttributes({android.R.attr.selectableItemBackgroundBorderless}).getResourceId(0,0)
+ripples = activity.obtainStyledAttributes({android.R.attr.selectableItemBackground}).getResourceId(0,0)
+
+
 function setImage(front,behind)
   Log.v("setImage",dump({tostring(front),tostring(behind)}))
   MyToolbar.setImageBitmap(front)

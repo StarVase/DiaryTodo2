@@ -1,5 +1,5 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "com.google.android.material.floatingactionbutton.FloatingActionButton"
 import "android.animation.LayoutTransition"
 import "android.webkit.*"

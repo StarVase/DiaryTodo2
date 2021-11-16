@@ -3,7 +3,7 @@ import "android.app.*"
 import "android.os.*"
 import "android.widget.*"
 import "android.view.*"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "widget.NoScrollPageView"
 import "android.animation.LayoutTransition"
 import "com.youbenzi.md2.util.*"

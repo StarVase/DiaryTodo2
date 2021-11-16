@@ -28,47 +28,37 @@ local function setFloatButtonPosition(X,Y,J,D,P,U,K)
   if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
   fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2
   --保存悬浮按钮位置
-  this.setSharedData("悬浮按钮横坐标",X)
-  this.setSharedData("悬浮按钮纵坐标",Y)
+  this.setSharedData("悬浮按钮横坐�?,X)
+  this.setSharedData("悬浮按钮纵坐�?,Y)
 end
 
 task(200,function(JDPUK)
   --恢复悬浮按钮位置
   if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55)..tostring(3).."2" then error()end
-  local x=this.getSharedData("悬浮按钮横坐标")
-  local y=this.getSharedData("悬浮按钮纵坐标")
+  local x=this.getSharedData("悬浮按钮横坐�?)
+  local y=this.getSharedData("悬浮按钮纵坐�?)
   if x and y then setFloatButtonPosition(x,y) end
 end)
 
---初始化按下起始位置
-local sx
+--初始化按下起始位�?local sx
 local sy
 
---设置移动条件(最小移动范围)
+--设置移动条件(最小移动范�?
 local mr=5
---初始化是否移动
-local cm=false
+--初始化是否移�?local cm=false
 
 --设置自动校准范围
 local tr=50
 --设置自动校准坐标
 local tp={
-  {0,nil},--左贴边
-  {nil,0},--上贴边
-  {w,nil},--右贴边
-  {nil,h},--下贴边
-}
+  {0,nil},--左贴�?  {nil,0},--上贴�?  {w,nil},--右贴�?  {nil,h},--下贴�?}
 task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好
   if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
-  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置
-  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位�?  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})
 end)
 
---监听悬浮按钮被按下事件
-task(200,function(JDPUK)--延时等待悬浮按钮准备好
-  if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
-  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听
-    if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
+--监听悬浮按钮被按下事�?task(200,function(JDPUK)--延时等待悬浮按钮准备�?  if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监�?    if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
 
     --得到手指当前位置
     local x=event.getRawX()
@@ -80,15 +70,13 @@ task(200,function(JDPUK)--延时等待悬浮按钮准备好
       sx=x
       sy=y
       return false
-     elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮
-      if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
+     elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按�?      if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
 
       if cm then
 
         --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)
 
-        --初始化悬浮按钮位置
-        local X=x
+        --初始化悬浮按钮位�?        local X=x
         local Y=y
 
 
@@ -97,11 +85,7 @@ task(200,function(JDPUK)--延时等待悬浮按钮准备好
         local tr=25
 
         --自动贴边
-        if x<=0+tr then X=0 end--左
-        if y<=0+tr then Y=0 end--上
-        if x>=w-tr then X=w end--右
-        if y>=h-tr then Y=h end--下
-
+        if x<=0+tr then X=0 end--�?        if y<=0+tr then Y=0 end--�?        if x>=w-tr then X=w end--�?        if y>=h-tr then Y=h end--�?
 
 
         for k,v in pairs(tp) do
@@ -112,19 +96,14 @@ task(200,function(JDPUK)--延时等待悬浮按钮准备好
         end
 
         --防止悬浮按钮超出屏幕(其实可以省略)
-        if X<0 then X=0 end--左
-        if Y<0 then Y=0 end--上
-        if X>w then X=w end--右
-        if Y>h then Y=h end--下
-
+        if X<0 then X=0 end--�?        if Y<0 then Y=0 end--�?        if X>w then X=w end--�?        if Y>h then Y=h end--�?
         --防止悬浮按钮高于状态栏导致无法移动
         if Y<getStatusBarHeight() then Y=getStatusBarHeight() end
 
         --设置悬浮按钮位置
         setFloatButtonPosition(X,Y)
 
-        return true--消费该事件
-
+        return true--消费该事�?
        else
 
         --设置移动条件
@@ -135,8 +114,7 @@ task(200,function(JDPUK)--延时等待悬浮按钮准备好
      elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧
       if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55)..tostring(32) then error()end
 
-      --重置变量前先把需要的变量保存为局部变量
-      local tmp=cm
+      --重置变量前先把需要的变量保存为局部变�?      local tmp=cm
 
       --重置变量
       sx=nil
@@ -155,4 +133,5 @@ task(200,function(JDPUK)--延时等待悬浮按钮准备好
   end
 end)
 if not tostring(jdpuk)==string.byte("")..string.byte("")..string.byte("4")..string.char(55).."32" then error()end
+
 

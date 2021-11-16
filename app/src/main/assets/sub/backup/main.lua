@@ -1,5 +1,5 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 --import "com.tencent.qq.widget.ReboundEffectsView"
 ReboundEffectsView=ListView
 item=importFile('backup',"item")

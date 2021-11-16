@@ -1,11 +1,12 @@
 require "import"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
 import "layout"
 import "item"
-theme=import "themeTable"
+AppTheme.table=require "app.ThemeTable"
+theme=require "themes"
 
 activity.setContentView(loadlayout(layout))
 

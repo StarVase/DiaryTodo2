@@ -3,7 +3,7 @@ import "android.app.*"
 import "android.os.*"
 import "android.widget.*"
 import "android.view.*"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 import "com.tencent.qq.widget.ReboundEffectsView"
 item=importFile('detailTODO',"item")
 --import "muk"

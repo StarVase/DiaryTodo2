@@ -4,7 +4,7 @@ import "android.view.Window"
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
 import "cjson"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 this.setTitle(activity.getString(R.string.func_settings))
 import "android.widget.ExListView"
 import "androidx.coordinatorlayout.widget.CoordinatorLayout"

@@ -1,4 +1,4 @@
---import "StarVase"
+﻿--require "StarVase"(this,{})
 import "android.net.Uri"
 
 

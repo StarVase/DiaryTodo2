@@ -1,6 +1,6 @@
 require "import"
 import "com.StarVase.library.adapter.MyLuaAdapter"
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 function 发送邮件()
   import "android.content.Intent"
   i = Intent(Intent.ACTION_SEND)

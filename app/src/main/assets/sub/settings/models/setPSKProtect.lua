@@ -1,6 +1,6 @@
 require "import"
 
-import "StarVase"
+require "StarVase"(this,{enableTheme=true})
 --import "muk"
 --删掉“--”注释符号以使用中文函数
 

@@ -1,4 +1,4 @@
-require "import"
+﻿require "import"
 import "android.app.*"
 import "android.os.*"
 import "android.widget.*"
@@ -6,7 +6,7 @@ import "android.view.*"
 import "android.content.Intent"
 import "com.StarVase.utils.language"
 --先行导入以减少主应用负担
-import "initSharedData"
+import "initAppData"
 R=luajava.bindClass(activity.getPackageName()..".R")
 import "shortCut"
 import "android.content.pm.PackageManager"
@@ -37,7 +37,7 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
  else
 
 
-  pcall(function() import "StarVase" end)
+  pcall(function() require "StarVase"(this,{}) end)
 
   init={
     SwipeBack=false

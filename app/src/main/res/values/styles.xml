@@ -128,11 +128,7 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+       
     </style>
     
     <!--天空蓝-->
@@ -144,10 +140,8 @@
         <item name="android:statusBarColor">@color/Blue</item>
         <item name="android:navigationBarColor">@color/Blue</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+    
+        
     </style>
     
     <!--咕鸽粉-->
@@ -159,10 +153,7 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+  
     </style>
     
 
@@ -175,10 +166,7 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+      
     </style>
 
     
@@ -191,10 +179,7 @@
         <item name="android:statusBarColor">#FF00ACC2</item>
         <item name="android:navigationBarColor">#FF00ACC2</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+   
     </style>
     
     <!--星空黑-->
@@ -206,10 +191,8 @@
         <item name="android:statusBarColor">@color/Dark</item>
         <item name="android:navigationBarColor">@color/Dark</item>
         <item name="colorButtonNormal">@color/White</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/White</item>
-        <item name="android:windowLightNavigationBar">false</item>
-        <item name="android:windowIsTranslucent">true</item>
+      
+     
     </style>
     
         <!--夜间黑-->
@@ -221,10 +204,8 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/Black</item>
-        <item name="android:actionModeBackground">@null</item>
-        <item name="android:windowBackground">@color/Dark</item>
-        <item name="android:windowIsTranslucent">true</item>
-        
+        <item name="windowBackgroundColor">@color/Dark</item>
+       
     </style>
     
  

@@ -14,3 +14,7 @@ initSharedData("导航栏使用暗色",false)
 initSharedData("YiyanEnabled",true)
 initSharedData("DiaryPassword",4313)
 activity.setSharedData("EncryptDiary",false)
+
+
+import "com.StarVase.diaryTodo.CreateFileUtil"
+CreateFileUtil.createDatabase()
