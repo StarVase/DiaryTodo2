@@ -292,7 +292,7 @@ function onResume()
     end
     --用线程备份
     thread(function()
-      if activity.getSharedData("AutoBackup")=="true" or activity.getSharedData("自动备份")==true then
+      if activity.getSharedData("AutoBackup") == true then
         require "import"
         import "com.StarVase.app.backup"
         backup.backupnow()
@@ -315,3 +315,7 @@ function onKeyUp(code,event)
   end
 end
 MyToast.showSnackBar((activity.getLocation()))
+
+CreateFileUtil.createDatabase()
+print(path.data .. "database/data.db")
+print(CreateFileUtil.getDatabase())

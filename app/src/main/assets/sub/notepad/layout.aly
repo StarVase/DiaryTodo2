@@ -71,8 +71,8 @@
                   gravity="top";
                   hint="内容";
                   textColor=textColor,
-                  layout_width="wrap";
-                  layout_height="wrap";
+                  layout_width="fill";
+                  layout_height="fill";
                   padding="16dp";
                   textSize="14sp";
                   id="Widgetcontent",

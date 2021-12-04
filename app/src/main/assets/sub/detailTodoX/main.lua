@@ -41,6 +41,7 @@ fab.onClick=function()
         tosettable={}
         tosettable.title=tostring(edit.getText())
         tosettable.timestamp=os.time()
+        tosettable.content=""
         tosettable.istrue=false
         tosettable.highLight=false
         tosettable.highLightColor=0

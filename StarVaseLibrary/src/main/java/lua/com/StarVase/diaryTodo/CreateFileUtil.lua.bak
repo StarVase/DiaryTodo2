@@ -6,7 +6,7 @@ import "android.database.sqlite.*"
 --打开数据库(没有自动创建)
 function getDatabase()
   local path = import "com.StarVase.app.path"
-  db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
+  db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data/database/data.db",MODE_PRIVATE, nil);
   return db
 end
 
@@ -22,6 +22,7 @@ function raw(sql,text)
   return cursor
 end
 
+function createDatabase()
 tables={
   "create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)",
   "create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)",
@@ -33,7 +34,7 @@ tables={
 for k,v in ipairs(tables)
   pcall(exec,v)
 end
-
+end
 
 
 function diary(config)

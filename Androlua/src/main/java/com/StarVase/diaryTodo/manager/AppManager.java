@@ -57,8 +57,7 @@ public class AppManager {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
-            activity.overridePendingTransition(R.anim.in_from_right,
-                                               R.anim.out_to_right);
+            
             activity = null;
         }
     }

@@ -1,8 +1,11 @@
 path={}
-envdir=Environment.getExternalStorageDirectory().toString()
+import "android.os.Environment"
 
-path.data=envdir.. "/Android/data/"..activity.getPackageName().."/data/"
-path.app=envdir.. "/Android/data/"..activity.getPackageName().."/"
+envdir=Environment.getExternalStorageDirectory().toString()
+pkgname=activity.getPackageName()
+
+path.data=envdir.. "/Android/data/"..pkgname.."/data/"
+path.app=envdir.. "/Android/data/"..pkgname.."/"
 
 path.diary=path.data..".diary/"
 path.todo=path.data..".todo/"

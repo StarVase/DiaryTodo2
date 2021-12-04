@@ -62,7 +62,8 @@ function fab.onClick()
       if edit.getText() then
         CreateFileUtil.collection({
           title=edit.getText(),
-          timestamp=os.time()
+          timestamp=os.time(),
+          content=""
         })
         MyToast.showSnackBar("Done")
       end

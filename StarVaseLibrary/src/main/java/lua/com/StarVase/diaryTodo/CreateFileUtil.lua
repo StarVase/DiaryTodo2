@@ -6,7 +6,7 @@ import "android.database.sqlite.*"
 --打开数据库(没有自动创建)
 function getDatabase()
   local path = import "com.StarVase.app.path"
-  db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
+  db = SQLiteDatabase.openOrCreateDatabase(path.data .. "database/data.db",MODE_PRIVATE, nil);
   return db
 end
 

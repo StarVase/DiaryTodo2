@@ -1,5 +1,0 @@
-local R=luajava.bindClass("com.StarVase.library.R")
-local LayoutInflater=luajava.bindClass("android.view.LayoutInflater")
-local iInflater=LayoutInflater.from(activity)
---return(iInflater.inflate(R.layout.abc_filetagview,nil))
-print(luajava.bindClass("com.dingyi.library.ui.view.FileTagView"))

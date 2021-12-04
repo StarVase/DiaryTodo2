@@ -24,9 +24,10 @@
 		<item name="actionModeBackground">?colorPrimary</item>
         <item name="actionOverflowMenuStyle">@style/Widget.PopupMenu.Overflow</item>
         <item name="popupMenuStyle">@style/Widget.PopupMenu</item>
-    
         <item name="android:alertDialogTheme">@style/Base.Theme.Dialog.Alert</item>
-   
+		<item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+		<item name="android:activityCloseExitAnimation">@anim/out_to_right</item>
+		
         <!--圆角-->
         <item name="dialogCornerRadius">?cornerRadius</item>
         <item name="cardCornerRadius">?cornerRadius</item>
@@ -66,6 +67,8 @@
         <item name="windowLightStatusBar">false</item>
         <item name="windowLightNavigationBar">false</item>
 		<item name="actionBarTheme">@style/ThemeOverlay.Dark.ActionBar</item>
+		<item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+		<item name="android:activityCloseExitAnimation">@anim/out_to_right</item>
 		
         <item name="actionModeBackground">?colorPrimary</item>
         <item name="actionOverflowMenuStyle">@style/Widget.PopupMenu.Overflow</item>

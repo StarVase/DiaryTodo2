@@ -24,7 +24,7 @@ public class LuaBaseActivityX extends AppCompatActivity {
         OreoFixUtil.hookOrientation(this);
         AppManager.getAppManager().addActivity(this);
         super.onCreate(savedInstanceState);
-		overridePendingTransition(R.anim.in_from_right,R.anim.out_to_right);
+		
     }
 
     //入口是getLocation
@@ -100,21 +100,6 @@ public class LuaBaseActivityX extends AppCompatActivity {
         return bestLocation;
     }
 
-    /**
-     * 跳转activity
-     *
-     * @param clz the clz
-     */
-    public void startActivity(Class<?> clz) {
-        startActivity(clz);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
-    }
-
-	@Override
-	public void finish() {
-		super.finish();
-		overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
-	}
 	
 	
     

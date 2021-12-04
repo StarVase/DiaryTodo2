@@ -10,7 +10,7 @@ CPUModel=Build.HARDWARE
 versionName=APKVersionInfoUtils.getVersionName(activity)
 versionCode=APKVersionInfoUtils.getVersionCode(activity)
 
-info=string.format("This version is for testing only.\nVersion:%s(%s)\nCPU Architecture:%s|%s(%s)\nSDK:%s"
+info=string.format("Test Version:%s(%s)\nCPU Architecture:%s|%s(%s)//SDK:%s"
   ,tostring(versionName)
   ,tostring(versionCode)
   ,tostring(CPUArchitecture)
@@ -29,8 +29,10 @@ end
 if (debugModeEnable) then
   copyrightText=AppCompatTextView(activity)
   .setText(info)
+  .setTextSize(8)
+  .setAlpha(0.75)
   .setTextColor(textColor)
-  .setGravity(Gravity.BOTTOM|Gravity.CENTER)
+  .setGravity(Gravity.BOTTOM|Gravity.RIGHT)
   --.setBackgroundColor(0xff000000)
   task(1,function()activity.getWindow().getDecorView().addView(copyrightText)end)
 end

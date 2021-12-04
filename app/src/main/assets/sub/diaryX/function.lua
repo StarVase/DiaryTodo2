@@ -1,8 +1,7 @@
 import "android.database.sqlite.*"
 
 --打开数据库(没有自动创建)
-db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
-
+db = CreateFileUtil.getDatabase()
 --execSQL()方法可以执行insert、delete、update和CREATE TABLE之类有更改行为的SQL语句
 function exec(sql)
   db.execSQL(sql);
@@ -35,20 +34,6 @@ end
 CreatrTableSql="create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)"
 pcall(exec,CreatrTableSql) 
 
-import "rc4"
-activity.setSharedData('diaryRC4PSK',"1234")
-content=minicrypto.encrypt("日记新建成功",activity.getSharedData('diaryRC4PSK'))
-key=minicrypto.encrypt("1234","Diaryenced")
-
-values = ContentValues();
-values.put("title",'加密测试');
-values.put("year", "2021");
-values.put("month", "03");
-values.put("day", "21");
-values.put("isEmp", "1");
-values.put("key", key);
-values.put("content", content);
---db.insert("diary", nil, values);
 
 
 function Refresh()

@@ -1,5 +1,5 @@
 APKVersionInfoUtils=luajava.bindClass("com.StarVase.diaryTodo.util.APKVersionInfoUtils")
-AppCompatTextViewCompat = luajava.bindClass("androidx.core.widget.AppCompatTextView")
+AppCompatTextViewCompat = luajava.bindClass("androidx.appcompat.widget.AppCompatTextView")
 Author="StarVase"
 AndroidVersion=Build.VERSION.RELEASE
 DeviceModel=Build.MANUFACTURER.." "..Build.MODEL

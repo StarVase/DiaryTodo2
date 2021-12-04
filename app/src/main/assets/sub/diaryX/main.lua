@@ -98,6 +98,8 @@ function fab.onClick()
       if edit.getText() then
         CreateFileUtil.diary({
           title=edit.getText(),
+          
+          content="",
           isLocked=enccheckbox.checked,
           passkey=activity.getSharedData("DiaryPassword"),
           date={year=year,month=month,day=day},
