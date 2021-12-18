@@ -1,3 +1,14 @@
+function TouchEffect(view,startscale,endscale,time)
+  local animatorSetsuofang = AnimatorSet()
+  local scaleX=ObjectAnimator.ofFloat(view,"scaleX",{startscale,endscale})
+  local scaleY=ObjectAnimator.ofFloat(view,"scaleY",{startscale,endscale})
+  animatorSetsuofang.setDuration(time)
+  animatorSetsuofang.setInterpolator(DecelerateInterpolator())
+  animatorSetsuofang.play(scaleX).with(scaleY);
+  animatorSetsuofang.start()
+end
+
+
 return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
   getItemViewType=function()
     return int(0)
@@ -22,7 +33,15 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     tag.card.onClick=lambda -> task(1,lambda -> data.onClick())
     --    tag.title.text=data.title
     --    tag.text.text=data.text
-
+    tag.card.onTouchListener={
+      onTouch=function (v,e)
+        if e.action==0 then
+          TouchEffect(v,1,0.9,250)
+         else--[[if e.action==1 or e.action==2 then]]
+          TouchEffect(v,0.9,1,250)
+        end
+      end
+    }
     headerParams = tag.CardParent.getLayoutParams()
     headerParams.height=(math.dp2int(math.random(200,280)))
     tag.CardParent.setLayoutParams(headerParams);
@@ -71,3 +90,6 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
 
   end
 })
+
+
+
