@@ -316,18 +316,3 @@ function onKeyUp(code,event)
 end
 MyToast.showSnackBar((activity.getLocation()))
 
---[[CreateFileUtil.createDatabase()
-print(path.data .. "database/data.db")
-print(CreateFileUtil.getDatabase())]]
-
-import "android.database.sqlite.*"
---import "com.StarVase.app.path"
---打开数据库(没有自动创建)
-function getDatabase()
-  local path = import "com.StarVase.app.path"
-  db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data/database/data.db",MODE_PRIVATE, nil);
-  return db
-end
-print(path.app .. "data/database/data.db")
-print(path.data .. "database/data.db")
-getDatabase()
