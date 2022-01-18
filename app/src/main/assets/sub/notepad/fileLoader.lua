@@ -1,5 +1,5 @@
 import "android.database.sqlite.*"
-db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
+db = CreateFileUtil.getDatabase()
 function exec(sql)
   db.execSQL(sql);
 end

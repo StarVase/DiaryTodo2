@@ -60,11 +60,21 @@ function onPause()
 end
 
 function MarkText(text)
+  import "android.webkit.ValueCallback"
   content=string.gsub(text,"\n", "\\n")
   content=string.gsub(content,"\"", "\\\"")
   content=string.gsub(content,"'", "\\'")
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
-    webView.evaluateJavascript("javascript:MarkText(\"" ..content .."\");", nil);
+    webView.evaluateJavascript("javascript:MarkText(\"" ..content .."\");", ValueCallback({
+      onReceiveValue=function(html)
+        --MyToast.showSnackBar(html)
+        html=UnicodeUtil.decode(html)
+        --print(html)
+       html= loadstring("return "..html)() or ""
+       -- print(html)
+        Log.v("md",html)
+      end
+    }));
    else
     webView.loadUrl("javascript:MarkText(\"" ..content.. "\");");
   end

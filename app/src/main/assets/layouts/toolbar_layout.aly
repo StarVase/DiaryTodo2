@@ -16,7 +16,7 @@
   {
     AppBarLayout;
     layout_width="fill";
-    layout_height="305dp";
+    layout_height="50%h";
     id="appBarLayout",
     fitsSystemWindows=true,
     --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -34,7 +34,7 @@
       {
         FrameLayout,
         layout_width="fill",
-        layout_height="305dp",
+        layout_height="fill",
         id="imageFrame",
         fitsSystemWindows=true,
         --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -42,7 +42,7 @@
         {
           AppCompatImageView,
           layout_width="fill",
-          layout_height="305dp";
+          layout_height="fill";
           scaleType="centerCrop";
           id="mainAppCompatImageView",
           
@@ -50,7 +50,7 @@
         {
           AppCompatImageView,
           layout_width="fill",
-          layout_height="305dp";
+          layout_height="fill";
           scaleType="centerCrop";
           alpha=0,
           id="subAppCompatImageView",

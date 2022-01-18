@@ -36,16 +36,17 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     tag.card.onTouchListener={
       onTouch=function (v,e)
         if e.action==0 then
-          TouchEffect(v,1,0.9,250)
+         -- TouchEffect(v,1,0.9,250)
          else--[[if e.action==1 or e.action==2 then]]
-          TouchEffect(v,0.9,1,250)
+        --  TouchEffect(v,0.9,1,250)
         end
       end
     }
     headerParams = tag.CardParent.getLayoutParams()
-    headerParams.height=(math.dp2int(math.random(200,280)))
+    --headerParams.height=math.dp2int(120)
+    --headerParams.height=(math.dp2int(math.random(200,280)))
     tag.CardParent.setLayoutParams(headerParams);
-    --graph.Ripple(tag.card,淡色强调波纹)
+    graph.Ripple(tag.card,淡色强调波纹)
     --tag.frame.foreground=graph.Ripple(nil,淡色强调波纹,"方")
 
     --pic.setImageBitmap(loadbitmap(piclist[math.random(1,#piclist)]))
@@ -58,7 +59,7 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     .load(piclist[imgPos])
     .transition(DrawableTransitionOptions.withCrossFade())
     .apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
-    .into(tag.pic)
+   -- .into(tag.pic)
     --[[.into(SimpleTarget({
       onResoureReady=function(resource, Transititransition)
         --viewGroup.setBackground(resource);

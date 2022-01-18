@@ -26,7 +26,8 @@ import "com.google.android.material.textfield.TextInputEditText"
 import "com.google.android.material.textfield.TextInputLayout"
 import "com.StarVase.view.MaterialButton.TextButton"
 import "com.google.android.material.button.MaterialButton"
-
+import "com.blankj.utilcode.util.ImageUtils"
+--  ImageUtils.stackBlur(source,25)
 
 import "intentCallback"
 import "models.mods"
@@ -228,7 +229,6 @@ MyToolbar.setCollapsedOnClick(function()
 
     .setContentView(loadlayout(import "layouts.dialog_yiyan"))
     .show()
-    -- .getWindow().setBackgroundDrawable(BitmapDrawable(graph.高斯模糊(nil,graph.getScreenshot(activity.getWindow().getDecorView()),8,4)))
     content.setText("\t\t\t\t"..sentences.sentence)
     source.setText("————"..sentences.from)
     bottom = bsd.findViewById(R.id.design_bottom_sheet);
@@ -314,5 +314,5 @@ function onKeyUp(code,event)
     return true
   end
 end
-MyToast.showSnackBar((activity.getLocation()))
+--MyToast.showSnackBar((activity.getLocation()))
 

@@ -59,6 +59,7 @@ function MarkText(text){
     });
     var html = converter.makeHtml(text);
     document.getElementById("main").innerHTML =  html ;
+    return html;
 }
 //MarkText("```latex x=b^2-4ac ``` ")
 

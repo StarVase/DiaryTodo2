@@ -113,10 +113,13 @@ piclist={
 function 上下渐变(color)
   return GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,color)
 end
+function 左右渐变(color)
+  return GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT,color)
+end
 function getMaskColor()
   if AppTheme.isDarkTheme() then
-    return 0xee000000,0x00000000
+    return 0x88000000,0x00000000
    else
-    return 0xeeFFFFFF,0x00FFFFFF
+    return 0xbbFFFFFF,0x22FFFFFF
   end
 end

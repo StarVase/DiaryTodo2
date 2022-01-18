@@ -28,6 +28,7 @@
         View,
         layout_width='fill',
         layout_height='fill',
+        
         id="ripple",
       },
       {
@@ -36,6 +37,7 @@
         layout_height='fill',
         {
           FrameLayout,
+          layout_height="wrap",
           --  background=graph.Ripple(nil,淡色强调波纹,"方"),
 
           {
@@ -43,12 +45,13 @@
             scaleType="centerCrop",
             id="pic",
             layout_width="fill",
+            layout_height='84dp',
           },
           {
             View,
             layout_width='fill',
             layout_height='fill',
-            background=上下渐变({getMaskColor()}),
+            background=左右渐变({getMaskColor()}),
           },
         },
         {
@@ -67,8 +70,9 @@
             layout_width='fill',
             layout_height='fill',
             id="card",
-            orientation="vertical";
-            gravity="top|left";
+            orientation="horizontal";
+            gravity="center|left";
+
             --onClick=(lambda -> task(50,lambda -> mainItem[func].onClick())),
             {
               AppCompatImageView;
@@ -77,18 +81,46 @@
               layout_margin="16dp";
               --ImageResource=img;
               id="img",
+
               colorFilter=icon,
             };
             {
               AppCompatTextView;
               textColor=textColor;
               paddingLeft="24dp",
+
               typeface=Typeface.defaultFromStyle(Typeface.BOLD);
-              --layout_weight="1";
+              layout_weight="1";
               Text=text,
               id="text";
             };
+            {
+              MaterialCardView,
+              layout_margin="4dp",
+              layout_marginRight="16dp",
+              layout_height="32dp";
+              layout_width="32dp";
+           --   padding="24dp",
+              --layout_height="200dp",
+              Elevation=0;
+              id="CardParent",
+              --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
+              cardBackgroundColor=0,
+              StrokeColor=lightForceColor,
+              StrokeWidth=math.dp2int(1.6),
+              radius=math.dp2int(8),
 
+              {
+                AppCompatImageView;
+                layout_gravity="center",
+                alpha=0.64,
+                --layout_margin="16dp";
+                ImageResource=R.drawable.ic_chevron_right;
+                --id="img",
+                colorFilter=textColor,
+              };
+
+            }
           };
         },
       },
