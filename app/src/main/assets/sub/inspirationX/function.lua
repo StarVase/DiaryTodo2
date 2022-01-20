@@ -1,7 +1,7 @@
 import "android.database.sqlite.*"
 
 --打开数据库(没有自动创建)
-db = SQLiteDatabase.openOrCreateDatabase(path.app .. "data.db",MODE_PRIVATE, nil);
+db = CreateFileUtil.getDatabase()
 
 --execSQL()方法可以执行insert、delete、update和CREATE TABLE之类有更改行为的SQL语句
 function exec(sql)

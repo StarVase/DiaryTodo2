@@ -15,7 +15,7 @@ activity.setSharedData("BaseLuaPath",activity.getLuaDir())
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
 
-  
+
 require "StarVase"(this,{enableTheme=true})
 import "com.StarVase.diaryTodo.CreateFileUtil"
 import "android.widget.ExListView"
@@ -315,4 +315,3 @@ function onKeyUp(code,event)
   end
 end
 --MyToast.showSnackBar((activity.getLocation()))
-
