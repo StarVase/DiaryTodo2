@@ -2,24 +2,16 @@ require "import"
 import "android.widget.*"
 import "android.view.*"
 require "StarVase"(this,{})
+import "UiHelper"
 activity.setContentView(loadlayout(require("layout")))
-activity.setTitle("LogCat")
-edit=EditText(activity)
+--activity.setTitle("LogCat")
 
-edit.Hint="输入关键字"
-edit.Width=activity.Width/3
-edit.SingleLine=true
-edit.addTextChangedListener{
-  onTextChanged=function(c)
-    scroll.adapter.filter(tostring(c))
-  end
-}
 
 --添加菜单
 items={"All","Lua","Test","Tcc","Error","Warning","Info","Debug","Verbose","Clear"}
 function onCreateOptionsMenu(menu)
-  me=menu.add("搜索").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-  me.setActionView(edit)
+--  me=menu.add("搜索").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+ -- me.setActionView(edit)
   for k,v in ipairs(items) do
     m=menu.add(v)
     items[v]=m

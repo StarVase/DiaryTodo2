@@ -28,6 +28,10 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
     
+    <style name="MatchaGreen" parent="mMatchaGreen">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    
     <style name="StarBlack" parent="mStarBlack">
         <item name="android:windowIsTranslucent">false</item>
     </style>
