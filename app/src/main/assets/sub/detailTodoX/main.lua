@@ -2,7 +2,9 @@ require "import"
 require "StarVase"(this,{enableTheme=true})
 import "UiHelper"
 todoid=...
-
+if !todoid then
+  activity.finish()
+end
 
 list.onItemLongClick=function(id,v,zero,one)
   id=data[one].id

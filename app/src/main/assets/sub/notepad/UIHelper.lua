@@ -56,13 +56,15 @@ function onOptionsItemSelected(item)
      case android.R.id.home
       AUTO_SWITCH_OR_FINISH()
      case R.id.menu_npd_undo
-     mPerformEdit.undo();
+      mPerformEdit.undo();
      case R.id.menu_npd_redo
-     mPerformEdit.redo();
+      mPerformEdit.redo();
      case R.id.menu_npd_save
-     save()
+      save()
      case R.id.menu_npd_asimage
-
+      save()
+     case R.id.menu_npd_ashtml
+      ashtml()
     end
   end)
 end
@@ -155,3 +157,38 @@ pweb.setLayerType(View.LAYER_TYPE_HARDWARE,nil);--硬件加速
 pweb.getSettings().setPluginsEnabled(true)--支持插件
 pweb.loadUrl("file:///android_asset/html/index.html")
 pweb.removeView(pweb.getChildAt(0))
+
+
+function ashtml()
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
+    content=string.gsub(Widgetcontent.getText().toString(),"\n", "\\n")
+    content=string.gsub(content,"\"", "\\\"")
+    content=string.gsub(content,"'", "\\'")
+    webView.evaluateJavascript("javascript:MarkText(\"" ..content.."\");", ValueCallback({
+      onReceiveValue=function(html)
+        html=UnicodeUtil.decode(html)
+        html= loadstring("return "..html)() or ""
+        HtmlContent=[[<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>]]..Widgettitle.getText().toString()..[[ - DiaryTodo</title>
+</head>
+<body>
+<h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
+]]
+        ..html..
+        [[</body>
+</html>]]
+        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html",HtmlContent)end) then
+          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html")
+          subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
+         else
+          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
+        end
+      end
+    }));
+   else
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlfail))
+  end
+end

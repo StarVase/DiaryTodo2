@@ -2,6 +2,7 @@
   CoordinatorLayout;
   layout_height="fill";
   layout_width="fill";
+  backgroundColor=BGC,
   id="mainLay";
   {
     RelativeLayout;

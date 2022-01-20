@@ -10,6 +10,10 @@ import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
 
 doctype,title,details=...
+if !doctype then
+  activity.finish()
+end
+
 pcall(lambda -> activity.setSwipeBackEnable(false))
 
 import "UIHelper"
@@ -43,7 +47,7 @@ function AUTO_SWITCH_OR_FINISH()
         activity.finish()
       end
      else
-      MyToast.showSnackBar("已保存，再按一次后关闭")
+      MyToast.showSnackBar(activity.getString(R.string.toast_saveexit))
 
       arg=tonumber(os.time())
     end
@@ -65,17 +69,7 @@ function MarkText(text)
   content=string.gsub(content,"\"", "\\\"")
   content=string.gsub(content,"'", "\\'")
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
-    webView.evaluateJavascript("javascript:MarkText(\"" ..content .."\");", ValueCallback({
-      onReceiveValue=function(html)
-        --MyToast.showSnackBar(html)
-        html=UnicodeUtil.decode(html)
-        --print(html)
-        html= loadstring("return "..html)() or ""
-        -- print(html)
-        print(html)
-        Log.v("md",html)
-      end
-    }));
+    webView.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",nil);
    else
     webView.loadUrl("javascript:MarkText(\"" ..content.. "\");");
   end

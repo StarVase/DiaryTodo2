@@ -1,3 +1,4 @@
+recvdir=...
 require "import"
 require "StarVase"(this,{enableTheme=true})
 import "UiHelper"

@@ -20,6 +20,11 @@
     ThemeId=4,
   },
   {
+    name="抹茶绿",
+    view={CardBackgroundColor=AppTheme.table[8].mainColor},
+    ThemeId=8,
+  },
+  {
     name="新年红",
     view={CardBackgroundColor=AppTheme.table[3].mainColor},
     ThemeId=3,

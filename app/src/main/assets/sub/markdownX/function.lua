@@ -1,4 +1,11 @@
 basepath=String(Environment.getExternalStorageDirectory().toString().."/documents/markdownX/")
+if recvdir then
+  basepath=recvdir
+  task(500,function()
+    page.showPage(1)
+  end)
+end
+
 File(basepath).mkdirs()
 local datas={}--空data适配器的data
 local fileList

@@ -27,10 +27,7 @@ end
 
 
 show1.onClick=function()
-  双按钮对话框("关于",'软件作者：StarVase\n作者QQ：3399205421\n作者邮箱：lxz2102141297@163.com\n酷安：StarVase_Six\n如有bug请反馈',"联系作者","取消",
-  function()
-    关闭对话框(an)
-    联系() end,function() 关闭对话框(an) end)
+  return true
 end
 
 

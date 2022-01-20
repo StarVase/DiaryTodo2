@@ -3,6 +3,7 @@
   layout_height="fill";
   layout_width="fill";
   orientation="vertical";
+  backgroundColor=BGC,
   {
     LinearLayout;
     --layout_height="240dp";

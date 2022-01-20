@@ -1,14 +1,22 @@
 {
-  FlexibleListView,
-  id="listView",
-  dividerHeight=0;
+  CoordinatorLayout,
   layout_width="fill",
   layout_height="fill",
-  FastScrollEnabled=true;
-  clipToPadding=false;
-  ScrollBarStyle=ScrollView.SCROLLBARS_OUTSIDE_OVERLAY;
-  paddingLeft="16dp";
-  paddingRight="16dp";
-  paddingTop="8dp";
-  paddingBottom="8dp";
-};
+  backgroundColor=BGC,
+  id="mainLay",
+
+  {
+    FlexibleListView,
+    id="listView",
+    dividerHeight=0;
+    layout_width="fill",
+    layout_height="fill",
+    FastScrollEnabled=true;
+    clipToPadding=false;
+    ScrollBarStyle=ScrollView.SCROLLBARS_OUTSIDE_OVERLAY;
+    paddingLeft="16dp";
+    paddingRight="16dp";
+    paddingTop="8dp";
+    paddingBottom="8dp";
+  };
+}

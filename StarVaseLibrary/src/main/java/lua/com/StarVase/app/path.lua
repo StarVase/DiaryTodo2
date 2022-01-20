@@ -3,7 +3,7 @@ import "android.os.Environment"
 
 envdir=Environment.getExternalStorageDirectory().toString()
 pkgname=activity.getPackageName()
-
+path.envdir=envdir
 path.data=envdir.. "/Android/data/"..pkgname.."/data/"
 path.app=envdir.. "/Android/data/"..pkgname.."/"
 

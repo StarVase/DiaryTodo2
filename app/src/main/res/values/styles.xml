@@ -182,7 +182,18 @@
         <item name="android:statusBarColor">#FF00ACC2</item>
         <item name="android:navigationBarColor">#FF00ACC2</item>
         <item name="colorButtonNormal">@color/White</item>
-   
+    </style>
+    
+    <!--镱玮要的“纯”抹茶绿-->
+    <style name="mMatchaGreen" parent="Base.Theme.DarkActionBar">
+        <item name="colorPrimary">#FF668E74</item>
+        <item name="colorAccent">#FF668E74</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">#FF668E74</item>
+        <item name="android:statusBarColor">#FF668E74</item>
+        <item name="android:navigationBarColor">#FF668E74</item>
+        <item name="colorButtonNormal">@color/White</item>
+
     </style>
     
     <!--星空黑-->

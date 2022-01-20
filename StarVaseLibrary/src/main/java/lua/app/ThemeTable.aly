@@ -14,6 +14,7 @@
     themea=R.style.mDefaultWhite,
     导航栏颜色=0xff000000,
     type="Day",
+    updatedat="20200824，配色StarVase",
     --1
   },
   {
@@ -30,6 +31,7 @@
     rippleColor=0xFFDADADA, --浅白色
     themea=R.style.mSkyBlue,
     type="Day",
+    updatedat="20200824，配色StarVase",
     --2
   },
   {
@@ -46,6 +48,7 @@
     rippleColor=0xFFC60B26,
     themea=R.style.mNewYearRed,
     type="Day",
+    updatedat="2021xxxx，配色Jesse205",
     --3
   },
   {
@@ -62,6 +65,7 @@
     rippleColor=0xFFDADADA, --浅白色
     themea=R.style.mHonorGreen,
     type="Day",
+    updatedat="2020xxxx，配色Jesse205",
     --4
   },
   {
@@ -78,6 +82,7 @@
     rippleColor=0xFFDADADA, --浅白色
     themea=R.style.mStarBlack,
     type="Day",
+    updatedat="20200824，配色StarVase",
     --5
   },
   {
@@ -94,7 +99,8 @@
     rippleColor=0x00000000, --浅白色
     themea=R.style.mNight,
     type="Night",
-  },
+    updatedat="20200824，配色StarVase",
+  },--6
 
   {
     name="咕鸽粉",
@@ -110,7 +116,24 @@
     rippleColor=0xFFDADADA, --浅白色
     themea=R.style.mGudovePink,
     type="Day",
-  },
+    updatedat="2021xxxx，配色MUK",
+  },--7
+  {
+    name="抹茶绿",
+    forceColor=0xFF668E74, --粉色
+    forceTextColor=0xfffffffff,
+    mainColor=0xFF668E74,
+    icon=0xFF668E74,
+    titleColor=0xffffffff, --白色
+    textColor=0xff000000, --黑色
+    lightForceColor=0xFF98C4A1, --浅白色
+    BGC=0Xffffffff, --白色
+    itemBGC=0xfffdfdfd, --浅白色
+    rippleColor=0xFFDADADA, --浅白色
+    themea=R.style.mMatchaGreen,
+    type="Day",
+    updatedat="20220121，配色孙镱玮",
+  },--8
 }
 
 
