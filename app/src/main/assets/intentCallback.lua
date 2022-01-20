@@ -1,4 +1,4 @@
-﻿--Intent回调设置点击事件
+--intent回调处理
 function onNewIntent(intent)
   local uriString = tostring(intent.getData())
   this.finish()

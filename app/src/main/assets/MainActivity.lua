@@ -27,8 +27,6 @@ import "com.google.android.material.textfield.TextInputLayout"
 import "com.StarVase.view.MaterialButton.TextButton"
 import "com.google.android.material.button.MaterialButton"
 import "com.blankj.utilcode.util.ImageUtils"
---  ImageUtils.stackBlur(source,25)
-
 import "intentCallback"
 import "models.mods"
 import "layouts.recycler_item"

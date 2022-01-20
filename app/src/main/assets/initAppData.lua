@@ -4,6 +4,12 @@ function initSharedData(name,value)
   end
 end
 
+require "com.StarVase.diaryTodo.CreateFileUtil"
+Thread(Runnable{
+  run=function()
+    CreateFileUtil.createDatabase()
+  end
+}).start()
 initSharedData("BingImage",true)
 initSharedData("WeatherTip",true)
 initSharedData("AutoBackup",true)
@@ -16,5 +22,3 @@ initSharedData("DiaryPassword",4313)
 activity.setSharedData("EncryptDiary",false)
 
 
-import "com.StarVase.diaryTodo.CreateFileUtil"
-CreateFileUtil.createDatabase()

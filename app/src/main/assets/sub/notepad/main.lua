@@ -70,8 +70,9 @@ function MarkText(text)
         --MyToast.showSnackBar(html)
         html=UnicodeUtil.decode(html)
         --print(html)
-       html= loadstring("return "..html)() or ""
-       -- print(html)
+        html= loadstring("return "..html)() or ""
+        -- print(html)
+        print(html)
         Log.v("md",html)
       end
     }));

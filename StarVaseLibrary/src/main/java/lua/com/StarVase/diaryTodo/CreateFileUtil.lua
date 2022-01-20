@@ -23,18 +23,54 @@ function raw(sql,text)
   return cursor
 end
 
-function createDatabase()
-tables={
-  "create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)",
-  "create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)",
-  "create table inspiration(id integer primary key,title text,content text,timestamp int,updated int)",
-  "create table collection(id integer primary key,title text,content text,timestamp int,updated int)",
-  "create table markdown(id integer primary key,path text,timestamp int)",
-}
-  
-for k,v in ipairs(tables)
-  pcall(exec,v)
+function isTabbleExist(tableName)
+  result = false;
+  if(tableName == nil) then
+    return false;
+  end
+  cursor = nil;
+  pcall(function()
+    sql = "select count(*) as c from Sqlite_master  where type ='table' and name ='"..tableName.trim().."' ";
+    cursor = raw(sql,nil);
+    if (cursor.moveToNext()) then
+      count = cursor.getInt(0);
+      if (count>0) then
+        result = true;
+      end
+    end
+  end)
+  return result;
 end
+
+function createDatabase()
+  tables={
+    {
+      name="diary",
+      sql="create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)"
+    },
+    {
+      name="todo",
+      sql="create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)"
+    },
+    {
+      name="inspiration",
+      sql="create table inspiration(id integer primary key,title text,content text,timestamp int,updated int)"
+    },
+    {
+      name="collection",
+      sql="create table collection(id integer primary key,title text,content text,timestamp int,updated int)"
+    },
+    {
+      name="markdown",
+      sql="create table markdown(id integer primary key,path text,timestamp int)"
+    },
+  }
+
+  for k,v in ipairs(tables)
+    if !isTabbleExist(v.name) then
+      pcall(exec,v.sql)
+    end
+  end
 end
 
 
