@@ -7,11 +7,13 @@ today=tostring(os.date("%Y-%m-%d"))
 function getWallPaper()
   wallpaperManager = WallpaperManager.getInstance(activity);
   wallpaperDrawable = wallpaperManager.getDrawable();
-  bm = (wallpaperDrawable).getBitmap();
-  import "com.blankj.utilcode.util.ImageUtils"
-  --mhbm=ImageUtils.fastBlur(bm)
-  --mhbm=graph.高斯模糊(IMG,bm,10,10)
-  return bm,mhbm
+  if wallpaperDrawable then
+    bm = (wallpaperDrawable).getBitmap();
+    import "com.blankj.utilcode.util.ImageUtils"
+    --mhbm=ImageUtils.fastBlur(bm)
+    --mhbm=graph.高斯模糊(IMG,bm,10,10)
+    return bm,mhbm
+  end
 end
 
 function setWallPaper()
@@ -22,13 +24,15 @@ function setWallPaper()
   import "android.app.WallpaperManager"
   wallpaperManager = WallpaperManager.getInstance(activity);
   wallpaperDrawable = wallpaperManager.getDrawable();
-  source = (wallpaperDrawable).getBitmap();
-  --deep=graph.高斯模糊(IMG,source,10,10)
-  import "com.blankj.utilcode.util.ImageUtils"
-  deep=ImageUtils.stackBlur(source,25)
-  --call("setHomeImage",source,deep)
-  setHomeImage(source,deep)
-  --  end)
+  if wallpaperDrawable then
+    source = (wallpaperDrawable).getBitmap();
+    --deep=graph.高斯模糊(IMG,source,10,10)
+    import "com.blankj.utilcode.util.ImageUtils"
+    deep=ImageUtils.stackBlur(source,25)
+    --call("setHomeImage",source,deep)
+    setHomeImage(source,deep)
+    --  end)
+  end
 end
 
 setHomeImage=function(source,deep)

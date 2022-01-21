@@ -6,8 +6,13 @@ import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
 import "layout"
-
+dataset={}
 activity.setContentView(loadlayout(layout))
+
+adapter=require"adapter"(dataset)
+recycler.setAdapter(adapter)
+adapter.notifyDataSetChanged()
+
 
 searchedit.addTextChangedListener{
   onTextChanged=function(c)
@@ -15,6 +20,8 @@ searchedit.addTextChangedListener{
     scroll.adapter.filter(tostring(c))
   end
 }
+
+
 
 spTitle = SpannableString("LogCat")
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
@@ -29,6 +36,14 @@ function onOptionsItemSelected(item)
   end
 end
 
+import "android.content.*"
+cm=activity.getSystemService(activity.CLIPBOARD_SERVICE)
+
+function copy(str)
+  local cd = ClipData.newPlainText("label",str)
+  cm.setPrimaryClip(cd)
+  Toast.makeText(activity,"已复制的剪切板",1000).show()
+end
 
 
 --[[sr.setRefreshing(false);

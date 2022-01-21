@@ -1,0 +1,13 @@
+{
+  LinearLayoutCompat;
+  layout_height="wrap";
+  layout_width="fill";
+  {
+    AppCompatTextView,
+    textIsSelectable=true,
+    TextColor=textColor,
+    id="content",
+    textSize="14sp",
+    padding="8dp",
+  }
+}

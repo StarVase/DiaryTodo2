@@ -1,15 +1,15 @@
 {
-  LinearLayout;
+  LinearLayoutCompat;
   orientation="vertical";
   layout_height="fill";
   gravity="center";
   layout_width="fill";
   {
-    LinearLayout;
+    LinearLayoutCompat;
     layout_height="48dp";
     layout_width="fill";
     {
-      EditText,
+      AppCompatEditText,
       hint="输入关键字",
       layout_height="fill";
       layout_width="fill";
@@ -18,11 +18,14 @@
     }
   };
   {
-    ListView;
-    id="scroll";
-    layout_width="fill";
-    layout_height="fill";
-    FastScrollEnabled=true;
-  };
+    RecyclerView,
+    id="recycler",
+    --DividerHeight=0;
+    layout_width="fill",
+    LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
+    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    layout_height="fill",
+  }
 
 };
