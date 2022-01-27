@@ -55,7 +55,10 @@ function Refresh()
       date=tostring(year)..tostring(month)..tostring(day)
       if toBoolean(isEmp) then
         img=R.drawable.ic_lock_outline
-       else img=R.drawable.ic_lock_open_variant_outline
+        alpha=0.5
+       else 
+       img=R.drawable.ic_lock_open_variant_outline
+       alpha=1
       end
       adapter.add(
       {
@@ -64,6 +67,7 @@ function Refresh()
         },
         image={
           ImageResource=img,
+          alpha=alpha,
         },
         id=id,
         date={y=year,m=month,d=day},

@@ -8,7 +8,7 @@
 	<string name="func_todo">Todo</string>
 	<string name="func_inspiration">Inspiration</string>
 	<string name="func_one_article">OneArticle</string>
-    <string name="func_markdown">Markdown</string>
+    <string name="func_markdown">Document</string>
 	<string name="func_collection">Collection</string>
 	<string name="func_logcat">LogCat</string>
     <string name="func_settings">Settings</string>

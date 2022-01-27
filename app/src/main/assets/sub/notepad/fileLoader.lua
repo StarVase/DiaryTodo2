@@ -17,10 +17,12 @@ end
 
 
 
-function decrypt(key,content)
+function decrypt(key,content,usrKey)
   Thread(Runnable({run=function()
       import "rc4"
       trueKey=minicrypto.decrypt(key,"Diaryenced")
+      --usrKey="4313"
+      print(trueKey)
       if usrKey == trueKey then
         _TRUEKEY=true
         content=minicrypto.decrypt(content,usrKey)

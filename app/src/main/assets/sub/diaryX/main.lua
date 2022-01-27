@@ -54,6 +54,9 @@ list.onItemClick=function(id,v,zero,one)
     isEmp = cursor.getInt(6);
     key = cursor.getString(7);
   end
+if isEmp then
+  
+end
   subed("notepad","diaryX",title,{
     id=id,
     isEmp=isEmp,

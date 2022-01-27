@@ -8,7 +8,7 @@
 	<string name="func_diary">日记</string>
 	<string name="func_todo">待办</string>
 	<string name="func_inspiration">灵感</string>
-    <string name="func_markdown">Markdown</string>
+    <string name="func_markdown">文档</string>
 	<string name="func_one_article">一文</string>
 	<string name="func_collection">收藏</string>
 	<string name="func_logcat">LogCat</string>
