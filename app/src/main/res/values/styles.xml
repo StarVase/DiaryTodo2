@@ -127,7 +127,7 @@
         <!--状态栏颜色-->
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="colorPrimary">@color/White</item>      
-        <item name="colorAccent">@color/Blue</item>
+        <item name="colorAccent">@color/MatchaGreen</item>
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>

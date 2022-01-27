@@ -7,11 +7,12 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import com.StarVase.diaryTodo.app.R;
 import com.StarVase.diaryTodo.manager.AppManager;
 import com.StarVase.util.OreoFixUtil;
 import java.util.ArrayList;
@@ -100,7 +101,22 @@ public class LuaBaseActivityX extends AppCompatActivity {
         return bestLocation;
     }
 
-	
+	public static void setDarkStatusIcon(Window window, boolean bDark) {
+    if (window != null) {
+        View decorView = window.getDecorView();
+        if(decorView != null){
+			int vis = decorView.getSystemUiVisibility();
+            if(bDark){
+                //设置黑色状态栏图标
+                vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            } else{
+                //设置白色状态栏图标
+                vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+            decorView.setSystemUiVisibility(vis);
+        }
+    }
+}
 	
     
 	
