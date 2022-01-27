@@ -38,9 +38,12 @@ end
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 --activity.getSupportActionBar().getNavigationIcon().setColorFilter(titleColor,PorterDuff.Mode.SRC_IN);
 --展开时标题色
-MyToolbar.setExpandedTitleColor(titleColor)
+MyToolbar.setExpandedTitleColor(icon)
+--MyToolbar.setExpandedToolbarBackgroundColor(BGC)
+
 --折叠后标题色
 MyToolbar.setCollapsedTitleColor(titleColor)
+MyToolbar.setCollapsedToolbarBackgroundColor(mainColor)
 
 
 function onOptionsItemSelected(item)

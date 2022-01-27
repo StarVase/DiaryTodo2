@@ -34,7 +34,7 @@ toolbar_layout=
       id="collapsingToolbarLayout",
       scrimAnimationDuration=400,
       fitsSystemWindows=true,
-
+backgroundColor=BGC,
       -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
