@@ -1,9 +1,9 @@
 
 {
-  LinearLayout,
-  layout_width="fill",
-  layout_height="fill",
-  orientation="vertical";
+  CoordinatorLayout;
+  layout_width="fill";
+  layout_height="fill";
+  id="mainLay";
   backgroundColor=BGC,
   {
     RecyclerView,
@@ -15,4 +15,5 @@
 
     layout_height="fill",
   }
+
 }

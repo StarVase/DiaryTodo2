@@ -18,9 +18,10 @@
     layout_height=math.dp2int(16),
     orientation="horizontal";
     Gravity="center",
+    backgroundColor=mainColor,
     {
       import "android.view.View",
-      backgroundColor=subTextColor,
+      backgroundColor=titleColor,
       layout_height="4dp",
       layout_width="16%w",
       ClipToOutline=true;

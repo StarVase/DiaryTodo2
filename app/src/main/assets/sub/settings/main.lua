@@ -51,7 +51,7 @@ function onOptionsItemSelected(item)
 end
 
 
-
+--activity.setSharedData("EncryptDiary",false)
 --[[listView.setOnScrollListener{
   onScroll=lambda(l,s) -> nil
 }]]
@@ -67,7 +67,7 @@ table.insert(dataset,{__type=3,intent="ChooseTheme",img={ImageResource=R.drawabl
 --adp.add{__type=1,title=AdapLan("编辑器","Editor")})
 --adp.add{__type=2,intent="FontSize",p={Focusable=false},img={ImageResource=R.drawable.ic_format_size},subtitle=AdapLan("字体大小","Font Size"),message=tostring(activity.getSharedData("FontSize")or 14)}
 table.insert(dataset,{__type=1,title=AdapLan("密码","Password")})
-table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("日记加密"))}})
+table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("EncryptDiary"))}})
 --adp.add{__type=2,intent="PasswordPro",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("设置密保","Set password security"),message=AdapLan('可用密保找回密码',"The password can be recovered with security")}
 table.insert(dataset,{__type=1,title=AdapLan("展示","Showing")})
 table.insert(dataset,{__type=4,intent="BingImage",img={ImageResource=R.drawable.ic_microsoft_bing},subtitle=AdapLan("每日必应","Bing images"),message=AdapLan("从必应加载每日图片","Load daily pictures from Bing"),status={Checked=Boolean.valueOf(this.getSharedData("BingImage"))}})
@@ -104,14 +104,18 @@ function onResult(...)
 end
 
 themeold=activity.getSharedData("theme")
-
+encStateold=activity.getSharedData("EncryptDiary")
 
 function onResume()
   task(1,function()
-    if themeold~=activity.getSharedData("theme") then
+    if themeold!=activity.getSharedData("theme") then
       --[[activity.newActivity("sub/settings/main", android.R.anim.fade_in, android.R.anim.fade_out)
     activity.finish()]]
       activity.recreate()
+    end
+    if encStateold != activity.getSharedData("EncryptDiary") then
+      dataset[4].status["Checked"]=activity.getSharedData("EncryptDiary")
+      adapter.notifyDataSetChanged()
     end
   end)
 end

@@ -11,6 +11,7 @@ onItemClick=function(one,SwitchIn)
   task(1,function()
     state=dataset[one].intent
     --print(state)
+    print(one)
     switch state
      case "ChooseTheme"
       subed("theme")
@@ -27,10 +28,9 @@ onItemClick=function(one,SwitchIn)
      case "FontSize"
       MyToast.showSnackBar("Developing...")
      case "EncryptDiary"
-      activity.newActivity("models/setPassword.lua")
-      dataset[one].status["Checked"]=this.getSharedData(state)
-
-     case "PasswordPro"
+      --activity.newActivity("models/setPassword.lua")
+      --dataset[one].status["Checked"]=this.getSharedData(state)
+      activity.newActivity("password/main.lua")
 
      case "BingImage"
       if dataset[one].status["Checked"]==true then
@@ -93,6 +93,7 @@ onItemClick=function(one,SwitchIn)
     -- dataset={}
     task(100,lambda->nil
     --adapter.notifyDataSetChanged()
+    
     )
 
   end)

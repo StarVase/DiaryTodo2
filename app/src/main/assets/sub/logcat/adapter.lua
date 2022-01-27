@@ -8,11 +8,11 @@ return function(data)
     end,
     onCreateViewHolder=function(parent,type)
       local tag={}
-      local view=loadlayout(import "item")
+      local view=loadlayout(import "item",tag)
 
       holder=LuaCustRecyclerHolder(view)
       
-      --view.tag=tag
+      view.tag=tag
 
       view.background=graph.Ripple(nil,普通波纹,"方")
       --print(parent)
@@ -20,13 +20,10 @@ return function(data)
       return holder
     end,
     onBindViewHolder=function(holder,position)
-      print(position)
       --local data=recycler.adapter.currentList.get(position)
       
       local data=data[position+1]
-      print(dump(data))
       local tag=holder.view.tag
-      print(dump(tag))
       
         tag.content.text=data.content
        
