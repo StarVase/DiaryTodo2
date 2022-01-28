@@ -3,57 +3,45 @@
   gravity="center";
   layout_width="fill";
   layout_height="wrap";
-  paddingLeft=math.dp2int(8);--卡片边距
-  paddingRight=math.dp2int(8);--卡片边距
-  paddingTop=math.dp2int(8);--卡片边距
-  paddingBottom=math.dp2int(8);--卡片边距
+  paddingLeft=math.dp2int(8);
+  paddingRight=math.dp2int(8);
+  paddingTop=math.dp2int(8);
+  paddingBottom=math.dp2int(8);
+
   {
-    MaterialCardView;--卡片控件
-
-    --layout_gravity='center';--重力属性
-    elevation=0;--阴影属性
-    layout_width='fill';--卡片宽度
-    StrokeColor=lightForceColor,
-
-    StrokeWidth=math.dp2int(2),
-    --CardBackgroundColor=graph.修改颜色强度(5,mainColor);--卡片背景颜色
-    layout_height='56dp';--卡片高度
-    radius='16dp';--卡片圆角
-    id="mcard",
+    LinearLayout,
+    layout_width="fill";
+    layout_height="fill";
+    gravity="center";
     {
-      LinearLayout,
-      layout_width="fill";
-      layout_height="fill";
-      gravity="center";
-      {
-        AppCompatImageView,
-        id="img",
-        layout_margin="16dp",
-        ImageResource=R.drawable.ic_diary,
-        layout_width="24dp",
-        layout_height="24dp",
-        colorFilter=icon,
-      },
-      {
-        AppCompatTextView;
-        id="title";
-        textSize="16sp";
-        --gravity="center";
-        --layout_height="fill";
-        layout_weight="1";
-        layout_marginLeft="16dp";
-        layout_marginRight="16dp";
-        textColor=textColor;
-        singleLine="true";
-      };
-      {
-        AppCompatImageView;
-        layout_margin="16dp";
-        layout_height="24dp";
-        layout_width="24dp";
-        id="image",
-        colorFilter=textColor,
-      };
+      AppCompatImageView,
+      id="img",
+      layout_margin="16dp",
+      ImageResource=R.drawable.ic_diary,
+      layout_width="24dp",
+      layout_height="24dp",
+      colorFilter=icon,
+    },
+    {
+      AppCompatTextView;
+      id="title";
+      textSize="16sp";
+      --gravity="center";
+      --layout_height="fill";
+      layout_weight="1";
+      layout_marginLeft="16dp";
+      layout_marginRight="16dp";
+      textColor=textColor;
+      singleLine="true";
+    };
+    {
+      AppCompatImageView;
+      layout_margin="16dp";
+      layout_height="24dp";
+      layout_width="24dp";
+      id="image",
+      colorFilter=textColor,
     };
   };
+
 }

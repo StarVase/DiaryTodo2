@@ -69,7 +69,7 @@ function Refresh()
   loading.setVisibility(View.VISIBLE)
 
   adapter.clear()
-  sql="select * from todo"
+  sql="select * from todo ORDER BY id DESC"
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 

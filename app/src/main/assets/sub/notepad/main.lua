@@ -55,7 +55,6 @@ function AUTO_SWITCH_OR_FINISH()
 end
 
 
-
 function onPause()
   save()
   if doctype == "todoDetail" then

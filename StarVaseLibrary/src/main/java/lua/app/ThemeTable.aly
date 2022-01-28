@@ -120,7 +120,7 @@
   },--7
   {
     name="抹茶绿",
-    forceColor=0xFF668E74, --粉色
+    forceColor=0xFF668E74, --绿色
     forceTextColor=0xfffffffff,
     mainColor=0xFF668E74,
     icon=0xFF668E74,

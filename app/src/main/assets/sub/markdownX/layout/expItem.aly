@@ -1,9 +1,14 @@
 {
   {
     LinearLayout;
-    layout_height="56dp";
+    layout_height="wrap";
     layout_width="fill";
     orientation="horizontal";
+      paddingLeft=math.dp2int(8);
+  paddingRight=math.dp2int(8);
+  paddingTop=math.dp2int(8);
+  paddingBottom=math.dp2int(8);
+
     --layout_marginTop="8dp";
     --layout_marginBottom="8dp";
     gravity="center";

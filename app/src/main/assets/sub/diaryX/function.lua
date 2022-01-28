@@ -41,7 +41,7 @@ function Refresh()
   loading.setVisibility(View.VISIBLE)
 
   adapter.clear()
-  sql="select * from diary"
+  sql="select * from diary ORDER BY id DESC"
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 
@@ -55,7 +55,7 @@ function Refresh()
       date=tostring(year)..tostring(month)..tostring(day)
       if toBoolean(isEmp) then
         img=R.drawable.ic_lock_outline
-        alpha=0.5
+        alpha=0.32
        else 
        img=R.drawable.ic_lock_open_variant_outline
        alpha=1

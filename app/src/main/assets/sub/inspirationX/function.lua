@@ -21,8 +21,6 @@ function toBoolean(int)
   end
 end
 
-CreatrTableSql="create table inspiration(id integer primary key,title text,content text,timestamp int)"
-pcall(exec,CreatrTableSql)
 
 
 function getTimeStr(ts,updated)
@@ -39,7 +37,7 @@ function Refresh()
   loading.setVisibility(View.VISIBLE)
 
   adapter.clear()
-  sql="select * from inspiration"
+  sql="select * from inspiration ORDER BY id DESC"
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 

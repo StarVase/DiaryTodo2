@@ -62,7 +62,7 @@ function listFile(strpath)
 end
 
 function openFile(filepath)
-  sql="select * from markdown WHERE path=?"
+  sql="select * from markdown WHERE path=? ORDER BY id DESC"
   cursor=CreateFileUtil.raw(sql,{tostring(filepath)})
   if cursor.moveToFirst() then
     id=cursor.getInt(0)

@@ -37,6 +37,7 @@
     LinearLayout;
     layout_width="fill";
     layout_height="72dp";
+    --layout_margin="16dp",
     gravity="center";
     id="p",
    -- background=graph.Ripple(nil,普通波纹,"方")
@@ -91,6 +92,7 @@
     LinearLayout;
     layout_width="fill";
     layout_height="56dp";
+    --layout_margin="16dp",
     gravity="center";
     id="p",
   --  background=graph.Ripple(nil,普通波纹,"方")
@@ -131,6 +133,7 @@
     gravity="center";
     layout_width="fill";
     layout_height="72dp";
+    --layout_margin="16dp",
     id="p",
     --background=graph.Ripple(nil,普通波纹,"方")
     {
@@ -194,6 +197,7 @@
     gravity="center";
     layout_width="fill";
     layout_height="56dp";
+    --layout_margin="16dp",
     id="p",
     --background=graph.Ripple(nil,普通波纹,"方")
     {

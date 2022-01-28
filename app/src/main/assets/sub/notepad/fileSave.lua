@@ -1,18 +1,14 @@
 function saveDiary(id,title,content)
   Thread(Runnable({
     run=function()
-      if __EMP then
-        if _TRUEKEY then
-          content=minicrypto.encrypt(content,usrKey)
+      if _STATE.__EMP then
+        if _STATE._TRUEKEY then
+          content=minicrypto.encrypt(content,_STATE.usrKey)
           values = ContentValues();
           values.put("title",title);
           values.put("content", content);
           db.update("diary", values, "id=?", {tostring(id)});
          else
-          --如果密码错误只保存标题
-          values = ContentValues();
-          values.put("title",title);
-          db.update("diary", values, "id=?", {tostring(id)});
 
         end
        else
@@ -69,7 +65,7 @@ end
 
 
 function save()
-  if (_INITCONTENT!=Widgetcontent.text) then
+  if (_STATE._INITCONTENT!=Widgetcontent.text) then
     Thread(Runnable({
       run=function()
         switch doctype
@@ -79,9 +75,9 @@ function save()
           saveInspiration(details.id,Widgettitle.Text,Widgetcontent.text)
          case "collectionX" then
           saveCollection(details.id,Widgettitle.Text,Widgetcontent.text)
-          case "markdownX" then
+         case "markdownX" then
           saveNormalFile(Widgettitle.Text,Widgetcontent.text)
-          case "todoDetail" then
+         case "todoDetail" then
           saveTodoDetail(Widgettitle.Text,Widgetcontent.text)
         end
       end

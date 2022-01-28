@@ -17,37 +17,29 @@
     layout_marginLeft="24dp";
     layout_marginRight="24dp";
     layout_marginBottom="8dp";
-    Text=AdapLan("新建","New");
+    Text=AdapLan("请输入密码","Verfy your password");
     Typeface=Typeface.createFromAsset(activity.getAssets(),"res/fonts/product-Bold.ttf");
     textColor=forceColor;
   };
   {
-    MaterialCardView,
-    layout_height="wrap",
-    layout_width="fill",
+    TextInputLayout;
+    layout_width="fill";
+    layout_height="wrap";
     layout_marginLeft="24dp";
     layout_marginRight="24dp";
-    radius="4dp";
-    CardBackgroundColor=0,
-    Elevation="0";
-    -- layout_marginBottom=dp2px(24+8+16+8)+sp2px(16);
     {
-      TextInputLayout;
+      TextInputEditText;
+      textColor=textColor,
+      id='typepsk',
+      textSize="14dp",
+      inputType=InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD,
+      -- InputType=type,
+      backgroundColor=0,
+      Typeface=Typeface.createFromAsset(activity.getAssets(),"res/fonts/product-Bold.ttf");
+      hint="密码",
       layout_width="fill";
       layout_height="wrap";
-      {
-        TextInputEditText;
-        textColor=textColor,
-        id='pwd',
-        textSize="14dp",
-        -- InputType=type,
-        backgroundColor=0,
-        Typeface=Typeface.createFromAsset(activity.getAssets(),"res/fonts/product-Bold.ttf");
-        hint=AdapLan("文档要求您输入密码","The document requires the password"),
-        layout_width="fill";
-        layout_height="wrap";
-      };
-    }
+    };
   },
 
 

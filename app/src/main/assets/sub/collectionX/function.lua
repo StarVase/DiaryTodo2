@@ -35,7 +35,7 @@ function Refresh()
   loading.setVisibility(View.VISIBLE)
 
   adapter.clear()
-  sql="select * from collection"
+  sql="select * from collection ORDER BY id DESC"
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 
