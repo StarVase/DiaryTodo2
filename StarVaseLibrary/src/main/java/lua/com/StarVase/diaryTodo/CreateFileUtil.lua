@@ -169,7 +169,7 @@ function todo(config)
   values.put("title",title);
   values.put("isHighlight",isHighlight);
   values.put("highlightColor",highlightColor);
-  values.put("data", cjson.encode{});
+  values.put("data", tostring(config.data) or cjson.encode{});
   values.put("timestamp",timestamp);
   values.put("noticeat",nil);
   db.insert("todo", nil, values);

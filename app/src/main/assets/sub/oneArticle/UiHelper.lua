@@ -47,42 +47,22 @@ scroll.setOnScrollChangeListener({
 
 function addCard(text,src,gb)
   tablay.addView(loadlayout({
-    LinearLayout;
-    layout_height="48dp";
+    AppCompatTextView;
+    onClick=gb;
+    text=text;
     gravity="center";
-    {
-      CardView;
-      radius="16dp";
-      layout_margin="8dp";
-      layout_height="32dp";
-      elevation="0dp";
-      BackgroundColor=0;
-
-      onClick=gb,
-      {
-        LinearLayout;
-        gravity="center";
-        layout_height="fill";
-        orientation="horizontal",
-        id="mytab";
-        {
-          AppCompatImageView;
-          layout_height="22dp";
-          layout_marginRight="1dp";
-          ImageResource=src,
-          layout_marginLeft="0dp";
-          ColorFilter=icon,
-        };
-
-        {
-          AppCompatTextView;
-          layout_marginRight="16dp";
-          text=text;
-          layout_marginLeft="1dp";
-          textColor=textColor,
-        };
-      };
-    };
+    layout_height="fill";
+    --padding="8dp";
+    typeface=Typeface.DEFAULT_BOLD;
+    paddingLeft="8dp";
+    paddingRight="8dp";
+    minWidth="40dp";
+    --allCaps=false;
+    --padding="16dp";
+    focusable=true;
+    textColor=icon;
+    --textColor=theme.color.textColorPrimary;
+    background=graph.Ripple(nil,普通波纹)
   }))
   --graph.ButtonFrame(mytab,math.dp2px(1),icon,0,math.dp2px(16))
   --pcall(function()mytab.foreground=graph.Ripple(nil,普通波纹)end)
