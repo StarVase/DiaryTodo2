@@ -36,7 +36,11 @@
   {--设置项(图片,标题,简介)
     LinearLayout;
     layout_width="fill";
-    layout_height="72dp";
+    --layout_height="72dp";
+    paddingLeft=math.dp2int(8);
+    paddingRight=math.dp2int(8);
+    paddingTop=math.dp2int(8);
+    paddingBottom=math.dp2int(8);
     --layout_margin="16dp",
     gravity="center";
     id="p",
@@ -91,7 +95,11 @@
   {--设置项(图片,标题)
     LinearLayout;
     layout_width="fill";
-    layout_height="56dp";
+    --layout_height="56dp";
+    paddingLeft=math.dp2int(8);
+    paddingRight=math.dp2int(8);
+    paddingTop=math.dp2int(8);
+    paddingBottom=math.dp2int(8);
     --layout_margin="16dp",
     gravity="center";
     id="p",
@@ -132,7 +140,11 @@
     LinearLayout;
     gravity="center";
     layout_width="fill";
-    layout_height="72dp";
+    --layout_height="72dp";
+    paddingLeft=math.dp2int(8);
+    paddingRight=math.dp2int(8);
+    paddingTop=math.dp2int(8);
+    paddingBottom=math.dp2int(8);
     --layout_margin="16dp",
     id="p",
     --background=graph.Ripple(nil,普通波纹,"方")
@@ -196,7 +208,11 @@
     LinearLayout;
     gravity="center";
     layout_width="fill";
-    layout_height="56dp";
+    paddingLeft=math.dp2int(8);
+    paddingRight=math.dp2int(8);
+    paddingTop=math.dp2int(8);
+    paddingBottom=math.dp2int(8);
+    --layout_height="56dp";
     --layout_margin="16dp",
     id="p",
     --background=graph.Ripple(nil,普通波纹,"方")

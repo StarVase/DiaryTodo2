@@ -3,9 +3,7 @@ require "StarVase"(this,{enableTheme=true})
 import "UiHelper"
 import "functions"
 
-
-
-
+getArticle()
 
 
 star.onClick=function()
@@ -13,7 +11,7 @@ star.onClick=function()
     --pcall(function()
       content=tostring("# "..Title.getText()).."  \n## "..tostring(Author.getText()).."\n"..tostring(Content.getText())
       local index=save_as_favorite(tostring(Title.getText()),content)
-      print(index)
+      --print(index)
       setStarTrue(index)
    -- end)
    else
@@ -27,10 +25,6 @@ end
 
 
 
-
-
-
-getArticle()
 
 function save_as_favorite(title,content)
   local config={}

@@ -11,7 +11,6 @@ onItemClick=function(one,SwitchIn)
   task(1,function()
     state=dataset[one].intent
     --print(state)
-    print(one)
     switch state
      case "ChooseTheme"
       subed("theme")

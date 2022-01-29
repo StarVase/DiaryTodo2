@@ -1,12 +1,15 @@
 basepath=String(Environment.getExternalStorageDirectory().toString().."/documents/markdownX/")
+
+
 if recvdir then
   basepath=recvdir
   task(500,function()
     page.showPage(1)
   end)
 end
-
+--print(basepath)
 File(basepath).mkdirs()
+
 local datas={}--空data适配器的data
 local fileList
 
@@ -113,6 +116,7 @@ function refresh(argpath)
   end
   loading2.setVisibility(View.GONE)
   sr2.setRefreshing(false);
+  filetag.setPath(argpath)
 end
 
 function recent()
@@ -152,3 +156,4 @@ function delete(id)
   recent()
 end
 
+task(100,lambda->refresh(basepath))

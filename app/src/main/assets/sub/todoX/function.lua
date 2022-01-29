@@ -86,6 +86,11 @@ function Refresh()
        else
         alpha=1
       end
+      if #cjson.decode(data0) == 0 then
+        isPrgShow=0
+       else
+        isPrgShow=1
+      end
       -- print(id,title,isHighlight,data,ts,noticeat)
       adapter.add(
       {
@@ -96,7 +101,7 @@ function Refresh()
         id=id,
         date=ts,
         isHighlight=isHighlight,
-        progress={progress=computeProgress(data0)},
+        progress={progress=computeProgress(data0),alpha=isPrgShow},
       })
 
     end

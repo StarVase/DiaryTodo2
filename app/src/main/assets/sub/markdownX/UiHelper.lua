@@ -23,13 +23,16 @@ import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 
 import "java.io.File"
 
-import "function"
+
 import "layout.Recently"
 import "layout.Explorer"
 import "layout.layout"
 import "layout.expItem"
 
 activity.setContentView(loadlayout(layout))
+import "function"
+
+
 actionBar=activity.getSupportActionBar()
 actionBar.setDisplayHomeAsUpEnabled(true)
 spTitle = SpannableString("MarkdownX")

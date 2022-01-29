@@ -17,6 +17,7 @@
     inlineLabel=true;
     paddingLeft="16dp";
     paddingRight="16dp";
+    --path="/";
     clipToPadding=false;
     layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
   },

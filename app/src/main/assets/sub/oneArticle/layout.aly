@@ -23,6 +23,7 @@
         TabLayout,
         layout_width="fill",
         layout_height="36dp",
+        id="tablay",
       },
       {
         SwipeRefreshLayout,

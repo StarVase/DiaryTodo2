@@ -42,3 +42,5 @@ scroll.setOnScrollChangeListener({
     end
   end,
 })
+
+--tablay.addTab()
