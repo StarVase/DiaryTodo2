@@ -10,7 +10,7 @@ layout=importFile('backup',"layout")
 
 
 activity.setContentView(loadlayout(layout))
-import"fab"
+--import"fab"
 
 if add then
   AutoSetToolTip(add,"新建")
@@ -35,11 +35,6 @@ lac.setOrder(LayoutAnimationController.ORDER_NORMAL)
 lac.setDelay(0.2)--unit(s)
 --set Animation on listview
 list.setLayoutAnimation(lac)
-
-
-back.onClick=function()
-  activity.finish()
-end
 
 
 
@@ -75,11 +70,6 @@ list.setOnScrollListener{
 
     end
   end}
-
-back.onClick=function()
-  activity.finish()
-end
-
 function Refresh()
   task(getTable,nil,function(key)
     adapter.clear()

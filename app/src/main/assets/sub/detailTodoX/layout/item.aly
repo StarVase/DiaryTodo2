@@ -29,5 +29,10 @@
     textColor=textColor;
     singleLine="true";
   };
-
+  {
+    View,
+    layout_width="24dp";
+    layout_margin="14dp";
+    layout_height="24dp";
+  };
 };

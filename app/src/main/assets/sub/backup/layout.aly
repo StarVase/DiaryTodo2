@@ -6,8 +6,8 @@
   orientation="vertical",
   backgroundColor=mainColor,
   Gravity="center",
-  
-  
+
+
   {
     FrameLayout;
     layout_height="fill";
@@ -21,45 +21,7 @@
       backgroundColor=BGC,
       Gravity="center",
 
-      {
-        RelativeLayout;
-        layout_width="fill";
-        paddingBottom="4dp";
-        layout_height="56dp";
-        paddingTop="4dp";
-        backgroundColor=mainColor,
-        id="toolbar",
-        gravity="left";
 
-        {
-          ImageButton;
-          layout_width="30dp";
-          style="?android:attr/buttonBarButtonStyle";
-          layout_centerVertical="true";
-          padding="0dp";
-          id="back";
-          layout_marginLeft="10dp";
-          paddingRight="2dp";
-          layout_marginRight="12dp";
-          layout_height="fill";
-          paddingLeft="2dp";
-          src=lp..'/images/back.png';
-          background="#00000000";
-          colorFilter=titleColor;
-        };
-        {
-          AppCompatTextView;
-          layout_width="wrap_content";
-          text="备份";
-          layout_centerVertical="true";
-          id="title";
-          textColor=titleColor;
-          layout_height="fill";
-          gravity="center";
-          textSize="20dp";
-          layout_toRightOf="back";
-        };
-      };
       {
         SwipeRefreshLayout,
         id="sr",
@@ -69,7 +31,7 @@
           layout_height="fill",
 
           {
-            ReboundEffectsView,
+            FlexibleListView,
             id="list",
             layout_width="fill",
             layout_marginTop="0dp",

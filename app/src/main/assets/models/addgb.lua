@@ -1,6 +1,6 @@
 function addDiary()
   task(1,function()
-    import "android.icu.util.Calendar"
+    import "com.ibm.icu.util.Calendar"
     calendar = Calendar.getInstance();
     year = calendar.get(Calendar.YEAR);
     month = calendar.get(Calendar.MONTH)+1;
