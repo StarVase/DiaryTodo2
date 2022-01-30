@@ -98,9 +98,10 @@ function addtodo()
       if edit.getText() then
         CreateFileUtil.todo({
           title=tostring(edit.getText()),
-          timestamp=tostring(os.time()),
-          isHighlight="false",
-          highlightColor=0
+          timestamp=os.time(),
+          isHighlight=false,
+          highlightColor=0,
+          data=cjson.encode{},
         })
         MyToast.showSnackBar("Done")
       end

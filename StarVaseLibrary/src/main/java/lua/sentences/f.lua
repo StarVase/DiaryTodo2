@@ -1088,12 +1088,12 @@ return {
       ["hitokoto"]	= "一天很短，开心了就笑，不开心了就过会儿再笑。" ;
       } ;
   [273]	= {
-      ["from"]	= "Kris Wu" ;
-      ["hitokoto"]	= "你看这个碗他又大又圆~" ;
+      ["from"]	= "你的答案" ;
+      ["hitokoto"]	= "低着头，期待白昼，接受所有的嘲讽。" ;
       } ;
   [274]	= {
-      ["from"]	= "Kris Wu" ;
-      ["hitokoto"]	= "你看这个面他又长又宽~" ;
+      ["from"]	= "你的答案" ;
+      ["hitokoto"]	= "向着风，拥抱彩虹，勇敢的向前走。" ;
       } ;
   [275]	= {
       ["from"]	= "Depression, the secret we share" ;

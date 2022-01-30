@@ -98,8 +98,8 @@ function show(s)
     l=i
   end
   --print(s:sub(l))
- -- adapter=require"adapter"(dataset)
- -- recycler.setAdapter(adapter)
+  adapter=require"adapter"(dataset)
+  recycler.setAdapter(adapter)
   adapter.notifyDataSetChanged()
 end
 

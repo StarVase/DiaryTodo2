@@ -21,4 +21,6 @@ initSharedData("YiyanEnabled",true)
 initSharedData("DiaryPassword",4313)
 activity.setSharedData("EncryptDiary",false)
 
-
+if !activity.getSharedData("DocumentConverted")
+  require "models.DocumentConverter".convert()
+end

@@ -55,14 +55,15 @@ function fab.onClick()
       .setBackgroundResource(android.R.color.transparent)
       .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
     end
-
+    cjson=require "cjson"
     okey.onClick=function()
       if edit.getText() then
         CreateFileUtil.todo({
           title=tostring(edit.getText()),
-          timestamp=tostring(os.time()),
-          isHighlight="false",
-          highlightColor=0
+          timestamp=os.time(),
+          isHighlight=false,
+          highlightColor=0,
+          data=cjson.encode{},
         })
         MyToast.showSnackBar("Done")
       end

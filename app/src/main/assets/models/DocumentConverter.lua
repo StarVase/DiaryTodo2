@@ -1,12 +1,7 @@
-require "import"
-import "android.widget.*"
-import "android.view.*"
---require "StarVase"(this,{enableTheme=false})
+module(...,package.seeall)
 
-
-
-function convertDiary()
-  --require "StarVase"(this,{enableTheme=false})
+local function convertDiary()
+  require "StarVase"(this,{enableTheme=false})
 
   function dateConverter(str)
     str=tostring(str)
@@ -42,11 +37,10 @@ function convertDiary()
     fileTable=((luajava.astable(File(Environment.getExternalStorageDirectory().toString()..path).listFiles())))
   end,function() fileTable={} end)
   for i = 1,#fileTable do
-    path=fileTable[i]
-    pt
-    name=File(tostring(path)).getName()
+    path0=fileTable[i]
+    name=File(tostring(path0)).getName()
     if string.checkString(tostring(name),".diary-") then
-      fileContent=file.readFile(tostring(path))
+      fileContent=file.readFile(tostring(path0))
       if string.checkString(fileContent,"<docType=StarVase_diary>") then
         date=string.match(fileContent,'<date>(.-)</date>')
         check=string.match(fileContent,'<check>(.-)</check>')
@@ -57,7 +51,7 @@ function convertDiary()
         table.insert(data,{
           file_name=name,
           date=date,
-          path=tostring(path),
+          path=tostring(path0),
           enc=enc,
           content=content,
           check=check,
@@ -67,17 +61,15 @@ function convertDiary()
           content=content,
           date=dateConverter(date),
         })
-      --print(path)
-        --print(path.delete())
-        --print(os.remove(path.toString()))
+
+        path0.delete()
       end
     end
   end
-  --pcall(os.execute,"rm-r "..path)
   return (data)
 end
-function convertInspiration()
-  --require "StarVase"(this,{enableTheme=false})
+local function convertInspiration()
+  require "StarVase"(this,{enableTheme=false})
 
   data={}
   require "import"
@@ -90,17 +82,17 @@ function convertInspiration()
   end,function() fileTable={} end)
 
   for i = 1,#fileTable do
-    path=fileTable[i]
-    name=File(tostring(path)).getName()
+    path0=fileTable[i]
+    name=File(tostring(path0)).getName()
     if string.checkString(tostring(name),".bulb-") then
-      fileContent=file.readFile(tostring(path))
+      fileContent=file.readFile(tostring(path0))
       title=string.match(fileContent,'<title>>(.-)<</title>')
       content=string.match(fileContent,'<content>>(.-)<</content>')
       ts=string.match(fileContent,'<ts>>(.-)<</ts>')
       table.insert(data,{
         file_name=name,
         title=title,
-        path=tostring(path),
+        path=tostring(path0),
         content=content,
         timestamp=ts,
         PATH="/Android/data/"..activity.getPackageName().."/data/.bulb/"
@@ -110,14 +102,15 @@ function convertInspiration()
         timestamp=ts,
         content=content
       })
-      
+
+      path0.delete()
     end
   end
   return data
 end
 
-function convertCollection()
-  --require "StarVase"(this,{enableTheme=false})
+local function convertCollection()
+  require "StarVase"(this,{enableTheme=false})
 
   require "import"
   import "com.StarVase.utils.file"
@@ -130,10 +123,10 @@ function convertCollection()
   end,function() fileTable={} end)
 
   for i = 1,#fileTable do
-    path=fileTable[i]
-    name=File(tostring(path)).getName()
+    path0=fileTable[i]
+    name=File(tostring(path0)).getName()
     if string.checkString(tostring(name),".favorite-") then
-      fileContent=file.readFile(tostring(path))
+      fileContent=file.readFile(tostring(path0))
       title=string.match(fileContent,'<title>>(.-)<</title>')
       content=string.match(fileContent,'<content>>(.-)<</content>')
       ts=string.match(fileContent,'<ts>>(.-)<</ts>')
@@ -142,7 +135,7 @@ function convertCollection()
         file_name=name,
         title=title,
         timestamp=ts,
-        path=tostring(path),
+        path=tostring(path0),
         content=content,
         PATH="/Android/data/"..activity.getPackageName().."/data/.favorite/"
       })
@@ -151,15 +144,16 @@ function convertCollection()
         timestamp=ts,
         content=content
       })
-      
+
+      path0.delete()
     end
   end
   return data
 end
 
 
-function convertTodo()
-  --require "StarVase"(this,{enableTheme=false})
+local function convertTodo()
+  require "StarVase"(this,{enableTheme=false})
 
   require "import"
   cjson=require "cjson"
@@ -175,10 +169,10 @@ function convertTodo()
 
   data={}
   for i = 1,#fileTable do
-    path=fileTable[i]
-    name=File(tostring(path)).getName()
+    path0=fileTable[i]
+    name=File(tostring(path0)).getName()
     if string.checkString(tostring(name),".todo-") then
-      fileContent=file.readFile(tostring(path))
+      fileContent=file.readFile(tostring(path0))
       if pcall(function() fc=cjson.decode(fileContent) end) then
 
         if fc.type=="StarVaseTODO" then
@@ -198,7 +192,8 @@ function convertTodo()
             isHighlight=fc.highLight,
             highlightColor=0
           })
-          
+
+          path0.delete()
         end
       end
     end
@@ -207,16 +202,12 @@ function convertTodo()
 end
 
 function convert()
-  convertDiary
-  (convertInspiration)
-  (convertTodo)
-  (convertCollection)
-  --[[thread(convertDiary)
-  thread(convertInspiration)
-  thread(convertTodo)
-  thread(convertCollection)]]
-  
-  
+  if pcall(function()
+      thread(convertDiary)
+      thread(convertInspiration)
+      thread(convertTodo)
+      thread(convertCollection)
+    end) then
+    activity.setSharedData("DocumentConverted",true)
+  end
 end
-
-convert()

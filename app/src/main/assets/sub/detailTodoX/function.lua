@@ -26,8 +26,11 @@ function Refresh(id)
   editTitle.setText(title)
 
   tab=getTable(content)
+
+  save_as_json(tab,todoid)
   loading.setVisibility(View.GONE)
   for i = 1,#tab do
+
     istrue=tab[i].istrue
     highLight=tab[i].highLight
 

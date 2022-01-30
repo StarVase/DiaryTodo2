@@ -60,7 +60,7 @@
               layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
               {
-                HVScrollView,
+                ScrollView,
                 layout_width="fill",
                 layout_height="fill";
                 {

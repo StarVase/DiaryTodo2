@@ -109,13 +109,9 @@ list.onItemLongClick=function(id,v,zero,one)
   pop=PopupMenu(activity,v)
   menu=pop.Menu
   menu.add("编辑内容").onMenuItemClick=function()
-    tab=getTable(content)
-    if not tab[one].content then
-      tab[one].content="内容"
-    end
-    save_as_json(tab,todoid)
+
     Refresh(filename)
-    subed("notepad","todoDetail",getTable(content)[one].title,{content=getTable(content)[one].content})
+    subed("notepad","todoDetail",getTable(content)[one].title,{content=getTable(content)[one].content or ""})
     nowOne=one
   end
   menu.add("强调显示").onMenuItemClick=function()
