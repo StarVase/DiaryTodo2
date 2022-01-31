@@ -29,7 +29,11 @@ onItemClick=function(one,SwitchIn)
      case "EncryptDiary"
       --activity.newActivity("models/setPassword.lua")
       --dataset[one].status["Checked"]=this.getSharedData(state)
-      activity.newActivity("password/main.lua")
+      if !dataset[one].status["Checked"] then
+        activity.newActivity("password/main.lua")
+       else
+        activity.newActivity("password/forget.lua")
+      end
 
      case "BingImage"
       if dataset[one].status["Checked"]==true then
@@ -92,7 +96,7 @@ onItemClick=function(one,SwitchIn)
     -- dataset={}
     task(100,lambda->nil
     --adapter.notifyDataSetChanged()
-    
+
     )
 
   end)

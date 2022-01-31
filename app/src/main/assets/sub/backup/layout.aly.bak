@@ -1,10 +1,11 @@
+
 {
   CoordinatorLayout;
   id="mainLay";
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
- 
+  Gravity="center",
 
 
   {
@@ -57,14 +58,29 @@
       },
     },
     {
-      import "com.google.android.material.floatingactionbutton.FloatingActionButton",
-      id="fab",
-      layout_margin="16dp",
+      CardView;
       layout_gravity="bottom|right";
-      SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
-      ColorFilter=(titleColor),
-      ImageResource=(R.drawable.ic_plus),
-      RippleColor=(ColorStateList.valueOf(普通波纹)),
-    }
-  },
+      layout_width="56dp";
+      backgroundColor=mainColor;
+      layout_margin="16dp";
+      layout_height="56dp";
+      id="fab",
+      radius="28dp";
+      {
+        LinearLayout;
+        layout_width="fill";
+        gravity="center";
+        layout_height="fill";
+        backgroundColor=mainColor;
+        id="add";
+        {
+          AppCompatImageView;
+          layout_width="24dp";
+          colorFilter=titleColor;
+          layout_height="24dp";
+          src="images/plus_512x512.png";
+        };
+      };
+    };
+  };
 }

@@ -4,9 +4,9 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
- 
-
-
+  Gravity="center",
+  
+  
   {
     FrameLayout;
     layout_height="fill";

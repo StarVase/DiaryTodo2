@@ -100,9 +100,10 @@ return{
      else
       nextButton.setVisibility(View.GONE)
     end
-    onNextButtonClick=function()
-      activity.setSharedData("PwdProtectQst",self.question.getText().toString())
-      activity.setSharedData("PwdProtectAsw",self.answer.getText().toString())
-    end
+
+  end,
+  onNextButtonClick=function(self)
+    activity.setSharedData("PwdProtectQst",self.question.getText().toString())
+    activity.setSharedData("PwdProtectAsw",self.answer.getText().toString())
   end
 }

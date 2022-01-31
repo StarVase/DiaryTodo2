@@ -1,31 +1,31 @@
 {
-  LinearLayoutCompat;
-  orientation="vertical";
+  CoordinatorLayout;
+  id="mainLay";
   layout_height="fill";
-  gravity="center";
   layout_width="fill";
   {
     LinearLayoutCompat;
-    layout_height="48dp";
+    layout_height="fill";
     layout_width="fill";
     {
       AppCompatEditText,
       hint="输入关键字",
-      layout_height="fill";
+      layout_height="48dp";
       layout_width="fill";
       SingleLine=true,
       id="searchedit",
-    }
-  };
-  {
-    RecyclerView,
-    id="recycler",
-    --DividerHeight=0;
-    layout_width="fill",
-    LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
-    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    };
+    {
+      RecyclerView,
+      id="recycler",
+      --DividerHeight=0;
+      layout_width="fill",
+      LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
+      --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-    layout_height="fill",
-  }
+      layout_height="fill",
+    }
+
+  };
 
 };

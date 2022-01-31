@@ -3,7 +3,7 @@
   id="mainLay";
   layout_height="fill";
   layout_width="fill";
-  
+  orientation="vertical";
   backgroundColor=BGC,
   {
     LinearLayout;

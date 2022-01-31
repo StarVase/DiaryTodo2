@@ -2,7 +2,6 @@
   LinearLayout,
   layout_width="fill",
   layout_height="fill",
-  orientation="vertical",
   backgroundColor=mainColor,
   Gravity="center",
   

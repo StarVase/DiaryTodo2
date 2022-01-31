@@ -162,6 +162,7 @@ appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener({
         local toolBarHeight=toolBar.getHeight()
         local scale=-verticalOffset/(collapsingToolbarLayoutHeight-toolBarHeight)
         subAppCompatImageView.alpha=scale*2.5
+
       end})).start()
   end
 }))

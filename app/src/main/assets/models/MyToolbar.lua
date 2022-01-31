@@ -34,13 +34,6 @@ params2.anchorGravity = Gravity.BOTTOM|Gravity.END;
 fab.setLayoutParams(params2)
 
 
-appBarLayout.setClipToOutline(true);
-appBarLayout.setOutlineProvider(ViewOutlineProvider({
-  getOutline = function(view,outline)
-    outline.setRoundRect(0,-math.dp2int(16),view.getWidth(),view.getHeight(),math.dp2int(16));
-  end
-}))
-
 --appBarLayout.getChildAt(0).getChildAt(1).getChildAt(0).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
 collapsingToolbarLayout.setCollapsedTitleTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
 collapsingToolbarLayout.setExpandedTitleTypeface(Typeface.defaultFromStyle(Typeface.BOLD))

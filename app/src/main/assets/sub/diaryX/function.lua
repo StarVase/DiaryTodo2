@@ -31,9 +31,6 @@ end
 --isEmp boolean
 --key text,
 --content text
-CreatrTableSql="create table diary(id integer primary key,title text,creatTimestamp int,year int,month int,day int,isEmp boolean,key text,content text)"
-pcall(exec,CreatrTableSql) 
-
 
 
 function Refresh()

@@ -1,13 +1,12 @@
-
 {
-  CoordinatorLayout;
-  id="mainLay";
+  LinearLayout,
   layout_width="fill",
   layout_height="fill",
+  orientation="vertical",
   backgroundColor=mainColor,
- 
-
-
+  Gravity="center",
+  
+  
   {
     FrameLayout;
     layout_height="fill";
@@ -21,7 +20,45 @@
       backgroundColor=BGC,
       Gravity="center",
 
+      {
+        RelativeLayout;
+        layout_width="fill";
+        paddingBottom="4dp";
+        layout_height="56dp";
+        paddingTop="4dp";
+        backgroundColor=mainColor,
+        id="toolbar",
+        gravity="left";
 
+        {
+          ImageButton;
+          layout_width="30dp";
+          style="?android:attr/buttonBarButtonStyle";
+          layout_centerVertical="true";
+          padding="0dp";
+          id="back";
+          layout_marginLeft="10dp";
+          paddingRight="2dp";
+          layout_marginRight="12dp";
+          layout_height="fill";
+          paddingLeft="2dp";
+          src=lp..'/images/back.png';
+          background="#00000000";
+          colorFilter=titleColor;
+        };
+        {
+          AppCompatTextView;
+          layout_width="wrap_content";
+          text="待办";
+          layout_centerVertical="true";
+          id="title";
+          textColor=titleColor;
+          layout_height="fill";
+          gravity="center";
+          textSize="20dp";
+          layout_toRightOf="back";
+        };
+      };
       {
         SwipeRefreshLayout,
         id="sr",
@@ -31,7 +68,7 @@
           layout_height="fill",
 
           {
-            FlexibleListView,
+            ReboundEffectsView,
             id="list",
             layout_width="fill",
             layout_marginTop="0dp",
@@ -62,9 +99,9 @@
       layout_gravity="bottom|right";
       layout_width="56dp";
       backgroundColor=mainColor;
+      id="fab",
       layout_margin="16dp";
       layout_height="56dp";
-      id="fab",
       radius="28dp";
       {
         LinearLayout;
@@ -82,5 +119,5 @@
         };
       };
     };
-  };
+  },
 }

@@ -103,8 +103,8 @@ return{
      else
       nextButton.setVisibility(View.GONE)
     end
-    onNextButtonClick=function()
-      activity.setSharedData("DiaryPassword",self.typepsk.getText().toString())
-    end
+  end,
+  onNextButtonClick=function(self)
+    activity.setSharedData("DiaryPassword",self.typepsk.getText().toString())
   end
 }
