@@ -1,11 +1,6 @@
 require "import"
 require "StarVase"(this,{})
 import "com.bumptech.glide.Glide"
---import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
---import "androidx.coordinatorlayout.widget.CoordinatorLayout"
-
---import "androidx.coordinatorlayout.widget.CoordinatorLayout"
---import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "UIHelper"
 
 
@@ -54,9 +49,9 @@ list.onItemClick=function(id,v,zero,one)
     isEmp = cursor.getInt(6);
     key = cursor.getString(7);
   end
-if isEmp then
-  
-end
+  if isEmp then
+
+  end
   subed("notepad","diaryX",title,{
     id=id,
     isEmp=isEmp,
@@ -72,11 +67,11 @@ onResume= lambda -> Refresh()
 --没注释，不解释不抱怨
 function fab.onClick()
   task(1,function()
-    import "android.icu.util.Calendar"
-    calendar = Calendar.getInstance();
-    year = calendar.get(Calendar.YEAR);
-    month = calendar.get(Calendar.MONTH)+1;
-    day = calendar.get(Calendar.DAY_OF_MONTH);
+    import "android.text.format.Time"
+    time=Time().setToNow()
+    year=time.year
+    month=time.month+1
+    day=time.monthDay
 
     import "com.google.android.material.bottomsheet.BottomSheetDialog"
 
@@ -101,7 +96,7 @@ function fab.onClick()
       if edit.getText() then
         CreateFileUtil.diary({
           title=edit.getText(),
-          
+
           content="",
           isLocked=enccheckbox.checked,
           passkey=activity.getSharedData("DiaryPassword"),

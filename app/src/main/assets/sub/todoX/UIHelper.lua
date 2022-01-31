@@ -10,7 +10,7 @@ item=import "layout.item"
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
-spTitle = SpannableString("待办")
+spTitle = SpannableString(activity.getString(R.string.func_todo))
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)

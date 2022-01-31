@@ -1,13 +1,12 @@
 function addDiary()
   task(1,function()
-    import "com.ibm.icu.util.Calendar"
-    calendar = Calendar.getInstance();
-    year = calendar.get(Calendar.YEAR);
-    month = calendar.get(Calendar.MONTH)+1;
-    day = calendar.get(Calendar.DAY_OF_MONTH);
-
+    import "android.text.format.Time"
+    time=Time().setToNow()
+    year=time.year
+    month=time.month+1
+    day=time.monthDay
+    
     import "com.google.android.material.bottomsheet.BottomSheetDialog"
-
     local dann=import "sub.diaryX.layout.add_dialog"
 
     dl=BottomSheetDialog(activity)

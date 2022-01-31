@@ -10,7 +10,7 @@ import "com.google.android.material.textfield.TextInputLayout"
 import "android.text.Spannable"
 import "com.StarVase.view.MaterialButton.TextButton"
 import "com.google.android.material.button.MaterialButton"
-spTitle = SpannableString("日记X")
+spTitle = SpannableString(activity.getString(R.string.func_diary))
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)

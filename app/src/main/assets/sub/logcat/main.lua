@@ -20,7 +20,10 @@ end
 function onOptionsItemSelected(item)
   if func[item.getTitle()] then
     func[item.getTitle()]()
-
+  end
+  local id=item.getItemId()
+  if id==android.R.id.home then
+    activity.finish()
   end
 end
 

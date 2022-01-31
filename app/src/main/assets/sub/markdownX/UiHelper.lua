@@ -35,7 +35,7 @@ import "function"
 
 actionBar=activity.getSupportActionBar()
 actionBar.setDisplayHomeAsUpEnabled(true)
-spTitle = SpannableString("MarkdownX")
+spTitle = SpannableString(activity.getString(R.string.func_markdown))
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 actionBar.setTitle(spTitle)
 actionBar.setDisplayShowCustomEnabled(true)

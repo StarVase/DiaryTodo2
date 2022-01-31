@@ -10,7 +10,7 @@ import "layout"
 activity.setContentView(loadlayout(layout))
 
 
-spTitle = SpannableString("一文")
+spTitle = SpannableString(activity.getString(R.string.func_one_article))
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
