@@ -54,7 +54,7 @@ public class Welcome extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        
+        setContentView(R.layout.welcome);
         app = (DtdApplication) getApplication();
         luaMdDir = app.getMdDir();
         localDir = app.getLocalDir();
@@ -179,8 +179,8 @@ public class Welcome extends Activity {
             }
 
             try {
-                LuaUtil.rmDir(new File(localDir),".lua");
-                LuaUtil.rmDir(new File(luaMdDir),".lua");
+                LuaUtil.rmDir(new File(localDir));
+                LuaUtil.rmDir(new File(luaMdDir));
 
 
                 unApk("assets", localDir);

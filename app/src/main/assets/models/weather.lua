@@ -34,7 +34,7 @@ if activity.getSharedData("WeatherTip")==true then
             winspeed=result.win_speed
             winmeter=result.win_meter
             air=result.air
-            weather.addView(loadlayout(require"layouts.weather"))
+            focusing.addView(loadlayout(require"layouts.weather"))
             --graph.Ripple(wFream,淡色强调波纹)
             wFream.background=graph.Ripple(nil,淡色强调波纹,"方"),
             function AnimationLister(a,b)
@@ -114,7 +114,7 @@ if activity.getSharedData("WeatherTip")==true then
             import "android.view.animation.*"
             as= AnimationSet(true);
 
-            Translate_up_down=TranslateAnimation(weather.getWidth(), 0, 0, 0)
+            Translate_up_down=TranslateAnimation(mcardparent.getWidth(), 0, 0, 0)
             Translate_up_down.setDuration(600)
             Translate_up_down.setFillAfter(true)
             --Translate_up_down.setInterpolator(AnimationUtils.loadInterpolator(this,android.R.anim.decelerate_interpolator));
@@ -124,7 +124,7 @@ if activity.getSharedData("WeatherTip")==true then
             as.addAnimation(Translate_up_down)
             as.addAnimation(Alpha)
 
-            weather.setAnimation(as)
+            mcardparent.setAnimation(as)
             as.start()
 
             temperature_text.getPaint().setFakeBoldText(true)

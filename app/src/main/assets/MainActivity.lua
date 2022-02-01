@@ -40,6 +40,7 @@ MyToolbar.setContentView(loadlayout(layout))
 
 import "models.weather"
 import "models.bing"
+import "models.checkUpdate"
 
 --禁用滑动返回
 pcall(function()activity.setSwipeBackEnable(false);end)
@@ -50,7 +51,7 @@ width=activity.getWidth()
 
 --设置初始标题  尊重著作权！！
 MyToolbar.setTitle("DiaryTodo")
-MyToolbar.setSubtitle("Be a knight of your own glory and bravely pursue the red sun of your dreams")
+MyToolbar.setSubtitle("Being Happiness Everyday!")
 
 --刷新一言
 refreshYiyan()
@@ -170,7 +171,7 @@ appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener({
 
 
 function onSyncButtonClick()
-  print("开始同步")
+  --print("开始同步")
 end
 
 --用线程加载，免得卡
@@ -260,7 +261,7 @@ imageFrame.onClick=function()
       dialog_detail_text.setText(info.detail)
       dialog_image.setImageBitmap(bitmap)
       dialog_download.onClick=function()
-        file.download(info.uri,path.picture,"Bing_Dtd_"..os.date())
+        file.download(info.uri,"Pictures/DiaryTodo","Bing_Dtd_"..os.date()..".png")
       end
       bottom = bsd.findViewById(R.id.design_bottom_sheet);
       if (bottom != null) then

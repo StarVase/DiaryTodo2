@@ -23,16 +23,34 @@
       colorFilter=icon,
     },
     {
-      AppCompatTextView;
-      id="title";
-      textSize="16sp";
-      --gravity="center";
-      --layout_height="fill";
+      LinearLayout;
+      layout_height="fill";
+      layout_width="fill";
+      orientation="vertical";
+      layout_gravity="left|center";
       layout_weight="1";
       layout_marginLeft="16dp";
       layout_marginRight="16dp";
-      textColor=textColor;
-      singleLine="true";
+
+      {
+        AppCompatTextView;
+        id="title";
+        textSize="16dp";
+        singleLine="true";
+        textColor=textColor;
+        paddingTop="8dp",
+        layout_weight="2";
+      };
+
+      {
+        AppCompatTextView;
+        id="sub";
+        textSize="10dp";
+        singleLine="true";
+        textColor=subTextColor;
+        paddingBottom="8dp",
+        layout_weight="1";
+      };
     };
     {
       AppCompatImageView;

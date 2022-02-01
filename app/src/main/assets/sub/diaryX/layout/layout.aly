@@ -2,57 +2,103 @@
   CoordinatorLayout,
   layout_width="fill",
   layout_height="fill",
-  backgroundColor=mainColor,
+  backgroundColor=BGC,
   id="mainLay",
 
+
   {
-    FrameLayout;
-    layout_height="fill";
-    layout_width="fill";
+    LinearLayout,
+    layout_width="fill",
+    layout_height="fill",
+    orientation="vertical",
+    backgroundColor=BGC,
+    Gravity="center",
 
     {
-      LinearLayout,
-      layout_width="fill",
-      layout_height="fill",
-      orientation="vertical",
-      backgroundColor=BGC,
-      Gravity="center",
-
+      SwipeRefreshLayout,
+      id="sr",
       {
-        SwipeRefreshLayout,
-        id="sr",
-        {
-          RelativeLayout,
-          layout_width="fill",
-          layout_height="fill",
+        RelativeLayout,
+        layout_width="fill",
+        layout_height="fill",
 
-          {
-            FlexibleListView,
-            id="list",
-            layout_width="fill",
-            layout_marginTop="0dp",
-            --  Gravity='center',
-            layout_marginLeft="0dp",
-            --paddingBottom="88dp";
-            layout_marginRight="0dp",
-            dividerHeight="0px",
-            FastScrollEnabled=true;
-          },
-          {
-            LinearLayout;
-            layout_width="fill";
-            layout_height="fill";
-            gravity="center";
-            {
-              ProgressBar;
-              --layout_height="fill";
-              --layout_gravity="center";
-              id="loading";
-            };
-          };
+        {
+          FlexibleListView,
+          id="list",
+          layout_width="fill",
+          layout_marginTop="0dp",
+          --  Gravity='center',
+          layout_marginLeft="0dp",
+          layout_marginRight="0dp",
+          dividerHeight="0px",
+          FastScrollEnabled=true;
+
         },
+        {
+          LinearLayout;
+          layout_width="fill";
+          layout_height="fill";
+          gravity="center";
+          {
+            ProgressBar;
+            --layout_height="fill";
+            --layout_gravity="center";
+            id="loading";
+          };
+        };
       },
     },
+  },
+  {
+    LinearLayout;
+    layout_height="wrap";
+    layout_width="fill";
+    layout_gravity="bottom";
+    
+    {
+      MaterialCardView;
+      layout_margin="16dp";
+      layout_weight="1";
+      layout_gravity="center";
+      Elevation="0.5dp";
+      id="CardParent",
+      CardBackgroundColor=graph.修改颜色强度("dd",BGC),
+     -- cardBackgroundColor=0,
+
+      radius=math.dp2int(24),
+      {
+        LinearLayout;
+        padding="4dp";
+        layout_height="fill";
+        layout_width="fill";
+        orientation="horizontal";
+        {
+          Chip;
+          textColor=icon,
+          textSize="24sp",
+          gravity="center",
+          id="lastDay",
+          text="←";
+        };
+        {
+          AppCompatTextView;
+          layout_weight="1";
+          gravity="center",
+          id="date",
+          background=graph.Ripple(nil,普通波纹),
+          textColor=textColor,
+          text=AdapLan("全部","All"),
+        };
+        {
+          Chip;
+          textColor=icon,
+          textSize="24sp",
+          gravity="center",
+          id="nextDay",
+          text="→";
+        };
+      };
+    };
     {
       import "com.google.android.material.floatingactionbutton.FloatingActionButton",
       id="fab",
@@ -63,5 +109,6 @@
       ImageResource=(R.drawable.ic_plus),
       RippleColor=(ColorStateList.valueOf(普通波纹)),
     }
-  },
+  };
+
 }

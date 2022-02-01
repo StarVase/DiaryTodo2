@@ -14,16 +14,21 @@
       orientation="vertical";
       layout_width="fill";
       layout_height="fill";
+      paddingLeft="16dp",
+      paddingRight="16dp",
       {
         MaterialCardView;
+        layout_marginBottom="8dp";
+        radius="8dp";
+        StrokeColor=lightForceColor,
+        StrokeWidth=math.dp2int(2),
+        id="cardAlipay",
+        --layout_marginLeft="16dp";
+        --layout_marginRight="16dp";
         layout_width="fill";
-        elevation="4dp";
-        layout_margin="10dp";
-        layout_marginLeft="20dp";
-        layout_marginRight="20dp";
-        layout_height="wrap";
-        id="cardAlipay";
-        radius="10dp";
+        backgroundColor=BGC;
+        layout_marginTop="8dp";
+        elevation=0;
         {
           RelativeLayout;
           background=color1;
@@ -88,14 +93,17 @@
       };
       {
         MaterialCardView;
+        layout_marginBottom="8dp";
+        radius="8dp";
+        StrokeColor=lightForceColor,
+        StrokeWidth=math.dp2int(2),
+        id="cardHongbao",
+        --layout_marginLeft="16dp";
+        --layout_marginRight="16dp";
         layout_width="fill";
-        elevation="4dp";
-        layout_margin="10dp";
-        layout_marginLeft="20dp";
-        layout_marginRight="20dp";
-        layout_height="wrap";
-        id="cardHongbao";
-        radius="10dp";
+        backgroundColor=BGC;
+        layout_marginTop="8dp";
+        elevation=0;
         {
           RelativeLayout;
           background=color1;
@@ -159,15 +167,18 @@
         };
       };
       {
-        CardView;
+        MaterialCardView;
+        layout_marginBottom="8dp";
+        radius="8dp";
+        StrokeColor=lightForceColor,
+        StrokeWidth=math.dp2int(2),
+        id="cardWechat",
+        --layout_marginLeft="16dp";
+        --layout_marginRight="16dp";
         layout_width="fill";
-        elevation="4dp";
-        layout_margin="10dp";
-        layout_marginLeft="20dp";
-        layout_marginRight="20dp";
-        layout_height="wrap";
-        id="cardWechat";
-        radius="10dp";
+        backgroundColor=BGC;
+        layout_marginTop="8dp";
+        elevation=0;
         {
           RelativeLayout;
           background=color1;

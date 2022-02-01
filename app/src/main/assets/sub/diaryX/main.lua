@@ -2,6 +2,8 @@ require "import"
 require "StarVase"(this,{})
 import "com.bumptech.glide.Glide"
 import "UIHelper"
+sr.setRefreshing(true);
+loading.setVisibility(View.VISIBLE)
 
 
 list.onItemLongClick=function(id,v,zero,one)

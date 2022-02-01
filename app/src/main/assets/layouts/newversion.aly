@@ -1,0 +1,82 @@
+{
+  LinearLayout,
+  --backgroundDrawable=graph.ButtonFrame(test,math.dp2int(4),lightForceColor,0.5,math.dp2int(4)),
+  layout_width="fill";
+  layout_height="wrap";
+  id="newver",
+
+  {
+    LinearLayoutCompat,
+    paddingTop="8dp",
+    paddingBottom="8dp",
+    layout_width="fill",
+    orientation="vertical";
+    id="mnewVersionparent",
+    {
+      MaterialCardView;--卡片控件
+      --layout_margin='3%w';--卡片边距
+      layout_gravity='center';--重力属性
+      elevation=0;--阴影属性
+      layout_width='fill';--卡片宽度
+      StrokeColor=lightForceColor,
+
+      StrokeWidth=math.dp2int(2),
+      --CardBackgroundColor=graph.修改颜色强度(5,mainColor);--卡片背景颜色
+      layout_height='wrap';--卡片高度
+      radius='16dp';--卡片圆角
+      id="mnewVersioncard",
+
+      {
+        LinearLayoutCompat;--线性布局
+        padding=dp2px(14);
+        orientation='vertical';--重力属性
+        layout_width='fill';--布局宽度
+        layout_height='fill';--布局高度
+        id="wnewVersionFream",
+        {
+          LinearLayoutCompat;
+          orientation="horizontal";
+          layout_width="fill";
+          layout_height="fill";
+          gravity="center";
+
+          {
+            LinearLayoutCompat;
+            layout_width="fill";
+            layout_height="wrap";
+            orientation="vertical";
+            {
+              AppCompatTextView;
+              textSize="24sp";
+              textColor=icon,
+              text="New Version! ";
+            };
+            {
+              AppCompatTextView;
+              id="version",
+              textColor=subTextColor,
+              --text="1.6.2 Release -> 2.22H2.1 Beta";
+            };
+            {
+              LinearLayoutCompat;
+              gravity="right";
+              layout_width="fill";
+              orientation="horizontal";
+              layout_height="fill";
+              {
+                TextButton;
+                id="winbutton",
+                text=AdapLan("更新日志","What's new")
+              };
+              {
+                MaterialButton;
+                id="DownloadButton",
+                text=AdapLan("立即下载","Download now")
+              };
+            };
+          };
+        };
+      }
+    }
+  }
+}

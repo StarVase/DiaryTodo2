@@ -22,7 +22,6 @@
       {
         CardView;
         layout_width="fill";
-        id="bottomAppBar";
         --backgroundColor=theme.color.windowBackground;
         elevation="4dp";
         radius=0;
@@ -39,6 +38,7 @@
           {
             LinearLayoutCompat;
             layout_height="fill";
+            gravity="center|left",
             layout_width="fill";
             id="tablay";
           };

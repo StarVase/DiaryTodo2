@@ -1,48 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<LinearLayout
-		android:orientation="vertical"
+	<ProgressBar
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:paddingTop="-12dp"
+		android:indeterminateOnly="true"
+		android:paddingBottom="-12dp"/>
 
-		<ProgressBar
-			style="?android:attr/progressBarStyleHorizontal"
-			android:layout_width="match_parent"
-			android:paddingTop="-8dp"
-			android:paddingBottom="-8dp"
-			android:layout_height="2dp"/>
-
-		<android.support.v4.widget.ViewPager
-			android:layout_width="match_parent"
-			android:id="@+id/welcome_viewpager"
-			android:layout_weight="1.0"/>
-
-		<FrameLayout
-			android:layout_width="match_parent"
-			android:layout_height="56dp"
-			android:elevation="8dp">
-
-			<com.google.android.material.button.MaterialButton
-				style="@style/Widget.MaterialComponents.Button.TextButton"
-				text="上一步"
-				android:layout_gravity="left|center"
-				android:id="@+id/welcome_last"
-				android:layout_margin="16dp"/>
-
-			<com.google.android.material.button.MaterialButton
-				style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-				text="下一步"
-				android:layout_gravity="right|center"
-				android:id="@+id/welcome_next"
-				android:layout_margin="16dp"/>
-
-		</FrameLayout>
-
-	</LinearLayout>
-
-</FrameLayout>
+</LinearLayout>
 

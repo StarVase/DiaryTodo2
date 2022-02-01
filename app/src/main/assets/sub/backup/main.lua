@@ -2,10 +2,9 @@ require "import"
 require "StarVase"(this,{enableTheme=true})
 --import "com.tencent.qq.widget.ReboundEffectsView"
 ReboundEffectsView=ListView
-item=importFile('backup',"item")
-import "android.support.v4.widget.*"
-importFile('backup',"function")
-layout=importFile('backup',"layout")
+item=import "item"
+import "function"
+layout=import "layout"
 
 
 
@@ -93,16 +92,12 @@ list.onItemLongClick=function(id,v,zero,one)
 
 
   menu.add(highLight("删除")).onMenuItemClick=function()
-    双按钮对话框('删除','删除之后不能恢复,你确定要删除吗？','确定','取消',function()
+    doubleButtonDialog('删除','删除之后不能恢复,你确定要删除吗？','确定','取消',function()
       pcall(function() os.remove(data[one].path) end)
       Refresh()
 
-      关闭对话框(an)
-    end,function()
-      关闭对话框(an)
-      Refresh()
-
-    end)
+      dl.dismiss()
+    end,lambda -> dl.dismiss())
   end
 
   pop.show()
@@ -117,14 +112,15 @@ end
 
 list.onItemClick=function(id,v,zero,one)
   data=getTable()
-  双按钮对话框('恢复','确定恢复吗？','确定','取消',function()
+  
+  doubleButtonDialog('恢复','确定恢复吗？','确定','取消',function()
     pcall(function()
       backup.backupnow()
       backup.unbackup(data[one].path)
     end)
     Refresh()
-    关闭对话框(an)
-  end)
+    dl.dismiss()
+  end,lambda -> dl.dismiss())
 
   return true
 end

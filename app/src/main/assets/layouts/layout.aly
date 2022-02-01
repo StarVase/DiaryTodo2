@@ -76,25 +76,7 @@
             paddingRight="16dp";
             --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-            {
-              AppCompatTextView;
-              --textSize="24";
-              layout_margin="4dp",
-              layout_width="fill";
-              --text="凌晨好！注意休息哟！",
-              layout_height="0";
-              gravity="center",
-              Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
-              textColor=textColor;
 
-            };
-            {
-              LinearLayout,
-              --backgroundDrawable=graph.ButtonFrame(test,math.dp2int(4),lightForceColor,0.5,math.dp2int(4)),
-              layout_width="fill";
-              layout_height="wrap";
-              id="weather",
-            },
           },
 
           {

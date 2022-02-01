@@ -33,12 +33,20 @@ end
 --content text
 
 
-function Refresh()
-  sr.setRefreshing(true);
-  loading.setVisibility(View.VISIBLE)
+function Refresh(dateConf)
 
   adapter.clear()
-  sql="select * from diary ORDER BY id DESC"
+  condition=""
+  if dateConf && dateConf.year && dateConf.month && dateConf.day then
+    condition=" where year = "..tostring(dateConf.year)
+    .." and month = "..tostring(dateConf.month)
+    .." and day = "..tostring(dateConf.day)
+    date.text=tostring(dateConf.year).."/"..tostring(dateConf.month).."/"..tostring(dateConf.day)
+   else
+    date.text=AdapLan("全部","All")
+  end
+  sql="select * from diary"..condition.." order by id desc"
+  
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 
@@ -49,13 +57,13 @@ function Refresh()
       day = cursor.getInt(5);
       isEmp = cursor.getInt(6);
       key = cursor.getString(7);
-      date=tostring(year)..tostring(month)..tostring(day)
+      datestr=tostring(year)..tostring(month)..tostring(day)
       if toBoolean(isEmp) then
         img=R.drawable.ic_lock_outline
         alpha=0.32
-       else 
-       img=R.drawable.ic_lock_open_variant_outline
-       alpha=1
+       else
+        img=R.drawable.ic_lock_open_variant_outline
+        alpha=1
       end
       adapter.add(
       {
@@ -65,6 +73,9 @@ function Refresh()
         image={
           ImageResource=img,
           alpha=alpha,
+        },
+        sub={
+          Text=tostring(year).."/"..tostring(month).."/"..tostring(day),
         },
         id=id,
         date={y=year,m=month,d=day},
