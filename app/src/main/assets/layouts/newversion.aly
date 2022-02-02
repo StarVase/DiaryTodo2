@@ -49,7 +49,7 @@
               AppCompatTextView;
               textSize="24sp";
               textColor=icon,
-              text="New Version! ";
+              text=AdapLan("新版本！","New Version!");
             };
             {
               AppCompatTextView;

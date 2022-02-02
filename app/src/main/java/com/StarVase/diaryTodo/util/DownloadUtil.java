@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import androidx.core.content.FileProvider;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,19 +136,68 @@ public class DownloadUtil {
      * @param downloadApkId
      */
     public void installApk(long downloadApkId) {
-        Intent install = new Intent(Intent.ACTION_VIEW);
         Uri downloadFileUri = downloadManager.getUriForDownloadedFile(downloadApkId);//获取下载文件路径
         if (downloadFileUri != null) {
-            install.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
-            install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            install(downloadFileUri);
+        }
+    }
+	
+	
+    public void install(File file) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //判读版本是否在7.0以上
+            Uri apkUri = FileProvider.getUriForFile(context, "包名.fileprovider", file);//在AndroidManifest中的android:authorities值
+            Intent install = new Intent(Intent.ACTION_VIEW);
+            install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            install.setDataAndType(apkUri, "application/vnd.android.package-archive");
+            try {
+                context.startActivity(install);//打开安装界面
+            } catch (ActivityNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            //以前的启动方法
+            Intent install = new Intent(Intent.ACTION_VIEW);
+            install.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             try {
                 context.startActivity(install);//打开安装界面
             } catch (ActivityNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
+
     }
-    
+	
+	public void install(Uri apkUri) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //判读版本是否在7.0以上
+            //Uri apkUri = FileProvider.getUriForFile(context, "包名.fileprovider", file);//在AndroidManifest中的android:authorities值
+            Intent install = new Intent(Intent.ACTION_VIEW);
+            install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            install.setDataAndType(apkUri, "application/vnd.android.package-archive");
+            try {
+                context.startActivity(install);//打开安装界面
+            } catch (ActivityNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            //以前的启动方法
+            Intent install = new Intent(Intent.ACTION_VIEW);
+            install.setDataAndType(apkUri, "application/vnd.android.package-archive");
+            install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                context.startActivity(install);//打开安装界面
+            } catch (ActivityNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }
+	
+	
     /**
      * 获取当前下载的所有任务 id
      *

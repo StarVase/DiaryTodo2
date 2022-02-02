@@ -19,7 +19,7 @@ if activity.getSharedData("WeatherTip")==true then
     onResponse=function(call,response)
 
       if(response.isSuccessful())then
-        result=response.body().string();
+        local result=response.body().string();
         activity.runOnUiThread(Runnable{
           run=function()
             result=cjson.decode(result)
