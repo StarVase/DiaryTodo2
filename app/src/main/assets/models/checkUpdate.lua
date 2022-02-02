@@ -26,7 +26,7 @@ call_update.enqueue(Callback{
         run=function()
           result=cjson.decode(result)
           if result.VersionName != CurrentVersionName or result.VersionCode > CurrentVersionCode then
-            focusing.addView(loadlayout(require"layouts.newVersion"))
+            focusing.addView(loadlayout(require"layouts.newversion"))
 
             WhatIsNew=result.WhatIsNew
             DownloadUrl=result.DownloadUrl

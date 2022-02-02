@@ -1,7 +1,7 @@
 tool={
   version="1.1",
 }
-appName="日记与代办"--应用名称
+appName="日记与待办"--应用名称
 packageName="com.StarVase.diaryTodo"--应用包名
 include={"project:app","project:androlua"}--导入，第一个为主程序
 main="app"--老版本

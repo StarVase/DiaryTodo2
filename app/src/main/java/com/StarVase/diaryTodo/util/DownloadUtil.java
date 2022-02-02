@@ -146,7 +146,7 @@ public class DownloadUtil {
     public void install(File file) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //判读版本是否在7.0以上
-            Uri apkUri = FileProvider.getUriForFile(context, "包名.fileprovider", file);//在AndroidManifest中的android:authorities值
+            Uri apkUri = FileProvider.getUriForFile(context, "com.StarVase.diaryTodo.provider", file);//在AndroidManifest中的android:authorities值
             Intent install = new Intent(Intent.ACTION_VIEW);
             install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

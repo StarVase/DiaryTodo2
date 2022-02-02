@@ -95,6 +95,19 @@
 
         </activity>
 
+		<provider
+            android:authorities="com.StarVase.diaryTodo.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:name="android.content.FileProvider">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/diarytodo_filepaths"/>
+
+        </provider>
+		
+		
+		
     </application>
 
 </manifest>
