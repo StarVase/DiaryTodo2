@@ -25,7 +25,7 @@ call_update.enqueue(Callback{
       activity.runOnUiThread(Runnable{
         run=function()
           result=cjson.decode(result)
-          if result.VersionName != CurrentVersionName or result.VersionCode > CurrentVersionCode then
+          if result.VersionName != CurrentVersionName && result.VersionCode > CurrentVersionCode then
             focusing.addView(loadlayout(require"layouts.newversion"))
 
             WhatIsNew=result.WhatIsNew
@@ -42,6 +42,7 @@ call_update.enqueue(Callback{
              else
               DownloadEnabled=false
               redirectableUrl=nil
+              DownloadButton.text=AdapLan("敬请期待","Please wait...")
               DownloadButton.setEnabled(false);
             end
             versionText.text=CurrentVersionName.." -> "..result.VersionName
