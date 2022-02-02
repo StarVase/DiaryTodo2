@@ -3,23 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.StarVase.diaryTodo">
 
-    <!-- 读取内部存储 -->
+    <!-- read the contents of your SD card -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <!-- 写入/删除内部存储 -->
+    <!-- modify or delete the contents of your SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <!-- 拥有完全的网络访问权限 -->
+    <!-- have full network access -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <!-- 精确位置（基于GPS） -->
+    <!-- access precise location (GPS and network-based) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-    <!-- 访问大致位置信息（以网络为依据） -->
+    <!-- access approximate location (network-based) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-    <!-- 获取额外的位置信息提供程序命令 -->
+    <!-- access extra location provider commands -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+
+    <!-- request install packages -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <application
         android:largeHeap="true"
@@ -29,7 +32,7 @@
         android:supportsPictureInPicture="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round" 
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"

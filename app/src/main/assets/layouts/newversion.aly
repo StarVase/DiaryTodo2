@@ -53,7 +53,7 @@
             };
             {
               AppCompatTextView;
-              id="version",
+              id="versionText",
               textColor=subTextColor,
               --text="1.6.2 Release -> 2.22H2.1 Beta";
             };
@@ -65,13 +65,13 @@
               layout_height="fill";
               {
                 TextButton;
-                id="winbutton",
-                text=AdapLan("更新日志","What's new")
+                id="NewButton",
+                text=AdapLan("日志","New")
               };
               {
                 MaterialButton;
                 id="DownloadButton",
-                text=AdapLan("立即下载","Download now")
+                text=AdapLan("更新","Update")
               };
             };
           };
