@@ -67,8 +67,8 @@ dataset = {}
 table.insert(dataset,{__type=1,title=AdapLan("界面","User Interface")})
 table.insert(dataset,{__type=3,intent="ChooseTheme",img={ImageResource=R.drawable.ic_tshirt_crew_outline},subtitle=AdapLan("主题选择","Select themes")})
 --adp.add{__type=3,intent="ResetFabPos",img={ImageResource=R.drawable.ic_circle},subtitle=AdapLan("重置悬浮球位置","Reset fab position")}
---adp.add{__type=1,title=AdapLan("编辑器","Editor")})
---adp.add{__type=2,intent="FontSize",p={Focusable=false},img={ImageResource=R.drawable.ic_format_size},subtitle=AdapLan("字体大小","Font Size"),message=tostring(activity.getSharedData("FontSize")or 14)}
+table.insert(dataset,{__type=1,title=AdapLan("编辑器","Editor")})
+table.insert(dataset,{__type=2,intent="FontStyle",p={Focusable=false},img={ImageResource=R.drawable.ic_format_size},subtitle=AdapLan("字体","Font style"),message=tostring(activity.getSharedData("FontSize")or 16)})
 table.insert(dataset,{__type=1,title=AdapLan("密码","Password")})
 table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("EncryptDiary"))}})
 --adp.add{__type=2,intent="PasswordPro",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("设置密保","Set password security"),message=AdapLan('可用密保找回密码',"The password can be recovered with security")}
@@ -100,7 +100,7 @@ function onResult(...)
   if place=="sub/settings/setPSK" then
     if res =="true" then
       this.setSharedData("日记加密",true)
-      dataset[4].status["Checked"]=true
+      dataset[map(dataset).EncryptDiary].status["Checked"]=true
       adp.notifyDataSetChanged()--更新列表
     end
   end
@@ -108,17 +108,32 @@ end
 
 themeold=activity.getSharedData("theme")
 encStateold=activity.getSharedData("EncryptDiary")
-
+fontsizeold=activity.getSharedData("FontSize")
 function onResume()
   task(1,function()
     if themeold!=activity.getSharedData("theme") then
-      --[[activity.newActivity("sub/settings/main", android.R.anim.fade_in, android.R.anim.fade_out)
-    activity.finish()]]
+      themeold=activity.getSharedData("theme")
       activity.recreate()
     end
     if encStateold != activity.getSharedData("EncryptDiary") then
-      dataset[4].status["Checked"]=activity.getSharedData("EncryptDiary")
+      encStateold=activity.getSharedData("EncryptDiary")
+      dataset[map(dataset).EncryptDiary].status["Checked"]=activity.getSharedData("EncryptDiary")
+      adapter.notifyDataSetChanged()
+    end
+    if fontsizeold!=activity.getSharedData("FontSize") then
+      fontsizeold=activity.getSharedData("FontSize")
+      dataset[map(dataset).FontStyle].message=tostring(activity.getSharedData("FontSize") or 16)
       adapter.notifyDataSetChanged()
     end
   end)
+end
+
+function map(dataset)
+  local maptable={}
+  table.foreach(dataset,function(key,value)
+    if value.intent then
+      maptable[value.intent]=key
+    end
+  end)
+  return maptable
 end

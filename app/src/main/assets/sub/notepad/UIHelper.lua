@@ -84,6 +84,11 @@ fab.setImageResource(R.drawable.ic_file_swap_outline)
 --fab波纹颜色
 fab.setRippleColor(ColorStateList.valueOf(普通波纹))
 
+if activity.getSharedData("TTFPath")&&File(activity.getSharedData("TTFPath")).isFile() then
+  font=Typeface.createFromFile(File(activity.getSharedData("TTFPath")))
+  Widgetcontent.setTypeface(font)
+end
+
 
 
 function 连续撤销()

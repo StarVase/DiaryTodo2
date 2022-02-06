@@ -10,12 +10,8 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.TextView;
+import android.util.Log;
 import androidx.annotation.NonNull;
-import com.luajava.LuaFunction;
-import com.luajava.LuaState;
-import com.luajava.LuaStateFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,7 +36,7 @@ public class Welcome extends Activity {
 
     private long mOldLastTime;
 
-    private ProgressDialog pd;
+    
 
     private boolean isVersionChanged;
 
@@ -58,7 +54,7 @@ public class Welcome extends Activity {
         app = (DtdApplication) getApplication();
         luaMdDir = app.getMdDir();
         localDir = app.getLocalDir();
-        
+
         if (checkInfo()) {
             if (Build.VERSION.SDK_INT >= 23) {
                 try {
@@ -162,30 +158,13 @@ public class Welcome extends Activity {
 
         private void onUpdate(long lastTime, long oldLastTime) {
 
-            LuaState L = LuaStateFactory.newLuaState();
-            L.openLibs();
             try {
-                if (L.LloadBuffer(LuaUtil.readAsset(Welcome.this, "update.lua"), "update") == 0) {
-                    if (L.pcall(0, 0, 0) == 0) {
-                        LuaFunction func = L.getFunction("onUpdate");
-                        if (func != null)
-                            func.call(mVersionName, mOldVersionName);
-                    }
-                    ;
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
+                //先置空再解压
                 LuaUtil.rmDir(new File(localDir));
                 LuaUtil.rmDir(new File(luaMdDir));
-
-
                 unApk("assets", localDir);
                 unApk("lua", luaMdDir);
-                //unZipAssets("main.alp", extDir);
+
             } catch (IOException e) {
                 sendMsg(e.getMessage());
             }
@@ -193,9 +172,9 @@ public class Welcome extends Activity {
 
         private void sendMsg(String message) {
             // TODO: Implement this method
-
+            Log.i("WelcomeMessage", message);
         }
-
+        
         private void unApk(String dir, String extDir) throws IOException {
             int i = dir.length() + 1;
             ZipFile zip = new ZipFile(getApplicationInfo().publicSourceDir);

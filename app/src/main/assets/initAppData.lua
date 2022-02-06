@@ -4,12 +4,15 @@ function initSharedData(name,value)
   end
 end
 
-require "com.StarVase.diaryTodo.CreateFileUtil"
+
 Thread(Runnable{
   run=function()
+    local CreateFileUtil=require "com.StarVase.diaryTodo.CreateFileUtil"
     CreateFileUtil.createDatabase()
   end
 }).start()
+
+
 initSharedData("BingImage",true)
 initSharedData("WeatherTip",true)
 initSharedData("AutoBackup",true)
@@ -19,8 +22,9 @@ initSharedData("LastUserTheme",1)
 initSharedData("导航栏使用暗色",false)
 initSharedData("YiyanEnabled",true)
 initSharedData("DiaryPassword",4313)
-activity.setSharedData("EncryptDiary",false)
+initSharedData("FontSize",16)
 
 if !activity.getSharedData("DocumentConverted")
   require "models.DocumentConverter".convert()
 end
+

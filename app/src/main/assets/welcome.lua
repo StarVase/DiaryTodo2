@@ -61,14 +61,14 @@ if activity.getPackageName()~="com.StarVase.diaryTodo" then
   activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
   activity.getSupportActionBar().setCustomView(editTitle)
   activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
-
-
-
-
-  task(1000,function()
-    this.startActivity(Intent(this,luajava.bindClass("com.StarVase.diaryTodo.app.MainActivity")));
-
-    this.finish()
-  end)
-
+  PrivacyState=activity.getSharedData("PrivacyState")
+  if !PrivacyState then
+    activity.newActivity("sub/privacy/main.lua")
+    activity.finish()
+   else
+    task(100,function()
+      this.startActivity(Intent(this,luajava.bindClass("com.StarVase.diaryTodo.app.MainActivity")));
+      this.finish()
+    end)
+  end
 end

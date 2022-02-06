@@ -5,8 +5,9 @@ function addDiary()
     year=time.year
     month=time.month+1
     day=time.monthDay
-    
+
     import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
     local dann=import "sub.diaryX.layout.add_dialog"
 
     dl=BottomSheetDialog(activity)
@@ -23,11 +24,44 @@ function addDiary()
       enccheckbox.checked=true
      else enccheckbox.enabled=false
     end
-    date.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+    datedia.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+
+    datedia.onClick=function()
+      task(100,function()
+
+        import "com.google.android.material.bottomsheet.BottomSheetDialog"
+        tag={}
+        local dann=import("sub.diaryX.layout.date_dialog")
+
+        dl1=BottomSheetDialog(activity)
+        dl1.setContentView(loadlayout(dann,tag))
+        an=dl1.show()
+        bottom = dl1.findViewById(R.id.design_bottom_sheet);
+        if (bottom != nil) then
+          bottom
+          .setBackgroundResource(android.R.color.transparent)
+          .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+        end
+
+        tag.okey.onClick=function()
+          year=tag.dp.getYear()
+          month=tag.dp.getMonth()+1
+          day=tag.dp.getDayOfMonth()
+          datedia.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+
+          dl1.dismiss()
+        end
+        tag.cancel.onClick=lambda -> dl1.dismiss()
+      end)
+    end
+
+
     okey.onClick=function()
       if edit.getText() then
         CreateFileUtil.diary({
           title=edit.getText(),
+
+          content="",
           isLocked=enccheckbox.checked,
           passkey=activity.getSharedData("DiaryPassword"),
           date={year=year,month=month,day=day},
@@ -38,7 +72,9 @@ function addDiary()
       --Refresh()
     end
     cancel.onClick=lambda -> dl.dismiss()
-    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+
+
+
   end)
 end
 

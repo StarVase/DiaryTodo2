@@ -1,4 +1,21 @@
 R=luajava.bindClass(activity.getPackageName()..".R")
+
+AutoCheckPromission=function(func)
+  if Build.VERSION.SDK_INT >= 30 then
+    if Environment.isExternalStorageManager() then
+      func()
+     else
+      MyToast("权限错误")
+      import "android.content.Intent"
+      import "android.provider.Settings"
+      intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+      this.startActivity(intent)
+    end
+   else
+    func()
+  end
+end
+
 return {
   {
     ["text"]=activity.getString(R.string.func_diary),
@@ -10,7 +27,7 @@ return {
     ["img"]=R.drawable.ic_check,
     ["onClick"]=function() sub('todoX',nil,os.clock()) end,
   },
---[[  {
+  --[[  {
     ["text"]=AdapLan( "任务","Task"),
     ["img"]=R.drawable.ic_task,
     ["onClick"]=function() sub('tasks',nil,os.clock()) end,
@@ -23,7 +40,7 @@ return {
   {
     ["text"]=activity.getString(R.string.func_markdown),
     ["img"]=R.drawable.ic_language_markdown_outline,
-    ["onClick"]=function() sub('markdownX',nil,os.clock()) end,
+    ["onClick"]=lambda->AutoCheckPromission(function() sub('markdownX',nil,os.clock()) end)
   },
   {
     ["text"]=activity.getString(R.string.func_one_article),

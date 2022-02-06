@@ -74,7 +74,7 @@
                   layout_width="fill";
                   layout_height="fill";
                   padding="16dp";
-                  textSize="14sp";
+                  textSize=activity.getSharedData("FontSize") or 16;
                   id="Widgetcontent",
                   backgroundColor=0;
                   --Typeface=Typeface.createFromAsset(this.getAssets(),"res/fonts/mono.ttf"),

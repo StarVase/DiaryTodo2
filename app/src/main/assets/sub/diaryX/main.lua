@@ -93,7 +93,38 @@ function fab.onClick()
       enccheckbox.checked=true
      else enccheckbox.enabled=false
     end
-    date.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+    datedia.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+
+    datedia.onClick=function()
+      task(100,function()
+
+        import "com.google.android.material.bottomsheet.BottomSheetDialog"
+        tag={}
+        local dann=import("layout.date_dialog")
+
+        dl1=BottomSheetDialog(activity)
+        dl1.setContentView(loadlayout(dann,tag))
+        an=dl1.show()
+        bottom = dl1.findViewById(R.id.design_bottom_sheet);
+        if (bottom != nil) then
+          bottom
+          .setBackgroundResource(android.R.color.transparent)
+          .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+        end
+
+        tag.okey.onClick=function()
+          year=tag.dp.getYear()
+          month=tag.dp.getMonth()+1
+          day=tag.dp.getDayOfMonth()
+          datedia.setText(tostring(year).."/"..tostring(month).."/"..tostring(day))
+
+          dl1.dismiss()
+        end
+        tag.cancel.onClick=lambda -> dl1.dismiss()
+      end)
+    end
+
+
     okey.onClick=function()
       if edit.getText() then
         CreateFileUtil.diary({

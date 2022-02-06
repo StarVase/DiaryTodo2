@@ -24,8 +24,9 @@ onItemClick=function(one,SwitchIn)
         MyToast.showSnackBar("重置失败")
       end
 
-     case "FontSize"
-      MyToast.showSnackBar("Developing...")
+     case "FontStyle"
+     activity.newActivity("fontstyle/main.lua")
+      --MyToast.showSnackBar("Developing...")
      case "EncryptDiary"
       --activity.newActivity("models/setPassword.lua")
       --dataset[one].status["Checked"]=this.getSharedData(state)

@@ -21,7 +21,7 @@ public class DensityUtil {
 
 
 	// sp2px
-	public int sp2px(Context context,int spVal) {
+	protected int sp2px(Context context,int spVal) {
 		return (int) TypedValue.applyDimension(TypedValue. COMPLEX_UNIT_SP ,
 											   spVal, context.getResources().getDisplayMetrics());
 

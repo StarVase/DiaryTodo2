@@ -51,7 +51,7 @@
   },
   {
     TextButton,
-    id="date",
+    id="datedia",
     textColor=forceColor;
     padding="2dp",
     layout_marginLeft="24dp";

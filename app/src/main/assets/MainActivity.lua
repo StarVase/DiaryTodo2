@@ -317,4 +317,3 @@ function onKeyUp(code,event)
   end
 end
 --MyToast.showSnackBar((activity.getLocation()))
-

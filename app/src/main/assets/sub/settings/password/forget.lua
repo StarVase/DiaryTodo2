@@ -23,11 +23,19 @@ activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
 activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
+function onOptionsItemSelected(item)
+  local id=item.getItemId()
+  if id==android.R.id.home then
+    activity.finish()
+  end
+end
 
 question.setText(activity.getSharedData("PwdProtectQst"))
 nextButton.onClick=function()
   if answer.getText().toString()==activity.getSharedData("PwdProtectAsw") then
     MyToast("您的密码:"..activity.getSharedData("DiaryPassword"))
+    activity.setSharedData("EncryptDiary",false)
+    activity.setSharedData("PwdSet",false)
     else
     MyToast("答案错误")
   end
