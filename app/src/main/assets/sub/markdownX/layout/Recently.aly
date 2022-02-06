@@ -35,6 +35,22 @@
           id="loading1";
         };
       };
+     {
+          LinearLayout;
+          layout_width="fill";
+          layout_height="fill";
+          gravity="center";
+          {
+            AppCompatImageView;
+            id="nodata1";
+            visibility=View.GONE;
+            layout_width="fill";
+            layout_height="fill";
+            elevation="24dp",
+            padding="96dp",
+            ImageResource=R.drawable.svg_night;
+          };
+        };
     },
   }
 }

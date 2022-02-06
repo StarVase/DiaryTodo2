@@ -41,9 +41,23 @@
           gravity="center";
           {
             ProgressBar;
-            --layout_height="fill";
-            --layout_gravity="center";
             id="loading";
+          };
+        };
+        {
+          LinearLayout;
+          layout_width="fill";
+          layout_height="fill";
+          gravity="center";
+          {
+            AppCompatImageView;
+            id="nodata";
+            visibility=View.GONE;
+            layout_width="fill";
+            layout_height="fill";
+            elevation="24dp",
+            padding="96dp",
+            ImageResource=R.drawable.svg_night;
           };
         };
       },
@@ -54,7 +68,7 @@
     layout_height="wrap";
     layout_width="fill";
     layout_gravity="bottom";
-    
+
     {
       MaterialCardView;
       layout_margin="16dp";
@@ -63,7 +77,7 @@
       Elevation="0.5dp";
       id="CardParent",
       CardBackgroundColor=graph.修改颜色强度("dd",BGC),
-     -- cardBackgroundColor=0,
+      -- cardBackgroundColor=0,
 
       radius=math.dp2int(24),
       {
@@ -78,6 +92,8 @@
           textSize="24sp",
           gravity="center",
           id="lastDay",
+          ChipBackgroundColor=ColorStateList.valueOf(BGC),
+          --backgroundColor=BGC,
           text="←";
         };
         {
@@ -93,6 +109,8 @@
           Chip;
           textColor=icon,
           textSize="24sp",
+          --backgroundColor=BGC,
+          ChipBackgroundColor=ColorStateList.valueOf(BGC),
           gravity="center",
           id="nextDay",
           text="→";

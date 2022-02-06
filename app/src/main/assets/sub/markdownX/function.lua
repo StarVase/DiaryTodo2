@@ -84,6 +84,8 @@ end
 function refresh(argpath)
   sr2.setRefreshing(true);
   loading2.setVisibility(View.VISIBLE)
+  nodata2.setVisibility(View.GONE)
+
   fileList=listFile(argpath)
 
   adp2.clear()
@@ -114,14 +116,17 @@ function refresh(argpath)
   for k,v in ipairs(files) do
     adp2.add({__type=2,text=v.n,path=v.p,sub=getFileInfo(v.p),type="file"})
   end
+if #data2 == 0 then
+  nodata.setVisibility(View.VISIBLE)
+
+end
   loading2.setVisibility(View.GONE)
   sr2.setRefreshing(false);
   filetag.setPath(argpath)
 end
 
 function recent()
-  sr1.setRefreshing(true);
-  loading1.setVisibility(View.VISIBLE)
+  nodata1.setVisibility(View.GONE)
 
   adp1.clear()
   sql="select * from markdown"
@@ -144,7 +149,10 @@ function recent()
       })
     end
     cursor.close()
-   else
+   if #data1 == 0 then
+     nodata1.setVisibility(View.VISIBLE)
+
+   end
   end
   loading1.setVisibility(View.GONE)
   sr1.setRefreshing(false);

@@ -2,6 +2,8 @@ require "import"
 require "StarVase"(this,{enableTheme=true})
 import "UIHelper"
 
+sr.setRefreshing(true);
+loading.setVisibility(View.VISIBLE)
 
 
 list.onItemLongClick=function(id,v,zero,one)

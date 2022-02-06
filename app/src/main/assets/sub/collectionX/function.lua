@@ -31,9 +31,7 @@ end
 
 
 function Refresh()
-  sr.setRefreshing(true);
-  loading.setVisibility(View.VISIBLE)
-
+  nodata.setVisibility(View.GONE)
   adapter.clear()
   sql="select * from collection ORDER BY id DESC"
   if pcall(raw,sql,nil) then
@@ -58,7 +56,9 @@ function Refresh()
       })
     end
     cursor.close()
-   else
+    if #data == 0 then
+      nodata.setVisibility(View.VISIBLE)
+    end
   end
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);

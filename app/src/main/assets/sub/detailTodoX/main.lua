@@ -1,6 +1,9 @@
 require "import"
 require "StarVase"(this,{enableTheme=true})
 import "UiHelper"
+sr.setRefreshing(true);
+loading.setVisibility(View.VISIBLE)
+
 todoid=...
 if !todoid then
   activity.finish()

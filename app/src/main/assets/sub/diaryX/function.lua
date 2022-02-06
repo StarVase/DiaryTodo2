@@ -34,7 +34,7 @@ end
 
 
 function Refresh(dateConf)
-
+  nodata.setVisibility(View.GONE)
   adapter.clear()
   condition=""
   if dateConf && dateConf.year && dateConf.month && dateConf.day then
@@ -46,7 +46,7 @@ function Refresh(dateConf)
     date.text=AdapLan("全部","All")
   end
   sql="select * from diary"..condition.." order by id desc"
-  
+
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 
@@ -83,7 +83,9 @@ function Refresh(dateConf)
       })
     end
     cursor.close()
-   else
+    if #data == 0 then
+      nodata.setVisibility(View.VISIBLE)
+    end
   end
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);

@@ -4,7 +4,7 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
- 
+
 
 
   {
@@ -51,6 +51,22 @@
               --layout_height="fill";
               --layout_gravity="center";
               id="loading";
+            };
+          };
+          {
+            LinearLayout;
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            {
+              AppCompatImageView;
+              id="nodata";
+              visibility=View.GONE;
+              layout_width="fill";
+              layout_height="fill";
+              elevation="24dp",
+              padding="96dp",
+              ImageResource=R.drawable.svg_night;
             };
           };
         },

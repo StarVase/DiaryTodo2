@@ -10,7 +10,8 @@
 		android:elevation="24dp"
 		android:layout_height="match_parent"
 		android:padding="72dp"
-		android:id="@+id/welcomeImageView"/>
+		android:id="@+id/welcomeImageView"
+		android:src="@drawable/svg_welcome"/>
 
 </LinearLayout>
 

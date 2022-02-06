@@ -65,8 +65,7 @@ function int2Boolean(int)
   end
 end
 function Refresh()
-  sr.setRefreshing(true);
-  loading.setVisibility(View.VISIBLE)
+  nodata.setVisibility(View.GONE)
 
   adapter.clear()
   sql="select * from todo ORDER BY id DESC"
@@ -106,7 +105,9 @@ function Refresh()
 
     end
     cursor.close()
-   else
+   if #data == 0 then
+      nodata.setVisibility(View.VISIBLE)
+    end
   end
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);
