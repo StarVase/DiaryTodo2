@@ -7,7 +7,6 @@
 
 	<ImageView
 		android:layout_width="match_parent"
-		android:src="@drawable/ic_microsoft_bing"
 		android:elevation="24dp"
 		android:layout_height="match_parent"
 		android:padding="72dp"
