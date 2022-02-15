@@ -1,4 +1,5 @@
 ﻿require "import"
+
 import "com.bumptech.glide.*"
 import "android.view.Window"
 --保存设置参数
@@ -17,6 +18,7 @@ activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
 
 require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("MainActivity")
 import "com.StarVase.diaryTodo.CreateFileUtil"
 import "android.widget.ExListView"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
@@ -32,16 +34,17 @@ import "models.mods"
 import "layouts.recycler_item"
 import "layouts.layout"
 import "models.MyToolbar"
-
+a1=os.clock()
 
 
 --标题栏下头的布局(先入为主)
 MyToolbar.setContentView(loadlayout(layout))
 
-import "models.weather"
-import "models.bing"
-import "models.checkUpdate"
-
+task(24,function()
+  import "models.weather"
+  import "models.bing"
+  import "models.checkUpdate"
+end)
 --禁用滑动返回
 pcall(function()activity.setSwipeBackEnable(false);end)
 width=activity.getWidth()
@@ -77,7 +80,7 @@ MyToolbar.setCollapsedTitleColor(titleColor)
 local adapter=require("adapters.main_recycler")
 mainGrid.adapter=adapter
 
-task(50,lambda ->adapter.submitList(import "tables.mainItem"))
+task(1,lambda ->adapter.submitList(import "tables.mainItem"))
 function new()
   task(50,function()
     import "models.addgb"
@@ -149,7 +152,7 @@ end
 
 
 fab.onLongClick=function()
-  task(50,lambda -> print("fab Kept Clicking."))
+  --task(50,lambda -> print("fab Kept Clicking."))
   return true
 end
 
@@ -317,3 +320,4 @@ function onKeyUp(code,event)
   end
 end
 --MyToast.showSnackBar((activity.getLocation()))
+Log.i("StartTime",tostring(os.clock()-a1).."sec(s)")

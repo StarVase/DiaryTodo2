@@ -1,5 +1,6 @@
 require "import"
 require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("Notepad")
 import "com.google.android.material.floatingactionbutton.FloatingActionButton"
 import "android.animation.LayoutTransition"
 import "android.webkit.*"
@@ -139,3 +140,16 @@ function autoDark()
   end
 end
 
+webView.onLongClick=function(view)
+  local hitTestResult=webView.getHitTestResult()
+  local hitType=hitTestResult.getType()
+  local hitExtra=hitTestResult.getExtra()
+  if hitType==WebView.HitTestResult.IMAGE_TYPE or hitType== WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE then
+    activity.newActivity("photopresenter/main",{hitExtra})
+  end
+end
+webView.setWebViewClient(LuaWebView.LuaWebViewClient({
+  shouldOverrideUrlLoading=function(view,url)
+    return true;
+  end
+}))

@@ -30,6 +30,16 @@
   {
     __type=3,
     img={
+      ImageResource=R.drawable.ic_account_group,
+    },
+    title={
+      text="加入QQ群",
+    },
+    onClick=JoiningQGroup,
+  },
+  {
+    __type=3,
+    img={
       ImageResource=R.drawable.ic_license,
     },
     title={
@@ -37,6 +47,7 @@
     },
     onClick=(lambda -> subed("openSource")),
   },
+
   {__type=1,title={text="其他"}},
   {
     __type=2,
@@ -51,5 +62,15 @@
     },
     onClick=(lambda -> subed("donate")),
   },
-
+  {
+    __type=3,
+    img={
+      ImageResource=R.drawable.ic_emoticon_happy_outline,
+    },
+    title={
+      text="鸣谢",
+    },
+    onClick=(lambda -> activity.newActivity("thanks")),
+  },
 }
+

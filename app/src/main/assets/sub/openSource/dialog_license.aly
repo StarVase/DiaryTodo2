@@ -1,0 +1,38 @@
+{
+
+  LinearLayout;
+  orientation="vertical";
+  gravity="center";
+  layout_width="fill";
+  padding="16dp";
+  backgroundDrawable=GradientDrawable()
+  .setColor(BGC)
+  .setCornerRadii({math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16)})
+  .setShape(0),
+  {
+    NestedScrollView;
+    layout_width="fill";
+    {
+      LinearLayout;
+      orientation="vertical";
+      layout_width="fill";
+      {
+        AppCompatTextView;
+        id="content",
+        layout_marginBottom="24dp";
+        layout_marginTop="24dp";
+        textColor=textColor,
+        textSize="16sp";
+        layout_width="fill";
+      };
+      {
+        AppCompatTextView;
+        id="source",
+        paddingBottom="36dp",
+        textColor=subTextColor,
+        layout_gravity="right|bottom";
+        layout_width="wrap";
+      };
+    };
+  };
+}

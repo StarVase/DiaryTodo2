@@ -102,7 +102,7 @@
             android:authorities="com.StarVase.diaryTodo.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            android:name="android.content.FileProvider">
+            android:name="androidx.core.content.FileProvider">
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"

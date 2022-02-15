@@ -1,6 +1,7 @@
 recvdir=...
 require "import"
 require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("Document")
 import "UiHelper"
 
 function onOptionsItemSelected(item)

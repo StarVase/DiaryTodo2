@@ -32,7 +32,7 @@
         --layout_gravity="center";
         layout_height="64dp";
         layout_margin="8dp";
-        ImageResource=R.mipmap.ic_launcher_round,
+        ImageResource=R.drawable.ic_launcher_foreground,
       };
       {
         AppCompatTextView;

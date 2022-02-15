@@ -7,6 +7,7 @@ import "android.provider.*"
 import "com.StarVase.library.adapter.MyLuaMultiAdapter"
 
 require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("About")
 import "function"
 
 import "layout"

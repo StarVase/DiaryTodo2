@@ -31,3 +31,8 @@ function contactDev()
     end})
   .show()
 end
+function JoiningQGroup()
+  url="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=485652458&card_type=group&source=qrcode"
+  activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+
+end

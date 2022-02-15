@@ -51,8 +51,7 @@ adp.notifyDataSetChanged()
 
 function mSetTheme(id)
   AppTheme.setByUser(theme[id].ThemeId)
-  activity.newActivity("main", android.R.anim.fade_in, android.R.anim.fade_out)
-  activity.finish()
+  activity.recreate()
 end
 
 
@@ -60,3 +59,29 @@ listView.onItemClick=function(l, v, d, p)
   task(1,lambda -> mSetTheme(p))
 end
 
+listView.onItemLongClick=function(l, v, d, p)
+  if theme[d].ThemeId==8 then
+    task(1,function()
+      import "com.google.android.material.bottomsheet.BottomSheetDialog"
+      local dann=import "dialog_run"
+      dl=BottomSheetDialog(activity)
+      dl.setContentView(loadlayout(dann))
+      an=dl.show()
+      bottom = dl.findViewById(R.id.design_bottom_sheet);
+      if (bottom != nil) then
+        bottom
+        .setBackgroundResource(android.R.color.transparent)
+        .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+      end
+      okey.onClick=function()
+        if edit.getText() then
+          loadstring(edit.getText().toString())()
+        end
+      end
+      cancel.onClick=lambda -> dl.dismiss()
+    end)
+    return true
+   else
+    return false
+  end
+end

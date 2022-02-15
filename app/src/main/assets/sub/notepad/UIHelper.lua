@@ -61,8 +61,8 @@ function onOptionsItemSelected(item)
       mPerformEdit.redo();
      case R.id.menu_npd_save
       save()
-     case R.id.menu_npd_asimage
-      save()
+    -- case R.id.menu_npd_asimage
+    --  save()
      case R.id.menu_npd_ashtml
       ashtml()
     end

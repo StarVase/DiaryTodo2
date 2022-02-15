@@ -13,6 +13,7 @@
       layout_height="48dp";
       layout_width="fill";
       SingleLine=true,
+      Visibility=View.GONE,
       id="searchedit",
     };
     {

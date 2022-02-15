@@ -1,7 +1,7 @@
 require "import"
 import "android.widget.*"
 import "android.view.*"
-require "StarVase"(this,{})
+require "StarVase"(this,{enableTheme=true})
 import "UiHelper"
 --activity.setTitle("LogCat")
 

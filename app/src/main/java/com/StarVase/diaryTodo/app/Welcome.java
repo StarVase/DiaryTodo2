@@ -1,8 +1,6 @@
 package com.StarVase.diaryTodo.app;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -12,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,7 +21,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 
-public class Welcome extends Activity {
+public class Welcome extends AppCompatActivity {
 
     private boolean isUpdata;
 
@@ -35,66 +34,33 @@ public class Welcome extends Activity {
     private long mLastTime;
 
     private long mOldLastTime;
-
     
-
     private boolean isVersionChanged;
 
     private String mVersionName;
 
     private String mOldVersionName;
 
-    private ArrayList<String> permissions;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
+        getSupportActionBar().hide();
+        setContentView(R.layout.welcome_icon);
         app = (DtdApplication) getApplication();
         luaMdDir = app.getMdDir();
         localDir = app.getLocalDir();
-
         if (checkInfo()) {
-            if (Build.VERSION.SDK_INT >= 23) {
-                try {
-                    permissions = new ArrayList<String>();
-                    String[] ps2 = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_PERMISSIONS).requestedPermissions;
-                    for (String p : ps2) {
-                        try {
-                            checkPermission(p);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (!permissions.isEmpty()) {
-                        String[] ps = new String[permissions.size()];
-                        permissions.toArray(ps);
-                        requestPermissions(ps,
-										   0);
-                        return;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            DtdApplication.getInstance().setSharedData("UnZiped",false);
             new UpdateTask().execute();
         } else {
-            startActivity();
+            
+            if (DtdApplication.getInstance().getSharedData("UnZiped") == true){
+                startActivity();
+            } else {
+                new UpdateTask().execute();
+            }
+            
         }
-    }
-
-    private void checkPermission(String permission) {
-        if (checkCallingOrSelfPermission(permission)
-			!= PackageManager.PERMISSION_GRANTED) {
-            permissions.add(permission);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        new UpdateTask().execute();
     }
 
     public void startActivity() {
@@ -153,6 +119,7 @@ public class Welcome extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
+            DtdApplication.getInstance().setSharedData("UnZiped",true);
             startActivity();
         }
 
@@ -172,7 +139,7 @@ public class Welcome extends Activity {
 
         private void sendMsg(String message) {
             // TODO: Implement this method
-            Log.i("WelcomeMessage", message);
+            Log.v("WelcomeMessage", message);
         }
         
         private void unApk(String dir, String extDir) throws IOException {

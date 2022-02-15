@@ -3,6 +3,8 @@
   --backgroundDrawable=graph.ButtonFrame(test,math.dp2int(4),lightForceColor,0.5,math.dp2int(4)),
   layout_width="fill";
   layout_height="wrap";
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   --id="weather",
 
   {
@@ -19,6 +21,7 @@
       elevation=0;--阴影属性
       layout_width='fill';--卡片宽度
       StrokeColor=lightForceColor,
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       StrokeWidth=math.dp2int(2),
       --CardBackgroundColor=graph.修改颜色强度(5,mainColor);--卡片背景颜色
@@ -33,6 +36,8 @@
         layout_width='fill';--布局宽度
         layout_height='fill';--布局高度
         id="wFream",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         --background=graph.Ripple(nil,rippleColor),
         onClick=function()
           if not isShow then
@@ -91,6 +96,8 @@
           layout_height='wrap',
           layout_width='fill',
           id="weatherSub",
+          --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.DISAPPEARING);
+
           --padding="2dp",
           --
           orientation="horizontal";

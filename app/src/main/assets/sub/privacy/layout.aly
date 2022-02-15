@@ -18,8 +18,8 @@
       layout_width="fill";
       layout_weight=1;
 
-      layout_marginLeft="8dp",
-      layout_marginRight="8dp",
+      layout_marginLeft="16dp",
+      layout_marginRight="16dp",
       {
         LinearLayoutCompat;
         layout_height="fill";
@@ -39,6 +39,7 @@
           layout_width="fill";
           layout_height="fill";
           textColor=textColor;
+          textIsSelectable=true,
         };
         {
           AppCompatCheckBox;
@@ -47,6 +48,8 @@
           id="checkBox";
           textColor=textColor;
           layout_width="fill";
+          layout_marginBottom="32dp";
+          --layout_marginLeft="dp";
 
         };
 

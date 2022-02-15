@@ -23,14 +23,7 @@ function onOptionsItemSelected(item)
 end
 
 
-OpenSourceLicense={
-  {
-    title="HTextView",
-    message="Animation effects with custom font support to TextView",
-    url="https://github.com/hanks-zyh/HTextView",
-    License="Apache-2.0",
-  };
-}
+OpenSourceLicense=require "info"
 
 for index,content in pairs(OpenSourceLicense) do
   OpenSourceLicense[index].background={background=graph.Ripple(nil,淡色强调波纹,"方")}
@@ -41,5 +34,25 @@ adp=MyLuaAdapter(activity, OpenSourceLicense, item)
 listView.Adapter=adp
 adp.notifyDataSetChanged()
 listView.onItemClick=function(id,v,zero,one)
- -- activity.newActivity("../webview/main",{{标题=OpenSourceLicense[one].title,链接=OpenSourceLicense[one].url}})
+  if OpenSourceLicense[one].url then
+    viewIntent = Intent("android.intent.action.VIEW",Uri.parse(OpenSourceLicense[one].url))
+    activity.startActivity(viewIntent)
+  end
+end
+listView.onItemLongClick=function(id,v,zero,one)
+  if OpenSourceLicense[one].DetailLicense then
+    task(50,function()
+      import "com.google.android.material.bottomsheet.BottomSheetDialog"
+      bsd=BottomSheetDialog(this)
+      .setContentView(loadlayout(require "dialog_license"))
+      .show()
+      content.setText(OpenSourceLicense[one].DetailLicense)
+      source.setText(OpenSourceLicense[one].title)
+      bottom = bsd.findViewById(R.id.design_bottom_sheet);
+      if (bottom != null) then
+        bottom.setBackgroundResource(android.R.color.transparent)
+        .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+      end
+    end)
+  end
 end

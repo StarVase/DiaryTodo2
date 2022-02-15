@@ -47,3 +47,5 @@ nextButton.onClick=function()
     this.finish()
   end)
 end
+
+applyPermissions(permissionTable)

@@ -6,9 +6,9 @@
   layout_width="fill";
   padding="16dp";
   backgroundDrawable=GradientDrawable()
-    .setColor(BGC)
-    .setCornerRadii({math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16)})
-    .setShape(0),
+  .setColor(BGC)
+  .setCornerRadii({math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(16)})
+  .setShape(0),
   {
     AppCompatTextView;
     id="content",

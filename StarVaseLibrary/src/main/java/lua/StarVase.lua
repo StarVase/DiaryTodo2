@@ -4,7 +4,6 @@ R=luajava.bindClass(activity.getPackageName()..".R")
 require "import"
 import "android.app.*"
 import "android.os.*"
---import "android.widget.*"
 import "android.view.*"
 import "android.database.sqlite.*"
 import "android.util.Log"
@@ -12,6 +11,9 @@ import "android.graphics.Bitmap"
 import "android.graphics.Color"
 import "android.graphics.Typeface"
 import "android.graphics.drawable.GradientDrawable"
+import "android.text.SpannableString"
+import "android.text.style.ForegroundColorSpan"
+import "android.text.Spannable"
 import "androidx.coordinatorlayout.widget.CoordinatorLayout"
 import "androidx.swiperefreshlayout.widget.SwipeRefreshLayout"
 import "androidx.cardview.widget.CardView"
@@ -23,6 +25,7 @@ import "android.content.Intent"
 import "android.content.Context"
 import "android.content.res.Configuration"
 import "android.content.res.ColorStateList"
+import "android.content.pm.PackageManager"
 import "com.google.android.material.tabs.TabLayout"
 import "com.google.android.material.card.MaterialCardView"
 import "com.google.android.material.button.MaterialButton"
@@ -35,12 +38,12 @@ import "java.io.FileOutputStream"
 import "com.StarVase.library.view.*"
 import "com.StarVase.library.util.*"
 --优先导入类，然后导入库
+import "com.StarVase.utils.TimingUtil"
 import "com.StarVase.app.androidx"
 import "com.StarVase.app.MyActivity"
 import "com.StarVase.diaryTodo.CreateFileUtil"
 import "com.StarVase.app"
 import "com.StarVase.app.path"
-
 activity.setLuaExtDir(path.app)
 
 
@@ -128,6 +131,7 @@ function getNavigationBarHeight()
   height = resources.getDimensionPixelSize(resourceId);
   return height;
 end
+
 function dp2px(dpValue)
   local scale = activity.getResources().getDisplayMetrics().scaledDensity
   return dpValue * scale + 0.5
@@ -149,6 +153,18 @@ function sp2px(spValue)
 end
 
 --print(System.currentTimeMillis()-t1)
+
+permissionTable=luajava.astable(activity.getPackageManager().getPackageInfo(activity.getPackageName(),PackageManager.GET_PERMISSIONS).requestedPermissions)
+function applyPermissions(permissions)
+  local mAppPermissions = ArrayList()
+  for index,content in ipairs(permissions) do
+    mAppPermissions.add(content)
+  end
+  local size = mAppPermissions.size()
+  local mArray = mAppPermissions.toArray(String[size])
+  pcall(function()activity.requestPermissions(mArray,0)end)
+end
+
 
 function StarVase(context,init)
   if init.enableTheme != false && context then

@@ -5,6 +5,7 @@ activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
 import "cjson"
 require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("Settings")
 this.setTitle(activity.getString(R.string.func_settings))
 import "android.widget.ExListView"
 import "androidx.coordinatorlayout.widget.CoordinatorLayout"

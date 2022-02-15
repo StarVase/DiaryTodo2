@@ -16,10 +16,10 @@
         android:id="@+id/menu_npd_save"
         android:showAsAction="ifRoom"
         android:title="@string/menu_npd_save"/>
-    <item
+    <!--<item
         android:id="@+id/menu_npd_asimage"
         android:showAsAction="never"
-        android:title="@string/menu_npd_asimage"/>
+        android:title="@string/menu_npd_asimage"/>-->
     <item
         android:id="@+id/menu_npd_ashtml"
         android:showAsAction="never"

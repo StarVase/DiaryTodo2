@@ -51,62 +51,22 @@ if activity.getSharedData("WeatherTip")==true then
               })
             end
             function openAnimation()
-              --icon.setRotation(180)
               task(1,function()
                 isShow=true
-
-
-                --mtext.Text="is show"
-
-                透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {0, 1})
-
-                透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
-                透明动画.setDuration(500)
-
-                ObjectAnimator.ofFloat(melse, "y", {mcard.getHeight(),weatherTopHeight+weatherSubHeight+dp2px(30)})
-                .setDuration(300)
-                .addUpdateListener{
-                  onAnimationUpdate=function(a)
-                    local x=a.getAnimatedValue()
-
-                    local linearParams = mcard.getLayoutParams()
-                    linearParams.height =x
-                    mcard.setLayoutParams(linearParams)
-                  end
-                }.addListener({
-                  onAnimationEnd=function()
-                    weatherSub.setVisibility(0);
-                    透明动画.start()
-                  end
-                }).start()
-
+                weatherSub.setVisibility(0);
+                ObjectAnimator.ofFloat(weatherSub, "alpha", {0, 1})
+                .setRepeatCount(0)--设置动画重复次数，这里-1代表无限
+                .setDuration(800).start()
               end)
             end
 
             function closeAnimation(time)
-              --icon.setRotation(0)Thread(Runnable({run=function()
               task(1,function()
                 isShow=false
-
-                透明动画 = ObjectAnimator.ofFloat(weatherSub, "alpha", {1, 0})
-
-                透明动画.setRepeatCount(0)--设置动画重复次数，这里-1代表无限
-                透明动画.setDuration(time or 500)
-                weatherSub.Visibility=0
-                ValueAnimator().ofFloat({mcard.getHeight(),weatherTopHeight+dp2px(30)})
-                .setDuration(time or 300)
-                .addUpdateListener{
-                  onAnimationUpdate=function(a)
-                    local x=a.getAnimatedValue()
-
-                    local linearParams = mcard.getLayoutParams()
-                    linearParams.height =x
-                    mcard.setLayoutParams(linearParams)
-                  end
-                }.start()
-                透明动画.addListener({
-                  onAnimationEnd = lambda -> weatherSub.setVisibility(8)
-                }).start()
+                ObjectAnimator.ofFloat(weatherSub, "alpha", {1,0})
+                .setRepeatCount(0)--设置动画重复次数，这里-1代表无限
+                .setDuration(200).start()
+                weatherSub.setVisibility(8)
               end)
             end
 

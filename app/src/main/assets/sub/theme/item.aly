@@ -5,15 +5,15 @@
   layout_width="fill";
   paddingLeft=math.dp2int(8);
   paddingRight=math.dp2int(8);
-  paddingTop=math.dp2int(8);
-  paddingBottom=math.dp2int(8);
+  paddingTop=math.dp2int(2);
+  paddingBottom=math.dp2int(2);
 
   {
     MaterialCardView;
     layout_height="48dp";
     radius="24dp";
     elevation=0;
-    layout_margin="16dp",
+    layout_margin="24dp",
     layout_marginLeft="16dp";
     layout_width="48dp";
     id="view";

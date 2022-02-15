@@ -26,7 +26,7 @@
         Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
         textColor=icon;
         layout_marginLeft="26dp";
-        layout_marginRight="16dp";
+        layout_marginRight="26dp";
         singleLine="true";
       };
     };
@@ -169,7 +169,7 @@
     {
       LinearLayout;
       orientation="vertical";
-      layout_height="fill";
+      --layout_height="fill";
       gravity="center";
       layout_weight="1";
       layout_marginLeft="16dp";

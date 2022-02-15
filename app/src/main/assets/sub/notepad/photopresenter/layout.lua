@@ -1,0 +1,13 @@
+return{
+  LinearLayoutCompat,
+  layout_width="fill",
+  layout_height="fill",
+  gravity="center",
+  backgroundColor=0xff000000,
+  {
+    luajava.bindClass("com.nwdxlgzs.view.photoview.PhotoView"),
+    layout_width="fill",
+    layout_height="fill",
+    id="photo",
+  },
+}

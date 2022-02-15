@@ -1,5 +1,6 @@
 require "import"
-require "StarVase"(this,{})
+require "StarVase"(this,{enableTheme=true})
+TimingUtil.setName("Diary")
 import "com.bumptech.glide.Glide"
 import "UIHelper"
 sr.setRefreshing(true);
