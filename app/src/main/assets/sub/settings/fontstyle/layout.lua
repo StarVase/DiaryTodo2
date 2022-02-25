@@ -4,12 +4,16 @@ return{
   layout_width="fill",
   layout_height="fill",
   backgroundColor=BGC,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   {
     LinearLayoutCompat;
     layout_height="fill";
     orientation="vertical";
     layout_width="fill";
     --padding="24dp",
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
 
     {
       NestedScrollView;
@@ -17,6 +21,7 @@ return{
       layout_height="fill";
       layout_weight=1;
       padding="24dp",
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
         LinearLayoutCompat;
@@ -24,22 +29,29 @@ return{
         layout_height="fill";
         -- padding="16dp";
         orientation="vertical";
+        --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           MaterialCardView;
           layout_margin="4dp";
           layout_height="30%h";
           layout_width="fill";
+         -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           {
             LinearLayoutCompat;
             layout_width="fill";
             layout_height="fill";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
             {
               TextInputEditText;
               layout_height="fill";
+              
               background="0";
               id="demo",
               textSize="50sp",
-              text="Example text.\n示例文本";
+              text="Example text.\n示例文本。\n1234567890";
               layout_width="fill";
             };
           };
@@ -70,6 +82,8 @@ return{
         };
         {
           AppCompatTextView;
+         -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           layout_marginTop="8dp";
           id="labelTtf",
         };
@@ -77,6 +91,8 @@ return{
     };
     {
       MaterialCardView;
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       layout_height="56dp";
       layout_width="fill";
       backgroundColor=BGC;
@@ -84,6 +100,8 @@ return{
       elevation="8dp";
       {
         FrameLayout;
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         layout_height="fill";
         --gravity="center";
         layout_marginLeft="8dp",

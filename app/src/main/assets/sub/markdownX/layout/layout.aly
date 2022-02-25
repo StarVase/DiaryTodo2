@@ -4,19 +4,25 @@
   layout_width="fill";
   backgroundColor=BGC,
   id="mainLay";
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   {
     RelativeLayout;
     layout_width="fill";
     layout_height="fill";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     {
       FrameLayout;
       layout_height="fill";
       layout_width="fill";
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
         LinearLayoutCompat;
         layout_height="fill";
         layout_width="fill";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
           PageView,
@@ -41,10 +47,14 @@
       layout_width="fill";
       layout_height="56dp";
       backgroundColor=BGC;
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     };
     {
       import "com.google.android.material.floatingactionbutton.FloatingActionButton",
       id="fab",
+      --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       layout_marginBottom="64dp",
       layout_margin="16dp",
       layout_alignParentBottom="true";

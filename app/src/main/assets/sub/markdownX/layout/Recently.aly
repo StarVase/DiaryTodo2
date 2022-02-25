@@ -2,18 +2,24 @@
   LinearLayoutCompat;
   layout_height="fill";
   layout_width="fill";
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
   {
     SwipeRefreshLayout,
     id="sr1",
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     {
       RelativeLayout,
       layout_width="fill",
       layout_height="fill",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
         FlexibleListView,
         id="listView1",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         layout_width="fill",
         layout_marginTop="0dp",
         --  Gravity='center',
@@ -28,6 +34,8 @@
         layout_width="fill";
         layout_height="fill";
         gravity="center";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           ProgressBar;
           --layout_height="fill";
@@ -35,22 +43,24 @@
           id="loading1";
         };
       };
-     {
-          LinearLayout;
+      {
+        LinearLayout;
+        layout_width="fill";
+        layout_height="fill";
+        gravity="center";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        {
+          AppCompatImageView;
+          id="nodata1";
+          visibility=View.GONE;
           layout_width="fill";
           layout_height="fill";
-          gravity="center";
-          {
-            AppCompatImageView;
-            id="nodata1";
-            visibility=View.GONE;
-            layout_width="fill";
-            layout_height="fill";
-            elevation="24dp",
-            padding="96dp",
-            ImageResource=R.drawable.svg_night;
-          };
+          elevation="24dp",
+          padding="96dp",
+          ImageResource=R.drawable.svg_night;
         };
+      };
     },
   }
 }

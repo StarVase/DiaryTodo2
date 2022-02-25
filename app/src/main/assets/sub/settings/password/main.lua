@@ -28,6 +28,31 @@ for index,content in ipairs(pages) do
   end
 end
 
+
+function clickToLock()
+  Thread(Runnable({run=function()
+      sql="select * from diary where isEmp=0 order by id desc"
+      if pcall(function()cursor=CreateFileUtil.raw(sql,nil)end) then
+        while (cursor.moveToNext()) do
+          id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
+          content = cursor.getString(8);
+
+          import "rc4"
+          trueKey=minicrypto.decrypt(activity.getSharedData(""),"Diaryenced")
+          content=minicrypto.decrypt(content,trueKey)
+          values = ContentValues();
+          values.put("isEmp",false);
+          values.put("key", nil);
+          values.put("content",content)
+          CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
+
+        end
+        cursor.close()
+      end
+    end})).run()
+end
+
+
 pageView.setOnPageChangeListener(PageView.OnPageChangeListener{
   onPageScrolled=function(arg0,arg1,arg2)
     --print(arg0,arg1,arg2)

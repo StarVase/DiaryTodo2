@@ -4,11 +4,15 @@
   layout_height="fill";
   id="mainLay";
   backgroundColor=BGC,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   {
     LinearLayout;
     layout_height="fill";
     orientation="vertical";
     layout_width="fill";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     {
       ProgressBar;
       id="progressBar";
@@ -18,12 +22,15 @@
       --indeterminate=true;
       layout_width="fill";
       layout_height="2dp";
+      
     };
     {
       NoScrollPageView;
       layout_weight=1;
       layout_width="fill";
       id="pageView";
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       --layout_margin="48dp";
     };
     {
@@ -32,6 +39,8 @@
       layout_width="fill";
       backgroundColor=BGC;
       radius=0;
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       elevation="8dp";
       {
         FrameLayout;
@@ -40,19 +49,23 @@
         layout_marginLeft="8dp",
         layout_marginRight="8dp",
         layout_width="fill";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           MaterialButton_TextButton,
           text="上一步";
+          
           id="backButton";
           layout_gravity="left|center";
-         -- layout_margin="16dp";
+          -- layout_margin="16dp";
         },
         {
           MaterialButton_OutlinedButton,
           text="下一步";
+          
           id="nextButton";
           layout_gravity="right|center";
-         -- layout_margin="16dp";
+          -- layout_margin="16dp";
         }
       };
     };

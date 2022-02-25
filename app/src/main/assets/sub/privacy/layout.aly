@@ -4,6 +4,8 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=BGC,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   {
     LinearLayout;
     layout_height="fill";
@@ -17,6 +19,7 @@
       NestedScrollView;
       layout_width="fill";
       layout_weight=1;
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       layout_marginLeft="16dp",
       layout_marginRight="16dp",
@@ -64,6 +67,8 @@
       id="bottombar",
       visibility=View.GONE;
       elevation="8dp";
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       {
         FrameLayout;
         layout_height="fill";
@@ -71,6 +76,8 @@
         layout_marginLeft="8dp",
         layout_marginRight="8dp",
         layout_width="fill";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           MaterialButton_OutlinedButton,
           text="确定";

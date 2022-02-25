@@ -95,3 +95,40 @@ function delete(id)
   db.delete("diary", "id=?", {tostring(id)});
   Refresh()
 end
+
+function clickToUnlock()
+  sql="select * from diary where isEmp=1 order by id desc"
+_STATE={}
+  if pcall(raw,sql,nil) then
+    while (cursor.moveToNext()) do
+
+      id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
+      title = cursor.getString(1);--获取第二列的值
+      year = cursor.getInt(3);--获取第三列的值
+      month = cursor.getInt(4);
+      day = cursor.getInt(5);
+      isEmp = cursor.getInt(6);
+      key = cursor.getString(7);
+      content = cursor.getString(8);
+      datestr=tostring(year)..tostring(month)..tostring(day)
+      print(id)
+      -- Thread(Runnable({run=function()
+      usrKey="4313"
+      import "rc4"
+      _STATE.trueKey=minicrypto.decrypt(key,"Diaryenced")
+      if usrKey == _STATE.trueKey then
+        content=minicrypto.decrypt(content,usrKey)
+        values = ContentValues();
+        values.put("isEmp",false);
+        values.put("key", nil);
+        values.put("content",content)
+        CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
+
+       else
+
+      end
+      -- end})).run()
+    end
+    cursor.close()
+  end
+end

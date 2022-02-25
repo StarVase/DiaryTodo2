@@ -4,6 +4,7 @@
   layout_height="fill",
   backgroundColor=BGC,
   id="mainLay",
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
   {
@@ -14,13 +15,17 @@
     backgroundColor=BGC,
     Gravity="center",
 
+
     {
       SwipeRefreshLayout,
       id="sr",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       {
         RelativeLayout,
         layout_width="fill",
         layout_height="fill",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
           FlexibleListView,
@@ -32,6 +37,7 @@
           layout_marginRight="0dp",
           dividerHeight="0px",
           FastScrollEnabled=true;
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         },
         {
@@ -39,6 +45,8 @@
           layout_width="fill";
           layout_height="fill";
           gravity="center";
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           {
             ProgressBar;
             id="loading";
@@ -49,6 +57,8 @@
           layout_width="fill";
           layout_height="fill";
           gravity="center";
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           {
             AppCompatImageView;
             id="nodata";
@@ -68,6 +78,7 @@
     layout_height="wrap";
     layout_width="fill";
     layout_gravity="bottom";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       MaterialCardView;
@@ -78,6 +89,7 @@
       id="CardParent",
       CardBackgroundColor=graph.修改颜色强度("dd",BGC),
       -- cardBackgroundColor=0,
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       radius=math.dp2int(24),
       {
@@ -86,6 +98,8 @@
         layout_height="fill";
         layout_width="fill";
         orientation="horizontal";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           Chip;
           textColor=icon,

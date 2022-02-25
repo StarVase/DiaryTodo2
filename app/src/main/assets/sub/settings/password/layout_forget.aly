@@ -4,11 +4,15 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=BGC,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
   {
     LinearLayout;
     layout_height="fill";
     orientation="vertical";
     layout_width="fill";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
     --padding="24dp",
 
     {
@@ -17,14 +21,18 @@
       layout_height="fill";
       layout_weight=1;
       padding="24dp",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       {
         LinearLayoutCompat;
         layout_height="fill";
         orientation="vertical";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         layout_width="fill";
         {
           AppCompatTextView;
-          text="找回密码";
+          text="重置密码";
           textSize="32sp";
           TextColor=icon,
         };
@@ -33,7 +41,7 @@
           layout_marginTop="48dp";
           textSize="14dp";
           textColor=textColor,
-          text="在这里,您可以根据设置的密保找回密码。";
+          text="在这里,您可以根据设置的密保重置密码。";
         };
         {
           AppCompatTextView;
@@ -81,6 +89,39 @@
             layout_height="wrap";
           };
         },
+       {
+            AppCompatTextView;
+            layout_marginTop="48dp";
+            textSize="14dp";
+            textColor=textColor,
+            text="您亦可以使用当前密码来关闭加密。请注意：您只需要通过任意一中方式即可重置。";
+          };
+         {
+          AppCompatTextView;
+          layout_marginTop="8dp";
+          layout_margin="4dp",
+          textSize="14dp";
+          textColor=textColor,
+          text="请输入您设置的密码";
+        };
+        {
+          TextInputLayout;
+          layout_width="fill";
+          layout_margin="4dp",
+          layout_height="wrap";
+          {
+            TextInputEditText;
+            textColor=textColor,
+            id='psw',
+            textSize="14dp",
+            -- InputType=type,
+            backgroundColor=0,
+            Typeface=Typeface.createFromAsset(activity.getAssets(),"res/fonts/product-Bold.ttf");
+            hint="当前密码",
+            layout_width="fill";
+            layout_height="wrap";
+          };
+        };
       };
     },
     {
@@ -89,6 +130,8 @@
       layout_width="fill";
       backgroundColor=BGC;
       radius=0;
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       elevation="8dp";
       {
         FrameLayout;
@@ -97,10 +140,12 @@
         layout_marginLeft="8dp",
         layout_marginRight="8dp",
         layout_width="fill";
+
         {
           MaterialButton_OutlinedButton,
           text="完成";
           id="nextButton";
+
           layout_gravity="right|center";
           -- layout_margin="16dp";
         }

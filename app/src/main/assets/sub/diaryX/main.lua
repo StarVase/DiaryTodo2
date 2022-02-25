@@ -147,3 +147,8 @@ function fab.onClick()
 end
 
 import "android.app.DatePickerDialog"
+
+fab.onLongClick=function()
+  clickToUnlock()
+  return true
+end

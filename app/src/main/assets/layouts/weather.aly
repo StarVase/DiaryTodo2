@@ -21,7 +21,7 @@
       elevation=0;--阴影属性
       layout_width='fill';--卡片宽度
       StrokeColor=lightForceColor,
-layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       StrokeWidth=math.dp2int(2),
       --CardBackgroundColor=graph.修改颜色强度(5,mainColor);--卡片背景颜色

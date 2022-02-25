@@ -4,6 +4,7 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
 
@@ -11,6 +12,7 @@
     FrameLayout;
     layout_height="fill";
     layout_width="fill";
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       LinearLayout,
@@ -19,15 +21,19 @@
       orientation="vertical",
       backgroundColor=BGC,
       Gravity="center",
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
       {
         SwipeRefreshLayout,
         id="sr",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           RelativeLayout,
           layout_width="fill",
           layout_height="fill",
+layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
           {
             FlexibleListView,
@@ -40,12 +46,16 @@
             layout_marginRight="0dp",
             dividerHeight="0px",
             FastScrollEnabled=true;
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           },
           {
             LinearLayout;
             layout_width="fill";
             layout_height="fill";
             gravity="center";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
             {
               ProgressBar;
               --layout_height="fill";
@@ -58,6 +68,8 @@
             layout_width="fill";
             layout_height="fill";
             gravity="center";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
             {
               AppCompatImageView;
               id="nodata";

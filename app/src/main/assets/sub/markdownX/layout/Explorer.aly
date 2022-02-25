@@ -36,6 +36,8 @@
       {
         FlexibleListView,
         id="listView2",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         layout_width="fill",
         layout_marginTop="0dp",
         --  Gravity='center',
@@ -50,6 +52,8 @@
         layout_width="fill";
         layout_height="fill";
         gravity="center";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           ProgressBar;
           --layout_height="fill";
@@ -62,6 +66,8 @@
         layout_width="fill";
         layout_height="fill";
         gravity="center";
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           AppCompatImageView;
           id="nodata2";
