@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center|bottom">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:elevation="24dp"
-        android:layout_height="match_parent"
-        android:padding="144dp"
-        android:id="@+id/welcomeImageView"
-        android:src="@mipmap/ic_launcher_round"/>
-
+	<ProgressBar
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        android:paddingBottom="48dp"/>
+    
 </androidx.appcompat.widget.LinearLayoutCompat>
 

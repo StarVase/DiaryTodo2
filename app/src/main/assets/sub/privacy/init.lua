@@ -1,1 +1,1 @@
-appname="PrivacyPolicy"
+subappname="PrivacyPolicy"

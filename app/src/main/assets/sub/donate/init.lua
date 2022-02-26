@@ -1,1 +1,1 @@
-appname="Donate"
+subappname="Donate"

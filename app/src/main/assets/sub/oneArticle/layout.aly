@@ -4,13 +4,15 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
-  
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
 
 
   {
     FrameLayout;
     layout_height="fill";
     layout_width="fill";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       LinearLayout,
@@ -19,6 +21,8 @@
       orientation="vertical",
       backgroundColor=BGC,
       Gravity="center",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
       {
         CardView;
         layout_width="fill";
@@ -26,7 +30,8 @@
         elevation="4dp";
         radius=0;
         layout_height="40dp";
-        --layoutTransition=newLayoutTransition();
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           import "android.widget.HorizontalScrollView";
           horizontalScrollBarEnabled=false;
@@ -35,26 +40,34 @@
           paddingLeft="8dp";
           paddingRight="8dp";
           clipToPadding=false;
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           {
             LinearLayoutCompat;
             layout_height="fill";
             gravity="center|left",
             layout_width="fill";
             id="tablay";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
           };
         };
       };
       {
         SwipeRefreshLayout,
         id="sr",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         {
           RelativeLayout,
           layout_width="fill",
           layout_height="fill",
+          --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
           {
             ScrollView,
             id="scroll",
+            --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
               LinearLayout,
@@ -66,6 +79,7 @@
               orientation="vertical",
               backgroundColor=BGC,
               Gravity="center",
+              layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
               {
                 AppCompatTextView,
@@ -74,6 +88,7 @@
                 layout_width="95%w",
                 textColor=textColor,
                 gravity="center";
+                textIsSelectable=true,
               },
               {
                 AppCompatTextView,
@@ -83,6 +98,7 @@
                 layout_width="95%w",
                 textColor=textColor,
                 gravity="center";
+                textIsSelectable=true,
               },
               {
                 AppCompatTextView,
@@ -93,6 +109,7 @@
                 layout_width="95%w",
                 textColor=textColor,
                 gravity="left";
+                textIsSelectable=true,
               },
 
               {
@@ -104,7 +121,7 @@
                 textColor=textColor,
                 gravity="center";
                 paddingBottom="20dp",
-
+                textIsSelectable=true,
               },
 
 

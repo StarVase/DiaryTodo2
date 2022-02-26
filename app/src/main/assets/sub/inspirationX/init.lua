@@ -1,1 +1,1 @@
-appname="InspirationX"
+subappname="InspirationX"

@@ -33,9 +33,11 @@
     <string name="menu_npd_redo">恢复</string>
     <string name="menu_npd_save">保存</string>
     <string name="menu_npd_asimage">保存为图片</string>
-   
     <string name="menu_npd_ashtml">保存为网页</string>
-  
+
+    <string name="menu_diary_lockall">全部锁定</string>
+    <string name="menu_diary_unlockall">全部解锁</string>
+    
     <string name="toast_ashtmlsuc">成功保存到</string>
     <string name="toast_ashtmlfail">对不起，您的设备不支持</string>
     <string name="toast_ashtmltry">失败，请再试一次</string>

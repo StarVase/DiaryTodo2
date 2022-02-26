@@ -1,2 +1,1 @@
-appname="LogCat"
-debugmode=true
+subappname="LogCat"

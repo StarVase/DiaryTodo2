@@ -34,6 +34,10 @@
     <string name="menu_npd_asimage">Save as image</string>
     <string name="menu_npd_ashtml">Save as html</string>
     
+    <string name="menu_diary_lockall">Lock all</string>
+    <string name="menu_diary_unlockall">Unlock all</string>
+    
+    
     <string name="toast_ashtmlsuc">Have been saved to </string>
     <string name="toast_ashtmlfail">Sorry. Your device not supports this function.</string>
     <string name="toast_ashtmltry">Failed. Try again. </string>

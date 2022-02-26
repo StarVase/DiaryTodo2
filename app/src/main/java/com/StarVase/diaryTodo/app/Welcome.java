@@ -6,19 +6,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import androidx.annotation.NonNull;
+import android.view.KeyEvent;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import net.lingala.zip4j.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+
 
 
 public class Welcome extends AppCompatActivity {
@@ -44,21 +38,23 @@ public class Welcome extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        setContentView(R.layout.welcome_icon);
+        //getSupportActionBar().hide();
+        setTheme(R.style.Welcome);
         app = (DtdApplication) getApplication();
         luaMdDir = app.getMdDir();
         localDir = app.getLocalDir();
         if (checkInfo()) {
+            setContentView(R.layout.welcome_icon);
             DtdApplication.getInstance().setSharedData("UnZiped",false);
             new UpdateTask().execute();
         } else {
-            
-            if (DtdApplication.getInstance().getSharedData("UnZiped") == true){
+            startActivity();
+            /*if (DtdApplication.getInstance().getSharedData("UnZiped") == true){
                 startActivity();
             } else {
-                new UpdateTask().execute();
-            }
+                setContentView(R.layout.welcome_icon);
+                //new UpdateTask().execute();
+            }*/
             
         }
     }
@@ -107,84 +103,41 @@ public class Welcome extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return true;
+    }
 
     @SuppressLint("StaticFieldLeak")
     private class UpdateTask extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String[] p1) {
             // TODO: Implement this method
-            onUpdate(mLastTime, mOldLastTime);
+            try {
+                unApk("assets/", localDir);
+                unApk("lua/", luaMdDir);
+            } catch (ZipException e) {
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(String result) {
-            DtdApplication.getInstance().setSharedData("UnZiped",true);
             startActivity();
+            DtdApplication.getInstance().setSharedData("UnZiped",true);
+
         }
 
-        private void onUpdate(long lastTime, long oldLastTime) {
-
-            try {
-                //先置空再解压
-                LuaUtil.rmDir(new File(localDir));
-                LuaUtil.rmDir(new File(luaMdDir));
-                unApk("assets", localDir);
-                unApk("lua", luaMdDir);
-
-            } catch (IOException e) {
-                sendMsg(e.getMessage());
-            }
-        }
-
-        private void sendMsg(String message) {
-            // TODO: Implement this method
-            Log.v("WelcomeMessage", message);
-        }
-        
-        private void unApk(String dir, String extDir) throws IOException {
-            int i = dir.length() + 1;
-            ZipFile zip = new ZipFile(getApplicationInfo().publicSourceDir);
-            Enumeration<? extends ZipEntry> entries = zip.entries();
-            while (entries.hasMoreElements()) {
-                ZipEntry entry = entries.nextElement();
-                String name = entry.getName();
-                if (name.indexOf(dir) != 0)
-                    continue;
-                String path = name.substring(i);
-                if (entry.isDirectory()) {
-                    File f = new File(extDir + File.separator + path);
-                    if (!f.exists()) {
-                        //noinspection ResultOfMethodCallIgnored
-                        f.mkdirs();
-                    }
-                } else {
-                    String fname = extDir + File.separator + path;
-                    File ff = new File(fname);
-                    File temp = new File(fname).getParentFile();
-                    if (!temp.exists()) {
-                        if (!temp.mkdirs()) {
-                            throw new RuntimeException("create file " + temp.getName() + " fail");
-                        }
-                    }
-                    try {
-                        if (ff.exists() && entry.getSize() == ff.length() && LuaUtil.getFileMD5(zip.getInputStream(entry)).equals(LuaUtil.getFileMD5(ff)))
-                            continue;
-                    } catch (NullPointerException ignored) {
-                    }
-                    FileOutputStream out = new FileOutputStream(extDir + File.separator + path);
-                    InputStream in = zip.getInputStream(entry);
-                    byte[] buf = new byte[4096];
-                    int count = 0;
-                    while ((count = in.read(buf)) != -1) {
-                        out.write(buf, 0, count);
-                    }
-                    out.close();
-                    in.close();
-                }
-            }
-            zip.close();
+        private void unApk(String dir, String extDir) throws ZipException {
+            File file=new File(extDir);
+            String tempDir=getCacheDir().getPath();
+            LuaUtil.rmDir(file);
+            ZipFile zipFile = new ZipFile(getApplicationInfo().publicSourceDir);
+            zipFile.extractFile(dir,tempDir);
+            new File(tempDir+"/"+dir).renameTo(file);
         }
 
     }
+
 }

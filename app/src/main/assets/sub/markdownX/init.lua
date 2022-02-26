@@ -1,2 +1,2 @@
-appname="Markdown"
+subappname="Markdown"
 debugmode=true

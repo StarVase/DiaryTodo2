@@ -1,2 +1,1 @@
-appname="Settings"
-debugmode=true
+subappname="Settings"

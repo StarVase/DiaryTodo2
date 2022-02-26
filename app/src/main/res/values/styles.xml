@@ -222,5 +222,7 @@
        
     </style>
     
- 
+    <style name="Base.Theme.DayNight" parent="mDefaultWhite" />
+    
+    
 </resources>

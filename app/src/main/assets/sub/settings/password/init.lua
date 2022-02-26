@@ -1,1 +1,1 @@
-appname="SetPassword"
+subappname="SetPassword"

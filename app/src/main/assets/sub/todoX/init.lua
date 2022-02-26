@@ -1,1 +1,1 @@
-appname="TodoX"
+subappname="TodoX"

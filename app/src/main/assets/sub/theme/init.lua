@@ -1,2 +1,1 @@
-appname="主题"
-debugmode=true
+subappname="主题"

@@ -1,2 +1,1 @@
-appname="detailTodoX"
-debugmode=true
+subappname="detailTodoX"

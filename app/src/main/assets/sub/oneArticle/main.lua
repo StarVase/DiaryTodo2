@@ -9,7 +9,7 @@ getArticle()
 star.onClick=function()
   if not getStar() then
     --pcall(function()
-      content=tostring("# "..Title.getText()).."  \n## "..tostring(Author.getText()).."\n"..tostring(Content.getText())
+      content=tostring("# "..Title.getText().toString()).."  \n## "..tostring(Author.getText().toString()).."\n"..tostring(Content.getText().toString())
       local index=save_as_favorite(tostring(Title.getText()),content)
       --print(index)
       setStarTrue(index)

@@ -64,6 +64,7 @@
                 layout_width="fill",
                 layout_height="fill";
                 {
+                  --luajava.bindClass "com.StarVase.diaryTodo.app.LuaEditor",
                   AppCompatEditText,
                   focusable=false;
                   FocusableInTouchMode=false,

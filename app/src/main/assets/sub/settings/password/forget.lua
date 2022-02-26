@@ -47,7 +47,7 @@ nextButton.onClick=function()
     MyToast("答案/密码错误")
   end
 end
-&7
+
 function clickToUnlock()
   Thread(Runnable({run=function()
       sql="select * from diary where isEmp=1 order by id desc"

@@ -1,2 +1,1 @@
-appname="oneArticle"
-debugMode=true
+subappname="oneArticle"

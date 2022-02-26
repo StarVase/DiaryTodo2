@@ -18,11 +18,31 @@ activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
 activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
+
+--创建菜单
+function onCreateOptionsMenu(menu)
+  local inflater=activity.getMenuInflater()
+  inflater.inflate(R.menu.menu_diary,menu)
+
+end
+
+--菜单点击
 function onOptionsItemSelected(item)
-  local id=item.getItemId()
-  if id==android.R.id.home then
-    activity.finish()
-  end
+  task(1,function()
+    local id=item.getItemId()
+    switch id
+     case
+      android.R.id.home
+      activity.finish()
+     case
+      R.id.menu_diary_unlockall
+      sub("settings")
+     case
+      R.id.menu_diary_lockall
+      sub("aboutX")
+
+    end
+  end)
 end
 
 

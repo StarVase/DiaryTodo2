@@ -50,12 +50,6 @@
     }
   },
   {
-    AppCompatCheckBox;
-    layout_marginLeft="24dp";
-    layout_marginRight="24dp";
-    id="highlightState",
-  };
-  {
     TextButton,
     
     id="highlightbutton",

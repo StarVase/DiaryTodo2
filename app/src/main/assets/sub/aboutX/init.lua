@@ -1,1 +1,1 @@
-appname="About"
+subappname="About"

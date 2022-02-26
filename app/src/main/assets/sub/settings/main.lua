@@ -76,9 +76,11 @@ table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={Im
 table.insert(dataset,{__type=1,title=AdapLan("展示","Showing")})
 table.insert(dataset,{__type=4,intent="BingImage",img={ImageResource=R.drawable.ic_microsoft_bing},subtitle=AdapLan("每日必应","Bing images"),message=AdapLan("从必应加载每日图片","Load daily pictures from Bing"),status={Checked=Boolean.valueOf(this.getSharedData("BingImage"))}})
 table.insert(dataset,{__type=5,intent="WeatherTip",p={Focusable=false},img={ImageResource=R.drawable.ic_weather},subtitle=AdapLan("天气提示","Weather tips"),status={Checked=Boolean.valueOf(this.getSharedData("WeatherTip"))}})
+table.insert(dataset,{__type=2,intent="WeatherCity",p={Focusable=false},img={ImageResource=R.drawable.ic_home_city_outline},subtitle=AdapLan("天气城市","Weather city"),message=tostring(activity.getSharedData("WeatherCity")or AdapLan("未指定","Unspecified"))})
+
 table.insert(dataset,{__type=1,title=AdapLan("一言","Yiyan")})
 table.insert(dataset,{__type=4,intent="YiyanEnabled",img={ImageResource=R.drawable.ic_comment_processing_outline},subtitle=AdapLan("显示一言","Show Yiyan"),message=AdapLan("在首页加载本地句子","Load local sentences at home page"),status={Checked=Boolean.valueOf(this.getSharedData("YiyanEnabled"))}})
-table.insert(dataset,{__type=2,intent="YiyanType",p={Focusable=false},img={ImageResource=R.drawable.ic_comment_processing_outline},subtitle=AdapLan("一言类型","Yiyan Type"),message=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData("YiyanType") or "undefined"]]})
+table.insert(dataset,{__type=2,intent="YiyanType",p={Focusable=false},img={ImageResource=R.drawable.ic_format_list_bulleted_type},subtitle=AdapLan("一言类型","Yiyan Type"),message=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData("YiyanType") or "undefined"]]})
 
 table.insert(dataset,{__type=1,title=AdapLan("应用","Application")})
 table.insert(dataset,{__type=5,intent="AutoBackup",img={ImageResource=R.drawable.ic_backup},subtitle=AdapLan("自动备份","Auto backup"),status={Checked=Boolean.valueOf(this.getSharedData("AutoBackup"))}})

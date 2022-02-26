@@ -101,6 +101,12 @@ function startLoadNormalFile()
       _STATE._INITCONTENT=file.readFile(filepath)
       Widgetcontent.setFocusable(true)
       Widgetcontent.FocusableInTouchMode=true
+      --print(File(filepath).getParent())
+      --print(file.readFile(activity.getApplication().getLuaDir().."/html/index.html"))
+      --task(1,function()
+      
+      --webView.loadDataWithBaseURL(File(filepath).getParent(), "javascript:MarkText(\"" ..content.. "\");", "text/html", "UTF-8", null);
+      --end)
     end})).run()
 end
 

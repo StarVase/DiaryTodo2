@@ -2,11 +2,6 @@
 <resources>
     <style name="AppTheme" parent="Base.Theme.Light"></style>
 
-    <style name="welcome" parent="mDefaultWhite">
-        <item name="android:statusBarColor">@color/White</item>
-        <item name="android:navigationBarColor">@color/White</item>
-        <item name="android:windowIsTranslucent">false</item>
-    </style>
     
     <style name="DefaultWhite" parent="mDefaultWhite">
         <item name="android:windowIsTranslucent">false</item>
@@ -38,6 +33,15 @@
     
     <style name="Night" parent="mNight">
         <item name="android:windowIsTranslucent">false</item>
+    </style>
+    
+    <style name="Welcome" parent="Base.Theme.DayNight" >
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@drawable/welcome</item>
+        <item name="android:windowDisablePreview">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
     
 </resources>

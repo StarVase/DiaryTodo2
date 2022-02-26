@@ -1,1 +1,1 @@
-appname="PhotoPresenter"
+subappname="PhotoPresenter"

@@ -1,1 +1,1 @@
-appname="OpenSourceLicense"
+subappname="OpenSourceLicense"

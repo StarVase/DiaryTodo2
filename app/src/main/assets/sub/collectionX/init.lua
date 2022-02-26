@@ -1,1 +1,1 @@
-appname="CollectionX"
+subappname="CollectionX"

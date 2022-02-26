@@ -1,1 +1,1 @@
-appname="TextStyle"
+subappname="TextStyle"

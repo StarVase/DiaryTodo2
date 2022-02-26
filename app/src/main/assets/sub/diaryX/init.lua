@@ -1,1 +1,1 @@
-appname="日记X"
+subappname="日记X"
