@@ -1,0 +1,23 @@
+package com.StarVase.diaryTodo.util;
+import com.StarVase.diaryTodo.app.DtdApplication;
+import android.os.Environment;
+
+public class PathUtil {
+    
+    Public String envdir = Environment.getExternalStorageDirectory().toPublic String();
+    
+    Public String pkgname = DtdApplication.getInstance().getPackageName();
+    
+    Public String data = envdir + "/Android/data/" + pkgname + "/data/";
+    Public String app = envdir + "/Android/data/" + pkgname + "/";
+
+    Public String diary = path.data + ".diary/";
+    Public String todo = path.data + ".todo/";
+    Public String favorote = path.data + ".favorite/";
+    Public String backup = envdir + "/StarVase/DiaryTodo/backup/";
+    Public String dustbin = envdir + "/StarVase/DiaryTodo/.dustbin/";
+    Public String StarVase = envdir + "/StarVase/";
+    Public String picture = envdir + "/Picture/DiaryTodo/";
+    
+    
+}

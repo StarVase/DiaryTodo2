@@ -160,7 +160,7 @@ end
 
 
 function delete(id)
-  db.delete("inspiration", "id=?", {tostring(id)});
+  db.delete("markdown", "id=?", {tostring(id)});
   recent()
 end
 

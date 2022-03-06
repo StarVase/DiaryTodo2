@@ -5,6 +5,9 @@ if tonumber(Build.VERSION.SDK) >= 23 then
 end
 activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS).setStatusBarColor(mainColor);
 
+parser = WebView(this)
+parser.loadUrl("file:///android_asset/html/index.html")
+parser.getSettings().setJavaScriptEnabled(true);
 
 activity.setContentView(loadlayout(layout))
 
@@ -169,7 +172,7 @@ function ashtml()
     content=string.gsub(Widgetcontent.getText().toString(),"\n", "\\n")
     content=string.gsub(content,"\"", "\\\"")
     content=string.gsub(content,"'", "\\'")
-    webView.evaluateJavascript("javascript:MarkText(\"" ..content.."\");", ValueCallback({
+    parser.evaluateJavascript("javascript:MarkText(\"" ..content.."\");", ValueCallback({
       onReceiveValue=function(html)
         html=UnicodeUtil.decode(html)
         html= loadstring("return "..html)() or ""

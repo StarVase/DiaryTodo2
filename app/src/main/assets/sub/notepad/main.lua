@@ -11,6 +11,7 @@ import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
 
 doctype,title,details=...
+
 if !doctype then
   activity.finish()
 end
@@ -69,9 +70,19 @@ function MarkText(text)
   content=string.gsub(content,"\"", "\\\"")
   content=string.gsub(content,"'", "\\'")
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
-    webView.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",nil);
+    parser.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",ValueCallback({
+      onReceiveValue=function(html)
+        html=UnicodeUtil.decode(html)
+        html= loadstring("return "..html)() or "";
+        --print(html)
+        webView.loadDataWithBaseURL("file://"..File(details.path).getParent(),html,"text/html", "UTF-8", nil)
+        --print("file://"..File(details.path).getParent())
+       -- WebView
+      end
+    }))
+  
    else
-    webView.loadUrl("javascript:MarkText(\"" ..content.. "\");");
+    parser.loadUrl("javascript:MarkText(\"" ..content.. "\");");
   end
 end
 
