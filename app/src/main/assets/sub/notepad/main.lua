@@ -75,7 +75,7 @@ function MarkText(text)
         html=UnicodeUtil.decode(html)
         html= loadstring("return "..html)() or "";
         --print(html)
-        webView.loadDataWithBaseURL("file://"..File(details.path).getParent(),html,"text/html", "UTF-8", nil)
+        webView.loadDataWithBaseURL("file://"..File(details.path).getParent().."/",html,"text/html", "UTF-8", nil)
         --print("file://"..File(details.path).getParent())
        -- WebView
       end
