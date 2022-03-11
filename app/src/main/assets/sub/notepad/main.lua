@@ -69,20 +69,28 @@ function MarkText(text)
   content=string.gsub(text,"\n", "\\n")
   content=string.gsub(content,"\"", "\\\"")
   content=string.gsub(content,"'", "\\'")
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then --版本太低尽早放弃吧
     parser.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",ValueCallback({
       onReceiveValue=function(html)
         html=UnicodeUtil.decode(html)
         html= loadstring("return "..html)() or "";
         --print(html)
+        html=[[<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="file:///android_asset/html/css/katex.min.css">
+<link rel="stylesheet" type="text/css" href="file:///android_asset/html/github-markdown.css">
+<link rel="stylesheet" type="text/css" href="file:///android_asset/html/public/highlight/styles/github.min.css">
+</head>
+<body>]]..html..[[</body>
+</html>]]
+
         webView.loadDataWithBaseURL("file://"..File(details.path).getParent().."/",html,"text/html", "UTF-8", nil)
         --print("file://"..File(details.path).getParent())
-       -- WebView
+
       end
     }))
-  
-   else
-    parser.loadUrl("javascript:MarkText(\"" ..content.. "\");");
   end
 end
 

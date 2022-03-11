@@ -6,8 +6,8 @@ end
 activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS).setStatusBarColor(mainColor);
 
 parser = WebView(this)
-parser.loadUrl("file:///android_asset/html/index.html")
 parser.getSettings().setJavaScriptEnabled(true);
+parser.loadUrl("file:///android_asset/html/index.html")
 
 activity.setContentView(loadlayout(layout))
 
@@ -184,9 +184,7 @@ function ashtml()
 </head>
 <body>
 <h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
-]]
-        ..html..
-        [[</body>
+]]..html..[[</body>
 </html>]]
         if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html",HtmlContent)end) then
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html")
