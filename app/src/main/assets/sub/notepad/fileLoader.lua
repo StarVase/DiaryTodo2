@@ -37,6 +37,7 @@ function decrypt(key,content,usrKey)
         Widgetcontent.setFocusable(false)
         activity.finish()
       end
+    MarkText(Widgetcontent.text)
     end})).run()
 end
 
@@ -61,6 +62,7 @@ function startLoadDiary()
         Widgetcontent.FocusableInTouchMode=true
         _STATE.__EMP=false
       end
+    MarkText(Widgetcontent.text)
     end})).run()
 end
 
@@ -77,6 +79,7 @@ function startLoadInspiration()
       Widgetcontent.focusable=true
       Widgetcontent.FocusableInTouchMode=true
     end})).run()
+MarkText(Widgetcontent.text)
 end
 
 function startLoadCollection()
@@ -92,6 +95,7 @@ function startLoadCollection()
       Widgetcontent.setFocusable(true)
       Widgetcontent.FocusableInTouchMode=true
     end})).run()
+MarkText(Widgetcontent.text)
 end
 
 function startLoadNormalFile()
@@ -108,6 +112,7 @@ function startLoadNormalFile()
       --webView.loadDataWithBaseURL(File(filepath).getParent(), "javascript:MarkText(\"" ..content.. "\");", "text/html", "UTF-8", null);
       --end)
     end})).run()
+MarkText(Widgetcontent.text)
 end
 
 function startLoadTodoDetail()
@@ -117,6 +122,7 @@ function startLoadTodoDetail()
       Widgetcontent.setFocusable(true)
       Widgetcontent.FocusableInTouchMode=true
     end})).run()
+MarkText(Widgetcontent.text)
 end
 
 function verfyPwd(key,content)
@@ -163,3 +169,4 @@ switch doctype
  case "todoDetail" then
   startLoadTodoDetail()
 end
+--MarkText(Widgetcontent.text)

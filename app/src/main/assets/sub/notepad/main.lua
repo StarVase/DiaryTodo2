@@ -6,7 +6,8 @@ import "android.animation.LayoutTransition"
 import "android.webkit.*"
 import "java.io.*"
 import "ren.qinc.edit.*"
-import "io.github.rosemoe.sora.widget.CodeEditor"
+import "io.github.rosemoe.editor.interfaces.EditorEventListener"
+import "io.github.rosemoe.editor.widget.CodeEditor"
 --import "com.jsdroid.editor.HVScrollView"
 import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
@@ -65,43 +66,21 @@ function onPause()
   end
 end
 
-function MarkText(text)
-  import "android.webkit.ValueCallback"
-  content=string.gsub(text,"\n", "\\n")
-  content=string.gsub(content,"\"", "\\\"")
-  content=string.gsub(content,"'", "\\'")
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then --版本太低尽早放弃吧
-    parser.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",ValueCallback({
-      onReceiveValue=function(html)
-        html=UnicodeUtil.decode(html)
-        html= loadstring("return "..html)() or "";
-        --print(html)
-        html=[[<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="file:///android_asset/html/css/katex.min.css">
-<link rel="stylesheet" type="text/css" href="file:///android_asset/html/github-markdown.css">
-<link rel="stylesheet" type="text/css" href="file:///android_asset/html/public/highlight/styles/github.min.css">
-</head>
-<body>]]..html..[[</body>
-</html>]]
-        if details.path then
-          abspath = "file://"..File(details.path).getParent().."/"
-        end
-        webView.loadDataWithBaseURL(abspath,html,"text/html", "UTF-8", nil)
-        --print("file://"..File(details.path).getParent())
-
-      end
-    }))
-  end
-end
 
 
 --[[Widgetcontent.addTextChangedListener{
   onTextChanged=lambda(text) -> MarkText(tostring(text))
 }]]
+Widgetcontent.setEventListener(EditorEventListener{
+  afterInsert=function(v,text)
+    MarkText(tostring(text))
 
+  end,
+  afterDelete=function(v,text)
+    MarkText(tostring(text))
+
+  end
+})
 
 
 
@@ -119,7 +98,7 @@ webView.setWebViewClient({
 })
 page.setOnPageChangeListener(PageView.OnPageChangeListener{
   --页面状态改变监听
-  onPageScrolled=(lambda(a,b,c) -> nil),
+  onPageScrolled=(lambda(a,b,c) -> task(1,function()MarkText(Widgetcontent.text)end)),
   onPageSelected=lambda(v) -> MarkText(Widgetcontent.text)
 })
 function onKeyShortcut(keyCode, event)
