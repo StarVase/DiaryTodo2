@@ -42,8 +42,8 @@ activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 --activity.getSupportActionBar().getNavigationIcon().setColorFilter((0xff7cbcff),PorterDuff.Mode.SRC_IN);
 --activity.getSupportActionBar().setHomeAsUpIndicator(getNavigationIcon().setColorFilter((0xff7cbcff),PorterDuff.Mode.SRC_IN))
-mEditText = (Widgetcontent);
-mPerformEdit = PerformEdit(mEditText);
+--mEditText = (Widgetcontent);
+--mPerformEdit = PerformEdit(mEditText);
 
 --创建菜单
 function onCreateOptionsMenu(menu)

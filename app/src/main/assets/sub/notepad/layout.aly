@@ -65,13 +65,18 @@
                 layout_height="fill";
                 {
                   --luajava.bindClass "com.StarVase.diaryTodo.app.LuaEditor",
-                  AppCompatEditText,
+                  CodeEditor,
                   focusable=false;
                   FocusableInTouchMode=false,
                   text="# Markdown Editor",
-                  gravity="top";
-                  hint="内容";
-                  textColor=textColor,
+                  wordwrap=true,
+                  LineNumberEnabled=false;
+
+                  overScrollEnabled=false;
+                  scalable=false;
+                  --gravity="top";
+                  --hint="内容";
+                  --textColor=textColor,
                   layout_width="fill";
                   layout_height="fill";
                   padding="16dp";

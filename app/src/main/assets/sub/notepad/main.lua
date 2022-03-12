@@ -6,7 +6,8 @@ import "android.animation.LayoutTransition"
 import "android.webkit.*"
 import "java.io.*"
 import "ren.qinc.edit.*"
-import "com.jsdroid.editor.HVScrollView"
+import "io.github.rosemoe.sora.widget.CodeEditor"
+--import "com.jsdroid.editor.HVScrollView"
 import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
 
@@ -34,7 +35,7 @@ end
 if not content then
   --Widgetcontent.text=io.open(path):read("*a")
 end
-mPerformEdit.clearHistory()
+--mPerformEdit.clearHistory()
 
 arg=0
 function AUTO_SWITCH_OR_FINISH()
@@ -85,8 +86,10 @@ function MarkText(text)
 </head>
 <body>]]..html..[[</body>
 </html>]]
-
-        webView.loadDataWithBaseURL("file://"..File(details.path).getParent().."/",html,"text/html", "UTF-8", nil)
+        if details.path then
+          abspath = "file://"..File(details.path).getParent().."/"
+        end
+        webView.loadDataWithBaseURL(abspath,html,"text/html", "UTF-8", nil)
         --print("file://"..File(details.path).getParent())
 
       end
@@ -95,9 +98,9 @@ function MarkText(text)
 end
 
 
-Widgetcontent.addTextChangedListener{
+--[[Widgetcontent.addTextChangedListener{
   onTextChanged=lambda(text) -> MarkText(tostring(text))
-}
+}]]
 
 
 

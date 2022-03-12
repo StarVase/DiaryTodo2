@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+	//api project(':editor')
     implementation 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'
 	api 'com.google.android.material:material:2.0.0'
 	api project(':StarVaseLibrary')
