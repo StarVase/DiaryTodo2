@@ -6,8 +6,6 @@ import "android.animation.LayoutTransition"
 import "android.webkit.*"
 import "java.io.*"
 import "ren.qinc.edit.*"
-import "io.github.rosemoe.editor.interfaces.EditorEventListener"
-import "io.github.rosemoe.editor.widget.CodeEditor"
 --import "com.jsdroid.editor.HVScrollView"
 import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
@@ -36,7 +34,7 @@ end
 if not content then
   --Widgetcontent.text=io.open(path):read("*a")
 end
---mPerformEdit.clearHistory()
+mPerformEdit.clearHistory()
 
 arg=0
 function AUTO_SWITCH_OR_FINISH()
@@ -68,19 +66,9 @@ end
 
 
 
---[[Widgetcontent.addTextChangedListener{
-  onTextChanged=lambda(text) -> MarkText(tostring(text))
-}]]
-Widgetcontent.setEventListener(EditorEventListener{
-  afterInsert=function(v,text)
-    MarkText(tostring(text))
-
-  end,
-  afterDelete=function(v,text)
-    MarkText(tostring(text))
-
-  end
-})
+Widgetcontent.addTextChangedListener{
+  onTextChanged=lambda(text) -> MarkText(text.toString())
+}
 
 
 
@@ -98,7 +86,8 @@ webView.setWebViewClient({
 })
 page.setOnPageChangeListener(PageView.OnPageChangeListener{
   --页面状态改变监听
-  onPageScrolled=(lambda(a,b,c) -> task(1,function()MarkText(Widgetcontent.text)end)),
+  onPageScrolled=(lambda(a,b,c) -> task(1,function()
+    end)),
   onPageSelected=lambda(v) -> MarkText(Widgetcontent.text)
 })
 function onKeyShortcut(keyCode, event)

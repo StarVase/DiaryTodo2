@@ -8,7 +8,7 @@ import "android.text.Spannable"
 import "layout"
 
 activity.setContentView(loadlayout(layout))
-
+Content.setLineSpacing(2,1.5)
 
 spTitle = SpannableString(activity.getString(R.string.func_one_article))
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)

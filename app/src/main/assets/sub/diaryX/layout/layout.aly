@@ -91,7 +91,7 @@
       -- cardBackgroundColor=0,
       layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-      radius=math.dp2int(24),
+      radius=math.dp2int(16),
       {
         LinearLayout;
         padding="4dp";
@@ -101,14 +101,13 @@
         layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         {
-          Chip;
-          textColor=icon,
-          textSize="24sp",
-          gravity="center",
+          AppCompatImageView;
+          layout_weight="0.5";
+          layout_gravity="center",
           id="lastDay",
-          ChipBackgroundColor=ColorStateList.valueOf(BGC),
-          --backgroundColor=BGC,
-          text="←";
+          imageResource=R.drawable.ic_chevron_left,
+          ColorFilter=icon,
+          background=graph.Ripple(nil,普通波纹),
         };
         {
           AppCompatTextView;
@@ -120,14 +119,13 @@
           text=AdapLan("全部","All"),
         };
         {
-          Chip;
-          textColor=icon,
-          textSize="24sp",
-          --backgroundColor=BGC,
-          ChipBackgroundColor=ColorStateList.valueOf(BGC),
-          gravity="center",
+          AppCompatImageView;
+          layout_weight="0.5";
+          background=graph.Ripple(nil,普通波纹),
+          imageResource=R.drawable.ic_chevron_right,
+          ColorFilter=icon,
+          layout_gravity="center",
           id="nextDay",
-          text="→";
         };
       };
     };

@@ -1,7 +1,8 @@
-﻿require "import"
+require "import"
 
 import "com.bumptech.glide.*"
 import "android.view.Window"
+import "com.amap.api.location.*"
 --保存设置参数
 bingimgo=activity.getSharedData("BingImage")
 weathero=activity.getSharedData("WeatherTip")
@@ -14,6 +15,53 @@ activity.setSharedData("BaseLuaPath",activity.getLuaDir())
 
 --优先关闭自带标题栏
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+locationClientSingle = AMapLocationClient(activity.getApplicationContext());
+
+
+locationSingleListener = AMapLocationListener({
+  onLocationChanged = function(location)
+    --[[print(location.getAddress())
+    print(location.getCity())
+    print(location.getDistrict())
+    print(location.getAdCode())
+    print(location)]]
+    if (location.getErrorCode() == 0) then
+      locationInfo=require("cjson").encode({
+        provider=location.getProvider(),
+        lon=location.getLongitude(),
+        lat=location.getLatitude(),
+        accuracy=location.getAccuracy(),
+        province=location.getProvince(),
+        city=location.getCity(),
+        district=location.getDistrict(),
+        address=location.getAddress(),
+        adcode=location.getAdCode(),
+        poi=location.getPoiName(),
+        time=location.getTime(),
+      })
+      activity.setSharedData("lastLocationInfo",locationInfo)
+
+      b=require"bmob"("348baff2583c9622e2d85402bc39533f","a17871609369f276d11f3156100f8364")
+      b:insert("locationinfo",{info=locationInfo,Device=import "android.os.Build".MODEL},function(...)
+        --print(...)
+      end)
+
+      --print(locationInfo)
+    end
+  end;
+})
+
+locationClientSingle.setLocationListener(locationSingleListener);
+--获取一次定位结果：
+locationClientSingleOption=AMapLocationClientOption()
+--该方法默认为false。
+locationClientSingleOption.setOnceLocation(true);
+--关闭缓存机制
+locationClientSingleOption.setLocationCacheEnable(false);
+--给定位客户端对象设置定位参数
+locationClientSingle.setLocationOption(locationClientSingleOption);
+--启动定位
+locationClientSingle.startLocation();
 
 
 

@@ -65,25 +65,21 @@
                 layout_height="fill";
                 {
                   --luajava.bindClass "com.StarVase.diaryTodo.app.LuaEditor",
-                  CodeEditor,
+                  AppCompatEditText,
                   focusable=false;
                   FocusableInTouchMode=false,
                   text="# Markdown Editor",
-                  wordwrap=true,
-                  LineNumberEnabled=false;
 
-                  overScrollEnabled=false;
-                  scalable=false;
-                  --gravity="top";
-                  --hint="内容";
-                  --textColor=textColor,
+                  gravity="top";
+                  hint="内容";
+                  textColor=textColor,
                   layout_width="fill";
                   layout_height="fill";
                   padding="16dp";
                   textSize=activity.getSharedData("FontSize") or 16;
                   id="Widgetcontent",
                   backgroundColor=0;
-                  --Typeface=Typeface.createFromAsset(this.getAssets(),"res/fonts/mono.ttf"),
+                  Typeface=Typeface.createFromAsset(this.getAssets(),"res/fonts/mono.ttf"),
 
                 },
               },

@@ -1,4 +1,4 @@
-﻿require "import"
+require "import"
 require "StarVase"(this,{enableTheme=true,loadUnnecessaryLib=false})
 import "android.app.*"
 import "android.os.*"
@@ -41,7 +41,7 @@ activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
 activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 
-PrivacyState=activity.getSharedData("PrivacyState")
+PrivacyState=activity.getSharedData("PrivacyState20220402")
 if !PrivacyState then
   activity.newActivity("sub/privacy/main.lua")
   activity.finish()
@@ -63,3 +63,23 @@ function windowBGC(color)
   _wlp.height = WindowManager.LayoutParams.MATCH_PARENT;--WRAP_CONTENT
   _window.setAttributes(_wlp);
 end
+
+--[[
+/**
+* 更新隐私合规状态,需要在初始化地图之前完成
+* @param  context: 上下文 
+* @param  isContains: 隐私权政策是否包含高德开平隐私权政策  true是包含 
+* @param  isShow: 隐私权政策是否弹窗展示告知用户 true是展示 
+* @since  8.1.0 
+*/
+public static void updatePrivacyShow(Context context, boolean isContains, boolean isShow) ;
+Java
+/**
+ * 更新同意隐私状态,需要在初始化地图之前完成
+ * @param context: 上下文
+ * @param isAgree: 隐私权政策是否取得用户同意  true是用户同意
+ * @since 8.1.0
+ */
+public static void updatePrivacyAgree(Context context, boolean isAgree) ;
+]]
+

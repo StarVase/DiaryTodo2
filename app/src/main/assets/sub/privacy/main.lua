@@ -41,7 +41,11 @@ checkBox.setOnCheckedChangeListener({
   end
 })
 nextButton.onClick=function()
-  activity.setSharedData("PrivacyState",checkBox.isChecked())
+  activity.setSharedData("PrivacyState20220402",checkBox.isChecked())
+  import "com.amap.api.location.AMapLocationClient"
+  AMapLocationClient.updatePrivacyShow(this,true,true)
+  AMapLocationClient.updatePrivacyAgree(this,checkBox.isChecked())
+  
   task(100,function()
     this.startActivity(Intent(this,luajava.bindClass("com.StarVase.diaryTodo.app.MainActivity")));
     this.finish()

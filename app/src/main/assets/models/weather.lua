@@ -1,9 +1,16 @@
 
 if activity.getSharedData("WeatherTip")==true then
   import "okhttp3.*"
-  BASE_URL="https://www.tianqiapi.com/free/day?appid=55261352&appsecret=9cURW4VJ&unescape=1&cityid="
-
   cjson=require "cjson"
+  local cityid = ""
+  locatedWeatherCityInfo=activity.getSharedData("locatedWeatherCityInfo")
+  if activity.getSharedData("locatedWeatherCityEnable")&&locatedWeatherCityInfo then
+    cityid=cjson.decode(locatedWeatherCityInfo).cityid
+
+  end
+  BASE_URL="https://www.tianqiapi.com/free/day?appid=55261352&appsecret=9cURW4VJ&unescape=1&cityid="..cityid
+
+
   request=Request.Builder()
   .url(BASE_URL)
   .build();

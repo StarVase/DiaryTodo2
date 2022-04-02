@@ -3,7 +3,7 @@ package com.StarVase.diaryTodo.util;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.StarVase.diaryTodo.object.ConfigObject;
+import com.StarVase.diaryTodo.bean.CommonConfigBean;
 import java.io.File;
 
 public class DatabaseUtil {
@@ -47,7 +47,7 @@ public class DatabaseUtil {
 
     }
 
-    public static int markdownToDb(ConfigObject config) {
+    public static int markdownToDb(CommonConfigBean config) {
         SQLiteDatabase db = getDatabase();
 
         String filepath = config.getPath();

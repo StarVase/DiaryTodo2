@@ -70,6 +70,13 @@ onResume= lambda -> Refresh()
 --没注释，不解释不抱怨
 function fab.onClick()
   task(1,function()
+    locationInfo=activity.getSharedData("lastLocationInfo")
+    if (locationInfo) then
+      locationInfo=require("cjson").decode(locationInfo)
+   
+      locationText="创建于：\n"..locationInfo.address.."（自动保存的位置信息）"
+      else locationText=""
+    end
     import "android.text.format.Time"
     time=Time().setToNow()
     year=time.year
@@ -131,7 +138,7 @@ function fab.onClick()
         CreateFileUtil.diary({
           title=edit.getText(),
 
-          content="",
+          content=locationText,
           isLocked=enccheckbox.checked,
           passkey=activity.getSharedData("DiaryPassword"),
           date={year=year,month=month,day=day},

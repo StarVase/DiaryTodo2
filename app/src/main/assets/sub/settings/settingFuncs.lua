@@ -25,7 +25,7 @@ onItemClick=function(one,SwitchIn)
       end
 
      case "FontStyle"
-     activity.newActivity("fontstyle/main.lua")
+      activity.newActivity("fontstyle/main.lua")
       --MyToast.showSnackBar("Developing...")
      case "EncryptDiary"
       --activity.newActivity("models/setPassword.lua")
@@ -54,6 +54,8 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+     case "WeatherCity"
+      activity.newActivity("selectcity/main.lua")
      case "YiyanEnabled"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)

@@ -10,7 +10,7 @@ parser.getSettings().setJavaScriptEnabled(true);
 parser.loadUrl("file:///android_asset/html/index.html")
 
 activity.setContentView(loadlayout(layout))
-
+Widgetcontent.setLineSpacing(2,1.5)
 editTitle=loadlayout({
   RelativeLayout;
   paddingBottom="4dp";
@@ -42,8 +42,8 @@ activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 --activity.getSupportActionBar().getNavigationIcon().setColorFilter((0xff7cbcff),PorterDuff.Mode.SRC_IN);
 --activity.getSupportActionBar().setHomeAsUpIndicator(getNavigationIcon().setColorFilter((0xff7cbcff),PorterDuff.Mode.SRC_IN))
---mEditText = (Widgetcontent);
---mPerformEdit = PerformEdit(mEditText);
+mEditText = (Widgetcontent);
+mPerformEdit = PerformEdit(mEditText);
 
 --创建菜单
 function onCreateOptionsMenu(menu)
@@ -201,17 +201,17 @@ end
 
 function MarkText(text)
   Thread(Runnable({run=function()
-    import "android.webkit.ValueCallback"
-    content=string.gsub(text,"\n", "\\n")
-    content=string.gsub(content,"\"", "\\\"")
-    content=string.gsub(content,"'", "\\'")
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then --版本太低尽早放弃吧
-      parser.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",ValueCallback({
-        onReceiveValue=function(html)
-          html=UnicodeUtil.decode(html)
-          html= loadstring("return "..html)() or "";
-          --print(html)
-          html=[[<!DOCTYPE html>
+      import "android.webkit.ValueCallback"
+      content=string.gsub(text,"\n", "\\n")
+      content=string.gsub(content,"\"", "\\\"")
+      content=string.gsub(content,"'", "\\'")
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then --版本太低尽早放弃吧
+        parser.evaluateJavascript("javascript:MarkText(\"" ..content .."\");",ValueCallback({
+          onReceiveValue=function(html)
+            html=UnicodeUtil.decode(html)
+            html= loadstring("return "..html)() or "";
+            --print(html)
+            html=[[<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -221,14 +221,14 @@ function MarkText(text)
 </head>
 <body>]]..html..[[</body>
 </html>]]
-          if details.path then
-            abspath = "file://"..File(details.path).getParent().."/"
-          end
-          webView.loadDataWithBaseURL(abspath,html,"text/html", "UTF-8", nil)
-          --print("file://"..File(details.path).getParent())
+            if details.path then
+              abspath = "file://"..File(details.path).getParent().."/"
+            end
+            webView.loadDataWithBaseURL(abspath,html,"text/html", "UTF-8", nil)
+            --print("file://"..File(details.path).getParent())
 
-        end
-      }))
-    end
-  end})).run()
+          end
+        }))
+      end
+    end})).run()
 end

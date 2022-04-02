@@ -51,7 +51,7 @@
             View,
             layout_width='fill',
             layout_height='fill',
-            background=左右渐变({getMaskColor()}),
+            --background=左右渐变({getMaskColor()}),
           },
         },
         {
@@ -103,7 +103,7 @@
            --   padding="24dp",
               --layout_height="200dp",
               Elevation=0;
-              id="CardParent",
+             -- id="CardParent",
               --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
               cardBackgroundColor=0,
               StrokeColor=lightForceColor,
@@ -129,7 +129,7 @@
       View,
       layout_width='fill',
       layout_height='fill',
-      background=graph.Ripple(nil,淡色强调波纹,"方"),
+      --background=graph.Ripple(nil,淡色强调波纹,"方"),
     },
   },
 }

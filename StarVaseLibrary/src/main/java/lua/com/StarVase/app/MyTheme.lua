@@ -52,7 +52,7 @@ forceTextColor=tablechild.forceTextColor
 subTextColor=textColor-0x77000000
 导航栏颜色=tablechild.导航栏颜色
 themea=tablechild.themea
-淡色强调波纹=graph.修改颜色强度(0x1A,icon)
+淡色强调波纹=graph.修改颜色强度(0x2A,icon)
 普通波纹=getNormalRipple()
 
 

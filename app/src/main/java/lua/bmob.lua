@@ -1,4 +1,4 @@
-local Http=luajava.bindClass "com.androlua.Http"
+local Http=luajava.bindClass "com.StarVase.diaryTodo.app.Http"
 local File=luajava.bindClass "java.io.File"
 local pairs,tostring,print,dump,xpcall=pairs,tostring,print,dump,xpcall
 local cjson=require "cjson"

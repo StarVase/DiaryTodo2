@@ -1,12 +1,12 @@
-package com.StarVase.diaryTodo.object;
+package com.StarVase.diaryTodo.bean;
 
 import java.io.Serializable;
 
-public class ConfigObject implements Serializable {
+public class CommonConfigBean implements Serializable {
     
     public static String path;
     
-    public ConfigObject setPath(String mpath){
+    public CommonConfigBean setPath(String mpath){
         
         path = mpath;
         

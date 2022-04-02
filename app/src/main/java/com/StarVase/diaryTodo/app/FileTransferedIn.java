@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
-import com.StarVase.diaryTodo.object.ConfigObject;
+import com.StarVase.diaryTodo.bean.CommonConfigBean;
 import com.StarVase.diaryTodo.util.DatabaseUtil;
 import java.io.File;
 import java.io.Serializable;
@@ -46,7 +46,7 @@ public class FileTransferedIn extends AppCompatActivity implements Serializable{
             DatabaseUtil.getDatabase().update("markdown", values, "id=?", new String[] {String.valueOf(id)});
 
         } else {
-            ConfigObject config = new ConfigObject();
+            CommonConfigBean config = new CommonConfigBean();
             config.setPath(path);
             DatabaseUtil.markdownToDb(config);
         }
@@ -54,7 +54,7 @@ public class FileTransferedIn extends AppCompatActivity implements Serializable{
     }
 
     private void jumpToEditor(String docpath) {
-        ConfigObject config = new ConfigObject();
+        CommonConfigBean config = new CommonConfigBean();
         config.setPath(docpath);
         
         String path = DtdApplication.getInstance().getSharedData("BaseLuaPath") + "/sub/notepad/main.lua";
