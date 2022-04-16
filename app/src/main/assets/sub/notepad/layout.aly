@@ -39,7 +39,7 @@
 
 
         {
-          NoScrollPageView,
+          ViewPager,
           id="page",
           layout_height="fill",
           layout_width='fill',
@@ -68,7 +68,7 @@
                   AppCompatEditText,
                   focusable=false;
                   FocusableInTouchMode=false,
-                  text="# Markdown Editor",
+                  text="",
 
                   gravity="top";
                   hint="内容";

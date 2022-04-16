@@ -37,7 +37,8 @@ function decrypt(key,content,usrKey)
         Widgetcontent.setFocusable(false)
         activity.finish()
       end
-    MarkText(Widgetcontent.text)
+      mPerformEdit.setDefaultText(Widgetcontent.text)
+      MarkText(Widgetcontent.text)
     end})).run()
 end
 
@@ -62,7 +63,8 @@ function startLoadDiary()
         Widgetcontent.FocusableInTouchMode=true
         _STATE.__EMP=false
       end
-    MarkText(Widgetcontent.text)
+      mPerformEdit.setDefaultText(Widgetcontent.text)
+      MarkText(Widgetcontent.text)
     end})).run()
 end
 
@@ -79,7 +81,8 @@ function startLoadInspiration()
       Widgetcontent.focusable=true
       Widgetcontent.FocusableInTouchMode=true
     end})).run()
-MarkText(Widgetcontent.text)
+mPerformEdit.setDefaultText(Widgetcontent.text)
+  MarkText(Widgetcontent.text)
 end
 
 function startLoadCollection()
@@ -94,8 +97,9 @@ function startLoadCollection()
       _STATE._INITCONTENT=content
       Widgetcontent.setFocusable(true)
       Widgetcontent.FocusableInTouchMode=true
+      mPerformEdit.setDefaultText(Widgetcontent.text)
     end})).run()
-MarkText(Widgetcontent.text)
+  MarkText(Widgetcontent.text)
 end
 
 function startLoadNormalFile()
@@ -108,11 +112,12 @@ function startLoadNormalFile()
       --print(File(filepath).getParent())
       --print(file.readFile(activity.getApplication().getLuaDir().."/html/index.html"))
       --task(1,function()
-      
+
       --webView.loadDataWithBaseURL(File(filepath).getParent(), "javascript:MarkText(\"" ..content.. "\");", "text/html", "UTF-8", null);
       --end)
+      mPerformEdit.setDefaultText(Widgetcontent.text)
     end})).run()
-MarkText(Widgetcontent.text)
+  MarkText(Widgetcontent.text)
 end
 
 function startLoadTodoDetail()
@@ -121,8 +126,9 @@ function startLoadTodoDetail()
       _STATE._INITCONTENT=details.content
       Widgetcontent.setFocusable(true)
       Widgetcontent.FocusableInTouchMode=true
+      mPerformEdit.setDefaultText(Widgetcontent.text)
     end})).run()
-MarkText(Widgetcontent.text)
+  MarkText(Widgetcontent.text)
 end
 
 function verfyPwd(key,content)

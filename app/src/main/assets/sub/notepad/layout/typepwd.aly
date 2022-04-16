@@ -27,6 +27,8 @@
     layout_height="wrap";
     layout_marginLeft="24dp";
     layout_marginRight="24dp";
+    PasswordVisibilityToggleEnabled=true;
+
     {
       TextInputEditText;
       textColor=textColor,

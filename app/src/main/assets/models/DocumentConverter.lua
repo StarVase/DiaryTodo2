@@ -18,7 +18,8 @@ local function convertDiary()
         day=tointeger(string.sub(str,9,10))
       }
      else
-      import "android.icu.util.Calendar"
+      --import "android.icu.util.Calendar"
+      import "java.util.Calendar"
       calendar = Calendar.getInstance();
       year = calendar.get(Calendar.YEAR);
       month = calendar.get(Calendar.MONTH)+1;
@@ -56,13 +57,15 @@ local function convertDiary()
           content=content,
           check=check,
           PATH="/Android/data/"..activity.getPackageName().."/data/.diary/",})
-        CreateFileUtil.diary({
-          title=date,
-          content=content,
-          date=dateConverter(date),
-        })
-
-        path0.delete()
+        if pcall(function()
+            CreateFileUtil.diary({
+              title=date,
+              content=content,
+              date=dateConverter(date),
+            })
+          end) then
+          path0.delete()
+        end
       end
     end
   end
@@ -97,13 +100,15 @@ local function convertInspiration()
         timestamp=ts,
         PATH="/Android/data/"..activity.getPackageName().."/data/.bulb/"
       })
-      CreateFileUtil.inspiration({
-        title=title,
-        timestamp=ts,
-        content=content
-      })
-
-      path0.delete()
+      if pcall(function()
+          CreateFileUtil.inspiration({
+            title=title,
+            timestamp=ts,
+            content=content
+          })
+        end) then
+        path0.delete()
+      end
     end
   end
   return data
@@ -139,13 +144,15 @@ local function convertCollection()
         content=content,
         PATH="/Android/data/"..activity.getPackageName().."/data/.favorite/"
       })
-      CreateFileUtil.collection({
-        title=title,
-        timestamp=ts,
-        content=content
-      })
-
-      path0.delete()
+      if pcall(function()
+          CreateFileUtil.collection({
+            title=title,
+            timestamp=ts,
+            content=content
+          })
+        end) then
+        path0.delete()
+      end
     end
   end
   return data
@@ -185,15 +192,17 @@ local function convertTodo()
             data=fc.data,
             ts=fc.ts,
           })
-          CreateFileUtil.todo({
-            title=fc.title,
-            data=cjson.encode(fc.data),
-            timestamp=fc.ts,
-            isHighlight=fc.highLight,
-            highlightColor=0
-          })
-
-          path0.delete()
+          if pcall(function()
+              CreateFileUtil.todo({
+                title=fc.title,
+                data=cjson.encode(fc.data),
+                timestamp=fc.ts,
+                isHighlight=fc.highLight,
+                highlightColor=0
+              })
+            end) then
+            path0.delete()
+          end
         end
       end
     end

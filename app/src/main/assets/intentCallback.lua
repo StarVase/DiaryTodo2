@@ -5,7 +5,7 @@ function onNewIntent(intent)
   if "diary"==uriString then
     sub('diaryX')
    elseif uriString=="todo" then
-    sub("TODO")
+    sub("todoX")
    elseif uriString=="bulb" then
     sub("inspirationX")
    elseif uriString=="art" then

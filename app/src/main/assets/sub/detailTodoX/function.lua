@@ -43,6 +43,7 @@ function Refresh(id)
     date=TrueAndFalseColor(tab[i].highLight,tab[i].title)
     adapter.add({title={text=date,alpha=alpha},status={Checked=Boolean.valueOf(istrue),alpha=alpha}})
   end
+  --print(dump(data))
   if #data == 0 then
     nodata.setVisibility(View.VISIBLE)
   end

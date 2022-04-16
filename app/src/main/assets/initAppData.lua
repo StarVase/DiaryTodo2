@@ -9,6 +9,11 @@ Thread(Runnable{
   run=function()
     local CreateFileUtil=require "com.StarVase.diaryTodo.CreateFileUtil"
     CreateFileUtil.createDatabase()
+    if !activity.getSharedData("DocumentConverted")
+      require "models.DocumentConverter".convert()
+    end
+
+
   end
 }).start()
 
@@ -23,8 +28,3 @@ initSharedData("导航栏使用暗色",false)
 initSharedData("YiyanEnabled",true)
 initSharedData("DiaryPassword",4313)
 initSharedData("FontSize",16)
-
-if !activity.getSharedData("DocumentConverted")
-  require "models.DocumentConverter".convert()
-end
-

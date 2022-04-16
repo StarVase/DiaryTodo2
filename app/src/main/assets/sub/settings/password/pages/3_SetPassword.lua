@@ -33,6 +33,8 @@ return{
           TextInputLayout;
           layout_width="fill";
           layout_height="wrap";
+          PasswordVisibilityToggleEnabled=true;
+
           {
             TextInputEditText;
             textColor=textColor,
@@ -59,6 +61,8 @@ return{
           TextInputLayout;
           layout_width="fill";
           layout_height="wrap";
+          PasswordVisibilityToggleEnabled=true;
+
           {
             TextInputEditText;
             textColor=textColor,

@@ -5,8 +5,7 @@ import "com.google.android.material.floatingactionbutton.FloatingActionButton"
 import "android.animation.LayoutTransition"
 import "android.webkit.*"
 import "java.io.*"
-import "ren.qinc.edit.*"
---import "com.jsdroid.editor.HVScrollView"
+
 import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
 

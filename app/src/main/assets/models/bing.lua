@@ -42,7 +42,7 @@ end
 --setWallPaper()
 
 function setBingDailyImage(i,j)
-  setWallPaper()
+ -- setWallPaper()
 
   import "okhttp3.*"
   BASE_URL="http://cn.bing.com/HPImageArchive.aspx?format=js&idx="..i.."&n=8"

@@ -74,7 +74,7 @@ function fab.onClick()
     if (locationInfo) then
       locationInfo=require("cjson").decode(locationInfo)
    
-      locationText="创建于：\n"..locationInfo.address.."（自动保存的位置信息）"
+      locationText="> __创建于：__  \n"..locationInfo.address.."  \n_(自动保存的位置信息)_"
       else locationText=""
     end
     import "android.text.format.Time"
@@ -134,11 +134,13 @@ function fab.onClick()
 
 
     okey.onClick=function()
+      local calendar = Calendar.getInstance()
+      calendar.set(year,month-1,day)
       if edit.getText() then
         CreateFileUtil.diary({
           title=edit.getText(),
 
-          content=locationText,
+          content="# "..TimeUtil.getShortDate(this,calendar).."  \n"..locationText,
           isLocked=enccheckbox.checked,
           passkey=activity.getSharedData("DiaryPassword"),
           date={year=year,month=month,day=day},

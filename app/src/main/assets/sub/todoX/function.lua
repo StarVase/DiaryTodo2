@@ -85,6 +85,8 @@ function Refresh()
        else
         alpha=1
       end
+      CreateFileUtil.getDatabase().update("todo", ContentValues().put("percent", tostring(computeProgress(data0)/100)), "id=?", {tostring(id)});
+
       if #cjson.decode(data0) == 0 then
         isPrgShow=0
        else
@@ -105,7 +107,7 @@ function Refresh()
 
     end
     cursor.close()
-   if #data == 0 then
+    if #data == 0 then
       nodata.setVisibility(View.VISIBLE)
     end
   end

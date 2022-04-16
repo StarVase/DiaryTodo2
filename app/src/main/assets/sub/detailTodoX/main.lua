@@ -99,6 +99,12 @@ end
 function onResume()
   task(1,lambda->Refresh(todoid))
 end
+function onPause()
+  values = ContentValues();
+  values.put("title",tostring(editTitle.getText()));
+  CreateFileUtil.getDatabase().update("todo", values, "id=?", {tostring(todoid)});
+
+end
 
 
 list.onItemLongClick=function(id,v,zero,one)
@@ -107,7 +113,7 @@ list.onItemLongClick=function(id,v,zero,one)
   function highLight(word)
     return MyTextStyle.TextColor(word,0,utf8.len(word),0xFFF44336)
   end
-  data=getTable()
+  local data=getTable()
   import "androidx.appcompat.widget.PopupMenu"
   pop=PopupMenu(activity,v)
   menu=pop.Menu

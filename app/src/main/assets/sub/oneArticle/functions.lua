@@ -9,7 +9,6 @@ function getArticle()
   sr.setRefreshing(true);
   url="https://meiriyiwen.com/"
   Http.get(url,nil,"UTF-8",nil,function(code,content,cookie,header)
-
     setStarfalse()
     sr.setRefreshing(false);
     if(code==200 and content)then
@@ -27,6 +26,13 @@ function getArticle()
       star.setVisibility(View.VISIBLE)
       Content.setText(artcon)
       total.text="共"..tostring(utf8.len(artcon)).."字"
+      import "android.text.format.Time"
+      time=Time().setToNow()
+      conf={}
+      conf.year=time.year
+      conf.month=time.month+1
+      conf.day=time.monthDay
+      activity.setSharedData("LastReadArticleDate",tointeger(tostring(conf.year)..tostring(conf.month)..tostring(conf.day)))
       return code,title,author,artcon
     end
   end)

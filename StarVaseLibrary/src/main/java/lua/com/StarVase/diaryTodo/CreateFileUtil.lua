@@ -50,7 +50,7 @@ function createDatabase()
     },
     {
       name="todo",
-      sql="create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int)"
+      sql="create table todo(id integer primary key,title text,isHighlight boolean,data text,timestamp int,noticeat int,highlightColor int,percent float)"
     },
     {
       name="inspiration",
@@ -71,6 +71,15 @@ function createDatabase()
       pcall(exec,v.sql)
     end
   end
+
+  local sql="select * from sqlite_master where name='todo' and sql like '%percent%'"
+  if pcall(raw,sql,nil) then
+    if (!cursor.moveToNext()) then
+      pcall(exec,"alter table todo add 'percent' Float")
+    end
+    cursor.close()
+  end
+
 end
 
 
@@ -164,7 +173,8 @@ function todo(config)
   timestamp=tostring(config.timestamp)
   isHighlight=tostring(config.isHighlight)
   highlightColor=tostring(config.highlightColor)
-
+  percent=tostring(config.percent)
+  
   values = ContentValues();
   values.put("title",title);
   values.put("isHighlight",isHighlight);
@@ -172,6 +182,7 @@ function todo(config)
   values.put("data", tostring(config.data) or cjson.encode{});
   values.put("timestamp",timestamp);
   values.put("noticeat",nil);
+  values.put("percent",percent or "1.0")
   db.insert("todo", nil, values);
 
   cursor=raw("select max(id) from todo",nil)

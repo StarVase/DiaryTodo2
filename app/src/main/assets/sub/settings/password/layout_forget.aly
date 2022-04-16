@@ -109,6 +109,8 @@
           layout_width="fill";
           layout_margin="4dp",
           layout_height="wrap";
+          PasswordVisibilityToggleEnabled=true;
+
           {
             TextInputEditText;
             textColor=textColor,

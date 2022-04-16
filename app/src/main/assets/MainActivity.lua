@@ -4,6 +4,7 @@ import "com.bumptech.glide.*"
 import "android.view.Window"
 import "com.amap.api.location.*"
 --保存设置参数
+
 bingimgo=activity.getSharedData("BingImage")
 weathero=activity.getSharedData("WeatherTip")
 themeo=activity.getSharedData("theme")
@@ -16,7 +17,6 @@ activity.setSharedData("BaseLuaPath",activity.getLuaDir())
 --优先关闭自带标题栏
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 locationClientSingle = AMapLocationClient(activity.getApplicationContext());
-
 
 locationSingleListener = AMapLocationListener({
   onLocationChanged = function(location)
@@ -83,7 +83,7 @@ import "layouts.recycler_item"
 import "layouts.layout"
 import "models.MyToolbar"
 a1=os.clock()
-
+require "models.getFocused"
 
 --标题栏下头的布局(先入为主)
 MyToolbar.setContentView(loadlayout(layout))

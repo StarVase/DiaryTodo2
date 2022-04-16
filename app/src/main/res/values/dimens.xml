@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- timeline -->
+    <dimen name="timeline_dot_size">16dp</dimen>
+    <dimen name="timeline_line_size">2dp</dimen>
+    <dimen name="timeline_padding_top">20dp</dimen>
+    <dimen name="timeline_card_left_right_margin">11dp</dimen>
+    <dimen name="timeline_card_top_bottom_margin">3dp</dimen>
+    
+</resources>

@@ -50,6 +50,7 @@ function Refresh(dateConf)
   if pcall(raw,sql,nil) then
     while (cursor.moveToNext()) do
 
+
       id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
       title = cursor.getString(1);--获取第二列的值
       year = cursor.getInt(3);--获取第三列的值

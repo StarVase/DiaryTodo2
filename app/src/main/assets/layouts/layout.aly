@@ -76,7 +76,6 @@
             paddingRight="16dp";
             --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-
           },
 
           {
