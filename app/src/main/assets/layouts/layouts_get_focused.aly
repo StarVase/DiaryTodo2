@@ -1,0 +1,113 @@
+{
+  ["UnwrittenDiary"]={
+    LinearLayout,
+    orientation="vertical";
+    layout_height="wrap";
+    id="UnwrittenDiaryParent",
+    gravity="center";
+    layout_width="-1";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    paddingTop="8dp",
+    paddingBottom="8dp",
+
+    {
+      CardView,
+      layout_margin="4dp",
+      layout_width='-1',
+      Elevation=4;
+      id="UnwrittenDiaryCardParent",
+      foreground=graph.Ripple(nil,淡色强调波纹);
+      cardBackgroundColor=0,
+      radius=math.dp2int(16),
+      onClick=function() return true end;
+      {
+        LinearLayout,
+        layout_width='fill',
+        layout_height='fill',
+        id="UnwrittenDiarycard",
+        orientation="horizontal";
+        gravity="center|left";
+        --drawable=graph.Ripple(nil,淡色强调波纹)
+        --onClick=(lambda -> task(50,lambda -> mainItem[func].onClick())),
+        {
+          AppCompatImageView;
+          layout_height="30dp";
+          layout_width="30dp";
+          layout_margin="16dp";
+          --ImageResource=img;
+          ImageResource=R.drawable.ic_diary;
+
+          id="img",
+
+          colorFilter=icon,
+        };
+        {
+          AppCompatTextView;
+          textColor=textColor;
+          --paddingLeft="24dp",
+
+          typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+          layout_weight="1";
+          Text="今天还未写日记",
+          id="text";
+        };
+      };
+    },
+  },
+  ["ReadArticle"]={
+    LinearLayout,
+    orientation="vertical";
+    layout_height="wrap";
+    id="ReadArticleParent",
+    gravity="center";
+    layout_width="-1";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    paddingTop="8dp",
+    paddingBottom="8dp",
+
+    {
+      CardView,
+      layout_margin="4dp",
+      layout_width='-1',
+      Elevation=4;
+      id="ReadArticleCardParent",
+      foreground=graph.Ripple(nil,淡色强调波纹);
+      cardBackgroundColor=0,
+      radius=math.dp2int(16),
+      onClick=function() return true end;
+
+      {
+        LinearLayout,
+        layout_width='fill',
+        layout_height='fill',
+        id="ReadArticlecard",
+        orientation="horizontal";
+        gravity="center|left";
+        --drawable=graph.Ripple(nil,淡色强调波纹)
+        --onClick=(lambda -> task(50,lambda -> mainItem[func].onClick())),
+        {
+          AppCompatImageView;
+          layout_height="30dp";
+          layout_width="30dp";
+          layout_margin="16dp";
+          --ImageResource=img;
+          ImageResource=R.drawable.ic_article;
+
+          id="img",
+
+          colorFilter=icon,
+        };
+        {
+          AppCompatTextView;
+          textColor=textColor;
+          --paddingLeft="24dp",
+
+          typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+          layout_weight="1";
+          Text="今天还未读文章",
+          id="text";
+        };
+      };
+    },
+  },
+}

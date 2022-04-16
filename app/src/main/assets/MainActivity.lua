@@ -328,21 +328,44 @@ end
 --返回程序
 function onResume()
   task(50,function()
-    if bingimgo!=activity.getSharedData("BingImage")
-      or weathero!=activity.getSharedData("WeatherTip")
-      or themeo!=AppTheme.getid()
-      then
-      --重构activity
+    --刷新聚焦
+    isWrittenDiaryToday()
+    isReadArticleToday()
+    if (themeo!=AppTheme.getid()) then
+      --重载主页
+      themeo = AppTheme.getid()
       activity.recreate()
-      --修完背景建议使用activity.recreate()
-     elseif yiyanTypeo!=activity.getSharedData("YiyanType")
-      or yiyanEnabledo!=activity.getSharedData("YiyanEnabled")
-      then
+    end
+
+    if (bingimgo!=activity.getSharedData("BingImage")) then
+      --重载主图
+      bingimgo = activity.getSharedData("BingImage")
+      if activity.getSharedData("BingImage")==true then
+        setBingDailyImage(-1,1)
+       else setWallPaper()
+      end
+
+    end
+
+    if (weathero!=activity.getSharedData("WeatherTip")) then
+      --重置天气
+      weathero = activity.getSharedData("WeatherTip")
+      if (!activity.getSharedData("WeatherTip")) then
+        if (weathermain != nil) then
+          weathermain.setVisibility(View.GONE)
+        end
+       else
+        getWeather()
+      end
+    end
+
+    if (yiyanTypeo!=activity.getSharedData("YiyanType") || yiyanEnabledo!=activity.getSharedData("YiyanEnabled")) then
       --重置一言
       yiyanTypeo=activity.getSharedData("YiyanType")
       yiyanEnabledo=activity.getSharedData("YiyanEnabled")
       refreshYiyan()
     end
+
     --用线程备份
     thread(function()
       if activity.getSharedData("AutoBackup") == true then
@@ -369,3 +392,7 @@ function onKeyUp(code,event)
 end
 --MyToast.showSnackBar((activity.getLocation()))
 Log.i("StartTime",tostring(os.clock()-a1).."sec(s)")
+--TouchEffectHelper().setClickScale(imageFrame,0.8,150)
+--print(UnwrittenDiarycard)
+--graph.Ripple(UnwrittenDiarycard,淡色强调波纹)
+--isWrittenDiaryToday()

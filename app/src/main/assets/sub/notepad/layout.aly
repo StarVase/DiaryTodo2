@@ -39,7 +39,7 @@
 
 
         {
-          ViewPager,
+          CustomViewPager,
           id="page",
           layout_height="fill",
           layout_width='fill',
@@ -47,6 +47,7 @@
           fitsSystemWindows=true,
           paddingTop="0dp",
           paddingLeft="2dp",
+          swipeable=false;
           paddingRight="2dp",
           --touchEnabled=false;--禁止触摸
           pages={

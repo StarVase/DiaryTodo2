@@ -1,4 +1,4 @@
-
+function getWeather()
 if activity.getSharedData("WeatherTip")==true then
   import "okhttp3.*"
   cjson=require "cjson"
@@ -121,4 +121,5 @@ if activity.getSharedData("WeatherTip")==true then
 
 
 end
-
+end
+getWeather()

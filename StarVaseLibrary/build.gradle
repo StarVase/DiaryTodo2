@@ -37,8 +37,10 @@ dependencies {
 	  implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 	  //implementation(name: 'utilcode-1.30.6.aar', ext: 'aar')
 	  api project(':Androlua')
-      api 'androidx.appcompat:appcompat:1.0.0'
-      api 'com.google.android.material:material:1.0.0'
+    
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.5.0-alpha05'
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.appcompat:appcompat:1.0.0'
 	  //api "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:$version"
 
 }

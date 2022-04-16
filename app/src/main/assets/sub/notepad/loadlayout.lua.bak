@@ -474,7 +474,7 @@ local function setattribute(root,view,params,k,v,ids)
         views.add(o)
       end
     end
-    local pagerAdapter=bindClass("com.StarVase.diaryTodo.ui.adapter.BasePagerAdapter")(views)
+    local pagerAdapter=bindClass("com.StarVase.diaryTodo.ui.adapter.BasePagerAdapter")(ps)
     local adapter=ArrayPageAdapter(View(ps))
     xpcall(function()
       view.setAdapter(pagerAdapter)

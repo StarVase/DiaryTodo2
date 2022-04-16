@@ -9,7 +9,7 @@
     RelativeLayout;
     layout_width="fill";
     layout_height="48dp";
-    Focusable=true;
+    Focusable=false;
     {
       LinearLayout;
       layout_width="wrap";

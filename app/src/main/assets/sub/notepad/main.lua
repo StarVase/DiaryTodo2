@@ -5,7 +5,7 @@ import "com.google.android.material.floatingactionbutton.FloatingActionButton"
 import "android.animation.LayoutTransition"
 import "android.webkit.*"
 import "java.io.*"
-
+import "androidx.viewpager.widget.ViewPager"
 import "androidx.appcompat.widget.AppCompatEditText"
 import "layout"
 
@@ -39,7 +39,7 @@ arg=0
 function AUTO_SWITCH_OR_FINISH()
   save()
   if page.getCurrentItem()~=0 then
-    page.showPage(0)
+    page.setCurrentItem(0)
    else
     if arg+2 > tonumber(os.time()) then
       if doctype == "todoDetail" then
@@ -83,7 +83,7 @@ webView.setWebViewClient({
   onPageFinished=(lambda(view,url) -> autoDark()),
   onPageStarted=lambda(view,url,favicon) -> autoDark()
 })
-page.setOnPageChangeListener(PageView.OnPageChangeListener{
+page.setOnPageChangeListener(ViewPager.OnPageChangeListener{
   --页面状态改变监听
   onPageScrolled=(lambda(a,b,c) -> task(1,function()
     end)),

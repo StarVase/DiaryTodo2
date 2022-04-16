@@ -67,8 +67,9 @@ return function(data)
           tag.p.Focusable=data.p.Focusable
         end
       end
-      holder.itemView.onClick=lambda -> task(50,lambda ->onItemClick(position+1,tag.status))
-
+      if (data.__type != 1) then
+        holder.itemView.onClick=lambda -> task(50,lambda ->onItemClick(position+1,tag.status))
+      end
       --[[  local tag=holder.itemView.tag
     tag.text.text=data.text
     tag.img.ImageResource=data.img

@@ -51,6 +51,7 @@
 
             {
               AppCompatTextView;
+              id="focuslabel",
               textSize="16sp";
               layout_width="wrap";
               text=AdapLan("聚焦","Focusing"),

@@ -5,7 +5,7 @@
   layout_height="wrap";
   layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-  --id="weather",
+  id="weathermain",
 
   {
     LinearLayout,

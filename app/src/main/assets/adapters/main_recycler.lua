@@ -30,18 +30,12 @@ return LuaDiffRecyclerAdapter(LuaDiffRecyclerAdapter.LuaInterface {
     local tag=holder.itemView.tag
     tag.text.text=data.text
     tag.img.ImageResource=data.img
-    tag.card.onClick=lambda -> task(1,lambda -> data.onClick())
+    tag.CardParent.onClick=lambda -> task(1,lambda -> data.onClick())
     --    tag.title.text=data.title
     --    tag.text.text=data.text
-    tag.card.onTouchListener={
-      onTouch=function (v,e)
-        if e.action==0 then
-         -- TouchEffect(v,1,0.9,250)
-         else--[[if e.action==1 or e.action==2 then]]
-        --  TouchEffect(v,0.9,1,250)
-        end
-      end
-    }
+
+    TouchEffectHelper().setClickEffect(tag.CardParent,0.9,150)
+
     headerParams = tag.CardParent.getLayoutParams()
     --headerParams.height=math.dp2int(120)
     --headerParams.height=(math.dp2int(math.random(200,280)))

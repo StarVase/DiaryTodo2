@@ -9,7 +9,10 @@ parser = WebView(this)
 parser.getSettings().setJavaScriptEnabled(true);
 parser.loadUrl("file:///android_asset/html/index.html")
 
-activity.setContentView(loadlayout(layout))
+layoutview=loadlayout(layout)
+webView.enableSlowWholeDocumentDraw();
+activity.setContentView(layoutview)
+
 Widgetcontent.setLineSpacing(2,1.5)
 editTitle=loadlayout({
   RelativeLayout;
@@ -141,8 +144,8 @@ end]]
 fab.onClick=function()
   local nowPage=page.getCurrentItem()
   if nowPage==0 then
-    page.showPage(nowPage+1)
-   else page.showPage(nowPage-1)
+    page.setCurrentItem(nowPage+1)
+   else page.setCurrentItem(nowPage-1)
   end
 end
 
@@ -232,3 +235,15 @@ function MarkText(text)
       end
     end})).run()
 end
+task(5000,function()
+    --MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),"WebShot_"..os.clock()..".png")
+   --[[ capture=webView.capturePicture()
+    if (capture && capture.getWidth() > 0 && capture.getHeight() > 0) then
+      bitmap=Bitmap.createBitmap(capture.getWidth(),capture.getHeight(),Bitmap.Config.ARGB_8888)
+      canvas=Canvas(bitmap)
+      capture.draw(canvas)
+    end]]
+  --bitmap=webView.getDrawingCache()
+--MyBitmap.saveAsPng(bitmap,"WebShot_"..os.clock()..".png")
+
+end)
