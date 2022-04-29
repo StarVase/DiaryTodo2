@@ -110,4 +110,33 @@
       };
     },
   },
+  ["UnfinishedTodo"]={
+    LinearLayout;
+    layout_height="fill";
+    orientation="vertical";
+    layout_width="fill";
+    {
+      MaterialCardView;
+      layout_width="128dp";
+      layout_height="48dp";
+      {
+        FrameLayout;
+        layout_width="fill";
+        layout_height="fill";
+        {
+          ProgressBar;
+        };
+        {
+          LinearLayout;
+          layout_height="fill";
+          layout_width="fill";
+          {
+            TextView;
+            text="hello";
+          };
+        };
+      };
+    };
+  };
+
 }

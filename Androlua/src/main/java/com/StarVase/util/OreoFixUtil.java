@@ -19,7 +19,7 @@ public class OreoFixUtil {
      *
      * @param activity
      */
-    public static void hookOrientation(AppCompatActivity activity) {
+    public static void hookOrientation(Activity activity) {
         //目标版本8.0
         if (activity.getApplicationInfo().targetSdkVersion == Build.VERSION_CODES.O) {
             if (isTranslucentOrFloating(activity)) {
@@ -33,7 +33,7 @@ public class OreoFixUtil {
      *
      * @param activity
      */
-    private static void fixOrientation(AppCompatActivity activity) {
+    private static void fixOrientation(Activity activity) {
         try {
             Class<Activity> activityClass = Activity.class;
             Field mActivityInfoField = activityClass.getDeclaredField("mActivityInfo");
@@ -52,7 +52,7 @@ public class OreoFixUtil {
      * @param activity
      * @return
      */
-    private static boolean isTranslucentOrFloating(AppCompatActivity activity) {
+    private static boolean isTranslucentOrFloating(Activity activity) {
         boolean isTranslucentOrFloating = false;
         try {
             Class<?> styleableClass = Class.forName("com.android.internal.R$styleable");

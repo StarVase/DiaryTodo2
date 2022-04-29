@@ -27,7 +27,7 @@ end
 
 function computeProgress(data)
   xpcall(function()
-    tab=cjson.decode(data)
+    local tab=cjson.decode(data)
     -- print(dump(tab))
     local val1=0
     for key,value in pairs(tab) do
@@ -57,6 +57,7 @@ function autoHighLight(word,type)
     return word
   end
 end
+
 function int2Boolean(int)
   if int>0 then
     return true
@@ -68,49 +69,57 @@ function Refresh()
   nodata.setVisibility(View.GONE)
 
   adapter.clear()
-  sql="select * from todo ORDER BY id DESC"
-  if pcall(raw,sql,nil) then
-    while (cursor.moveToNext()) do
+  Thread(Runnable({
+    run=function()
+      sql="select * from todo ORDER BY id DESC"
+      if pcall(raw,sql,nil) then
+        while (cursor.moveToNext()) do
 
-      id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
-      title = cursor.getString(1);--获取第二列的值
-      isHighlight = cursor.getInt(2)
-      data0 = cursor.getString(3);
+          id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
+          title = cursor.getString(1);--获取第二列的值
+          isHighlight = cursor.getInt(2)
+          local data0 = cursor.getString(3);
 
-      ts = cursor.getInt(4);
-      noticeat = cursor.getInt(5);
-      highlightColor=cursor.getInt(6);
-      if computeProgress(data0)==100 then
-        alpha=0.4
-       else
-        alpha=1
+          ts = cursor.getInt(4);
+          noticeat = cursor.getInt(5);
+          highlightColor=cursor.getInt(6);
+          local progress = computeProgress(data0)
+          if progress==100 then
+            alpha=0.4
+           else
+            alpha=1
+          end
+          CreateFileUtil.getDatabase().update("todo", ContentValues().put("percent", tostring(progress/100)), "id=?", {tostring(id)});
+
+          if #cjson.decode(data0) == 0 then
+            isPrgShow=0
+           else
+            isPrgShow=1
+          end
+          -- print(id,title,isHighlight,data,ts,noticeat)
+          adapter.add(
+          {
+            p={alpha=alpha},
+            title={
+              Text=autoHighLight(title,int2Boolean(isHighlight)),
+            },
+            id=id,
+            date=ts,
+            isHighlight=isHighlight,
+            progress={
+              progress=progress,
+              alpha=isPrgShow
+            },
+          })
+
+        end
+        cursor.close()
+        if #data == 0 then
+          nodata.setVisibility(View.VISIBLE)
+        end
       end
-      CreateFileUtil.getDatabase().update("todo", ContentValues().put("percent", tostring(computeProgress(data0)/100)), "id=?", {tostring(id)});
-
-      if #cjson.decode(data0) == 0 then
-        isPrgShow=0
-       else
-        isPrgShow=1
-      end
-      -- print(id,title,isHighlight,data,ts,noticeat)
-      adapter.add(
-      {
-        p={alpha=alpha},
-        title={
-          Text=autoHighLight(title,int2Boolean(isHighlight)),
-        },
-        id=id,
-        date=ts,
-        isHighlight=isHighlight,
-        progress={progress=computeProgress(data0),alpha=isPrgShow},
-      })
-
     end
-    cursor.close()
-    if #data == 0 then
-      nodata.setVisibility(View.VISIBLE)
-    end
-  end
+  })).run()
   loading.setVisibility(View.GONE)
   sr.setRefreshing(false);
 end

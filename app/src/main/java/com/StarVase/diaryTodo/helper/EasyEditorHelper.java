@@ -282,18 +282,5 @@ public class EasyEditorHelper {
      * @param flag A flag which indicate it should open keyboard or not.
 
      */
-    public void toggleKeyboard(int flag) {
-        InputMethodManager inputMethodManager = (InputMethodManager)
-            (context.getSystemService(Context.INPUT_METHOD_SERVICE));
-        if (inputMethodManager != null) {
-            if (flag == 0) {
-                View currentFocus = ((AppCompatActivity) context).getCurrentFocus();
-                if (currentFocus != null) {
-                    inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
-                }
-            } else {
-                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-            }
-        }
-    }
+    
 }

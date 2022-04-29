@@ -28,7 +28,6 @@ android {
 }
 
 dependencies {
-	implementation 'androidx.lifecycle:lifecycle-livedata-core:2.5.0-alpha05'
     api 'com.google.android.material:material:1.0.0'
     api 'androidx.appcompat:appcompat:1.0.0'
     }

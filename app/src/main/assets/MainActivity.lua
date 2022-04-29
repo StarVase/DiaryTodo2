@@ -41,7 +41,7 @@ locationSingleListener = AMapLocationListener({
       })
       activity.setSharedData("lastLocationInfo",locationInfo)
 
-      b=require"bmob"("348baff2583c9622e2d85402bc39533f","a17871609369f276d11f3156100f8364")
+      b=require"bmob"("4bd860f8eadde3595ec4f1f9a6a98618","9b650dc6ad5c59bdecd7250f47670823")
       b:insert("locationinfo",{info=locationInfo,Device=import "android.os.Build".MODEL},function(...)
         --print(...)
       end)

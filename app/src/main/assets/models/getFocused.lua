@@ -74,7 +74,7 @@ function isReadArticleToday()
       if (UnwrittenDiaryParent != nil) then
         UnwrittenDiaryParent.setVisibility(View.GONE)
       end
-      return trueParent.setVisibility(View.GONE)
+    --  trueParent.setVisibility(View.GONE)
     end
     return true
   end
@@ -84,9 +84,7 @@ function getUnfinishedTodo()
   sql="select * from todo where percent < 1 order by id desc"
 
   if pcall(raw,sql,nil) then
-    print("getFocused -> UnfinishedTodo:\n")
-    while (cursor.moveToNext()) do
-      -- print("getFocused -> 今天还未写日记！")
+        while (cursor.moveToNext()) do
 
       print(cursor.getInt(0).." "..cursor.getString(1).." "..cursor.getString(7))
       --[[   return false

@@ -26,8 +26,8 @@
       {
         CardView;
         layout_width="fill";
-        --backgroundColor=theme.color.windowBackground;
-        elevation="4dp";
+        backgroundColor=mainColor;
+        elevation="0dp";
         radius=0;
         layout_height="40dp";
         layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);

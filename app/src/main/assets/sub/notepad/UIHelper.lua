@@ -9,9 +9,11 @@ parser = WebView(this)
 parser.getSettings().setJavaScriptEnabled(true);
 parser.loadUrl("file:///android_asset/html/index.html")
 
-layoutview=loadlayout(layout)
-webView.enableSlowWholeDocumentDraw();
-activity.setContentView(layoutview)
+
+
+WebView.enableSlowWholeDocumentDraw();
+
+activity.setContentView(loadlayout(layout))
 
 Widgetcontent.setLineSpacing(2,1.5)
 editTitle=loadlayout({
@@ -29,6 +31,7 @@ editTitle=loadlayout({
     lines=1;
     id="Widgettitle",
     inputType="text";
+    
     backgroundColor=0;
     style="?android:attr/windowTitleStyle";
     textColor=titleColor;
@@ -67,10 +70,12 @@ function onOptionsItemSelected(item)
       mPerformEdit.redo();
      case R.id.menu_npd_save
       save()
-      -- case R.id.menu_npd_asimage
-      --  save()
+     case R.id.menu_npd_asimage
+      asImage()
      case R.id.menu_npd_ashtml
       ashtml()
+     case R.id.menu_npd_asmd
+      asmd()
     end
   end)
 end
@@ -90,57 +95,16 @@ fab.setImageResource(R.drawable.ic_file_swap_outline)
 --fab波纹颜色
 fab.setRippleColor(ColorStateList.valueOf(普通波纹))
 
-if activity.getSharedData("TTFPath")&&File(activity.getSharedData("TTFPath")).isFile() then
-  font=Typeface.createFromFile(File(activity.getSharedData("TTFPath")))
-  Widgetcontent.setTypeface(font)
-end
-
-
-
-function 连续撤销()
-  if 连续1==true then
-    task(10,function()
-      mPerformEdit.undo();
-      连续撤销()
-    end)
+pcall(function()
+  if activity.getSharedData("TTFPath")&&File(activity.getSharedData("TTFPath")).isFile() then
+    font=Typeface.createFromFile(File(activity.getSharedData("TTFPath")))
+    Widgetcontent.setTypeface(font)
   end
-end
-
-function 连续重做()
-  if 连续2==true then
-    task(10,function()
-      mPerformEdit.redo();
-      连续重做()
-    end)
-  end
-end
+end)
 
 
---[[
-undo.onClick=function()
-  mPerformEdit.undo();
-end
-redo.onClick=function()
-  mPerformEdit.redo();
-end
-undo.onLongClick=function()
-  连续1=true
-  连续撤销()
-end
-redo.onLongClick=function()
-  连续2=true
-  连续重做()
-end
-undo.onTouch=function(view,event,JDPUK)
-  if event.action==1 then
-    连续1=false
-  end
-end
-redo.onTouch=function(view,event,JDPUK)
-  if event.action==1 then
-    连续2=false
-  end
-end]]
+
+
 fab.onClick=function()
   local nowPage=page.getCurrentItem()
   if nowPage==0 then
@@ -166,9 +130,7 @@ pweb.getSettings().setOffscreenPreRaster(true) --设置预绘制
 pweb.getSettings().setRenderPriority(HIGH)--设置高渲染率
 pweb.setLayerType(View.LAYER_TYPE_HARDWARE,nil);--硬件加速
 pweb.getSettings().setPluginsEnabled(true)--支持插件
---pweb.loadUrl("file:///android_asset/html/index.html")
-pweb.removeView(pweb.getChildAt(0))
-
+pweb.getChildAt(0).getLayoutParams().height=DensityUtil.dp2px(this,4)
 
 function ashtml()
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
@@ -189,8 +151,8 @@ function ashtml()
 <h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
 ]]..html..[[</body>
 </html>]]
-        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html",HtmlContent)end) then
-          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.time())..".html")
+        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".html",HtmlContent)end) then
+          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".html")
           subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
          else
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
@@ -199,6 +161,23 @@ function ashtml()
     }));
    else
     MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlfail))
+  end
+end
+
+function asImage()
+  MarkText(Widgetcontent.text)
+  task(200,function()
+    MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
+
+  end)
+end
+
+function asmd()
+  if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".md",Widgetcontent.getText().toString())end) then
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".md")
+   else
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
   end
 end
 
@@ -235,15 +214,3 @@ function MarkText(text)
       end
     end})).run()
 end
-task(5000,function()
-    --MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),"WebShot_"..os.clock()..".png")
-   --[[ capture=webView.capturePicture()
-    if (capture && capture.getWidth() > 0 && capture.getHeight() > 0) then
-      bitmap=Bitmap.createBitmap(capture.getWidth(),capture.getHeight(),Bitmap.Config.ARGB_8888)
-      canvas=Canvas(bitmap)
-      capture.draw(canvas)
-    end]]
-  --bitmap=webView.getDrawingCache()
---MyBitmap.saveAsPng(bitmap,"WebShot_"..os.clock()..".png")
-
-end)

@@ -102,15 +102,16 @@
                 orientation="vertical",
                 layout_width="fill",
                 --gravity="center",
+                id="previewparent";
                 backgroundColor=BGC,
                 {
                   LuaWebView,
                   layout_height="fill",
                   layout_width="fill",
+                  focusable=true;
+                  FocusableInTouchMode=true,
                   id="webView",
                 },
-
-
               },
             }
 

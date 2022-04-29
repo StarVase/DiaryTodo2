@@ -24,14 +24,14 @@
     <!-- request install packages -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
-    <!-- read phone status and identity -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
     <!-- view network connections -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!-- view WLAN connections -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <!-- ask to ignore battery optimizations -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
     <application
         android:largeHeap="true"
@@ -218,6 +218,14 @@
 
         </activity>
 
+        <service 
+            android:name="com.StarVase.diaryTodo.app.DtdCoreService">
+        </service>
+        
+        <service 
+            android:name="com.amap.api.location.APSService">
+        </service>
+        
         <provider
             android:authorities="com.StarVase.diaryTodo.provider"
             android:exported="false"

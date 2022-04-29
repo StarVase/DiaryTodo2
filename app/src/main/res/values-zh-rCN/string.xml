@@ -32,8 +32,11 @@
     <string name="menu_npd_undo">撤销</string>
     <string name="menu_npd_redo">恢复</string>
     <string name="menu_npd_save">保存</string>
-    <string name="menu_npd_asimage">保存为图片</string>
-    <string name="menu_npd_ashtml">保存为网页</string>
+    <string name="menu_npd_export">导出并分享...</string>
+    <string name="menu_npd_asimage">以图片</string>
+    <string name="menu_npd_ashtml">以网页</string>
+    <string name="menu_npd_asmd">以Markdown</string>
+    
 
     <string name="menu_diary_lockall">全部锁定</string>
     <string name="menu_diary_unlockall">全部解锁</string>
@@ -42,6 +45,7 @@
     <string name="toast_ashtmlfail">对不起，您的设备不支持</string>
     <string name="toast_ashtmltry">失败，请再试一次</string>
     <string name="toast_saveexit">已保存，再按一次退出</string>
-
+    <string name="toast_permission_denied">请检查权限授予</string>
+    
     
 </resources>

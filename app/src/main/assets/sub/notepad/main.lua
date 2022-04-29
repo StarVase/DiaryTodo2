@@ -56,6 +56,7 @@ function AUTO_SWITCH_OR_FINISH()
 end
 
 
+
 function onPause()
   save()
   if doctype == "todoDetail" then
@@ -86,7 +87,7 @@ webView.setWebViewClient({
 page.setOnPageChangeListener(ViewPager.OnPageChangeListener{
   --页面状态改变监听
   onPageScrolled=(lambda(a,b,c) -> task(1,function()
-    end)),
+  end)),
   onPageSelected=lambda(v) -> MarkText(Widgetcontent.text)
 })
 function onKeyShortcut(keyCode, event)
@@ -96,7 +97,7 @@ function onKeyShortcut(keyCode, event)
      case
       KeyEvent.KEYCODE_P
       --预览
-      page.showPage(1)
+      page.setCurrentItem(1)
       return true;
      case
       KeyEvent.KEYCODE_S
@@ -105,11 +106,13 @@ function onKeyShortcut(keyCode, event)
      case
       KeyEvent.KEYCODE_E
       --编辑
-      page.showPage(0)
+      page.setCurrentItem(0)
       return true;
      case
       KeyEvent.KEYCODE_R
-      mPerformEdit.redo();
+      --mPerformEdit.redo();
+      --刷新
+      MarkText(Widgetcontent.text)
       return true;
      case
       KeyEvent.KEYCODE_Z
@@ -142,3 +145,7 @@ webView.setWebViewClient(LuaWebView.LuaWebViewClient({
     return true;
   end
 }))
+
+task(1,function()
+  MarkText(tostring(Widgetcontent.text))
+end)

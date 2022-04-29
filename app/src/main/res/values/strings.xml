@@ -31,8 +31,10 @@
     <string name="menu_npd_undo">Undo</string>
     <string name="menu_npd_redo">Redo</string>
     <string name="menu_npd_save">Save</string>
-    <string name="menu_npd_asimage">Save as image</string>
-    <string name="menu_npd_ashtml">Save as html</string>
+    <string name="menu_npd_export">Export and share...</string>
+    <string name="menu_npd_asimage">As image</string>
+    <string name="menu_npd_ashtml">As html</string>
+    <string name="menu_npd_asmd">As Markdown</string>
     
     <string name="menu_diary_lockall">Lock all</string>
     <string name="menu_diary_unlockall">Unlock all</string>
@@ -42,5 +44,6 @@
     <string name="toast_ashtmlfail">Sorry. Your device not supports this function.</string>
     <string name="toast_ashtmltry">Failed. Try again. </string>
     <string name="toast_saveexit">Saved. Press again to exit. </string>
-
+    <string name="toast_permission_denied">Please check permission.</string>
+    
 </resources>
