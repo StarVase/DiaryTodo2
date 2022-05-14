@@ -86,7 +86,7 @@ function getUnfinishedTodo()
   if pcall(raw,sql,nil) then
         while (cursor.moveToNext()) do
 
-      print(cursor.getInt(0).." "..cursor.getString(1).." "..cursor.getString(7))
+      --print(cursor.getInt(0).." "..cursor.getString(1).." "..cursor.getString(7))
       --[[   return false
      else
       return true]]
