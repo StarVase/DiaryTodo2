@@ -31,7 +31,7 @@ editTitle=loadlayout({
     lines=1;
     id="Widgettitle",
     inputType="text";
-    
+
     backgroundColor=0;
     style="?android:attr/windowTitleStyle";
     textColor=titleColor;
@@ -91,7 +91,7 @@ fab.setSupportBackgroundTintList(ColorStateList.valueOf(mainColor))
 --fab图标颜色
 fab.setColorFilter(titleColor)
 --fab图标
-fab.setImageResource(R.drawable.ic_file_swap_outline)
+fab.setImageResource(R.drawable.ic_check)
 --fab波纹颜色
 fab.setRippleColor(ColorStateList.valueOf(普通波纹))
 
@@ -166,10 +166,13 @@ end
 
 function asImage()
   MarkText(Widgetcontent.text)
-  task(200,function()
-    MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
-    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
+  task(500,function()
+    if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date())..".png")end) then
+      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
+     else
+      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
 
+    end
   end)
 end
 

@@ -3,17 +3,25 @@ package com.StarVase.androluax.base;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import com.StarVase.diaryTodo.app.DtdCoreService;
+import com.StarVase.diaryTodo.app.R;
 import com.StarVase.diaryTodo.manager.AppManager;
 import com.StarVase.util.OreoFixUtil;
 import java.util.ArrayList;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 
 public class LuaBaseActivityX extends AppCompatActivity {
 
@@ -70,10 +78,32 @@ public class LuaBaseActivityX extends AppCompatActivity {
             decorView.setSystemUiVisibility(vis);
         }
     }
-}
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        for (int i = 0; i < menu.size(); i++){
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(
+                    new PorterDuffColorFilter(
+                        getMenuColor(), 
+                        PorterDuff.Mode.SRC_IN)
+                        );
+            }
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
 	
+    public int getMenuColor(){
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.menuIconColor, typedValue, true);
+        return typedValue.data;
+    }
+
     
-	
+    	
 	public boolean setSwipeBackEnable(boolean p1){
 		return false;
 	};

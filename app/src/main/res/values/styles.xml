@@ -9,6 +9,8 @@
 	
 	<!--基础主题-->
     <style name="Base.Theme.Light" parent="Theme.MaterialComponents.Light">
+        <item name="menuIconColor">@color/Black</item>
+        
         <item name="colorPrimary">@color/White</item>
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="colorAccent">@color/Blue</item>
@@ -42,6 +44,7 @@
     </style>
 	
 	<style name="Base.Theme.DarkActionBar" parent="Base.Theme.Light">
+        <item name="menuIconColor">@color/White</item>
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="navigationViewColorAccent">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimaryDark</item>
@@ -55,6 +58,7 @@
     </style>
 	
 	<style name="Base.Theme.Dark" parent="Theme.MaterialComponents">
+        <item name="menuIconColor">@color/White</item>
         <item name="colorPrimary">@color/Black</item>
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="colorAccent">@color/Blue</item>
@@ -131,7 +135,7 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>
-       
+        <item name="menuIconColor">@color/MatchaGreen</item>
     </style>
     
     <!--天空蓝-->

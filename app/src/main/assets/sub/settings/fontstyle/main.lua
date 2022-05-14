@@ -15,6 +15,15 @@ if path then
   labelTtf.text="From TrueTypeface File:"..tostring(path)
 end
 
+pcall(function()
+  if activity.getSharedData("TTFPath")&&File(activity.getSharedData("TTFPath")).isFile() then
+    font=Typeface.createFromFile(File(activity.getSharedData("TTFPath")))
+    Widgetcontent.setTypeface(font)
+  end
+end)
+
+
+
 selectttf.onClick=function()
   if Build.VERSION.SDK_INT >= 30 then
     if Environment.isExternalStorageManager() then

@@ -88,7 +88,15 @@ page.setOnPageChangeListener(ViewPager.OnPageChangeListener{
   --页面状态改变监听
   onPageScrolled=(lambda(a,b,c) -> task(1,function()
   end)),
-  onPageSelected=lambda(v) -> MarkText(Widgetcontent.text)
+  onPageSelected=function(v)
+    MarkText(Widgetcontent.text)
+    if (page.getCurrentItem()==0) then
+      fab.setImageResource(R.drawable.ic_check)
+     else
+      fab.setImageResource(R.drawable.ic_pencil)
+
+    end
+  end
 })
 function onKeyShortcut(keyCode, event)
   local filteredMetaState = event.getMetaState() & ~KeyEvent.META_CTRL_MASK;
