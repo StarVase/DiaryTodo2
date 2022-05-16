@@ -33,6 +33,9 @@
     <!-- ask to ignore battery optimizations -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
+    <!-- use foregroung service -->
+    <uses-permission android:name= "android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:largeHeap="true"
         android:name="com.StarVase.diaryTodo.app.DtdApplication"
