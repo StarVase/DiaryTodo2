@@ -29,7 +29,7 @@ public class LuaBaseActivityX extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         OreoFixUtil.hookOrientation(this);
         AppManager.getAppManager().addActivity(this);
-        startService(new Intent(this,DtdCoreService.class));
+        //startService(new Intent(this,DtdCoreService.class));
 
         super.onCreate(savedInstanceState);
 		

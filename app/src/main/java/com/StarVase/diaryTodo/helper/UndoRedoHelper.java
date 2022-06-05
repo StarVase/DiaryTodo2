@@ -5,7 +5,6 @@ import android.text.TextWatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 import java.util.Stack;
-import ren.qinc.edit.PerformEdit;
 
  
 public class UndoRedoHelper {

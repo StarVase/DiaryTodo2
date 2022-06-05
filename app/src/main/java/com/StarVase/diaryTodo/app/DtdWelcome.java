@@ -1,7 +1,14 @@
 package com.StarVase.diaryTodo.app;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.view.KeyEvent;
+import androidx.annotation.RequiresApi;
 
 
 public class DtdWelcome extends BaseActivity
@@ -10,6 +17,9 @@ public class DtdWelcome extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO: Implement this method
+        if (isIgnoringBatteryOptimizations()) {
+            requestIgnoreBatteryOptimizations();
+        }
         super.onCreate(savedInstanceState);
         //super.setSwipeBackEnable(false);
 	}
@@ -38,6 +48,24 @@ public class DtdWelcome extends BaseActivity
         }
         return false;
     }
-    
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void requestIgnoreBatteryOptimizations() {
+         try{
+             Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+             intent.setData(Uri.parse("package:"+ getPackageName()));
+             startActivity(intent);
+             } catch(Exception e) {
+             e.printStackTrace();
+         }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isIgnoringBatteryOptimizations() {
+        boolean isIgnoring = false;
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if(powerManager != null) {
+            isIgnoring = powerManager.isIgnoringBatteryOptimizations(getPackageName());
+        }
+        return isIgnoring;
+    }
 }
 

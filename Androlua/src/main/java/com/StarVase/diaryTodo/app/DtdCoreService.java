@@ -50,14 +50,14 @@ public class DtdCoreService extends Service {
         } else {//Android 8.0以上
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             if (manager != null) {
-                NotificationChannel channel = new NotificationChannel("channel","name",NotificationManager.IMPORTANCE_NONE);
+                NotificationChannel channel = new NotificationChannel("Dtd","CoreService",NotificationManager.IMPORTANCE_NONE);
                 manager.createNotificationChannel(channel);
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"channel");
 
                 //将Service设置为前台服务,Android 8.0 App启动不会弹出通知栏消息，退出后台会弹出通知消息
                 //Android9.0启动时候会立刻弹出通知栏消息
-                startForeground(SERVICE_ID,new Notification());
+                startForeground(SERVICE_ID,builder.build());
             }
         }
 
@@ -73,7 +73,31 @@ public class DtdCoreService extends Service {
 
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
+                    //判断版本
+        if (Build.VERSION.SDK_INT < 18) {//Android4.3以下版本
+
+            //将Service设置为前台服务，可以取消通知栏消息
             startForeground(SERVICE_ID, new Notification());
+
+        } else if (Build.VERSION.SDK_INT < 24) {//Android4.3 - 7.0之间
+            //将Service设置为前台服务，可以取消通知栏消息
+            startForeground(SERVICE_ID, new Notification());
+            
+        } else {//Android 8.0以上
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            if (manager != null) {
+                NotificationChannel channel = new NotificationChannel("Dtd","CoreService",NotificationManager.IMPORTANCE_NONE);
+                manager.createNotificationChannel(channel);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"channel");
+
+                //将Service设置为前台服务,Android 8.0 App启动不会弹出通知栏消息，退出后台会弹出通知消息
+                //Android9.0启动时候会立刻弹出通知栏消息
+                startForeground(SERVICE_ID,builder.build());
+            }
+        }
+
+            
             stopForeground(true);//移除通知栏消息
             stopSelf();
             return super.onStartCommand(intent, flags, startId);

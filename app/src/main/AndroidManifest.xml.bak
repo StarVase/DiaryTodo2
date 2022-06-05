@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.StarVase.diaryTodo">
+
+    <!-- read the contents of your SD card -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- modify or delete the contents of your SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- have full network access -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- access precise location (GPS and network-based) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- access approximate location (network-based) -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- access extra location provider commands -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+
+    <!-- request install packages -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
+    <!-- view network connections -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- view WLAN connections -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <!-- ask to ignore battery optimizations -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+
+    <!-- use foregroung service -->
+    <uses-permission android:name= "android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:largeHeap="true"
+        android:name="com.StarVase.diaryTodo.app.DtdApplication"
+        android:persistent="true"
+        android:resizeableActivity="true"
+        android:supportsPictureInPicture="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/mDefaultWhite">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="4"/>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="d760ca556ab022b0c20ec873b231314a"/>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/DefaultWhite"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:name="com.StarVase.diaryTodo.app.MainActivity"/>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/app_name"
+            android:name="com.StarVase.diaryTodo.app.BaseActivity"
+            android:exported="false">
+
+        </activity>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:documentLaunchMode="intoExisting"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:excludeFromRecents="false"
+            android:label="@string/app_name"
+            android:name="com.StarVase.diaryTodo.app.SubActivity">
+
+        </activity>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/Welcome"
+            android:name="com.StarVase.diaryTodo.app.DtdWelcome"/>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/MatchaGreen"
+            android:name="com.StarVase.diaryTodo.app.FileTransferedIn">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="file"/>
+
+                <data android:mimeType="text/*"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.txt"/>
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="content"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.txt"/>
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="file"/>
+
+                <data android:mimeType="text/*"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.md"/>
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="content"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.md"/>
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="file"/>
+
+                <data android:mimeType="text/*"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.mdx"/>
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="content"/>
+
+                <data android:host="*"/>
+
+                <data android:pathPattern=".*\\.mdx"/>
+
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:label="@string/app_name"
+            android:theme="@style/DefaultWhite"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:name="com.StarVase.diaryTodo.app.Welcome">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+
+            </intent-filter>
+
+        </activity>
+
+        <service 
+            android:name="com.StarVase.diaryTodo.app.DtdCoreService">
+        </service>
+        
+        <service 
+            android:name="com.amap.api.location.APSService">
+        </service>
+        
+        <provider
+            android:authorities="com.StarVase.diaryTodo.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:name="androidx.core.content.FileProvider">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/diarytodo_filepaths"/>
+
+        </provider>
+
+    </application>
+
+</manifest>
