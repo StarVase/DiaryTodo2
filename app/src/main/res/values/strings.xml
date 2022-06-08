@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources> 
+
     <string name="app_name">DiaryTodo</string> 
     <string name="debug">Attention\! This page is for debug only, and it is not safe. Please don\'t pay with it\! </string>
   	<!--Global functions name-->
@@ -46,4 +47,39 @@
     <string name="toast_saveexit">Saved. Press again to exit. </string>
     <string name="toast_permission_denied">Please check permission.</string>
     
+    <!-- cancel and ok -->
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
+    
+    <!-- editor toolbar dialog -->
+    <string name="dialog_btn_insert">Insert</string>
+
+    <!-- insert link -->
+    <string name="dialog_title_insert_link">Insert link</string>
+    <string name="dialog_et_hint_link_display_text">Display text (Default: Link)</string>
+    <string name="dialog_et_hint_link_content">Link</string>
+
+    <!-- insert image -->
+    <string name="dialog_item_text_local_image">Local</string>
+    <string name="dialog_item_text_internet_image">Internet</string>
+    <string name="dialog_title_insert_image">Insert image</string>
+    <string name="dialog_et_hint_image_display_text">Display text (Default: Image)</string>
+    <string name="dialog_et_hint_image_uri">Image link</string>
+
+    <!-- insert block code -->
+    <string name="editor_dialog_title_insert_block_code">Insert block code</string>
+    <string name="dialog_et_hint_language_name">Language</string>
+
+    <!-- dialog toast -->
+    <string name="toast_saved">Saved</string>
+    <string name="toast_does_not_select">No image selected</string>
+    <string name="toast_file_name_can_not_empty">File name can not be empty</string>
+    <string name="toast_file_name_exists">The file name already exists. Please enter new name.</string>
+    
+    <!-- dialog insert table -->
+    <string name="dialog_et_hint_table_rows">Rows</string>
+    <string name="dialog_et_hint_table_cols">Column</string>
+    <string name="dialog_title_insert_table">Insert table</string>
+
 </resources>

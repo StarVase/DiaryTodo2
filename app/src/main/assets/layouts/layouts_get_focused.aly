@@ -11,13 +11,14 @@
     paddingBottom="8dp",
 
     {
-      CardView,
+      MaterialCardView,
       layout_margin="4dp",
       layout_width='-1',
-      Elevation=4;
       id="UnwrittenDiaryCardParent",
       foreground=graph.Ripple(nil,淡色强调波纹);
-      cardBackgroundColor=0,
+      elevation=0,
+      StrokeColor=lightForceColor,
+      StrokeWidth=math.dp2int(2),
       radius=math.dp2int(16),
       onClick=function() return true end;
       {
@@ -66,13 +67,14 @@
     paddingBottom="8dp",
 
     {
-      CardView,
+      MaterialCardView,
       layout_margin="4dp",
       layout_width='-1',
-      Elevation=4;
       id="ReadArticleCardParent",
       foreground=graph.Ripple(nil,淡色强调波纹);
-      cardBackgroundColor=0,
+      elevation=0,
+      StrokeColor=lightForceColor,
+      StrokeWidth=math.dp2int(2),
       radius=math.dp2int(16),
       onClick=function() return true end;
 

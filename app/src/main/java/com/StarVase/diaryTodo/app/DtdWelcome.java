@@ -13,11 +13,13 @@ import androidx.annotation.RequiresApi;
 
 public class DtdWelcome extends BaseActivity
 {
-
+    
+    Context activity = this.getContext();
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO: Implement this method
-        if (isIgnoringBatteryOptimizations()) {
+        if (!isIgnoringBatteryOptimizations()) {
             requestIgnoreBatteryOptimizations();
         }
         super.onCreate(savedInstanceState);
@@ -52,8 +54,8 @@ public class DtdWelcome extends BaseActivity
     public void requestIgnoreBatteryOptimizations() {
          try{
              Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-             intent.setData(Uri.parse("package:"+ getPackageName()));
-             startActivity(intent);
+             intent.setData(Uri.parse("package:"+ activity.getPackageName()));
+             activity.startActivity(intent);
              } catch(Exception e) {
              e.printStackTrace();
          }
@@ -61,9 +63,9 @@ public class DtdWelcome extends BaseActivity
     @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean isIgnoringBatteryOptimizations() {
         boolean isIgnoring = false;
-        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        PowerManager powerManager = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
         if(powerManager != null) {
-            isIgnoring = powerManager.isIgnoringBatteryOptimizations(getPackageName());
+            isIgnoring = powerManager.isIgnoringBatteryOptimizations(activity.getPackageName());
         }
         return isIgnoring;
     }

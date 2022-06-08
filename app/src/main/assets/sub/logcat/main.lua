@@ -54,7 +54,7 @@ func.All=function()
 end
 func.Lua=function()
   activity.getSupportActionBar().setSubtitle("Lua")
-  task(readlog,"lua:* *:S",show)
+  task(readlog,"lua:* *:I",show)
 end
 func.Test=function()
   activity.getSupportActionBar().setSubtitle("测试")

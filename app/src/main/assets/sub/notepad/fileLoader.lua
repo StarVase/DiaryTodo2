@@ -37,7 +37,7 @@ function decrypt(key,content,usrKey)
     Widgetcontent.setFocusable(false)
     activity.finish()
   end
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   MarkText(Widgetcontent.text)
   -- end})).run()
 end
@@ -63,7 +63,7 @@ function startLoadDiary()
     Widgetcontent.FocusableInTouchMode=true
     _STATE.__EMP=false
   end
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   MarkText(Widgetcontent.text)
   --end})).run()
 end
@@ -81,7 +81,7 @@ function startLoadInspiration()
   Widgetcontent.focusable=true
   Widgetcontent.FocusableInTouchMode=true
   --  end})).run()
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   MarkText(Widgetcontent.text)
 end
 
@@ -97,7 +97,7 @@ function startLoadCollection()
   _STATE._INITCONTENT=content
   Widgetcontent.setFocusable(true)
   Widgetcontent.FocusableInTouchMode=true
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   --  end})).run()
   MarkText(Widgetcontent.text)
 end
@@ -115,7 +115,7 @@ function startLoadNormalFile()
 
   --webView.loadDataWithBaseURL(File(filepath).getParent(), "javascript:MarkText(\"" ..content.. "\");", "text/html", "UTF-8", null);
   --end)
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   -- end})).run()
   MarkText(Widgetcontent.text)
 end
@@ -126,7 +126,7 @@ function startLoadTodoDetail()
   _STATE._INITCONTENT=details.content
   Widgetcontent.setFocusable(true)
   Widgetcontent.FocusableInTouchMode=true
-  mPerformEdit.setDefaultText(Widgetcontent.text)
+  editorHelper.setDefaultText(Widgetcontent.text)
   --  end})).run()
   MarkText(Widgetcontent.text)
 end

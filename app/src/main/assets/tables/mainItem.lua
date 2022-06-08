@@ -1,7 +1,7 @@
 R=luajava.bindClass(activity.getPackageName()..".R")
 
 AutoCheckPromission=function(func)
-  if Build.VERSION.SDK_INT >= 30 then
+--[[  if Build.VERSION.SDK_INT >= 30 then
     if Environment.isExternalStorageManager() then
       func()
      else
@@ -13,7 +13,8 @@ AutoCheckPromission=function(func)
     end
    else
     func()
-  end
+  end]]
+func()
 end
 
 return {
@@ -52,10 +53,10 @@ return {
     ["img"]=R.drawable.ic_star,
     ["onClick"]=function() sub('collectionX',nil,os.clock()) end,
   },
---[[  {
+  {
     ["text"]=activity.getString(R.string.func_logcat),
     ["img"]=R.drawable.ic_android_debug_bridge,
     ["onClick"]=function() sub('logcat',nil,os.clock()) end,
   },
-]]
+
 }

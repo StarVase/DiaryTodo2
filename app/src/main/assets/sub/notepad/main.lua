@@ -7,6 +7,7 @@ import "android.webkit.*"
 import "java.io.*"
 import "androidx.viewpager.widget.ViewPager"
 import "androidx.appcompat.widget.AppCompatEditText"
+import "android.widget.HorizontalScrollView"
 import "layout"
 
 doctype,title,details=...
@@ -21,6 +22,7 @@ import "UIHelper"
 import "fileSave"
 import "fileLoader"
 
+refreshSymbolBar(true)
 
 if title then
   Widgettitle.Text=title
@@ -33,7 +35,10 @@ end
 if not content then
   --Widgetcontent.text=io.open(path):read("*a")
 end
-mPerformEdit.clearHistory()
+
+
+
+editorHelper.clearHistory()
 
 arg=0
 function AUTO_SWITCH_OR_FINISH()
@@ -81,7 +86,10 @@ function onKeyUp(code,event)
 end
 webView.setWebViewClient({
   shouldOverrideUrlLoading=(lambda(view,url) -> autoDark()),
-  onPageFinished=(lambda(view,url) -> autoDark()),
+  onPageFinished=function(view,url)
+    autoDark()
+    MarkText(Widgetcontent.text)
+  end,
   onPageStarted=lambda(view,url,favicon) -> autoDark()
 })
 page.setOnPageChangeListener(ViewPager.OnPageChangeListener{
@@ -154,6 +162,6 @@ webView.setWebViewClient(LuaWebView.LuaWebViewClient({
   end
 }))
 
-task(1,function()
+task(1000,function()
   MarkText(tostring(Widgetcontent.text))
 end)

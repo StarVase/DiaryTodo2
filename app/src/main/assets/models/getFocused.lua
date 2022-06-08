@@ -36,10 +36,9 @@ function isWrittenDiaryToday()
 
   if pcall(raw,sql,nil) then
     if (!cursor.moveToNext()) then
-      if (UnwrittenDiaryParent == nil) then
+      if (activity.getSharedData("GetFocused")&&(UnwrittenDiaryParent == nil)) then
         focusing.addView(loadlayout(require"layouts.layouts_get_focused"["UnwrittenDiary"]))
       end
-      --print("getFocused -> 今天还未写日记！")
       return false
      else
       if (UnwrittenDiaryParent != nil) then
@@ -57,24 +56,14 @@ function isReadArticleToday()
   conf.year=time.year
   conf.month=time.month+1
   conf.day=time.monthDay
-  if (!activity.getSharedData("LastReadArticleDate")|| activity.getSharedData("LastReadArticleDate") < tointeger(tostring(conf.year)..tostring(conf.month)..tostring(conf.day))) then
+  if (activity.getSharedData("GetFocused")&&(!activity.getSharedData("LastReadArticleDate")|| activity.getSharedData("LastReadArticleDate") < tointeger(tostring(conf.year)..tostring(conf.month)..tostring(conf.day)))) then
     if (ReadArticleParent == nil) then
       focusing.addView(loadlayout(require"layouts.layouts_get_focused"["ReadArticle"]))
     end
-    --print("getFocused -> 今天还未写日记！")
     return false
    else
     if (ReadArticleParent != nil) then
-      if (UnwrittenDiaryParent == nil) then
-        focusing.addView(loadlayout(require"layouts.layouts_get_focused"["UnwrittenDiary"]))
-      end
-      --print("getFocused -> 今天还未写日记！")
-      return false
-     else
-      if (UnwrittenDiaryParent != nil) then
-        UnwrittenDiaryParent.setVisibility(View.GONE)
-      end
-    --  trueParent.setVisibility(View.GONE)
+      UnwrittenDiaryParent.setVisibility(View.GONE)
     end
     return true
   end
@@ -84,7 +73,7 @@ function getUnfinishedTodo()
   sql="select * from todo where percent < 1 order by id desc"
 
   if pcall(raw,sql,nil) then
-        while (cursor.moveToNext()) do
+    while (cursor.moveToNext()) do
 
       --print(cursor.getInt(0).." "..cursor.getString(1).." "..cursor.getString(7))
       --[[   return false
@@ -97,4 +86,4 @@ end
 
 --print(isWrittenDiaryToday())
 --print(isReadArticleToday())
-getUnfinishedTodo()
+--getUnfinishedTodo()

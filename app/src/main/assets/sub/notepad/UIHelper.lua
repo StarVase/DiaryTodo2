@@ -15,6 +15,8 @@ WebView.enableSlowWholeDocumentDraw();
 
 activity.setContentView(loadlayout(layout))
 
+editorHelper=EasyEditorHelper(this,Widgetcontent)
+
 Widgetcontent.setLineSpacing(2,1.5)
 editTitle=loadlayout({
   RelativeLayout;
@@ -59,25 +61,25 @@ function onCreateOptionsMenu(menu)
 end
 
 function onOptionsItemSelected(item)
-  task(1,function()
-    local id=item.getItemId()
-    switch id
-     case android.R.id.home
-      AUTO_SWITCH_OR_FINISH()
-     case R.id.menu_npd_undo
-      mPerformEdit.undo();
-     case R.id.menu_npd_redo
-      mPerformEdit.redo();
-     case R.id.menu_npd_save
-      save()
-     case R.id.menu_npd_asimage
-      asImage()
-     case R.id.menu_npd_ashtml
-      ashtml()
-     case R.id.menu_npd_asmd
-      asmd()
-    end
-  end)
+  --  task(1,function()
+  local id=item.getItemId()
+  switch id
+   case android.R.id.home
+    AUTO_SWITCH_OR_FINISH()
+   case R.id.menu_npd_undo
+    editorHelper.undo();
+   case R.id.menu_npd_redo
+    editorHelper.redo();
+   case R.id.menu_npd_save
+    save()
+   case R.id.menu_npd_asimage
+    asImage()
+   case R.id.menu_npd_ashtml
+    ashtml()
+   case R.id.menu_npd_asmd
+    asmd()
+  end
+  --  end)
 end
 --[[back.onClick=function()
   activity.finish()
@@ -131,6 +133,47 @@ pweb.getSettings().setRenderPriority(HIGH)--设置高渲染率
 pweb.setLayerType(View.LAYER_TYPE_HARDWARE,nil);--硬件加速
 pweb.getSettings().setPluginsEnabled(true)--支持插件
 pweb.getChildAt(0).getLayoutParams().height=DensityUtil.dp2px(this,4)
+-- 封包前loadfile100行
+-- 封包前loadfile100行
+-- 封包前loadfile100行
+-- 封包前loadfile100行
+-- 封包前loadfile100行
+
+
+
+function refreshSymbolBar(state)
+  if state then
+    loadedSymbolBar=true
+    local ps=require("BarFunction")
+        for index,content in ipairs(ps) do
+      ps_bar.addView(newPsButton(content))
+    end
+    ps=nil
+    if activity.getSharedData("FuncBarMargin") then
+      --左上右下
+      bottomAppBar.getChildAt(0).setPadding(math.dp2int(8),0,math.dp2int(8),math.dp2int(28))
+    end
+
+    bottomAppBar.setVisibility(View.VISIBLE)
+  end
+end
+function newPsButton(icary)
+  return loadlayout({
+    AppCompatImageView;
+    onClick=icary.func;
+    ImageResource=icary.icon,
+    colorFilter=textColor,
+   
+    layout_height="fill";
+    --padding="8dp";
+    paddingLeft="8dp";
+    paddingRight="8dp";
+    --padding="16dp";
+    focusable=true;
+    background=graph.Ripple(nil,淡色强调波纹),
+  })
+end
+
 
 function ashtml()
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) then
@@ -151,8 +194,8 @@ function ashtml()
 <h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
 ]]..html..[[</body>
 </html>]]
-        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".html",HtmlContent)end) then
-          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".html")
+        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html",HtmlContent)end) then
+          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html")
           subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
          else
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
@@ -166,9 +209,10 @@ end
 
 function asImage()
   MarkText(Widgetcontent.text)
+
   task(500,function()
-    if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date())..".png")end) then
-      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".png")
+    if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png")end) then
+      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..path.envdir.."/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png")
      else
       MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
 
@@ -177,8 +221,8 @@ function asImage()
 end
 
 function asmd()
-  if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".md",Widgetcontent.getText().toString())end) then
-    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date())..".md")
+  if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md",Widgetcontent.getText().toString())end) then
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md")
    else
     MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
   end

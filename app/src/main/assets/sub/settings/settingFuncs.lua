@@ -27,6 +27,18 @@ onItemClick=function(one,SwitchIn)
      case "FontStyle"
       activity.newActivity("fontstyle/main.lua")
       --MyToast.showSnackBar("Developing...")
+
+     case "FuncBarMargin"
+      if dataset[one].status["Checked"]==true then
+        this.setSharedData(state,false)
+        dataset[one].status["Checked"]=false
+       else
+        this.setSharedData(state,true)
+        dataset[one].status["Checked"]=true
+      end
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
+
+
      case "EncryptDiary"
       --activity.newActivity("models/setPassword.lua")
       --dataset[one].status["Checked"]=this.getSharedData(state)
@@ -54,6 +66,16 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+     case "GetFocused"
+      if dataset[one].status["Checked"]==true then
+        this.setSharedData(state,false)
+        dataset[one].status["Checked"]=false
+       else
+        this.setSharedData(state,true)
+        dataset[one].status["Checked"]=true
+      end
+      SwitchIn.checked=unBoolean(SwitchIn.checked)
+
      case "WeatherCity"
       activity.newActivity("selectcity/main.lua")
      case "YiyanEnabled"

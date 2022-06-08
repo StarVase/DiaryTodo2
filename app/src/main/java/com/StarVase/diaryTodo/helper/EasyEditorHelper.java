@@ -1,10 +1,15 @@
 package com.StarVase.diaryTodo.helper;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
+import com.StarVase.diaryTodo.R;
+import com.StarVase.diaryTodo.helper.MarkdownTableBuilder;
 
 /**
 
@@ -101,6 +106,53 @@ public class EasyEditorHelper {
 
     /**
 
+     * Add Add html underline tag
+
+     * If there was select something, add markup beside the selected text.
+
+     * Otherwise, just add the markup and set cursor position at the middle of markup.
+
+     */
+    public void underline() {
+        // Add html underline tag
+
+        int start = editText.getSelectionStart();
+        int end = editText.getSelectionEnd();
+        if (start == end) {
+            editText.getText().insert(start, "<u></u>");
+            editText.setSelection(start + 3);
+        } else {
+            editText.getText().insert(start, "<u>");
+            editText.getText().insert(end + 3, "</u>");
+        }
+    }
+
+
+    /**
+
+     * Add Add html deleteline tag
+
+     * If there was select something, add markup beside the selected text.
+
+     * Otherwise, just add the markup and set cursor position at the middle of markup.
+
+     */
+    public void deleteline() {
+        // Add html underline tag
+
+        int start = editText.getSelectionStart();
+        int end = editText.getSelectionEnd();
+        if (start == end) {
+            editText.getText().insert(start, "~~~~");
+            editText.setSelection(start + 2);
+        } else {
+            editText.getText().insert(start, "~~");
+            editText.getText().insert(end + 2, "~~");
+        }
+    }
+
+    /**
+
      * Add markdown code markup.
 
      * If there was select something, add markup beside the selected text.
@@ -110,7 +162,7 @@ public class EasyEditorHelper {
      * and insert block code markup after input.
 
      */
-/*    public void insertCode() {
+    public void insertCode() {
         int start = editText.getSelectionStart();
         int end = editText.getSelectionEnd();
         if (start == end) { // Insert block code markup if there was nothing selected.
@@ -147,7 +199,27 @@ public class EasyEditorHelper {
             editText.getText().insert(end + 1, "`");
         }
     }
-*/
+    
+    
+    /**
+
+     * Add markdown block quote markup.
+
+     */
+    public void asciimath() {
+        int start = editText.getSelectionStart();
+        int end = editText.getSelectionEnd();
+        if (start == end) {
+            editText.getText().insert(end, "\n```asciimath\n\n```\n");
+            editText.setSelection(end + 12);
+        } else {
+            editText.getText().insert(start, "\n```asciimath");
+            editText.getText().insert(end + 12, "\n```\n");
+        }
+    }
+
+    
+
     /**
 
      * Add markdown block quote markup.
@@ -185,12 +257,35 @@ public class EasyEditorHelper {
         editText.getText().insert(start, "\n* ");
     }
 
+
+    /**
+
+     * Add markdown todo list markup.
+
+     */
+    public void todoList() {
+        int start = editText.getSelectionStart();
+        editText.getText().insert(start, "\n- [x] ");
+    }
+
+
+    /**
+
+     * Add markdown divider markup.
+
+     */
+    public void divider() {
+        int start = editText.getSelectionStart();
+        editText.getText().insert(start, "\n------ \n\n");
+    }
+
+
     /**
 
      * Insert markdown link markup.
 
      */
-     /*
+     
     public void insertLink() {
         AlertDialog.Builder linkDialog = new AlertDialog.Builder(context);
         linkDialog.setTitle(R.string.dialog_title_insert_link);
@@ -237,7 +332,61 @@ public class EasyEditorHelper {
             });
         linkDialog.show();
     }
-*/
+    
+    /**
+
+     * Insert markdown link markup.
+
+     */
+     
+    public void insertImg() {
+        AlertDialog.Builder linkDialog = new AlertDialog.Builder(context);
+        linkDialog.setTitle(R.string.dialog_title_insert_image);
+        LayoutInflater inflater = ((AppCompatActivity) context).getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_insert_image, null);
+        final EditText displayET = view.findViewById(R.id.image_display_text);
+        final EditText uriET = view.findViewById(R.id.image_uri);
+
+        final int start = editText.getSelectionStart();
+        final int end = editText.getSelectionEnd();
+        if (start < end) {
+            String selectedContent = editText.getText().subSequence(start, end).toString();
+            displayET.setText(selectedContent);
+            uriET.requestFocus();
+        }
+        linkDialog.setView(view);
+        linkDialog.setNegativeButton(R.string.cancel,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+        linkDialog.setPositiveButton(R.string.dialog_btn_insert,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String linkDisplayText = displayET.getText().toString();
+                    String linkContent = uriET.getText().toString();
+                    if (linkDisplayText.equals("")) {
+                        linkDisplayText = "Image";
+                    }
+                    String content = "![" + linkDisplayText + "]" + "(" + linkContent + ")";
+                    if (start == end) {
+                        editText.getText().insert(start, content);
+                    } else {
+                        editText.getText().replace(start, end, content);
+                    }
+                    if (linkContent.equals("")) {
+                        editText.setSelection(content.length() - 1);
+                    }
+                }
+            });
+        linkDialog.show();
+    }
+    
+
     /**
 
      * Insert markdown image markup.
@@ -251,6 +400,56 @@ public class EasyEditorHelper {
         int start = editText.getSelectionStart();
         editText.getText().insert(start, "\n\n![" + displayText + "](" + imageUri + ")\n\n");
     }
+    
+    
+        /**
+
+     * Insert markdown link markup.
+
+     */
+     
+    public void insertTable() {
+        AlertDialog.Builder linkDialog = new AlertDialog.Builder(context);
+        linkDialog.setTitle(R.string.dialog_title_insert_table);
+        LayoutInflater inflater = ((AppCompatActivity) context).getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_insert_table, null);
+        final EditText rows = view.findViewById(R.id.table_rows);
+        final EditText cols = view.findViewById(R.id.table_cols);
+        final int start = editText.getSelectionStart();
+        final int end = editText.getSelectionEnd();
+
+        linkDialog.setView(view);
+        linkDialog.setNegativeButton(R.string.cancel,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+        linkDialog.setPositiveButton(R.string.dialog_btn_insert,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                
+                    int rowsNum = Integer.valueOf(rows.getText().toString());
+                    int colsNum = Integer.valueOf(cols.getText().toString());
+                    String tabString=""; 
+                    if (rowsNum > 0 && colsNum > 0) {
+                        tabString = new MarkdownTableBuilder(rowsNum,colsNum).toString();
+                    }
+                    String content =tabString;
+                    if (start == end) {
+                        editText.getText().insert(start, content);
+                    } else {
+                        editText.getText().replace(start, end, content);
+                    }
+                }
+            });
+        linkDialog.show();
+    }
+    
+    
 
     /**
 
@@ -274,6 +473,17 @@ public class EasyEditorHelper {
         }
     }
 
+    public void setDefaultText(String str) {
+        if (undoRedoHelper != null) {
+            undoRedoHelper.setDefaultText(str);
+        }
+    }
+    
+    public void clearHistory() {
+        if (undoRedoHelper != null) {
+            undoRedoHelper.clearHistory();
+        }
+    }
 
     /**
 

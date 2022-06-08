@@ -47,5 +47,39 @@
     <string name="toast_saveexit">已保存，再按一次退出</string>
     <string name="toast_permission_denied">请检查权限授予</string>
     
+    <!-- cancel and ok -->
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+
     
+    <!-- editor toolbar dialog -->
+    <string name="dialog_btn_insert">插入</string>
+
+    <!-- insert link -->
+    <string name="dialog_title_insert_link">插入链接</string>
+    <string name="dialog_et_hint_link_display_text">显示文本（默认：Link）</string>
+    <string name="dialog_et_hint_link_content">链接</string>
+
+    <!-- insert image -->
+    <string name="dialog_item_text_local_image">本地图片</string>
+    <string name="dialog_item_text_internet_image">网络图片</string>
+    <string name="dialog_title_insert_image">插入图片</string>
+    <string name="dialog_et_hint_image_display_text">显示文本（默认：Image）</string>
+    <string name="dialog_et_hint_image_uri">图片链接</string>
+
+    <!-- insert block code -->
+    <string name="editor_dialog_title_insert_block_code">插入代码块</string>
+    <string name="dialog_et_hint_language_name">编程语言名称</string>
+
+    <!-- dialog toast -->
+    <string name="toast_saved">已保存</string>
+    <string name="toast_does_not_select">没有选择图片</string>
+    <string name="toast_file_name_can_not_empty">文件名不能为空</string>
+    <string name="toast_file_name_exists">文件名已存在，请重新输入</string>
+
+    <!-- dialog insert table -->
+    <string name="dialog_et_hint_table_rows">行</string>
+    <string name="dialog_et_hint_table_cols">列</string>
+    <string name="dialog_title_insert_table">插入表格</string>
+
 </resources>
