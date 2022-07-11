@@ -17,7 +17,7 @@
     Elevation=0;
     id="CardParent",
     --CardBackgroundColor=graph.修改颜色强度(5,mainColor),
-    cardBackgroundColor=0,
+    --cardBackgroundColor=0,
     StrokeColor=lightForceColor,
     StrokeWidth=math.dp2int(2),
     radius=math.dp2int(16),

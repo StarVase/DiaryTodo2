@@ -8,7 +8,6 @@
   {
     ScrollView;
     id="main";
-    background=color1;
     {
       LinearLayout;
       orientation="vertical";
@@ -26,26 +25,33 @@
         --layout_marginLeft="16dp";
         --layout_marginRight="16dp";
         layout_width="fill";
-        backgroundColor=BGC;
+        
         layout_marginTop="8dp";
         elevation=0;
         {
           RelativeLayout;
-          background=color1;
+
           id="cardInnerAlipay";
           {
             RelativeLayout;
             id="imgHolder1";
             layout_width="fill";
             layout_height="wrap";
+            padding="32dp",
             {
-              AppCompatImageView;
-              id="img1";
-              src="drawable/donate1.png";
-              layout_width="213dp";
-              layout_height="120dp";
-              layout_centerInParent="true";
-              layout_marginTop="5dp";
+              AppCompatTextView;
+              text="QQ捐赠";
+              textColor=forceColor;
+              textSize="28sp";
+              id="title1";
+              typeface=Typeface.DEFAULT_BOLD;
+            };
+            {
+              AppCompatTextView;
+              text="请我喝咖啡";
+              layout_alignLeft="title1";
+              layout_below="title1";
+              textColor=textColor;
             };
           };
           {
@@ -53,40 +59,16 @@
             layout_below="imgHolder1";
             layout_width="fill";
             padding="10dp";
+
+
             {
-              AppCompatTextView;
-              text="QQ捐赠";
-              textColor=color2;
-              textSize="16sp";
-              id="title1";
-            };
-            {
-              AppCompatTextView;
-              text="请我喝咖啡";
-              layout_alignLeft="title1";
-              layout_below="title1";
-              textColor=color3;
-            };
-            {
-              RelativeLayout;
+              TextButton;
+              layout_width="100dp";
               layout_alignParentRight="true";
               elevation="0dp";
-              layout_height="35dp";
               layout_centerVertical="true";
-              background="#FF2C7BF2";
-              layout_width="100dp";
-              id="buttonCard1";
-              {
-                AppCompatButton;
-                style="?android:attr/buttonBarButtonStyle";
-                layout_width="fill";
-                textColor="#FFFFFF";
-                layout_height="fill";
-                text="立即捐赠";
-                padding="5dp";
-                background="#00000000";
-                id="buttonQQpay";
-              };
+              text="立即捐赠";
+              id="buttonQQpay";
             };
           };
         };
@@ -98,29 +80,35 @@
         StrokeColor=lightForceColor,
         StrokeWidth=math.dp2int(2),
         id="cardHongbao",
-        --layout_marginLeft="16dp";
-        --layout_marginRight="16dp";
         layout_width="fill";
-        backgroundColor=BGC;
+        
         layout_marginTop="8dp";
         elevation=0;
         {
           RelativeLayout;
-          background=color1;
+
           id="cardInnerHongbao";
           {
             RelativeLayout;
             id="imgHolder2";
             layout_width="fill";
             layout_height="wrap";
+            padding="32dp",
             {
-              AppCompatImageView;
-              id="img2";
-              src="drawable/donate2.png";
-              layout_width="213dp";
-              layout_height="120dp";
-              layout_centerInParent="true";
-              layout_marginTop="5dp";
+              AppCompatTextView;
+              text="支付宝捐赠";
+              textColor=forceColor;
+              textSize="28sp";
+              id="title2";
+              typeface=Typeface.DEFAULT_BOLD;
+
+            };
+            {
+              AppCompatTextView;
+              text="请我喝橙汁";
+              layout_alignLeft="title2";
+              layout_below="title2";
+              textColor=textColor;
             };
           };
           {
@@ -128,40 +116,15 @@
             layout_below="imgHolder2";
             layout_width="fill";
             padding="10dp";
+
             {
-              AppCompatTextView;
-              text="支付宝捐赠";
-              textColor=color2;
-              textSize="16sp";
-              id="title2";
-            };
-            {
-              AppCompatTextView;
-              text="请我喝橙汁";
-              layout_alignLeft="title2";
-              layout_below="title2";
-              textColor=color3;
-            };
-            {
-              RelativeLayout;
+              TextButton;
+              layout_width="100dp";
               layout_alignParentRight="true";
               elevation="0dp";
-              layout_height="35dp";
               layout_centerVertical="true";
-              background="#FF2C7BF2";
-              layout_width="100dp";
-              id="buttonCard2";
-              {
-                Button;
-                textColor="#FFFFFF";
-                layout_width="fill";
-                style="?android:attr/buttonBarButtonStyle";
-                layout_height="fill";
-                text="立即捐赠";
-                padding="5dp";
-                background="#00000000";
-                id="buttonHongbao";
-              };
+              text="立即捐赠";
+              id="buttonAlipay";
             };
           };
         };
@@ -176,26 +139,34 @@
         --layout_marginLeft="16dp";
         --layout_marginRight="16dp";
         layout_width="fill";
-        backgroundColor=BGC;
+        
         layout_marginTop="8dp";
         elevation=0;
         {
           RelativeLayout;
-          background=color1;
+
           id="cardInnerWechat";
           {
             RelativeLayout;
             id="imgHolder3";
             layout_width="fill";
             layout_height="wrap";
+            padding="32dp",
             {
-              AppCompatImageView;
-              id="img3";
-              src="drawable/donate3.png";
-              layout_width="213dp";
-              layout_height="120dp";
-              layout_centerInParent="true";
-              layout_marginTop="5dp";
+              AppCompatTextView;
+              text="微信捐赠";
+              textColor=forceColor;
+              textSize="28sp";
+              id="title3";
+              typeface=Typeface.DEFAULT_BOLD;
+
+            };
+            {
+              AppCompatTextView;
+              text="请我喝咖啡";
+              layout_alignLeft="title3";
+              layout_below="title3";
+              textColor=textColor;
             };
           };
           {
@@ -203,42 +174,41 @@
             layout_below="imgHolder3";
             layout_width="fill";
             padding="10dp";
+
             {
-              AppCompatTextView;
-              text="微信捐赠";
-              textColor=color2;
-              textSize="16sp";
-              id="title3";
-            };
-            {
-              AppCompatTextView;
-              text="请我喝咖啡";
-              layout_alignLeft="title3";
-              layout_below="title3";
-              textColor=color3;
-            };
-            {
-              RelativeLayout;
+              TextButton;
+              layout_width="100dp";
               layout_alignParentRight="true";
               elevation="0dp";
-              layout_height="35dp";
               layout_centerVertical="true";
-              background="#FF2C7BF2";
-              layout_width="100dp";
-              id="buttonCard3";
-              {
-                AppCompatButton;
-                style="?android:attr/buttonBarButtonStyle";
-                layout_width="fill";
-                textColor="#FFFFFF";
-                layout_height="fill";
-                text="立即捐赠";
-                padding="5dp";
-                background="#00000000";
-                id="buttonWechat";
-              };
+              text="立即捐赠";
+              id="buttonWeChatPay";
             };
           };
+        };
+      };
+      {
+        MaterialCardView;
+        layout_marginBottom="8dp";
+        radius="8dp";
+        StrokeColor=lightForceColor,
+        StrokeWidth=math.dp2int(2),
+        id="cardAlipay",
+        --layout_marginLeft="16dp";
+        --layout_marginRight="16dp";
+        layout_width="fill";
+        
+        layout_marginTop="8dp";
+        elevation=0;
+        {
+          RelativeLayout;
+          padding="8dp",
+          id="cardInnerAlipay";
+          {
+            AppCompatTextView,
+            text="Page by 幻了个城fly",
+            gravity="center",
+          }
         };
       };
     };

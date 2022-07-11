@@ -41,8 +41,15 @@ import "models.MyToolbar"
 a1=os.clock()
 require "models.getFocused"
 
+if (AppTheme.isDarkTheme()) then
+  imageShade.setVisibility(View.VISIBLE)
+end
+
+
 --标题栏下头的布局(先入为主)
 MyToolbar.setContentView(loadlayout(layout))
+
+
 
 task(24,function()
   import "models.weather"

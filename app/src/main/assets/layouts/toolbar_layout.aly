@@ -28,8 +28,8 @@
       id="collapsingToolbarLayout",
       scrimAnimationDuration=360,
       fitsSystemWindows=true,
-      
-     -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+      -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
         FrameLayout,
@@ -46,7 +46,7 @@
           scaleType="centerCrop";
           ImageResource=R.drawable.svg_new_year,
           id="mainAppCompatImageView",
-          
+
         },
         {
           AppCompatImageView,
@@ -56,7 +56,17 @@
           alpha=0,
           ImageResource=R.drawable.svg_new_year,
           id="subAppCompatImageView",
-          
+
+        },
+        {
+          View,
+          layout_width="fill",
+          layout_height="fill",
+          id="imageShade",
+          fitsSystemWindows=true,
+          backgroundColor=0xff000000;
+          alpha=0.3;
+          visibility=View.GONE;
         },
       },
       {
@@ -64,7 +74,7 @@
         layout_height="56dp";
         layout_width="fill";
         id="toolBar",
-       -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        -- layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         --fitsSystemWindows=true,
       },
@@ -80,7 +90,7 @@
   {
     FloatingActionButton,
     id="fab",
-    
+
     layout_margin="16dp",
     --layout_anchorId="1"
     --layout_anchorGravity="bottom|right|end"

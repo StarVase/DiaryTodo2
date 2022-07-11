@@ -88,6 +88,7 @@ onItemClick=function(one,SwitchIn)
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
      case "YiyanType"
+     import "androidx.appcompat.app.AlertDialog"
       local yiyan_type_chooser=AlertDialog.Builder(this)
       .setTitle("一言类型")
       .setSingleChoiceItems(yiyan.listYiyanType("name"),(yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]-1),{
