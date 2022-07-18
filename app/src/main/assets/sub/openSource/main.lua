@@ -1,6 +1,7 @@
 require "import"
 require "StarVase"(this,{enableTheme=true})
 import "com.StarVase.library.adapter.MyLuaAdapter"
+import "android.widget.ListView"
 --import "android.graphics.Typeface"
 import "layout"
 

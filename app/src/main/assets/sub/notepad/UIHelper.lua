@@ -117,21 +117,21 @@ end
 
 pweb=webView
 pweb.getSettings().setDisplayZoomControls(false); --隐藏自带的右下角缩放控件
-pweb.getSettings().setSupportZoom(true); --支持网页me缩放
+--pweb.getSettings().setSupportZoom(true); --支持网页me缩放
 pweb.getSettings().setDomStorageEnabled(true); --dom储存数据
 pweb.getSettings().setDatabaseEnabled(true); --数据库
 pweb.getSettings().setAppCacheEnabled(true); --启用缓存
 pweb.getSettings().setAllowFileAccess(true);--允许访问文件
 pweb.getSettings().setLoadsImagesAutomatically(true);--图片自动加载
-pweb.getSettings().setSaveFormData(true); --保存表单数据，就是输入框的内容，但并不是全部输入框都会储存
+--pweb.getSettings().setSaveFormData(true); --保存表单数据，就是输入框的内容，但并不是全部输入框都会储存
 pweb.getSettings().setAllowContentAccess(true); --允许访问内容
 pweb.getSettings().setJavaScriptEnabled(true); --支持js脚本
 --pweb.getSettings().setUseWideViewPort(true) --图片自适应
-pweb.getSettings().setAcceptThirdPartyCookies(true) --接受第三方cookie
+--pweb.getSettings().setAcceptThirdPartyCookies(true) --接受第三方cookie
 pweb.getSettings().setOffscreenPreRaster(true) --设置预绘制
 pweb.getSettings().setRenderPriority(HIGH)--设置高渲染率
 pweb.setLayerType(View.LAYER_TYPE_HARDWARE,nil);--硬件加速
-pweb.getSettings().setPluginsEnabled(true)--支持插件
+--pweb.getSettings().setPluginsEnabled(true)--支持插件
 pweb.getChildAt(0).getLayoutParams().height=DensityUtil.dp2px(this,4)
 -- 封包前loadfile100行
 -- 封包前loadfile100行

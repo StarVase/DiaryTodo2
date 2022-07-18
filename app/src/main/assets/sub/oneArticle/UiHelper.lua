@@ -23,6 +23,10 @@ function onOptionsItemSelected(item)
   end
 end
 
+function createColorStateList(pressed,normal)
+  colorList = DynamicUtil.createColorStateList(pressed, normal);
+  return colorList;
+end
 
 
 sr.setRefreshing(false);
@@ -46,6 +50,7 @@ scroll.setOnScrollChangeListener({
 --tablay.addTab()
 
 function addCard(text,src,gb)
+  local tmp = {}
   tablay.addView(loadlayout({
     Chip;
     onClick=gb;
@@ -56,10 +61,15 @@ function addCard(text,src,gb)
     typeface=Typeface.DEFAULT_BOLD;
     paddingLeft="8dp";
     paddingRight="8dp";
+    chipIconTint=createColorStateList(icon,icon),
+    chipIconResource=src;
+    id="chip";
     minWidth="40dp";
     focusable=true;
     textColor=icon;
-  }))
+  },tmp))
+  --print(dump(tmp))
+  --print(tmp.chip)
   --graph.ButtonFrame(mytab,math.dp2px(1),icon,0,math.dp2px(16))
   --pcall(function()mytab.foreground=graph.Ripple(nil,普通波纹)end)
 end

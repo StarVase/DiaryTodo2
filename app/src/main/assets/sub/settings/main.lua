@@ -89,6 +89,7 @@ table.insert(dataset,{__type=2,intent="YiyanType",p={Focusable=false},img={Image
 table.insert(dataset,{__type=1,title=AdapLan("应用","Application")})
 table.insert(dataset,{__type=5,intent="AutoBackup",img={ImageResource=R.drawable.ic_backup},subtitle=AdapLan("自动备份","Auto backup"),status={Checked=Boolean.valueOf(this.getSharedData("AutoBackup"))}})
 --table.insert(dataset,{__type=3,intent="RecoveryBackup",img={ImageResource=R.drawable.ic_backup},subtitle=AdapLan("恢复备份","Restore backup")})
+table.insert(dataset,{__type=3,intent="LogCat",img={ImageResource=R.drawable.ic_android_debug_bridge},subtitle=AdapLan("日志","LogCat")})
 table.insert(dataset,{__type=3,intent="AboutApp",img={ImageResource=R.drawable.ic_information_outline},subtitle=AdapLan("关于应用","About")})
 --print(dump(dataset))
 adapter=MyAdapter(dataset)

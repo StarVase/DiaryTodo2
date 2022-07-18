@@ -26,7 +26,7 @@
       {
         CardView;
         layout_width="fill";
-        backgroundColor=mainColor;
+        backgroundColor=BGC;
         elevation="0dp";
         radius=0;
         layout_height="40dp";

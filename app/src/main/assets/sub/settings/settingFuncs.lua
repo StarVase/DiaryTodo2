@@ -14,6 +14,7 @@ onItemClick=function(one,SwitchIn)
     switch state
      case "ChooseTheme"
       subed("theme")
+
      case "ResetFabPos"
       if pcall(function()
           this.setSharedData("悬浮按钮横坐标",nil)
@@ -57,6 +58,7 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+
      case "WeatherTip"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -66,6 +68,7 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+
      case "GetFocused"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -78,6 +81,7 @@ onItemClick=function(one,SwitchIn)
 
      case "WeatherCity"
       activity.newActivity("selectcity/main.lua")
+
      case "YiyanEnabled"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -87,6 +91,7 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+
      case "YiyanType"
      import "androidx.appcompat.app.AlertDialog"
       local yiyan_type_chooser=AlertDialog.Builder(this)
@@ -102,6 +107,7 @@ onItemClick=function(one,SwitchIn)
         end})
       .setNegativeButton("取消",nil)
       .show();
+
      case "RecoveryBackup"
       subed("backup")
 
@@ -114,6 +120,10 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+
+     case "LogCat"
+      subed('logcat',nil,os.clock())
+
      case "AboutApp"
       subed("aboutX")
 

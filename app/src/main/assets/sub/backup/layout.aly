@@ -31,7 +31,7 @@
           layout_height="fill",
 
           {
-            FlexibleListView,
+            ListView,
             id="list",
             layout_width="fill",
             layout_marginTop="0dp",

@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Picture;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Config;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.webkit.WebView;
 import androidx.collection.LruCache;
 import androidx.recyclerview.widget.RecyclerView;
@@ -218,7 +218,7 @@ public class ScreenshotHelper {
 
     // region shot web view
     public static Bitmap shotWebView(WebView webView) {
-        return createType2(webView);
+        return creatType3(webView);
     }
 
     private static Bitmap createType1(WebView webView) {
@@ -249,4 +249,19 @@ public class ScreenshotHelper {
         return bitmap;
     }
     // endregion
+    private static Bitmap creatType3(WebView mWebView) {
+        mWebView.measure(MeasureSpec.makeMeasureSpec(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED),
+             MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        mWebView.layout(0, 0, mWebView.getMeasuredWidth(), mWebView.getMeasuredHeight());
+        mWebView.setDrawingCacheEnabled(true);
+        mWebView.buildDrawingCache();
+        Bitmap longImage = Bitmap.createBitmap(mWebView.getMeasuredWidth(),
+             mWebView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(longImage);	// 画布的宽高和 WebView 的网页保持一致
+        Paint paint = new Paint();
+        canvas.drawBitmap(longImage, 0, mWebView.getMeasuredHeight(), paint);
+        mWebView.draw(canvas);
+        return longImage;
+    }
 }

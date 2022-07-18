@@ -20,7 +20,7 @@ public class DtdWelcome extends BaseActivity
     public void onCreate(Bundle savedInstanceState) {
         // TODO: Implement this method
         if (!isIgnoringBatteryOptimizations()) {
-            requestIgnoreBatteryOptimizations();
+            //requestIgnoreBatteryOptimizations();
         }
         super.onCreate(savedInstanceState);
         //super.setSwipeBackEnable(false);

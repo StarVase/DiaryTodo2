@@ -6,11 +6,15 @@
     <style name="Widget.PopupMenu.Overflow" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/popup_background</item>
     </style>
+    <style name="OverflowButtonStyle" parent="Base.Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?menuIconColor</item>
+    </style>
+
 	
 	<!--基础主题-->
     <style name="Base.Theme.Light" parent="Theme.MaterialComponents.Light">
         <item name="menuIconColor">@color/Black</item>
-        
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
         <item name="colorPrimary">@color/White</item>
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="colorAccent">@color/Blue</item>
@@ -59,6 +63,8 @@
 	
 	<style name="Base.Theme.Dark" parent="Theme.MaterialComponents">
         <item name="menuIconColor">@color/White</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+
         <item name="colorPrimary">@color/Black</item>
         <item name="colorPrimaryDark">?colorPrimary</item>
         <item name="colorAccent">@color/Blue</item>
@@ -173,7 +179,7 @@
         <item name="android:statusBarColor">?colorPrimary</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="colorButtonNormal">@color/White</item>
-      
+        <item name="menuIconColor">#FFECC03F</item>
     </style>
 
     

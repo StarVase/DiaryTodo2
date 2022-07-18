@@ -34,7 +34,7 @@
       layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
       {
-        FlexibleListView,
+        ListView,
         id="listView2",
         layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 

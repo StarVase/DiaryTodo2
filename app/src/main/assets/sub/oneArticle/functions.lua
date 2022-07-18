@@ -25,7 +25,7 @@ function getArticle()
       Author.getPaint().setFakeBoldText(true)
       star.setVisibility(View.VISIBLE)
       Content.setText(artcon)
-      total.text="共"..tostring(utf8.len(artcon)).."字"
+      total.text="共"..tostring(EasyEditorHelper.getMSWordsCount(artcon)).."字"
       import "android.text.format.Time"
       time=Time().setToNow()
       conf={}

@@ -78,10 +78,18 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/app_name"
             android:name="com.StarVase.diaryTodo.app.BaseActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/app_name"
+            android:name="com.StarVase.diaryTodo.app.IntentHandlerActivity"
             android:exported="true">
 
         </activity>
-
+        
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:documentLaunchMode="intoExisting"

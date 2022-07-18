@@ -53,10 +53,10 @@ return {
     ["img"]=R.drawable.ic_star,
     ["onClick"]=function() sub('collectionX',nil,os.clock()) end,
   },
-  {
+  --[[{
     ["text"]=activity.getString(R.string.func_logcat),
     ["img"]=R.drawable.ic_android_debug_bridge,
     ["onClick"]=function() sub('logcat',nil,os.clock()) end,
-  },
+  },]]
 
 }

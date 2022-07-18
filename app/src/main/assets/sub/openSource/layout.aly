@@ -6,7 +6,7 @@
   id="mainLay",
 
   {
-    FlexibleListView,
+    ListView,
     id="listView",
     dividerHeight=0;
     layout_width="fill",

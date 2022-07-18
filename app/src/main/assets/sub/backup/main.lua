@@ -1,4 +1,5 @@
 require "import"
+import "android.widget.ListView"
 require "StarVase"(this,{enableTheme=true})
 --import "com.tencent.qq.widget.ReboundEffectsView"
 ReboundEffectsView=ListView

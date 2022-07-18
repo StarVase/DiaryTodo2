@@ -4,7 +4,7 @@
   layout_width="fill",
   layout_height="fill",
   backgroundColor=mainColor,
-layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
 
@@ -12,7 +12,7 @@ layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGI
     FrameLayout;
     layout_height="fill";
     layout_width="fill";
-layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
     {
       LinearLayout,
@@ -21,7 +21,7 @@ layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGI
       orientation="vertical",
       backgroundColor=BGC,
       Gravity="center",
-layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
 
       {
@@ -33,10 +33,10 @@ layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGI
           RelativeLayout,
           layout_width="fill",
           layout_height="fill",
-layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
           {
-            FlexibleListView,
+            ListView,
             id="list",
             layout_width="fill",
             layout_marginTop="0dp",

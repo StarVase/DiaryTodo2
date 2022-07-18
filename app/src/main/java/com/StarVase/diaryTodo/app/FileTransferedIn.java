@@ -59,7 +59,7 @@ public class FileTransferedIn extends AppCompatActivity implements Serializable{
         
         String path = DtdApplication.getInstance().getSharedData("BaseLuaPath") + "/sub/notepad/main.lua";
         Object[] arg = {"markdownX",new File(docpath).getName(), config};
-        Intent intent = new Intent(this, BaseActivity.class);
+        Intent intent = new Intent(this, IntentHandlerActivity.class);
         intent.putExtra("name", path);
         intent.setData(Uri.parse("file://" + path));
         intent.putExtra("arg", arg);
