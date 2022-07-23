@@ -1,4 +1,4 @@
-package com.StarVase.androluax.base;
+package com.StarVase.diaryTodo.app;
 
 import android.Manifest;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 
-public class LuaBaseActivityX extends AppCompatActivity {
+public class DtdCustomActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class LuaBaseActivityX extends AppCompatActivity {
         //startService(new Intent(this,DtdCoreService.class));
 
         super.onCreate(savedInstanceState);
-		
+
     }
 
     //入口是getLocation
@@ -54,30 +54,30 @@ public class LuaBaseActivityX extends AppCompatActivity {
         //判断
         if (permissions.size() == 0) {//有权限，直接获取定位
             return true;
-			
+
         } else {//没有权限，获取定位权限
             return false;
             //requestPermissions(permissions.toArray(new String[permissions.size()]), 2);
         }
-		
+
     }
 
-   
-	public static void setDarkStatusIcon(Window window, boolean bDark) {
-    if (window != null) {
-        View decorView = window.getDecorView();
-        if(decorView != null){
-			int vis = decorView.getSystemUiVisibility();
-            if(bDark){
-                //设置黑色状态栏图标
-                vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-            } else{
-                //设置白色状态栏图标
-                vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+
+    public static void setDarkStatusIcon(Window window, boolean bDark) {
+        if (window != null) {
+            View decorView = window.getDecorView();
+            if(decorView != null){
+                int vis = decorView.getSystemUiVisibility();
+                if(bDark){
+                    //设置黑色状态栏图标
+                    vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                } else{
+                    //设置白色状态栏图标
+                    vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                decorView.setSystemUiVisibility(vis);
             }
-            decorView.setSystemUiVisibility(vis);
         }
-    }
     }
 
     @Override
@@ -90,23 +90,23 @@ public class LuaBaseActivityX extends AppCompatActivity {
                     new PorterDuffColorFilter(
                         getMenuColor(), 
                         PorterDuff.Mode.SRC_IN)
-                        );
+                );
             }
         }
         return super.onCreateOptionsMenu(menu);
     }
-	
+
     public int getMenuColor(){
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.menuIconColor, typedValue, true);
         return typedValue.data;
     }
 
-    
-    	
-	public boolean setSwipeBackEnable(boolean p1){
-		return false;
-	};
+
+
+    public boolean setSwipeBackEnable(boolean p1){
+        return false;
+    };
 
 }
 

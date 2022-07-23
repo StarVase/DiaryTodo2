@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import com.StarVase.diaryTodo.app.DtdApplication;
-import com.StarVase.diaryTodo.app.IntentHandlerActivity;
+import com.StarVase.diaryTodo.app.BaseActivity;
+
 
 public class JavascriptInterface {
     
@@ -17,7 +18,7 @@ public class JavascriptInterface {
     
     @android.webkit.JavascriptInterface
     public void startPhotoActivity(String imageUrl) {
-        Intent intent = new Intent(mContext, IntentHandlerActivity.class);
+        Intent intent = new Intent(mContext, BaseActivity.class);
         String path = DtdApplication.getInstance().getSharedData("BaseLuaPath") + "/sub/notepad/photopresenter.lua";
         Object[] arg = {imageUrl};
         intent.putExtra("name", path);

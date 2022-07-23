@@ -41,6 +41,7 @@ function loop()
           city=location.getCity(),
           district=location.getDistrict(),
           address=location.getAddress(),
+          aoiName=location.getAoiName(),
           adcode=location.getAdCode(),
           poi=location.getPoiName(),
           time=location.getTime(),

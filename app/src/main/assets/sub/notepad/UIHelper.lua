@@ -78,6 +78,8 @@ function onOptionsItemSelected(item)
     ashtml()
    case R.id.menu_npd_asmd
     asmd()
+   case R.id.menu_npd_statistics
+    statistics()
   end
   --  end)
 end
@@ -145,7 +147,7 @@ function refreshSymbolBar(state)
   if state then
     loadedSymbolBar=true
     local ps=require("BarFunction")
-        for index,content in ipairs(ps) do
+    for index,content in ipairs(ps) do
       ps_bar.addView(newPsButton(content))
     end
     ps=nil
@@ -163,7 +165,7 @@ function newPsButton(icary)
     onClick=icary.func;
     ImageResource=icary.icon,
     colorFilter=textColor,
-   
+
     layout_height="fill";
     --padding="8dp";
     paddingLeft="8dp";
@@ -194,9 +196,11 @@ function ashtml()
 <h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
 ]]..html..[[</body>
 </html>]]
-        if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html",HtmlContent)end) then
-          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html")
-          subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
+output=path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html"
+        if pcall(function()file.writeFile(output,HtmlContent)end) then
+          MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..output)
+         -- subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
+         sharing(output)
          else
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
         end
@@ -209,10 +213,13 @@ end
 
 function asImage()
   MarkText(Widgetcontent.text)
-
   task(500,function()
-    if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png")end) then
-      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..path.envdir.."/Pictures/DiaryTodo/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png")
+    output=Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png"
+    print(output)
+MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)
+    if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)end) then
+      MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..path.envdir.."/Pictures/DiaryTodo/"..output)
+      sharing(path.envdir.."/Pictures/DiaryTodo/"..output)
      else
       MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
 
@@ -221,8 +228,12 @@ function asImage()
 end
 
 function asmd()
-  if pcall(function()file.writeFile(path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md",Widgetcontent.getText().toString())end) then
-    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc).."/sdcard/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md")
+  print(file)
+  output=path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md"
+  file.writeFile(output,Widgetcontent.getText().toString())
+  if pcall(function()file.writeFile(output,Widgetcontent.getText().toString())end) then
+    MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..output)
+    sharing(output)
    else
     MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
   end
@@ -260,4 +271,25 @@ function MarkText(text)
         }))
       end
     end})).run()
+end
+function statistics()
+  MyToast.showSnackBar(tostring(editorHelper.getCurrentCount()))
+end
+
+function sharing(path)
+  import "android.webkit.MimeTypeMap"
+  import "android.content.Intent"
+  import "android.net.Uri"
+  import "java.io.File"
+  FileName=tostring(File(path).Name)
+  ExtensionName=FileName:match("%.(.+)")
+  Mime=MimeTypeMap.getSingleton().getMimeTypeFromExtension(ExtensionName)
+  intent = Intent()
+  intent.setAction(Intent.ACTION_SEND)
+  intent.setType(Mime)
+  file = File(path)
+  uri = Uri.fromFile(file)
+  intent.putExtra(Intent.EXTRA_STREAM,uri)
+  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+  activity.startActivity(Intent.createChooser(intent, "分享到:"))
 end

@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi;
 public class DtdWelcome extends BaseActivity
 {
     
-    Context activity = this.getContext();
+    Context activity = this;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {

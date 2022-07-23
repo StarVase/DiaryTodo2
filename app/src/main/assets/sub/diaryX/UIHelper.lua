@@ -37,10 +37,35 @@ function onOptionsItemSelected(item)
       activity.finish()
      case
       R.id.menu_diary_unlockall
-      sub("settings")
+      import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+      local dann=import "layout.typepwd"
+
+      local dl=BottomSheetDialog(activity)
+      dl.setContentView(loadlayout(dann))
+      dl.setCanceledOnTouchOutside(true)
+      dl.setCancelable(true)
+      dl.show()
+      bottom = dl.findViewById(R.id.design_bottom_sheet);
+      if (bottom != nil) then
+        bottom
+        .setBackgroundResource(android.R.color.transparent)
+        .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+      end
+      okey.onClick=function()
+        if typepsk.getText() then
+          clickToUnlock(typepsk.getText().toString())
+        end
+        dl.dismiss()
+      end
+      cancel.onClick=lambda -> activity.finish()
+
+
+
+
      case
       R.id.menu_diary_lockall
-      sub("aboutX")
+      clickToLock()
 
     end
   end)

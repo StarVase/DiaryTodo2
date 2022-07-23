@@ -3,7 +3,7 @@
 <resources> 
 	<string name="accsibility_service_description">日记与待办</string>  
   	<string name="app_name">日记与待办</string> 
-    <string name="debug">注意！该页面仅供调试，它不安全。请不要用它支付！</string>
+    <string name="debug">注意！\n该页面仅供调试，\n它不安全。\n请不要用它支付！</string>
 	<!--Global functions name-->
 	<string name="func_diary">日记</string>
 	<string name="func_todo">待办</string>
@@ -28,30 +28,32 @@
     <string name="text_recently">最近</string>
     <string name="text_explorer">浏览</string>
     <string name="back_to_sdcard">回到SD卡</string>
-    
+
     <string name="menu_npd_undo">撤销</string>
     <string name="menu_npd_redo">恢复</string>
     <string name="menu_npd_save">保存</string>
+    <string name="menu_npd_notsave">不再保存</string>
+    <string name="menu_npd_statistics">统计</string>
     <string name="menu_npd_export">导出并分享...</string>
     <string name="menu_npd_asimage">以图片</string>
     <string name="menu_npd_ashtml">以网页</string>
     <string name="menu_npd_asmd">以Markdown</string>
-    
+
 
     <string name="menu_diary_lockall">全部锁定</string>
     <string name="menu_diary_unlockall">全部解锁</string>
-    
+
     <string name="toast_ashtmlsuc">成功保存到</string>
     <string name="toast_ashtmlfail">对不起，您的设备不支持</string>
     <string name="toast_ashtmltry">失败，请再试一次</string>
     <string name="toast_saveexit">已保存，再按一次退出</string>
     <string name="toast_permission_denied">请检查权限授予</string>
-    
+
     <!-- cancel and ok -->
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
 
-    
+
     <!-- editor toolbar dialog -->
     <string name="dialog_btn_insert">插入</string>
 

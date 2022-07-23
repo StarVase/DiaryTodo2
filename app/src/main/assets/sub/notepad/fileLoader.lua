@@ -162,7 +162,6 @@ Thread(Runnable({
   run=function()
     switch doctype
      case "diaryX" then
-      usrKey=activity.getSharedData("diaryRC4PSK")
       startLoadDiary()
      case "inspirationX" then
       startLoadInspiration()

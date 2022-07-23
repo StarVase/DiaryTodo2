@@ -97,39 +97,66 @@ function delete(id)
   Refresh()
 end
 
-function clickToUnlock()
-  sql="select * from diary where isEmp=1 order by id desc"
-_STATE={}
-  if pcall(raw,sql,nil) then
-    while (cursor.moveToNext()) do
-
-      id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
-      title = cursor.getString(1);--获取第二列的值
-      year = cursor.getInt(3);--获取第三列的值
-      month = cursor.getInt(4);
-      day = cursor.getInt(5);
-      isEmp = cursor.getInt(6);
-      key = cursor.getString(7);
-      content = cursor.getString(8);
-      datestr=tostring(year)..tostring(month)..tostring(day)
-      print(id)
-      -- Thread(Runnable({run=function()
-      usrKey="4313"
-      import "rc4"
-      _STATE.trueKey=minicrypto.decrypt(key,"Diaryenced")
-      if usrKey == _STATE.trueKey then
-        content=minicrypto.decrypt(content,usrKey)
-        values = ContentValues();
-        values.put("isEmp",false);
-        values.put("key", nil);
-        values.put("content",content)
-        CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
-
-       else
-
+function clickToUnlock(psk)
+  Thread(Runnable({run=function()
+      local ErrCount=0
+      sql="select * from diary where isEmp=1 order by id desc"
+      if pcall(function()cursor=CreateFileUtil.raw(sql,nil)end) then
+        while (cursor.moveToNext()) do
+          id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
+          isEmp = cursor.getInt(6);
+          key = cursor.getString(7);
+          content = cursor.getString(8);
+          import "rc4"
+          trueKey=minicrypto.decrypt(key,"Diaryenced")
+          if psk != trueKey then
+            ErrCount=ErrCount+1
+           else
+            content=minicrypto.decrypt(content,trueKey)
+            values = ContentValues();
+            values.put("isEmp",false);
+            values.put("key", nil);
+            values.put("content",content)
+            CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
+          end
+        end
+        cursor.close()
       end
-      -- end})).run()
-    end
-    cursor.close()
-  end
+      MyToast.showSnackBar(string.format(AdapLan("解密完成，共%s个错误","Decryption finished, and occurred %s error(s) in total."),ErrCount))
+      Refresh()
+    end})).run()
+end
+
+
+
+function clickToLock()
+  Thread(Runnable({run=function()
+      local ErrCount = 0
+      local DiaryPassword = activity.getSharedData("DiaryPassword")
+      if DiaryPassword != nil && DiaryPassword != "" && activity.getSharedData("EncryptDiary") then
+        sql="select * from diary where isEmp=0 order by id desc"
+        if pcall(function()cursor=CreateFileUtil.raw(sql,nil)end) then
+          while (cursor.moveToNext()) do
+            id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
+            isEmp = cursor.getInt(6);
+            --key = cursor.getString(7);
+            content = cursor.getString(8);
+            import "rc4"
+            key=minicrypto.encrypt(DiaryPassword,"Diaryenced")
+
+
+            content=minicrypto.encrypt(content,DiaryPassword)
+            values = ContentValues();
+            values.put("isEmp",true);
+            values.put("key", key);
+            values.put("content",content)
+            CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
+
+          end
+          cursor.close()
+        end
+        MyToast.showSnackBar(AdapLan("加密完成","Encryption finished."))
+        Refresh()
+      end
+    end})).run()
 end

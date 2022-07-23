@@ -17,7 +17,20 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_content_save"
         android:title="@string/menu_npd_save"/>
+    
+    
+    <item
+        android:id="@+id/menu_npd_notsave"
+        app:showAsAction="never"
+        android:title="@string/menu_npd_notsave"/>
+    
+    
+    <item
+        android:id="@+id/menu_npd_statistics"
+        app:showAsAction="never"
+        android:title="@string/menu_npd_statistics"/>
 
+    
     <item
         android:id="@+id/menu_npd_export"
         app:showAsAction="never"

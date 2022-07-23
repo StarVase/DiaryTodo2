@@ -74,7 +74,7 @@ function fab.onClick()
     if (locationInfo) then
       locationInfo=require("cjson").decode(locationInfo)
    
-      locationText="> __创建于：__  \n"..locationInfo.address.."  \n_(自动保存的位置信息)_"
+      locationText="> __创建于："..locationInfo.aoiName.."__  \n"..locationInfo.address.."  \n_(自动保存的位置信息)_"
       else locationText=""
     end
     import "android.text.format.Time"

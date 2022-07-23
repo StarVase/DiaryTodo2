@@ -3,7 +3,9 @@
 <resources> 
 
     <string name="app_name">DiaryTodo</string> 
-    <string name="debug">Attention\! This page is for debug only, and it is not safe. Please don\'t pay with it\! </string>
+    <string name="debug">
+        <![CDATA["Attention! \nThis page is for debug only, \nand it is not safe. \nPlease don't pay with it!"]]>
+    </string>
   	<!--Global functions name-->
 	<string name="func_diary">Diary</string>
 	<string name="func_todo">Todo</string>
@@ -28,30 +30,32 @@
     <string name="text_recently">Recently</string>
     <string name="text_explorer">Explore</string>
     <string name="back_to_sdcard">Back to SDCard</string>
-    
+
     <string name="menu_npd_undo">Undo</string>
     <string name="menu_npd_redo">Redo</string>
     <string name="menu_npd_save">Save</string>
+    <string name="menu_npd_notsave">Not Save</string>
+    <string name="menu_npd_statistics">Statistics</string>
     <string name="menu_npd_export">Export and share...</string>
     <string name="menu_npd_asimage">As image</string>
     <string name="menu_npd_ashtml">As html</string>
     <string name="menu_npd_asmd">As Markdown</string>
-    
+
     <string name="menu_diary_lockall">Lock all</string>
     <string name="menu_diary_unlockall">Unlock all</string>
-    
-    
+
+
     <string name="toast_ashtmlsuc">Have been saved to </string>
     <string name="toast_ashtmlfail">Sorry. Your device not supports this function.</string>
     <string name="toast_ashtmltry">Failed. Try again. </string>
     <string name="toast_saveexit">Saved. Press again to exit. </string>
     <string name="toast_permission_denied">Please check permission.</string>
-    
+
     <!-- cancel and ok -->
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
 
-    
+
     <!-- editor toolbar dialog -->
     <string name="dialog_btn_insert">Insert</string>
 
@@ -76,7 +80,7 @@
     <string name="toast_does_not_select">No image selected</string>
     <string name="toast_file_name_can_not_empty">File name can not be empty</string>
     <string name="toast_file_name_exists">The file name already exists. Please enter new name.</string>
-    
+
     <!-- dialog insert table -->
     <string name="dialog_et_hint_table_rows">Rows</string>
     <string name="dialog_et_hint_table_cols">Column</string>
