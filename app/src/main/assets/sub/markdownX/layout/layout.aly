@@ -43,6 +43,7 @@
       BottomNavigationView;
       layout_alignParentBottom="true";
       id="nav",
+      labelVisibilityMode=3;
       -- layout_weight="1",
       layout_width="fill";
       layout_height="56dp";

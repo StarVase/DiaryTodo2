@@ -2,6 +2,8 @@ package com.StarVase.diaryTodo.helper;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -362,7 +364,16 @@ public class EasyEditorHelper {
                     dialog.cancel();
                 }
             });
-
+		linkDialog.setNeutralButton(R.string.selectImg,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, null);
+					intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+					((AppCompatActivity)context).startActivityForResult(intent, 2);
+		
+                }
+            });
         linkDialog.setPositiveButton(R.string.dialog_btn_insert,
             new DialogInterface.OnClickListener() {
                 @Override
@@ -511,5 +522,95 @@ public class EasyEditorHelper {
         return getMSWordsCount(editText.getText().toString());
     }
 
+    /*public void startFindMode() {
+        // TODO: Implement this method
+        startActionMode(new ActionMode.Callback() {
+
+            private LinearSearchStrategy finder;
+
+            private int idx;
+
+            private EditText edit;
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // TODO: Implement this method
+                mode.setTitle("搜索");
+                mode.setSubtitle(null);
+
+                edit = new EditText(mContext) {
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() > 0) {
+                            idx = 0;
+                            findNext();
+                        }
+                    }
+                };
+                edit.setSingleLine(true);
+                edit.setImeOptions(3);
+                edit.setOnEditorActionListener(new OnEditorActionListener() {
+
+                    @Override
+                    public boolean onEditorAction(TextView p1, int p2, KeyEvent p3) {
+                        // TODO: Implement this method
+                        findNext();
+                        return true;
+                    }
+                });
+                edit.setLayoutParams(new LayoutParams(getWidth() / 3, -1));
+                menu.add(0, 1, 0, "").setActionView(edit);
+                menu.add(0, 2, 0, mContext.getString(android.R.string.search_go));
+                edit.requestFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                // TODO: Implement this method
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                // TODO: Implement this method
+                switch (item.getItemId()) {
+                    case 1:
+                        break;
+                    case 2:
+                        findNext();
+                        break;
+
+                }
+                return false;
+            }
+
+            private void findNext() {
+                // TODO: Implement this method
+                finder = new LinearSearchStrategy();
+                String kw = edit.getText().toString();
+                if (kw.isEmpty()) {
+                    selectText(false);
+                    return;
+                }
+                idx = finder.find(getText(), kw, idx, getText().length(), false, false);
+                if (idx == -1) {
+                    selectText(false);
+                    Toast.makeText(mContext, "未找到", Toast.LENGTH_SHORT).show();
+                    idx = 0;
+                    return;
+                }
+                setSelection(idx, edit.getText().length());
+                idx += edit.getText().length();
+                moveCaret(idx);
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode p1) {
+                // TODO: Implement this method
+            }
+        });
+
+    }*/
 
 }

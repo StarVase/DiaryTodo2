@@ -97,10 +97,14 @@ function delete(id)
   Refresh()
 end
 
-function clickToUnlock(psk)
+function clickToUnlock(psk,id)
   Thread(Runnable({run=function()
       local ErrCount=0
-      sql="select * from diary where isEmp=1 order by id desc"
+      if (id == nil) then
+        sql="select * from diary where isEmp=1 order by id desc"
+       else
+        sql=string.format("select * from diary where isEmp=1 and id=%s order by id desc",tostring(id))
+      end
       if pcall(function()cursor=CreateFileUtil.raw(sql,nil)end) then
         while (cursor.moveToNext()) do
           id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
@@ -129,12 +133,17 @@ end
 
 
 
-function clickToLock()
+function clickToLock(id)
   Thread(Runnable({run=function()
-      local ErrCount = 0
+      local SucCount = 0
       local DiaryPassword = activity.getSharedData("DiaryPassword")
       if DiaryPassword != nil && DiaryPassword != "" && activity.getSharedData("EncryptDiary") then
-        sql="select * from diary where isEmp=0 order by id desc"
+        if (id == nil) then
+          sql="select * from diary where isEmp=0 order by id desc"
+         else
+          sql=string.format("select * from diary where isEmp=0 and id=%s order by id desc",tostring(id))
+        end
+
         if pcall(function()cursor=CreateFileUtil.raw(sql,nil)end) then
           while (cursor.moveToNext()) do
             id = cursor.getInt(0); --获取第一列的值,第一列的索引从0开始
@@ -151,11 +160,11 @@ function clickToLock()
             values.put("key", key);
             values.put("content",content)
             CreateFileUtil.getDatabase().update("diary", values, "id=?", {tostring(id)});
-
+            SucCount=SucCount+1
           end
           cursor.close()
         end
-        MyToast.showSnackBar(AdapLan("加密完成","Encryption finished."))
+        MyToast.showSnackBar(string.format(AdapLan("加密完成，共%s个成功","Encryption finished, and %s task(s) succeeded."),tostring(SucCount)))
         Refresh()
       end
     end})).run()

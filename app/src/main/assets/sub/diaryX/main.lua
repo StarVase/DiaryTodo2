@@ -9,10 +9,10 @@ loading.setVisibility(View.VISIBLE)
 
 list.onItemLongClick=function(id,v,zero,one)
   id=data[one].id
-
+  isEmp=data[one].isEmp
   pop=PopupMenu(activity,v)
   menu=pop.Menu
-  menu.add("删除").onMenuItemClick=function()
+  menu.add(AdapLan("删除","Delete")).onMenuItemClick=function()
     task(100,function()
 
       import "com.google.android.material.bottomsheet.BottomSheetDialog"
@@ -36,6 +36,44 @@ list.onItemLongClick=function(id,v,zero,one)
       cancel.onClick=lambda -> dl.dismiss()
     end)
   end
+  if (isEmp) then
+    menu.add(AdapLan("解密","Decrypt")).onMenuItemClick=function()
+      task(100,function()
+
+        import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+        local dann=import "layout.typePwd"
+
+        local dl=BottomSheetDialog(activity)
+        dl.setContentView(loadlayout(dann))
+        dl.setCanceledOnTouchOutside(true)
+        dl.setCancelable(true)
+        dl.show()
+        bottom = dl.findViewById(R.id.design_bottom_sheet);
+        if (bottom != nil) then
+          bottom
+          .setBackgroundResource(android.R.color.transparent)
+          .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+        end
+        okey.onClick=function()
+          if typepsk.getText() then
+            clickToUnlock(typepsk.getText().toString(),id)
+          end
+          dl.dismiss()
+        end
+        cancel.onClick=lambda -> activity.finish()
+
+      end)
+    end
+   elseif (isEmp==false&&activity.getSharedData("EncryptDiary")) then
+    menu.add(AdapLan("加密","Encrypt")).onMenuItemClick=function()
+      task(100,function()
+        clickToLock(id)
+      end)
+    end
+
+  end
+
   pop.show()
   return true
 end
@@ -73,9 +111,9 @@ function fab.onClick()
     locationInfo=activity.getSharedData("lastLocationInfo")
     if (locationInfo) then
       locationInfo=require("cjson").decode(locationInfo)
-   
+
       locationText="> __创建于："..locationInfo.aoiName.."__  \n"..locationInfo.address.."  \n_(自动保存的位置信息)_"
-      else locationText=""
+     else locationText=""
     end
     import "android.text.format.Time"
     time=Time().setToNow()
@@ -156,8 +194,3 @@ function fab.onClick()
 end
 
 import "android.app.DatePickerDialog"
-
-fab.onLongClick=function()
-  clickToUnlock()
-  return true
-end

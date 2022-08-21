@@ -39,7 +39,7 @@ function onOptionsItemSelected(item)
       R.id.menu_diary_unlockall
       import "com.google.android.material.bottomsheet.BottomSheetDialog"
 
-      local dann=import "layout.typepwd"
+      local dann=import "layout.typePwd"
 
       local dl=BottomSheetDialog(activity)
       dl.setContentView(loadlayout(dann))
@@ -63,8 +63,7 @@ function onOptionsItemSelected(item)
 
 
 
-     case
-      R.id.menu_diary_lockall
+     case R.id.menu_diary_lockall
       clickToLock()
 
     end

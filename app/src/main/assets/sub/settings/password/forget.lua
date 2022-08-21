@@ -37,6 +37,7 @@ nextButton.onClick=function()
     if pcall(function()clickToUnlock()end) then
       activity.setSharedData("EncryptDiary",false)
       activity.setSharedData("PwdSet",false)
+      activity.setSharedData("EnableFingerprint",false)
       MyToast("重置成功")
       task(1000,function()activity.finish()end)
      else

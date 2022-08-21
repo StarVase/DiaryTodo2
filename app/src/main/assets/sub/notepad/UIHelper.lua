@@ -72,6 +72,8 @@ function onOptionsItemSelected(item)
     editorHelper.redo();
    case R.id.menu_npd_save
     save()
+   case R.id.menu_npd_notsave
+    dropEdition()
    case R.id.menu_npd_asimage
     asImage()
    case R.id.menu_npd_ashtml
@@ -106,6 +108,11 @@ pcall(function()
   end
 end)
 
+function dropEdition()
+  if (_STATE._INITCONTENT) then
+    Widgetcontent.setText(_STATE._INITCONTENT)
+  end
+end
 
 
 
@@ -196,11 +203,11 @@ function ashtml()
 <h1 id="filetitle">]]..Widgettitle.getText().toString()..[[</h1>
 ]]..html..[[</body>
 </html>]]
-output=path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html"
+        output=path.envdir.."/documents/DiaryTodo/html/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".html"
         if pcall(function()file.writeFile(output,HtmlContent)end) then
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..output)
-         -- subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
-         sharing(output)
+          -- subed("markdownX",path.envdir.."/documents/DiaryTodo/html/")
+          sharing(output)
          else
           MyToast.showSnackBar(activity.getString(R.string.toast_ashtmltry))
         end
@@ -216,7 +223,7 @@ function asImage()
   task(500,function()
     output=Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".png"
     print(output)
-MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)
+    MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)
     if pcall(function()MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)end) then
       MyToast.showSnackBar(activity.getString(R.string.toast_ashtmlsuc)..path.envdir.."/Pictures/DiaryTodo/"..output)
       sharing(path.envdir.."/Pictures/DiaryTodo/"..output)
@@ -228,7 +235,6 @@ MyBitmap.saveAsPng(ScreenshotHelper.shotWebView(webView),output)
 end
 
 function asmd()
-  print(file)
   output=path.envdir.."/documents/DiaryTodo/markdown/"..Widgettitle.getText().toString().."_"..tostring(os.date("%Y%m%d-%H%M%S"))..".md"
   file.writeFile(output,Widgetcontent.getText().toString())
   if pcall(function()file.writeFile(output,Widgetcontent.getText().toString())end) then
@@ -284,12 +290,24 @@ function sharing(path)
   FileName=tostring(File(path).Name)
   ExtensionName=FileName:match("%.(.+)")
   Mime=MimeTypeMap.getSingleton().getMimeTypeFromExtension(ExtensionName)
+  print(ExtensionName,Mine)
   intent = Intent()
   intent.setAction(Intent.ACTION_SEND)
   intent.setType(Mime)
-  file = File(path)
-  uri = Uri.fromFile(file)
+  local file = File(path)
+  --uri = Uri.fromFile(file)
   intent.putExtra(Intent.EXTRA_STREAM,uri)
   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
   activity.startActivity(Intent.createChooser(intent, "分享到:"))
+end
+
+--首次启动
+
+if (!activity.getSharedData("EditorGuide")) then
+  AlertDialog.Builder(this)
+  .setTitle(AdapLan("开始！","Let's Start!"))
+  .setMessage(AdapLan("在此，您可以使用Markdown语法进行编辑，点击右下角悬浮球可以切换编辑/预览模式。所有的更改将会在检测到按键活动（包括后置指纹传感器）和退出时自动保存。点击菜单中的撤销编辑选择可以恢复初始状态。开始享用吧~","Here, you can use Markdown syntax to edit, and click the floating ball in the lower right corner to switch the edit/preview mode. All changes will be automatically saved when key activity is detected (including the rear-mounted fingerprint sensor) and on exit. Click Undo Edit selection in the menu to restore the original state. Enjoy~"))
+  .setPositiveButton(AdapLan("确定","Okey"),{onClick=function(v) activity.setSharedData("EditorGuide",true)end})
+  .show()
+
 end

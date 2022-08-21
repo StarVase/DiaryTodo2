@@ -1,26 +1,26 @@
 {
-  {__type=1,title={text="应用"}},
+  {__type=1,title={text=AdapLan("应用","Application")}},
   {
     __type=2,
     img={
       ImageResource=R.drawable.ic_information_outline,
     },
     title={
-      text="版本",
+      text=AdapLan("版本","Version"),
     },
     content={
       text=banbenming,
     },
     onClick=update,
   },
-  {__type=1,title={text="开发"}},
+  {__type=1,title={text=AdapLan("开发","Development")}},
   {
     __type=2,
     img={
       ImageResource=R.drawable.ic_account,
     },
     title={
-      text="作者",
+      text=AdapLan("作者","Author"),
     },
     content={
       text="@StarVase",
@@ -33,7 +33,7 @@
       ImageResource=R.drawable.ic_account_group,
     },
     title={
-      text="加入QQ群",
+      text=AdapLan("加入QQ群","Join in QQ group"),
     },
     onClick=JoiningQGroup,
   },
@@ -43,22 +43,22 @@
       ImageResource=R.drawable.ic_license,
     },
     title={
-      text="开源协议",
+      text=AdapLan("开源许可","Open Source License"),
     },
     onClick=(lambda -> subed("openSource")),
   },
 
-  {__type=1,title={text="其他"}},
+  {__type=1,title={text=AdapLan("其他","Other")}},
   {
     __type=2,
     img={
       ImageResource=R.drawable.ic_credit_card_outline,
     },
     title={
-      text="捐赠",
+      text=AdapLan("捐赠","Donate"),
     },
     content={
-      text="若你喜欢，随意捐赠",
+      text=AdapLan("支持开发","Support our development"),
     },
     onClick=(lambda -> subed("donate")),
   },
@@ -68,7 +68,7 @@
       ImageResource=R.drawable.ic_emoticon_happy_outline,
     },
     title={
-      text="鸣谢",
+      text=AdapLan("鸣谢","Acknowledgement")
     },
     onClick=(lambda -> activity.newActivity("thanks")),
   },

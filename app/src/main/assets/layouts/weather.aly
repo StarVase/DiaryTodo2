@@ -96,6 +96,7 @@
           layout_height='wrap',
           layout_width='fill',
           id="weatherSub",
+          Visibility=(8);
           --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.DISAPPEARING);
 
           --padding="2dp",

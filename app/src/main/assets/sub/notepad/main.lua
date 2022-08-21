@@ -8,6 +8,8 @@ import "java.io.*"
 import "androidx.viewpager.widget.ViewPager"
 import "androidx.appcompat.widget.AppCompatEditText"
 import "android.widget.HorizontalScrollView"
+import "androidx.appcompat.app.AlertDialog"
+
 import "layout"
 
 doctype,title,details=...
@@ -165,3 +167,10 @@ webView.setWebViewClient(LuaWebView.LuaWebViewClient({
 task(1000,function()
   MarkText(tostring(Widgetcontent.text))
 end)
+
+
+--private FingerprintManager fingerprintManager;
+
+
+
+

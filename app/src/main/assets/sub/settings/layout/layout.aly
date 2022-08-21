@@ -3,17 +3,21 @@
   CoordinatorLayout;
   layout_width="fill";
   layout_height="fill";
-  id="mainLay";
+  --id="mainLay";
   backgroundColor=BGC,
   {
-    RecyclerView,
-    id="recycler",
-    --DividerHeight=0;
-    layout_width="fill",
-    LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
-    --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+    LinearLayoutCompat,
+    layout_width="fill";
+    layout_height="fill";
+    {
+      RecyclerView,
+      id="recycler",
+      --DividerHeight=0;
+      layout_width="fill",
+      LayoutManager=luajava.bindClass("androidx.recyclerview.widget.LinearLayoutManager")(this),
+      --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-    layout_height="fill",
+      layout_height="fill",
+    }
   }
-
 }

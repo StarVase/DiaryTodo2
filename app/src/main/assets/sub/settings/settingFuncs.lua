@@ -49,6 +49,55 @@ onItemClick=function(one,SwitchIn)
         activity.newActivity("password/forget.lua")
       end
 
+     case "EnableFingerprint"
+      if dataset[one].status["Checked"]==true then
+        this.setSharedData(state,false)
+        dataset[one].status["Checked"]=false
+        SwitchIn.checked=unBoolean(SwitchIn.checked)
+       else
+        AlertDialog.Builder(this)
+        .setTitle(AdapLan("请注意！","Pay Attention!"))
+        .setMessage(AdapLan("开启此选项意味着您可以通过使用在此设备上注册过的任意指纹对日记进行解密，可能面临着被其他人偷窥的风险，请权衡利弊！","Turning this option on means that you can decrypt the diary by using any fingerprint registered on this device, you may face the risk of being peeped by others, please weigh the pros and cons!"))
+        .setPositiveButton(AdapLan("确定","Okey"),{onClick=function(v)
+            task(100,function()
+              if (!activity.getSharedData("EncryptDiary")) then
+                MyToast.showSnackBar(AdapLan("您还未开启加密功能","You have not enabled encrypt yet"))
+               else
+                import "com.google.android.material.bottomsheet.BottomSheetDialog"
+
+                local dann=import "layout.typepwd"
+
+                local dl=BottomSheetDialog(activity)
+                dl.setContentView(loadlayout(dann))
+                dl.setCanceledOnTouchOutside(true)
+                dl.setCancelable(true)
+                dl.show()
+                bottom = dl.findViewById(R.id.design_bottom_sheet);
+                if (bottom != nil) then
+                  bottom
+                  .setBackgroundResource(android.R.color.transparent)
+                  .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
+                end
+                okey.onClick=function()
+                  if (typepsk.getText().toString()==activity.getSharedData("DiaryPassword")) then
+                    --clickToUnlock(typepsk.getText().toString(),id)
+                    this.setSharedData(state,true)
+                    dataset[one].status["Checked"]=true
+                    SwitchIn.checked=unBoolean(SwitchIn.checked)
+                    dl.dismiss()
+                    else
+                    MyToast.showSnackBar(AdapLan("密码错误","Incorrect password."))
+                  end
+                  
+                end
+                cancel.onClick=lambda -> dl.dismiss()
+              end
+            end)
+          end})
+        .setNegativeButton(AdapLan("取消","Cancel"),nil)
+        .show()
+
+      end
      case "BingImage"
       if dataset[one].status["Checked"]==true then
         this.setSharedData(state,false)
@@ -93,7 +142,6 @@ onItemClick=function(one,SwitchIn)
       SwitchIn.checked=unBoolean(SwitchIn.checked)
 
      case "YiyanType"
-     import "androidx.appcompat.app.AlertDialog"
       local yiyan_type_chooser=AlertDialog.Builder(this)
       .setTitle("一言类型")
       .setSingleChoiceItems(yiyan.listYiyanType("name"),(yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]-1),{

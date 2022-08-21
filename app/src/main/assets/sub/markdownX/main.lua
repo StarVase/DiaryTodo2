@@ -33,9 +33,9 @@ fab.onClick=function()
     pathD.setText(crtpath)
     okey.onClick=function()
       if tostring(titleD.getText())=="" then
-        titleD.setError("Null")
+        titleD.setError(AdapLan("不得为空","Cannot be empty"))
        elseif tostring(pathD.getText())=="" then
-        pathD.setError("Null")
+        pathD.setError(AdapLan("不得为空","Cannot be empty"))
        else
         --print(file.getExtensionName(tostring(titleD.getText())))
         if file.getExtensionName(tostring(titleD.getText()))=="md" or file.getExtensionName(tostring(titleD.getText()))=="mdx" then

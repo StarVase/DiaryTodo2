@@ -7,7 +7,7 @@ item=import "item"
 import "function"
 layout=import "layout"
 
-
+print(path.backup)
 
 activity.setContentView(loadlayout(layout))
 --import"fab"

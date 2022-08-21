@@ -8,7 +8,7 @@ import "android.provider.*"
 import "com.StarVase.library.adapter.MyLuaMultiAdapter"
 
 require "StarVase"(this,{enableTheme=true})
-TimingUtil.setName("About")
+TimingUtil.setName(activity.getString(R.string.menu_main_about))
 import "function"
 
 import "layout"
@@ -36,7 +36,8 @@ end
 import "android.text.SpannableString"
 import "android.text.style.ForegroundColorSpan"
 import "android.text.Spannable"
-spTitle = SpannableString("关于")
+spTitle = SpannableString(activity.getString(R.string.menu_main_about))
+
 spTitle.setSpan(ForegroundColorSpan(titleColor),0,#spTitle,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
 activity.getSupportActionBar().setTitle(spTitle)
 activity.getSupportActionBar().setDisplayShowCustomEnabled(true)

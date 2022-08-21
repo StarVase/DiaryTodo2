@@ -34,6 +34,7 @@ end
   xpcall(function()
     fileTable=((luajava.astable(File(tostring(path.backup)).listFiles())))
   end,function() fileTable={} end)
+print(dump(fileTable))
   if fileTable[1] then
     for i = 1,#fileTable do
       path=fileTable[i]

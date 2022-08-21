@@ -32,7 +32,7 @@
     <string name="menu_npd_undo">撤销</string>
     <string name="menu_npd_redo">恢复</string>
     <string name="menu_npd_save">保存</string>
-    <string name="menu_npd_notsave">不再保存</string>
+    <string name="menu_npd_notsave">撤销编辑</string>
     <string name="menu_npd_statistics">统计</string>
     <string name="menu_npd_export">导出并分享...</string>
     <string name="menu_npd_asimage">以图片</string>
@@ -52,7 +52,7 @@
     <!-- cancel and ok -->
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
-
+	<string name="selectImg">选择图片</string>
 
     <!-- editor toolbar dialog -->
     <string name="dialog_btn_insert">插入</string>

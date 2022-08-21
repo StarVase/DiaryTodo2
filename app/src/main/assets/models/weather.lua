@@ -112,7 +112,7 @@ if activity.getSharedData("WeatherTip")==true then
             weatherTopHeight = weatherTop.getMeasuredHeight()
             --mcardparentHeight = mcardparent.getMeasuredHeight()
             --mcardparentHeight = mcardparent.getMeasuredHeight()
-            closeAnimation(0)
+            --closeAnimation(0)
           end
         })
       end

@@ -136,11 +136,61 @@ function verfyPwd(key,content)
 
   local dann=import "layout.typepwd"
 
+  import "android.hardware.fingerprint.FingerprintManager"
+
+  callback = FingerprintManager.AuthenticationCallback( {
+
+    onAuthenticationSucceeded=function(result)
+      --指纹验证成功
+      import "rc4"
+      --print(minicrypto.decrypt(key,"Diaryenced"),key)
+      decrypt(key,content,minicrypto.decrypt(key,"Diaryenced"))
+
+      dl.dismiss()
+    end,
+
+    onAuthenticationError=function(errorCode, errString)
+      --指纹验证失败，不可再验
+
+      fingerprint_txt.setText(errString);
+      fingerprint_img.setColorFilter(activity.getColor(R.color.NewYearRed));
+      fingerprint_img.setImageResource(R.drawable.ic_fingerprint_off)
+
+    end,
+
+    onAuthenticationHelp=function(helpCode, helpString)
+      --指纹验证失败，可再验，可能手指过脏，或者移动过快等原因。
+      fingerprint_txt.setText(helpString)
+      fingerprint_img.setColorFilter(activity.getColor(R.color.NewYearRed));
+
+    end,
+
+    onAuthenticationFailed=function()
+      --指纹验证失败，指纹识别失败，可再验，该指纹不是系统录入的指纹。
+      --tv.setText("没有找到匹配的指纹信息，请重试");
+      fingerprint_txt.setText(AdapLan("验证失败，请重试","Authentication failed, try again"));
+      fingerprint_img.setColorFilter(activity.getColor(R.color.NewYearRed));
+
+    end
+  })
+
+
+
+
   dl=BottomSheetDialog(activity)
   dl.setContentView(loadlayout(dann))
   dl.setCanceledOnTouchOutside(false)
   dl.setCancelable(false)
   an=dl.show()
+  pcall(function()
+    fingerprintManager = activity.getContext().getSystemService(FingerprintManager);
+
+    if (fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints() && activity.getSharedData("EnableFingerprint")) then
+      fingerprintManager.authenticate(null, null, 0, callback, null);
+     else
+      fingerprint_widget.setVisibility(View.GONE)
+    end
+  end)
   bottom = dl.findViewById(R.id.design_bottom_sheet);
   if (bottom != nil) then
     bottom
@@ -154,7 +204,18 @@ function verfyPwd(key,content)
     dl.dismiss()
   end
   cancel.onClick=lambda -> activity.finish()
-
+  onEditorAction=function(v,actionId,event)
+    if (actionId == EditorInfo.IME_ACTION_SEARCH) then
+      --当按了搜索之后关闭软键盘
+      (mSearch.getContext().getSystemService(
+      Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+      this.getCurrentFocus().getWindowToken(),
+      InputMethodManager.HIDE_NOT_ALWAYS);
+      okey.onClick(okey)
+      return true;
+    end
+    return false;
+  end
 end
 
 

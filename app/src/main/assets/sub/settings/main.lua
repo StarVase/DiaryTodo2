@@ -9,6 +9,7 @@ TimingUtil.setName("Settings")
 this.setTitle(activity.getString(R.string.func_settings))
 import "android.widget.ExListView"
 import "androidx.coordinatorlayout.widget.CoordinatorLayout"
+import "androidx.appcompat.app.AlertDialog"
 
 import "android.graphics.*"
 import "android.graphics.drawable.GradientDrawable"
@@ -73,7 +74,16 @@ table.insert(dataset,{__type=2,intent="FontStyle",p={Focusable=false},img={Image
 table.insert(dataset,{__type=4,intent="FuncBarMargin",img={ImageResource=R.drawable.ic_format_vertical_align_bottom},subtitle=AdapLan("功能栏边距","Margin for function bar"),message=AdapLan("为工具栏设置边距，防止与全面屏手势冲突","Set margins for the function bar to prevent conflicts with full screen gestures"),status={Checked=Boolean.valueOf(this.getSharedData("FuncBarMargin"))}})
 
 table.insert(dataset,{__type=1,title=AdapLan("密码","Password")})
-table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("EncryptDiary"))}})
+table.insert(dataset,{__type=5,intent="EncryptDiary",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("日记加密","Diary encryption"),status={Checked=Boolean.valueOf(this.getSharedData("EncryptDiary"))}})
+pcall(function()
+  import "android.hardware.fingerprint.FingerprintManager"
+  fingerprintManager = activity.getContext().getSystemService(FingerprintManager);
+
+  if (fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints()) then
+    table.insert(dataset,{__type=4,intent="EnableFingerprint",p={Focusable=false},img={ImageResource=R.drawable.ic_fingerprint},subtitle=AdapLan("使用指纹","Use fingerprint"),message=AdapLan('实验室功能',"Laboratory function"),status={Checked=Boolean.valueOf(this.getSharedData("EnableFingerprint"))}})
+
+  end
+end)
 --adp.add{__type=2,intent="PasswordPro",p={Focusable=false},img={ImageResource=R.drawable.ic_lock_outline},subtitle=AdapLan("设置密保","Set password security"),message=AdapLan('可用密保找回密码',"The password can be recovered with security")}
 table.insert(dataset,{__type=1,title=AdapLan("展示","Showing")})
 table.insert(dataset,{__type=4,intent="BingImage",img={ImageResource=R.drawable.ic_microsoft_bing},subtitle=AdapLan("每日必应","Bing images"),message=AdapLan("从必应加载每日图片","Load daily pictures from Bing"),status={Checked=Boolean.valueOf(this.getSharedData("BingImage"))}})
