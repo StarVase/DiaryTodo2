@@ -311,3 +311,26 @@ if (!activity.getSharedData("EditorGuide")) then
   .show()
 
 end
+
+function onActivityResult(requestCode,resultCode,intent)
+  local start = editText.getSelectionStart();
+  local End = editText.getSelectionEnd();
+  if (requestCode == 2) then
+    -- 从相册返回的数据
+    --Log.e(this.getClass().getName(), "Result:" + data.toString());
+    if (intent != nil) then
+      -- 得到图片的全路径
+      uri = data.getData();
+      linkDisplayText = "Image";
+
+      content = "![" .. linkDisplayText .. "]" .. "(" .. uri .. ")";
+      if (start == End) then
+        editText.getText().insert(start, content);
+       else
+        editText.getText().replace(start, End, content);
+      end
+      
+    end
+  end
+
+end

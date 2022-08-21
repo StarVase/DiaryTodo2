@@ -153,7 +153,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(android.R.style.Theme_Holo_Light_NoActionBar);
-
+        DtdCopyright dtdcp = new DtdCopyright(this);
 
         //设置主题
 //		Intent intent=getIntent();
