@@ -32,7 +32,7 @@ public class DtdCopyright {
 			}catch(Exception e){
 				
 			}
-		checkLegacy()
+		checkLegacy();
 
         } else {
             versionName = versionCode = "NULL";

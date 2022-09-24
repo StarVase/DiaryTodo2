@@ -42,7 +42,7 @@ end
 --setWallPaper()
 
 function setBingDailyImage(i,j)
- -- setWallPaper()
+  -- setWallPaper()
 
   import "okhttp3.*"
   BASE_URL="http://cn.bing.com/HPImageArchive.aspx?format=js&idx="..i.."&n=8"
@@ -60,22 +60,26 @@ function setBingDailyImage(i,j)
       activity.runOnUiThread(Runnable{
         run=function()
           info=dump2table(activity.getSharedData("bingImgInfo"))
-          api=info.uri
-          import "com.bumptech.glide.request.RequestOptions";
-          import "com.bumptech.glide.request.target.SimpleTarget"
-          import "com.StarVase.library.util.BlurTransformation"
-          import "com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions"
+          if (info) then
+            api=info.uri
+            import "com.bumptech.glide.request.RequestOptions";
+            import "com.bumptech.glide.request.target.SimpleTarget"
+            import "com.StarVase.library.util.BlurTransformation"
+            import "com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions"
 
-          Glide.with(activity)
-          .load(api)
-          .transition(DrawableTransitionOptions.withCrossFade())
-          --.apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
-          .into(mainAppCompatImageView)
-          Glide.with(activity)
-          .load(api)
-          .transition(DrawableTransitionOptions.withCrossFade())
-          .apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
-          .into(subAppCompatImageView)
+            Glide.with(activity)
+            .load(api)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            --.apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
+            .into(mainAppCompatImageView)
+            Glide.with(activity)
+            .load(api)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(activity,18)))
+            .into(subAppCompatImageView)
+           else
+            setWallPaper()
+          end
         end
       })
     end,

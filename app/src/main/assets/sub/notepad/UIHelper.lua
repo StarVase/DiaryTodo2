@@ -313,6 +313,7 @@ if (!activity.getSharedData("EditorGuide")) then
 end
 
 function onActivityResult(requestCode,resultCode,intent)
+  local editText = Widgetcontent
   local start = editText.getSelectionStart();
   local End = editText.getSelectionEnd();
   if (requestCode == 2) then
