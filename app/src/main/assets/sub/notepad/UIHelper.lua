@@ -312,19 +312,19 @@ if (!activity.getSharedData("EditorGuide")) then
 
 end
 
-function onActivityResult(requestCode,resultCode,intent)
+function onActivityResult(requestCode,resultCode,data)
   local editText = Widgetcontent
   local start = editText.getSelectionStart();
   local End = editText.getSelectionEnd();
   if (requestCode == 2) then
     -- 从相册返回的数据
     --Log.e(this.getClass().getName(), "Result:" + data.toString());
-    if (intent != nil) then
+    if (data != nil) then
       -- 得到图片的全路径
       uri = data.getData();
       linkDisplayText = "Image";
 
-      content = "![" .. linkDisplayText .. "]" .. "(" .. uri .. ")";
+      content = "![" .. linkDisplayText .. "]" .. "(" .. uri.toString() .. ")";
       if (start == End) then
         editText.getText().insert(start, content);
        else

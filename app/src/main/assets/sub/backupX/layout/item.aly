@@ -1,0 +1,49 @@
+{
+  LinearLayout;
+  gravity="center";
+  layout_width="fill";
+  layout_height="wrap";
+  paddingLeft=math.dp2int(8);
+  paddingRight=math.dp2int(8);
+  paddingTop=math.dp2int(8);
+  paddingBottom=math.dp2int(8);
+
+  {
+    AppCompatImageView,
+    id="img",
+    layout_margin="16dp",
+    ImageResource=R.drawable.ic_lightbulb_outline,
+    layout_width="24dp",
+    layout_height="24dp",
+    colorFilter=icon,
+  },
+  {
+    LinearLayout;
+    layout_height="fill";
+    layout_width="fill";
+    orientation="vertical";
+    layout_gravity="left|center";
+    layout_marginLeft="16dp";
+    layout_marginRight="16dp";
+
+    {
+      AppCompatTextView;
+      id="title";
+      textSize="16dp";
+      singleLine="true";
+      textColor=textColor;
+      paddingTop="8dp",
+      layout_weight="2";
+    };
+
+    {
+      AppCompatTextView;
+      id="sub";
+      textSize="10dp";
+      singleLine="true";
+      textColor=textColor;
+      paddingBottom="8dp",
+      layout_weight="1";
+    };
+  };
+};
