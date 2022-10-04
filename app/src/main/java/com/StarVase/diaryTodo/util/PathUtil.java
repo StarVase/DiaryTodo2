@@ -10,7 +10,7 @@ public class PathUtil {
     
     public static String data = envdir + "/Android/data/" + pkgname + "/data/";
     public static String app = envdir + "/Android/data/" + pkgname + "/";
-
+    public static String importeds = data + "importeds/";
     public static String diary = data + ".diary/";
     public static String todo = data + ".todo/";
     public static String favorote = data + ".favorite/";

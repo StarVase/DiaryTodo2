@@ -12,7 +12,7 @@
     AppCompatImageView,
     id="img",
     layout_margin="16dp",
-    ImageResource=R.drawable.ic_lightbulb_outline,
+    ImageResource=R.drawable.ic_backup,
     layout_width="24dp",
     layout_height="24dp",
     colorFilter=icon,

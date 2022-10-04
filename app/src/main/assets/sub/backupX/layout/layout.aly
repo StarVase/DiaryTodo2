@@ -1,0 +1,98 @@
+{
+  CoordinatorLayout;
+  id="mainLay";
+  layout_width="fill",
+  layout_height="fill",
+  backgroundColor=mainColor,
+  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+
+
+  {
+    FrameLayout;
+    layout_height="fill";
+    layout_width="fill";
+    layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+    {
+      LinearLayout,
+      layout_width="fill",
+      layout_height="fill",
+      orientation="vertical",
+      backgroundColor=BGC,
+      Gravity="center",
+      layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+
+      {
+        SwipeRefreshLayout,
+        id="sr",
+        layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        {
+          RelativeLayout,
+          layout_width="fill",
+          layout_height="fill",
+          layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+          {
+            ListView,
+            id="list",
+            layout_width="fill",
+            layout_marginTop="0dp",
+            --  Gravity='center',
+            layout_marginLeft="0dp",
+            --paddingBottom="88dp";
+            layout_marginRight="0dp",
+            dividerHeight="0px",
+            FastScrollEnabled=true;
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+          },
+          {
+            LinearLayout;
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            {
+              ProgressBar;
+              --layout_height="fill";
+              --layout_gravity="center";
+              id="loading";
+            };
+          };
+          {
+            LinearLayout;
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+            {
+              AppCompatImageView;
+              id="nodata";
+              visibility=View.GONE;
+              layout_width="fill";
+              layout_height="fill";
+              elevation="24dp",
+              padding="96dp",
+              ImageResource=R.drawable.svg_night;
+            };
+          };
+        },
+      },
+    },
+    {
+      import "com.google.android.material.floatingactionbutton.FloatingActionButton",
+      id="fab",
+      layout_margin="16dp",
+      layout_gravity="bottom|right";
+      SupportBackgroundTintList=(ColorStateList.valueOf(mainColor)),
+      ColorFilter=(titleColor),
+      ImageResource=(R.drawable.ic_plus),
+      RippleColor=(ColorStateList.valueOf(普通波纹)),
+    }
+  },
+}

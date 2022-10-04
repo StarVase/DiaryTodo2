@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.FileInputStream;
+import android.util.Log;
 
 /**
  * Created by Administrator on 2016/11/30.
@@ -245,7 +247,7 @@ public class UriUtils {
         return data;
     }
 
-    
+
 
     /**
      * @param uri The Uri to check.
@@ -315,6 +317,7 @@ public class UriUtils {
                     is.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    
                 }
             }
         }
@@ -386,6 +389,47 @@ public class UriUtils {
         return count;
     }
 
+    public static String UriToImporteds(Context context, Uri uri) {
+        String path = getPath(context, uri);
+        File file = new File(path);
+        //android10以上转换
+        if (file.isFile()) {
+            try {
+                
+                File oriFile = new File(path);
+                FileInputStream fis = new FileInputStream(oriFile);
+                File file1 = new File(PathUtil.importeds + "/" + System.currentTimeMillis());
+                if (!file1.exists()) {
+                    file1.mkdirs();
+                }
+                File cache = new File(file1.getPath(), oriFile.getName());
+                
+                FileOutputStream fos = new FileOutputStream(cache);
+                //FileUtils.copy(fis, fos);
+                byte[] buffer = new byte[1024];
+
+                int length;
+
+                while ((length = fis.read(buffer)) > 0) {
+                    fos.write(buffer, 0, length);
+
+                }
+                
+                file = cache;
+                fos.close();
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                
+                Log.e("UriUtil",e.toString());
+            }
+        } else {
+            Log.e("UriUtil","'file' is not a file.");
+        }
+
+        return file.getAbsolutePath();
+
+    }
 
 
 }

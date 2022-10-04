@@ -157,7 +157,7 @@ onItemClick=function(one,SwitchIn)
       .show();
 
      case "RecoveryBackup"
-      subed("backup")
+      subed("backupX")
 
      case "AutoBackup"
       if dataset[one].status["Checked"]==true then

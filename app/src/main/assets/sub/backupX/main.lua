@@ -61,19 +61,28 @@ function fab.onClick()
     end
 
     okey.onClick=function()
-      if edit.getText() then
-        CreateFileUtil.collection({
-          title=edit.getText(),
-          timestamp=os.time(),
-          content=""
-        })
-        MyToast.showSnackBar("Done")
-      end
+
+
+
+
+
+
+
+
+
+
+
+--Refresh()
+
+
+
+      MyToast.showSnackBar("Done")
+
       dl.dismiss()
       Refresh()
     end
     cancel.onClick=lambda -> dl.dismiss()
-    --新建对话框(bt,nr,text,qd,qx,qdnr,qxnr,gb)
+    --新建对话框(bt,nr,tet,qd,qx,qdnr,qxnr,gb)
   end)
 end
 

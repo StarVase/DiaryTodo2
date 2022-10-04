@@ -323,8 +323,8 @@ function onActivityResult(requestCode,resultCode,data)
       -- 得到图片的全路径
       uri = data.getData();
       linkDisplayText = "Image";
---print()
-      content = "![" .. linkDisplayText .. "]" .. "(file://" .. UriUtils.getPath(this,uri) .. ")";
+
+      content = "![" .. linkDisplayText .. "]" .. "(file://" .. UriUtils.UriToImporteds(this,uri) .. ")";
       if (start == End) then
         editText.getText().insert(start, content);
        else
