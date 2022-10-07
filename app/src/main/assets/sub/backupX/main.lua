@@ -88,17 +88,9 @@ end
 
 
 list.onItemClick=function(id,v,zero,one)
-  id=data[one].id
-  sql="select * from collection WHERE id=?"
-
-  raw(sql,{tostring(id)})
-  if cursor.moveToFirst() then
-    title = cursor.getString(1);--获取第二列的值
-
-  end
-  subed("notepad","collectionX",title,{
-    id=id,
-  })
+  --id=data[one].id
+  print(data[one].path)
+restoreBak(data[one].path)
 
 end
 
