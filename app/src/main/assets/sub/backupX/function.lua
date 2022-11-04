@@ -182,21 +182,26 @@ end
 
 
 function backupNow()
-  zip(tostring(path.data),tostring(path.backup)..tostring(os.date("%Y%m%d_%H%M%S"))..".dbk", false, nil)
+  zip(tostring(PathUtil.data),tostring(PathUtil.backup)..tostring(os.date("%Y%m%d_%H%M%S"))..".dbk", false, nil)
 end
 
-function restoreBak(path)
-  zipFile = ZipFile(path)
- -- zipFile.setCharset("GBK")
+function restoreBak(fpath)
+
+  zipFile = ZipFile(fpath)
+  -- zipFile.setCharset("GBK")
   if (!zipFile.isValidZipFile()) then
     MyToast.showSnackBar(AdapLan("无效的备份文件","Invaild backup file."))
     return
   end
-print(path.data)
-  fileDir = File(path.data)
-  if (fileDir.isDirectory() && !fileDir.exist()) then
+  --
+  fileDir = File(PathUtil.data)
+  if (fileDir.isDirectory()) then
     fileDir.mkdirs()
   end
-  zipFile.extractAll(fileDir)
+  zipFile.extractAll(fileDir.toString())
 end
 
+function deleteBak(fpath)
+  
+  pcall(function() os.remove(fpath) end)
+end

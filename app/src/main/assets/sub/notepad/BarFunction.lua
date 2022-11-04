@@ -23,6 +23,13 @@ return {
     end,
   },
   {
+    intent="mark",
+    icon=R.drawable.ic_format_color_highlight,
+    func=function()
+      editorHelper.mark()
+    end,
+  },
+  {
     intent="italic",
     icon=R.drawable.ic_format_italic,
     func=function()

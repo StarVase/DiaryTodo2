@@ -1,3 +1,20 @@
+function map(dataset)
+  local maptable={}
+  table.foreach(dataset,function(key,value)
+    if value.intent then
+      maptable[value.intent]=key
+     else
+      maptable[value]=key
+    end
+  end)
+  return maptable
+end
+
+backupConf={
+  RecyclePeriodSelections={"3-day", "7-day", "1-month", "6-month", "1-year", "none"},
+}
+backupConf._RecyclePeriodSelectionsMap=map(backupConf.RecyclePeriodSelections)
+
 function unBoolean(blin)
   if blin == true then
     return false
@@ -85,10 +102,10 @@ onItemClick=function(one,SwitchIn)
                     dataset[one].status["Checked"]=true
                     SwitchIn.checked=unBoolean(SwitchIn.checked)
                     dl.dismiss()
-                    else
+                   else
                     MyToast.showSnackBar(AdapLan("密码错误","Incorrect password."))
                   end
-                  
+
                 end
                 cancel.onClick=lambda -> dl.dismiss()
               end
@@ -150,7 +167,7 @@ onItemClick=function(one,SwitchIn)
         end})
       .setPositiveButton("确定",{onClick=function()
           activity.setSharedData(state,selectType)
-          dataset[one].message=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]]
+          SwitchIn.text=yiyan.listYiyanType("name")[yiyan.listYiyanType("id")[activity.getSharedData(state) or "undefined"]]
           --adapter.submitList(dataset)
         end})
       .setNegativeButton("取消",nil)
@@ -168,6 +185,22 @@ onItemClick=function(one,SwitchIn)
         dataset[one].status["Checked"]=true
       end
       SwitchIn.checked=unBoolean(SwitchIn.checked)
+
+     case "RecyclePeriod"
+      local recycle_period_chooser=AlertDialog.Builder(this)
+      .setTitle("回收周期")
+      .setSingleChoiceItems(backupConf.RecyclePeriodSelections,(backupConf._RecyclePeriodSelectionsMap[activity.getSharedData("RecyclePeriod") or "none"]-1),{
+        onClick=function(v,p)
+          selectType=backupConf.RecyclePeriodSelections[p+1]
+        end})
+      .setPositiveButton("确定",{onClick=function()
+          activity.setSharedData(state,selectType)
+          SwitchIn.text=selectType
+          --adapter.submitList(dataset)
+        end})
+      .setNegativeButton("取消",nil)
+      .show();
+
 
      case "LogCat"
       subed('logcat',nil,os.clock())

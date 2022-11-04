@@ -29,8 +29,9 @@ list.onItemLongClick=function(id,v,zero,one)
       end
 
       okey.onClick=function()
-        delete(id)
+        deleteBak(data[one].path)
         dl.dismiss()
+        Refresh()
       end
       cancel.onClick=lambda -> dl.dismiss()
     end)
@@ -45,53 +46,16 @@ end
 --没注释，不解释不抱怨
 function fab.onClick()
   task(1,function()
-
-    import "com.google.android.material.bottomsheet.BottomSheetDialog"
-
-    local dann=import "layout.add_dialog"
-
-    dl=BottomSheetDialog(activity)
-    dl.setContentView(loadlayout(dann))
-    an=dl.show()
-    bottom = dl.findViewById(R.id.design_bottom_sheet);
-    if (bottom != nil) then
-      bottom
-      .setBackgroundResource(android.R.color.transparent)
-      .setPadding(math.dp2int(16),math.dp2int(16),math.dp2int(16),math.dp2int(32))
-    end
-
-    okey.onClick=function()
-
-
-
-
-
-
-
-
-
-
-
---Refresh()
-
-
-
-      MyToast.showSnackBar("Done")
-
-      dl.dismiss()
-      Refresh()
-    end
-    cancel.onClick=lambda -> dl.dismiss()
-    --新建对话框(bt,nr,tet,qd,qx,qdnr,qxnr,gb)
+    backupNow()
+    Refresh()
   end)
 end
 
 
 list.onItemClick=function(id,v,zero,one)
-  --id=data[one].id
-  print(data[one].path)
-restoreBak(data[one].path)
-
+  backupNow()
+  restoreBak(data[one].path)
+Refresh()
 end
 
 

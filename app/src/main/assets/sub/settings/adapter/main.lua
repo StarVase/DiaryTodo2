@@ -68,7 +68,7 @@ return function(data)
         end
       end
       if (data.__type != 1) then
-        holder.itemView.onClick=lambda -> task(50,lambda ->onItemClick(position+1,tag.status))
+        holder.itemView.onClick=lambda -> task(50,lambda ->onItemClick(position+1,tag.status or tag.message))
       end
       --[[  local tag=holder.itemView.tag
     tag.text.text=data.text

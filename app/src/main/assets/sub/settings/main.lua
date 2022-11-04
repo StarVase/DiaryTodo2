@@ -98,6 +98,7 @@ table.insert(dataset,{__type=2,intent="YiyanType",p={Focusable=false},img={Image
 
 table.insert(dataset,{__type=1,title=AdapLan("应用","Application")})
 table.insert(dataset,{__type=5,intent="AutoBackup",img={ImageResource=R.drawable.ic_backup},subtitle=AdapLan("自动备份","Auto backup"),status={Checked=Boolean.valueOf(this.getSharedData("AutoBackup"))}})
+table.insert(dataset,{__type=2,intent="RecyclePeriod",p={Focusable=false},img={ImageResource=R.drawable.ic_recycle_variant},subtitle=AdapLan("回收周期","Recycle Period"),message=activity.getSharedData("RecyclePeriod")})
 table.insert(dataset,{__type=3,intent="RecoveryBackup",img={ImageResource=R.drawable.ic_backup},subtitle=AdapLan("恢复备份","Restore backup")})
 table.insert(dataset,{__type=3,intent="LogCat",img={ImageResource=R.drawable.ic_android_debug_bridge},subtitle=AdapLan("日志","LogCat")})
 table.insert(dataset,{__type=3,intent="AboutApp",img={ImageResource=R.drawable.ic_information_outline},subtitle=AdapLan("关于应用","About")})
@@ -146,12 +147,3 @@ function onResume()
   end)
 end
 
-function map(dataset)
-  local maptable={}
-  table.foreach(dataset,function(key,value)
-    if value.intent then
-      maptable[value.intent]=key
-    end
-  end)
-  return maptable
-end

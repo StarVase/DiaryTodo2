@@ -83,6 +83,27 @@ public class EasyEditorHelper {
         }
     }
 
+	    /**
+
+     * Add html mark tag.
+
+     * If there was select something, add markup beside the selected text.
+
+     * Otherwise, just add the markup and set the cursor position at the middle of markup.
+
+     */
+    public void mark() {
+        int start = editText.getSelectionStart();
+        int end = editText.getSelectionEnd();
+        if (start == end) {
+            editText.getText().insert(start, "<mark></mark>");
+            editText.setSelection(start + 6);
+        } else {
+            editText.getText().insert(start, "<mark>");
+            editText.getText().insert(end + 6, "</mark>");
+        }
+    }
+	
     /**
 
      * Add markdown italic markup.

@@ -259,6 +259,84 @@ imageFrame.onClick=function()
 
 end
 
+activity.newTask(function()
+  local Bakdata={}
+  require "import"
+  import "android.os.Looper"
+  --Looper.prepare()
+  --Looper.loop()
+  import "android.util.Log"
+  import "java.lang.System"
+  import "com.StarVase.app.backup"
+  import("java.io.File")
+  import "com.StarVase.app.path"
+  import "com.StarVase.utils.string"
+
+  xpcall(function()
+    Bakdir=luajava.astable(File(tostring(path.backup)).listFiles())
+  end,function() Bakdir={} end)
+
+  if Bakdir[1] then
+    for i = 1,#Bakdir do
+      local path=Bakdir[i]
+      local name=File(tostring(path)).getName()
+
+      if (file.getExtensionName(tostring(name))=="dbk") then
+        table.insert(Bakdata,{
+          file_name=name,
+          path=path,
+        })
+      end
+    end
+  end
+
+  import "java.util.Calendar"
+  import "java.util.Date"
+  calendar=Calendar.getInstance()
+  calendar.setTime(Date())
+
+  switch activity.getSharedData("RecyclePeriod")
+
+   case"3-day"
+    calendar.add(Calendar.DAY_OF_MONTH,-3)
+   case "7-day"
+    calendar.add(Calendar.DAY_OF_MONTH,-7)
+   case "1-month"
+    calendar.add(Calendar.MONTH,-1)
+   case "6-month"
+    calendar.add(Calendar.MONTH,-6)
+   case "1-year"
+    calendar.add(Calendar.YEAR,-1)
+   case "none"
+
+  end
+  year=calendar.get(Calendar.YEAR)
+  yearstr=tostring(year)
+  month=calendar.get(Calendar.MONTH)+1
+  monthstr=tostring(month)
+  if (#monthstr < 2) then
+    monthstr="0"..monthstr
+  end
+  day=calendar.get(Calendar.DAY_OF_MONTH)
+  daystr=tostring(day)
+  if (#daystr < 2) then
+    daystr="0"..daystr
+  end
+  boundaryDate=yearstr..monthstr..daystr
+
+  for key,filestruct in ipairs(Bakdata) do
+    -- print(tointeger(string.sub(tostring(filestruct.file_name),1,8)))
+    scannedDate=tointeger(string.sub(filestruct.file_name,1,8)) or 2^31
+
+
+    if (scannedDate<tointeger(boundaryDate)) then
+      pcall(function() os.remove(tostring(filestruct.path)) end)
+    end
+  end
+end
+).execute()
+
+
 
 
 --返回程序
@@ -309,6 +387,7 @@ function onResume()
       require "import"
       import "com.StarVase.app.backup"
       backup.backupnow()
+
     end
   end)
 

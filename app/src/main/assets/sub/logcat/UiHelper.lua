@@ -11,6 +11,10 @@ activity.setContentView(loadlayout(layout))
 
 adapter=require"adapter"(dataset)
 recycler.setAdapter(adapter)
+layoutManager = LinearLayoutManager(this);
+layoutManager.setStackFromEnd(true);--列表再底部开始展示，反转后由上面开始展示
+layoutManager.setReverseLayout(true);--列表翻转
+recycler.setLayoutManager(layoutManager);
 adapter.notifyDataSetChanged()
 
 

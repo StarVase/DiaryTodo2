@@ -31,3 +31,5 @@ initSharedData("FontSize",16)
 initSharedData("FuncBarMargin",false)
 initSharedData("GetFocused",true)
 initSharedData("EnableFingerprint",false)
+initSharedData("RecyclePeriod","3-day")
+--selections: 3-day, 7-day, 1-month, 6-month, 1-year, none
