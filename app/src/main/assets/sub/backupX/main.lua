@@ -1,6 +1,6 @@
 require "import"
 require "StarVase"(this,{enableTheme=true})
-import "UIHelper"
+import "UiHelper"
 sr.setRefreshing(true);
 loading.setVisibility(View.VISIBLE)
 

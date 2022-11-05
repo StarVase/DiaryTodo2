@@ -385,8 +385,8 @@ function onResume()
   thread(function()
     if activity.getSharedData("AutoBackup") == true then
       require "import"
-      import "com.StarVase.app.backup"
-      backup.backupnow()
+      import "models.qkbackup"
+      backupNow()
 
     end
   end)

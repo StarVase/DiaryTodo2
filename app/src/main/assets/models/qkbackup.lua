@@ -1,15 +1,10 @@
---module(...,package.seeall)
-backup={}
-import "com.StarVase.utils.file"
-import "com.StarVase.diaryTodo.util.*"
-
 import "net.lingala.zip4j.ZipFile";
 import "net.lingala.zip4j.exception.ZipException";
 import "net.lingala.zip4j.model.FileHeader";
 import "net.lingala.zip4j.model.ZipParameters";
 import "net.lingala.zip4j.util.InternalZipConstants";
-
-
+import "com.StarVase.diaryTodo.util.*"
+import "java.io.File"
 --[[  /**
      * 在必要的情况下创建压缩文件存放目录,比如指定的存放路径并没有被创建
      * @param destParam 指定的存放路径,有可能该路径并没有被创建
@@ -116,24 +111,6 @@ function zip(src, dest, isCreateDir, passwd)
 end
 
 
-function backup.backupNow()
+function backupNow()
   zip(tostring(PathUtil.data),tostring(PathUtil.backup)..tostring(os.date("%Y%m%d_%H%M%S"))..".dbk", false, nil)
 end
-
-import "java.io.FileOutputStream"
-import "java.util.zip.ZipFile"
-import "java.io.File"
-
-
-function backup.unbackup(zippath)
-  to=path.data
-  ZipUtil.unzip(zippath,to)
-end
-
-function backup.logzip(path,path2)
-  import "values"
-  ZipUtil.zip(tostring(path),tostring(path2))
-  --file.rename(path.backup.."data.zip",path.backup..tostring(os.date("%Y-%m-%d+%H:%M:%S"))..".dbk")
-end
-
-return backup
