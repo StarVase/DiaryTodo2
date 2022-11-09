@@ -5,7 +5,7 @@ appName="日记与待办"--应用名称
 packageName="com.StarVase.diaryTodo"--应用包名
 include={"project:app","project:androlua"}--导入，第一个为主程序
 main="app"--老版本
-compileLua={{compileLua}}--编译Lua
+compileLua=true--编译Lua
 
 --相对路径位于工程根目录下
 icon={
