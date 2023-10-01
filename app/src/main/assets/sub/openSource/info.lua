@@ -1,5 +1,11 @@
 return {
-    {
+  {
+    title="DiaryTodo2",
+    message="A wonderful app to keep a diary and a to-do list app to schedule your day.",
+    License="GPL License",
+    url="https://gitee.com/StarVase/DiaryTodo2/",
+  },
+  {
     title="Android Jetpack",
     message="Development environment for Android Jetpack extension libraries under the androidx namespace. Synchronized with Android Jetpack's primary development branch on AOSP.",
     License=[[Apache License 2.0]]
@@ -21,6 +27,12 @@ return {
     message="Fast math typesetting for the web.",
     url="https://github.com/KaTeX/KaTeX",
     License=[[MIT License]]
+  },
+  {
+    title="Highlight.js",
+    message="Highlight.js is a syntax highlighter written in JavaScript. It works in the browser as well as on the server. It can work with pretty much any markup, doesn’t depend on any other frameworks, and has automatic language detection.",
+    url="https://github.com/highlightjs/highlight.js/",
+    License=[[BSD License]]
   },
   {
     title="AndroLua_pro",
@@ -164,5 +176,22 @@ that this copyright notice remain intact.]],
     message="Android EditText的撤销和恢复（反撤销）",
     url="https://github.com/qinci/AndroidEdit",
     License=[[Apache License 2.0]]
+  },
+  {
+    title="AideLua",
+    message=[[Aide Lua is a Lua editor relying on Aide   
+Aide Lua allows you to enjoy advanced and rapid software development on mobile devices   
+Aide Lua can help you transfer from Androlua+to AIDE and then to Android Studio
+]],
+    url="https://gitee.com/AideLua/AideLua/",
+    License="Long Press to View",
+    DetailLicense=[[Copyright (c) 2020-2023, Jesse205
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+]]
   },
 }

@@ -44,7 +44,7 @@
           layout_width="fill",
           layout_height="fill";
           scaleType="centerCrop";
-          ImageResource=R.drawable.svg_new_year,
+          ImageResource=R.drawable.svg_mid_autumn,
           id="mainAppCompatImageView",
 
         },
@@ -54,7 +54,7 @@
           layout_height="fill";
           scaleType="centerCrop";
           alpha=0,
-          ImageResource=R.drawable.svg_new_year,
+          ImageResource=R.drawable.svg_mid_autumn,
           id="subAppCompatImageView",
 
         },

@@ -1,0 +1,43 @@
+{
+  "easyGoVersion": "1.0",
+  "client": "com.StarVase.diaryTodo",
+  "logicEntities": [
+    {
+      "head": {
+        "function": "magicwindow",
+        "required": "true"
+      },
+      "body": {
+        "mode": "1",
+        "activityPairs": [
+          {
+            "from": "com.StarVase.diaryTodo.app.MainActivity",
+            "to": "com.StarVase.diaryTodo.app.BaseActivity"
+          },
+          {
+            "from": "com.StarVase.diaryTodo.app.DebugActivity",
+            "to": "com.StarVase.diaryTodo.app.DebugActivity"
+          },
+          {
+            "from": "com.StarVase.diaryTodo.app.SubActivity",
+            "to": "com.StarVase.diaryTodo.app.SubActivity"
+          },
+          {
+            "from": "com.StarVase.diaryTodo.app.SubDebugActivity",
+            "to": "com.StarVase.diaryTodo.app.SubDebugActivity"
+          }
+        ],
+        "transActivities": [],
+        "Activities": [],
+        "UX": {
+          "supportRotationUxCompat": "false",
+          "isDraggable": "true",
+          "supportVideoFullscreen": "false",
+          "supportDraggingToFullScreen": "ALL",
+          "supportLock": "true",
+          "draggingToFreeForm": "app"
+        }
+      }
+    }
+  ]
+}

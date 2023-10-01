@@ -7,7 +7,7 @@
   {
     MaterialCardView;
     layout_marginBottom="8dp";
-    radius="8dp";
+    radius="16dp";
     StrokeColor=lightForceColor,
     StrokeWidth=math.dp2int(2),
     

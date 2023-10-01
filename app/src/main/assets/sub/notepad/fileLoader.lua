@@ -63,6 +63,7 @@ function startLoadDiary()
     Widgetcontent.FocusableInTouchMode=true
     _STATE.__EMP=false
   end
+  _STATE._INITTITLE=title
   editorHelper.setDefaultText(Widgetcontent.text)
   MarkText(Widgetcontent.text)
   --end})).run()

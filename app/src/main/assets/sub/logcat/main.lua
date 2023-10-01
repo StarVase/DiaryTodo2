@@ -1,110 +1,252 @@
+package.path=package.path..activity.getLuaPath("../lua/?.lua;")
 require "import"
+import "android.app.*"
+import "android.os.*"
 import "android.widget.*"
 import "android.view.*"
+import "android.content.*"
+import "android.widget.ListView"
+import "android.graphics.Typeface"
+import "android.text.Spannable"
+import "android.text.SpannableString"
+import "android.text.style.ForegroundColorSpan"
+import "android.text.style.BackgroundColorSpan"
+import "android.text.style.TypefaceSpan"
 require "StarVase"(this,{enableTheme=true})
-import "UiHelper"
---activity.setTitle("LogCat")
 
+--import "themeutil"
+--import "AboutDialog"
 
---添加菜单
-items={"All","Lua","Test","Tcc","Error","Warning","Info","Debug","Verbose","Clear"}
+--themeutil.applyTheme()
+
+local array = activity.getTheme().obtainStyledAttributes({
+  android.R.attr.textColorPrimary,
+  android.R.attr.textColorSecondary,
+  android.R.attr.colorAccent,
+  android.R.attr.dividerVertical,
+})
+textColorPrimary = array.getColor(0, 0)
+textColorSecondary = array.getColor(1, 0)
+colorAccent = array.getColor(2, 0)
+dividerVertical = array.getDrawable(3)
+array.recycle()
+
+actionBar = activity.getSupportActionBar()
+actionBar.setDisplayHomeAsUpEnabled(true)
+actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS)
+
+local filterNames = { AdapLan("全部","All"), "Lua", "Test", "Tcc", "Error", "Warning", "Info", "Debug", "Verbose" }
+local filterParameters = { "", "lua:* *:S", "test:* *:S", "tcc:* *:S", "*:E", "*:W", "*:I", "*:D", "*:V" }
+local nowPriorityIndex = 2
+local isRefreshing = false
+local canCallSelected = false
+
+type2color = {
+  V = 0xFF000000,
+  D = 0xff2196f3,
+  I = 0xff4caf50,
+  W = 0xffff9800,
+  E = 0xfff44336
+}
+
 function onCreateOptionsMenu(menu)
-
-  for k,v in ipairs(items) do
-    m=menu.add(v)
-    items[v]=m
-  end
+  refreshMenu = menu.add(AdapLan("刷新","Refresh"))
+  clearMenu = menu.add(AdapLan("清空全部","Clear all"))
 end
-
 
 function onOptionsItemSelected(item)
-  if func[item.getTitle()] then
-    func[item.getTitle()]()
-  end
-  local id=item.getItemId()
-  if id==android.R.id.home then
+  local id = item.getItemId()
+  local title = item.title
+  if id == android.R.id.home then
     activity.finish()
+   elseif item == refreshMenu then
+    refreshLog()
+   elseif item == clearMenu then
+    runClearLog()
+   
   end
 end
 
-
-function readlog(s)
-  p=io.popen("logcat -d -v long "..s)
-  local s=p:read("*a")
-  p:close()
-  s=s:gsub("%-+ beginning of[^\n]*\n","")
-  if #s==0 then
-    s="欲查看运行时日志，请运行App..."
-  end
-  return s
-end
-
-function clearlog()
-  p=io.popen("logcat -c")
-  local s=p:read("*a")
-  p:close()
-  return s
-end
-
-
-func={}
-func.All=function()
-  activity.getSupportActionBar().setSubtitle("全部")
-  task(readlog,"",show)
-end
-func.Lua=function()
-  activity.getSupportActionBar().setSubtitle("Lua")
-  task(readlog,"lua:* *:I",show)
-end
-func.Test=function()
-  activity.getSupportActionBar().setSubtitle("测试")
-  task(readlog,"test:* *:S",show)
-end
-func.Tcc=function()
-  activity.getSupportActionBar().setSubtitle("Tcc")
-  task(readlog,"tcc:* *:S",show)
-end
-func.Error=function()
-  activity.getSupportActionBar().setSubtitle("错误")
-  task(readlog,"*:E",show)
-end
-func.Warning=function()
-  activity.getSupportActionBar().setSubtitle("警告")
-  task(readlog,"*:W",show)
-end
-func.Info=function()
-  activity.getSupportActionBar().setSubtitle("信息")
-  task(readlog,"*:I",show)
-end
-func.Debug=function()
-  activity.getSupportActionBar().setSubtitle("调试")
-  task(readlog,"*:D",show)
-end
-func.Verbose=function()
-  activity.getSupportActionBar().setSubtitle("Verbose")
-  task(readlog,"*:V",show)
-end
-func.Clear=function()
-  task(clearlog,show)
-end
-
-local r="%[ *%d+%-%d+ *%d+:%d+:%d+%.%d+ *%d+: *%d+ *%a/[^ ]+ *%]"
-
-function show(s)
-  dataset={}
-  local l=1
-  for i in s:gfind(r) do
-    if l~=1 then
-      text=(s:sub(l,i-1))
-      table.insert(dataset,{content=text})
+function show(content) --展示日志
+  local canScroll = listView.canScrollVertically(1)
+  adapter.clear()
+  progressBar.setVisibility(View.GONE)
+  listView.setVisibility(View.VISIBLE)
+  canCallSelected = false
+  actionBar.setSelectedNavigationItem(nowPriorityIndex - 1)
+  canCallSelected = true
+  isRefreshing = false
+  if content and #content ~= 0 then
+    local nowTitle = ""
+    local nowTag = ""
+    local nowContent = ""
+    for line in content:gmatch("(.-)\n") do
+      if line:find("^%-%-%-%-%-%-%-%-%- beginning of ") then
+        adapter.add({ __type = 1, title = line })
+       elseif line:find("^%[ *%d+%-%d+ *%d+:%d+:%d+%.%d+ *%d+: *%d+ *%a/[^ ]+ *%]$") then
+        local date, time, processId, threadId, logType, logTag = line:match(
+        "^%[ *(%d+%-%d+) *(%d+:%d+:%d+%.%d+) *(%d+): *(%d+) *(%a)/([^ ]+) *%]$")
+        --print(date,time,processId,threadId,logType,logTag)
+        local title
+        if logTag ~= "LuaInvocationHandler" then
+          title = "[ " .. date .. " " .. time .. " " .. processId .. ":" .. threadId .. "  "
+          local typeIndex = utf8.len(title)
+          title = title .. logType .. " /" .. logTag .. " ]"
+          title = SpannableString(title)
+          title.setSpan(BackgroundColorSpan(type2color[logType] or 0xff9e9e9e), typeIndex - 1, typeIndex + 2,
+          Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+          title.setSpan(ForegroundColorSpan(0xFFFFFFFF), typeIndex - 1, typeIndex + 2,
+          Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+          title.setSpan(TypefaceSpan("monospace"), typeIndex - 1, typeIndex + 2,
+          Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        end
+        if nowContent ~= "" and nowTag ~= "LuaInvocationHandler" then
+          adapter.add({ __type = 2, title = nowTitle, content = String(nowContent).trim() })
+        end
+        nowTitle = title --line
+        nowTag = logTag
+        nowContent = ""
+       else
+        nowContent = nowContent .. "\n" .. line
+      end
     end
-    l=i
+   else
+    adapter.add({ __type = 1, title = AdapLan("<运行应用程序以查看其日志输出>","<Run the application to see logs output>") })
   end
-  --print(s:sub(l))
-  adapter=require"adapter"(dataset)
-  recycler.setAdapter(adapter)
-  adapter.notifyDataSetChanged()
+  actionBar.setSubtitle(os.date("%Y-%m-%d %H:%M:%S." .. System.currentTimeMillis() % 1000))
+  if not (canScroll) then
+    listView.setSelection(adapter.getCount() - 1)
+  end
 end
 
-func.All()
+function readLog(value) --读取日志
+  local p = io.popen("logcat -d -v long " .. value)
+  local content = p:read("*a")
+  p:close()
+  return content
+end
 
+function clearLog() --清除日志
+  local p = io.popen("logcat -c")
+  p:close()
+end
+
+function refreshLog(index)
+  index = index or nowPriorityIndex
+  isRefreshing = true
+  progressBar.setVisibility(View.VISIBLE)
+  listView.setVisibility(View.GONE)
+  actionBar.setSubtitle(AdapLan("加载中...","Loading..."))
+  task(readLog, filterParameters[index], show)
+end
+
+function runClearLog()
+  if not isRefreshing then
+    isRefreshing = true
+    progressBar.setVisibility(View.VISIBLE)
+    --listView.setVisibility(View.GONE)
+    task(clearLog, refreshLog)
+  end
+end
+
+function onTabSelected(tab)
+  if canCallSelected then
+    local filterIndex = tab.tag
+    if not isRefreshing then
+      nowPriorityIndex = filterIndex
+      refreshLog(filterIndex)
+    end
+  end
+end
+
+for index, content in ipairs(filterNames) do
+  local tab = actionBar.newTab()
+  tab
+  .setTag(index)
+  .setText(content)
+  .setTabListener({
+    onTabSelected = onTabSelected,
+    onTabReselected = onTabSelected,
+    onTabUnselected = function(tab)
+      if canCallSelected and isRefreshing then
+        Handler().postDelayed(Runnable({
+          run = function()
+            actionBar.setSelectedNavigationItem(nowPriorityIndex - 1)
+          end
+        }), 1)
+      end
+    end
+  })
+  actionBar.addTab(tab)
+end
+canCallSelected = true
+
+
+item = {
+  {
+    TextView,
+    textIsSelectable = true,
+    textSize = "14sp",
+    padding = "8dp",
+    id = "title",
+    textColor = colorAccent,
+    typeface = Typeface.defaultFromStyle(Typeface.BOLD),
+  },
+  {
+    --条目
+    LinearLayout,
+    layout_width = "fill",
+    orientation = "vertical",
+    padding = "8dp",
+    {
+      TextView,
+      textIsSelectable = true,
+      textSize = "12sp",
+      id = "title",
+      textColor = textColorPrimary,
+      typeface = Typeface.defaultFromStyle(Typeface.BOLD),
+    },
+    {
+      TextView,
+      textIsSelectable = true,
+      textSize = "12sp",
+      id = "content",
+      textColor = textColorPrimary,
+      --typeface=Typeface.MONOSPACE;
+    },
+  }
+}
+
+listView = ListView(activity)
+listView.setFastScrollEnabled(true)
+
+
+adapter = LuaMultiAdapter(activity, item)
+listView.setAdapter(adapter)
+
+mainLay = (CoordinatorLayout or FrameLayout)(activity)
+
+mainLay.addView(listView)
+
+local linearParams = listView.getLayoutParams()
+linearParams.height = -1
+linearParams.width = -1
+listView.setLayoutParams(linearParams)
+
+progressBar = ProgressBar(activity, nil, android.R.attr.progressBarStyleLarge)
+mainLay.addView(progressBar)
+linearParams = progressBar.getLayoutParams()
+linearParams.height = math.dp2int(72)
+linearParams.width = math.dp2int(72)
+linearParams.gravity = Gravity.CENTER
+
+progressBar.setLayoutParams(linearParams)
+
+activity.setContentView(mainLay)
+
+linearParams = mainLay.getLayoutParams()
+linearParams.height = -1
+linearParams.width = -1
+mainLay.setLayoutParams(linearParams)
+
+actionBar.setSelectedNavigationItem(1)

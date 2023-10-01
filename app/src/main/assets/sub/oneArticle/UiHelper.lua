@@ -74,7 +74,7 @@ function addCard(text,src,gb)
   --pcall(function()mytab.foreground=graph.Ripple(nil,普通波纹)end)
 end
 
-addCard("朗读",R.drawable.ic_text_to_speech,
+addCard(AdapLan("朗读","Read Aloud"),R.drawable.ic_text_to_speech,
 function()import "android.speech.tts.*"
   if mTextSpeech then
     mTextSpeech.speak((artcon), TextToSpeech.QUEUE_FLUSH, nil);

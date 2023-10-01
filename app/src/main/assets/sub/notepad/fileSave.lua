@@ -1,4 +1,6 @@
 function saveDiary(id,title,content)
+--print(title)
+
   Thread(Runnable({
     run=function()
       if _STATE.__EMP then
@@ -65,7 +67,7 @@ end
 
 
 function save()
-  if (_STATE._INITCONTENT!=Widgetcontent.text) then
+  if (_STATE._INITCONTENT!=Widgetcontent.text||_STATE._INITTITLE!=Widgettitle.text) then
     Thread(Runnable({
       run=function()
         switch doctype

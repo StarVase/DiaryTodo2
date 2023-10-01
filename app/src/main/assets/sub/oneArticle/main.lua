@@ -7,19 +7,23 @@ getArticle()
 
 
 star.onClick=function()
-  if not getStar() then
-    --pcall(function()
+  if (Title.getText().toString()==""&&Author.getText().toString()==""&&Content.getText().toString()=="")then
+    MyToast.showSnackBar(AdapLan("不能收藏，因为内容为空","Failed by could not collect an empty article"))
+   else
+    if not getStar() then
+      --pcall(function()
       content=tostring("# "..Title.getText().toString()).."  \n## "..tostring(Author.getText().toString()).."\n"..tostring(Content.getText().toString())
       local index=save_as_favorite(tostring(Title.getText()),content)
       --print(index)
       setStarTrue(index)
-   -- end)
-   else
-    --pcall(function()
+      -- end)
+     else
+      --pcall(function()
       local index=getPath()
       CreateFileUtil.getDatabase().delete("collection", "id=?", {tostring(index)});
       setStarfalse(index)
-    --end)
+      --end)
+    end
   end
 end
 

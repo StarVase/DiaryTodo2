@@ -38,6 +38,9 @@
 
     <!-- MANAGE_EXTERNAL_STORAGE -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    
+    <!-- -->
+    <uses-permission android:name="com.huawei.permission.POPUP_BACKGROUND_WINDOW"/>
 
     <!-- 使用指纹硬件 -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
@@ -45,6 +48,10 @@
     <!-- 使用生物特征硬件 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
 
+    <supports-screens
+        android:largeScreens="true"
+        android:xlargeScreens="true"/>
+        
     <application
         android:largeHeap="true"
         android:name="com.StarVase.diaryTodo.app.DtdApplication"
@@ -70,7 +77,11 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d760ca556ab022b0c20ec873b231314a"/>
-
+            
+        <meta-data
+            android:name="EasyGoClient"
+            android:value="true"/>
+            
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"

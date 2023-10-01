@@ -1,1 +1,7 @@
-subappname="LogCat"
+appname = "LogCat   "
+appver = "2.9 (alpha)"
+appcode = "2901"
+packagename = "com.aidelua.logcat"
+developer = "Jesse205"
+description = "日志猫，像电脑一样轻松"
+mode = "plugin"

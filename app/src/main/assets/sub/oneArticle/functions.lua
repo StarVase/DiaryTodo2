@@ -7,17 +7,24 @@ activity.setSharedData("pathhh",nil)
 
 function getArticle()
   sr.setRefreshing(true);
-  url="https://meiriyiwen.com/"
+  url="https://www.dushu.com/meiwen/random/"
   Http.get(url,nil,"UTF-8",nil,function(code,content,cookie,header)
     setStarfalse()
     sr.setRefreshing(false);
     if(code==200 and content)then
-      title=content:match([[<h2 class="articleTitle">%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s(.-)%s%s%s%s%s%s%s%s%s%s%s%s%s</h2>]])
-      author=content:match([[<div class="articleAuthorName">%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s(.-)%s%s%s%s%s%s%s%s%s%s%s%s%s</div>]])
-      artcon=content:match("%pdiv%sclass%p%particleContent%p%p%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s(.-)%p%pdiv%p")
-      artcon=string.gsub(artcon,"%pp%p","")
-      artcon=string.gsub(artcon,"%p%pp%p","")
-      artcon=string.gsub(artcon,"%p","")
+      import "org.jsoup.Jsoup"
+      document=Jsoup.parse(content)
+      element=document.select("div[class=container margin-top]")[1]
+        .select("div[class=news-left]")
+        .select("div[class=article-detail]")
+      title=element.select("h1").text()
+      author=element.select("span").text()
+      original_content=element.select("div[class=text]").select ("p")
+      content=""
+      for index=0,original_content.size()-1 do
+        content = content .. original_content[index].text() .. "\n\n"
+      end
+      artcon=content
       Title.setText(title)
       Title.getPaint().setFakeBoldText(true)
 
