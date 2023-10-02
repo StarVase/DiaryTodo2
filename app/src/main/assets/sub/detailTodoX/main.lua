@@ -81,7 +81,6 @@ list.onItemClick=function(id,v,zero,one)
 end
 
 list.onItemClick=function(id,v,zero,one)
-
   if v.Tag.status ~= nil then
     if v.Tag.status.Checked then
       set_check_box(one,false,todoid)

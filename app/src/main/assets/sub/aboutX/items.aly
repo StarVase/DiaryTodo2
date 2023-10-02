@@ -1,23 +1,37 @@
 {
-  {
-    LinearLayout;
-    layout_width="wrap";
-    layout_height="fill";
+
+  {--标题
+    --[[ LinearLayout;
     Focusable=true;
+    layout_width="fill";
+    orientation="vertical";
+    layout_height="48dp";
+    gravity="center";]]
+    RelativeLayout;
+    layout_width="fill";
+    layout_height="48dp";
+    Focusable=false;
     {
-      AppCompatTextView;
-      textSize="16sp";
+      LinearLayout;
       layout_width="wrap";
       layout_height="fill";
-      gravity="center|left",
-      id="title",
-      Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
-      textColor=icon;
-      layout_marginLeft="26dp";
-      layout_marginRight="16dp";
-      paddingBottom="6dp",
-      singleLine="true";
+      layout_marginRight="8dp";
+      BackgroundDrawable=ch_item_checked_background;
+      {
+        AppCompatTextView;
+        id="title";
+        textSize="14sp";
+        layout_width="wrap";
+        layout_height="fill";
+        gravity="center|left",
+        Typeface=Typeface.defaultFromStyle(Typeface.BOLD);
+        textColor=icon;
+        layout_marginLeft="26dp";
+        layout_marginRight="26dp";
+        singleLine="true";
+      };
     };
+
   };
   {
     LinearLayout,

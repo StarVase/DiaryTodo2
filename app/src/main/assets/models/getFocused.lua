@@ -36,11 +36,19 @@ function isWrittenDiaryToday()
 
   if pcall(raw,sql,nil) then
     if (!cursor.moveToNext()) then
-      if (activity.getSharedData("GetFocused")&&(UnwrittenDiaryParent == nil)) then
-        focusing.addView(loadlayout(require"layouts.layouts_get_focused"["UnwrittenDiary"]))
+      if (activity.getSharedData("GetFocused")) then
+        focuslabelpatent.setVisibility(View.VISIBLE)
+        if (!UnwrittenDiaryParent) then
+          focusing.addView(loadlayout(require"layouts.layouts_get_focused"["UnwrittenDiary"]))
+        end
+       else
+        if (UnwrittenDiaryParent != nil) then
+          UnwrittenDiaryParent.setVisibility(View.GONE)
+        end
       end
       return false
      else
+
       if (UnwrittenDiaryParent != nil) then
         UnwrittenDiaryParent.setVisibility(View.GONE)
       end
@@ -58,12 +66,14 @@ function isReadArticleToday()
   conf.day=time.monthDay
   if (activity.getSharedData("GetFocused")&&(!activity.getSharedData("LastReadArticleDate")|| activity.getSharedData("LastReadArticleDate") < tointeger(tostring(conf.year)..tostring(conf.month)..tostring(conf.day)))) then
     if (ReadArticleParent == nil) then
+      focuslabelpatent.setVisibility(View.VISIBLE)
+
       focusing.addView(loadlayout(require"layouts.layouts_get_focused"["ReadArticle"]))
     end
     return false
    else
     if (ReadArticleParent != nil) then
-      UnwrittenDiaryParent.setVisibility(View.GONE)
+      ReadArticleParent.setVisibility(View.GONE)
     end
     return true
   end
@@ -84,6 +94,10 @@ function getUnfinishedTodo()
   end
 end
 
---print(isWrittenDiaryToday())
---print(isReadArticleToday())
---getUnfinishedTodo()
+function FOCUS()
+  task(500,function()
+    isWrittenDiaryToday()
+    isReadArticleToday()
+    getUnfinishedTodo()
+  end)
+end

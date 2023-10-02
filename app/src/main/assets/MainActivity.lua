@@ -18,12 +18,13 @@ weathero=activity.getSharedData("WeatherTip")
 themeo=activity.getSharedData("theme")
 yiyanTypeo=activity.getSharedData("YiyanType")
 yiyanEnabledo=activity.getSharedData("YiyanEnabled")
+focuso=activity.getSharedData("GetFocused")
 
 --设置基础路径，不设置会有想不到的后果
 activity.setSharedData("BaseLuaPath",activity.getLuaDir())
 
 
---优先关闭自带标题栏
+--优先关闭自带题栏
 activity.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
 --定位并保存位置信息
@@ -35,7 +36,7 @@ Thread(Runnable({
 
 require "StarVase"(this,{enableTheme=true})
 
-
+require "models.getFocused"
 activity.runOnUiThread(luajava.createProxy("java.lang.Runnable", {
   run=function()
     import "com.StarVase.diaryTodo.CreateFileUtil"
@@ -45,7 +46,7 @@ activity.runOnUiThread(luajava.createProxy("java.lang.Runnable", {
     import "layouts.layout"
     import "models.MyToolbar"
 
-    require "models.getFocused"
+
 
     if (AppTheme.isDarkTheme()) then
       imageShade.setVisibility(View.VISIBLE)
@@ -231,6 +232,7 @@ MyToolbar.setCollapsedOnClick(function()
   return true
 end)
 
+
 --点击图片
 imageFrame.onClick=function()
   if MainImageType=="Bing" then
@@ -248,7 +250,40 @@ imageFrame.onClick=function()
     dialog_detail_text.setText(info.detail)
     dialog_image.setImageBitmap(bitmap)
     dialog_download.onClick=function()
-      file.download(info.uri,path.picture,"Bing_Dtd_"..os.date()..".png")
+      dest=File(path.picture.."Bing/Bing_Dtd_"..os.time()..".jpg")
+      dest.getParentFile().mkdirs()
+      dest.createNewFile()
+      thread(function(Glide,context,uri,dest)
+
+        function copyfile(source,destination)
+          --print(destination)
+          sourcefile = io.open(source, "r")
+
+          destinationfile = io.open(destination, "w")
+          --print(destination)
+          destinationfile:write(sourcefile:read("*all"))
+          sourcefile:close()
+          destinationfile:close()
+        end
+
+
+        require "import"
+        import( "android.os.Environment")
+        import( "java.io.File")
+        import "com.StarVase.app.path"
+        import "java.nio.file.Files"
+        --file.download(info.uri,import "android.os.Environment".DIRECTORY_PICTURES,"DiaryTodo/Bing/Bing_Dtd_"..os.date()..".jpg")
+        recvImgFile = Glide.with(context)
+        .load(uri)
+        .downloadOnly(1920, 1080)
+        .get();
+        --print (recvImgFile.getPath())
+
+        copyfile(recvImgFile.getPath(),dest.getPath(),dest)
+      end, Glide,this.getContext(),info.uri,dest)
+      bsd.dismiss()
+      MyToast.showSnackBar(dest.getPath())
+
     end
     bottom = bsd.findViewById(R.id.design_bottom_sheet);
     if (bottom != null) then
@@ -344,6 +379,13 @@ function onResume()
   activity.runOnUiThread(luajava.createProxy("java.lang.Runnable", {
     run=function()
       --刷新聚焦
+      if (activity.getSharedData("GetFocused")==false)&&(activity.getSharedData("WeatherTip")==false) then
+        focuslabelpatent.setVisibility(View.GONE)
+
+      end
+
+
+      FOCUS()
 
       if (themeo!=AppTheme.getid()) then
         --重载主页
@@ -386,7 +428,7 @@ function onResume()
     if activity.getSharedData("AutoBackup") == true then
       require "import"
       import "models.qkbackup"
-      backupNow()
+      pcall(function()backupNow()end)
 
     end
   end)

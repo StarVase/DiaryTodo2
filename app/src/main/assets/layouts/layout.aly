@@ -44,14 +44,17 @@
 
           {
             LinearLayout;
+id="focuslabelpatent",
+visibility=View.GONE,
             layout_width="wrap";
             layout_height="fill";
             layout_marginRight="8dp";
-            --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
             {
               AppCompatTextView;
               id="focuslabel",
+              
               textSize="16sp";
               layout_width="wrap";
               text=AdapLan("聚焦","Focusing"),

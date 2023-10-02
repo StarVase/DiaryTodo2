@@ -86,11 +86,7 @@
           padding="4dp",
           id="dialog_download",
         },
-        {
-          TextButton,
-          Text="设为壁纸",
-          padding="4dp",
-        },
+
       },
     };
   };

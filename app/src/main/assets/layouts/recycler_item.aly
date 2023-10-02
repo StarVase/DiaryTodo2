@@ -5,7 +5,7 @@
   id="recyitempar",
   gravity="center";
   layout_width="-1";
-  layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+  --layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
   paddingTop="8dp",
   paddingBottom="8dp",
 

@@ -13,5 +13,5 @@ path.favorote=path.data..".favorite/"
 path.backup=envdir.."/StarVase/DiaryTodo/backup/"
 path.dustbin=envdir.."/StarVase/DiaryTodo/.dustbin/"
 path.StarVase=envdir.."/StarVase/"
-path.picture=envdir.."/Picture/DiaryTodo/"
+path.picture=envdir.."/Pictures/DiaryTodo/"
 return path

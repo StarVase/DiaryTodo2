@@ -14,6 +14,11 @@ import "function"
 import "layout"
 activity.setContentView(loadlayout(layout))
 graph.Ripple(show1,普通波纹)
+import "android.graphics.drawable.GradientDrawable"
+ch_item_checked_background = GradientDrawable()
+.setShape(GradientDrawable.RECTANGLE)
+.setColor(淡色强调波纹)
+.setCornerRadii({0,0,math.dp2px(24),math.dp2px(24),math.dp2px(24),math.dp2px(24),0,0});
 
 import "items"
 import "adpd"

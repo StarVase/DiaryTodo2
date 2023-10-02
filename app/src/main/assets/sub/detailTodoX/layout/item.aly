@@ -32,7 +32,9 @@
   {
     View,
     layout_width="24dp";
+    id="extend",
     layout_margin="14dp";
     layout_height="24dp";
+    --backgroundColor=0xff454545
   };
 };
