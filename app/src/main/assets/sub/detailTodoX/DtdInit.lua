@@ -1,0 +1,1 @@
+subappname="detailTodoX"

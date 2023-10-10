@@ -8,7 +8,9 @@ function sendEmail()
   pcall(lambda -> activity.startActivity(Intent.createChooser(i, "Choice")))
 end
 packinfo=this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)
-banbenming=tostring(packinfo.versionName)
+versionName=tostring(packinfo.versionName)
+versionCode=tostring(packinfo.versionCode)
+
 function contactDev()
   local items={"QQ",AdapLan("酷安","Coolapk"),AdapLan("邮箱","E-mail")}
   AlertDialog.Builder(this)
@@ -23,7 +25,7 @@ function contactDev()
         intent.setPackage("com.coolapk.market")
         intent.setData(Uri.parse("coolmarket://u/3047937"))
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK)
-        pcall(lambda -> this.startActivity(intent))
+        xpcall(lambda -> this.startActivity(intent),lambda -> MyToast.showSnackBar(AdapLan("未安装正确版本的QQ","QQ was not installed properly.")))
       end
       if v==2 then
         sendEmail("lxz2102141297@163.com")
@@ -31,8 +33,23 @@ function contactDev()
     end})
   .show()
 end
+
+function checkAgreement(name)
+  if activity.getSharedData("PrivacyState20220402") then
+    return AdapLan("已同意","Agreed")
+   else
+    return AdapLan("未同意","NOT Agreed")
+
+  end
+end
+
 function JoiningQGroup()
   url="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=485652458&card_type=group&source=qrcode"
-  activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+  xpcall(lambda-> activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))),lambda -> MyToast.showSnackBar(AdapLan("未安装正确版本的QQ","QQ was not installed properly.")))
 
+
+end
+
+function privacy()
+  subed("privacy")
 end

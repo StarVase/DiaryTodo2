@@ -21,6 +21,7 @@ ch_item_checked_background = GradientDrawable()
 .setCornerRadii({0,0,math.dp2px(24),math.dp2px(24),math.dp2px(24),math.dp2px(24),0,0});
 
 import "items"
+
 import "adpd"
 
 adapter=MyLuaMultiAdapter(this,adpd,items)

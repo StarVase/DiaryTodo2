@@ -58,6 +58,7 @@
         android:persistent="true"
         android:resizeableActivity="true"
         android:supportsPictureInPicture="true"
+        android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"

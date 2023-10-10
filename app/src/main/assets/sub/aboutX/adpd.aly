@@ -9,9 +9,22 @@
       text=AdapLan("版本","Version"),
     },
     content={
-      text=banbenming,
+      text=versionName..string.format("(%s)", versionCode),
     },
     onClick=update,
+  },
+  {
+    __type=2,
+    img={
+      ImageResource=R.drawable.ic_arrow_up_thin_circle_outline
+    },
+    title={
+     text=AdapLan("隐私协议","Privacy Agreement"),
+    },
+    content={
+      text=checkAgreement("PrivacyState20220402"),
+    },
+    onClick=privacy,
   },
   {__type=1,title={text=AdapLan("开发","Development")}},
   {

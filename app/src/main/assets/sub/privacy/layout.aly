@@ -46,7 +46,7 @@
         };
         {
           AppCompatCheckBox;
-          text="我已阅读并同意隐私政策";
+          text=AdapLan("我已阅读并同意隐私政策","I've read and agreed the agreement");
           layout_marginTop="12dp";
           id="checkBox";
           textColor=textColor;
@@ -80,7 +80,7 @@
 
         {
           MaterialButton_OutlinedButton,
-          text="确定";
+          text=AdapLan("确定","Next");
           id="nextButton";
           layout_gravity="right|center";
           -- layout_margin="16dp";

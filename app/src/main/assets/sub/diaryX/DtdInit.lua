@@ -1,0 +1,1 @@
+subappname="日记X"

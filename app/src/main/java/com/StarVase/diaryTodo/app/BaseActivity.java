@@ -229,7 +229,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
             if (idx > 0)
                 pageName = pageName.substring(0, idx);
 
-            luaLpath = (luaDir + "/?.lua;" + luaDir + "/lua/?.lua;" + luaDir + "/?/init.lua;") + luaLpath;
+            luaLpath = (luaDir + "/?.lua;" + luaDir + "/lua/?.lua;" + luaDir + "/?/DtdInit.lua;") + luaLpath;
             initLua();
 
             mLuaDexLoader = new LuaDexLoader(this);
@@ -401,7 +401,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
         File f = new File(path);
 
         luaDir = new File(luaPath).getParent();
-        if (f.getName().equals("main.lua") && new File(luaDir, "init.lua").exists()) {
+        if (f.getName().equals("main.lua") && new File(luaDir, "DtdInit.lua").exists()) {
             if (!prjCache.contains(luaDir))
                 prjCache.add(luaDir);
         } else {
@@ -411,7 +411,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
                     luaDir = parent;
                     break;
                 } else {
-                    if (new File(parent, "main.lua").exists() && new File(parent, "init.lua").exists()) {
+                    if (new File(parent, "main.lua").exists() && new File(parent, "DtdInit.lua").exists()) {
                         luaDir = parent;
                         if (!prjCache.contains(luaDir))
                             prjCache.add(luaDir);
@@ -1299,7 +1299,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
 
     public Ticker ticker(final LuaObject func, long period) throws LuaException {
         Ticker timer = new Ticker();
-        timer.setOnTickListener(new Ticker.OnTickListener() {
+        /*timer.setOnTickListener(new Ticker.OnTickListener() {
             @Override
             public void onTick() {
                 try {
@@ -1309,7 +1309,7 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
                     sendError("onTick", e);
                 }
             }
-        });
+        });*/
         timer.start();
         timer.setPeriod(period);
         return timer;
@@ -1425,11 +1425,11 @@ public class BaseActivity extends DtdCustomActivity implements LuaBroadcastRecei
     }
 
     private void initENV() throws Exception {
-        if (!new File(luaDir + "/init.lua").exists())
+        if (!new File(luaDir + "/DtdInit.lua").exists())
             return;
 
         try {
-            int ok = L.LloadFile(luaDir + "/init.lua");
+            int ok = L.LloadFile(luaDir + "/DtdInit.lua");
             if (ok == 0) {
                 L.newTable();
                 LuaObject env = L.getLuaObject(-1);

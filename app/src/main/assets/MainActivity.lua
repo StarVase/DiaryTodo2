@@ -442,7 +442,7 @@ function onKeyUp(code,event)
     if arg+2 > tonumber(os.time()) then
       activity.finish()
      else
-      MyToast.showSnackBar("再按一次后退出")
+      MyToast.showSnackBar(AdapLan("再按一次后退出","Press again to exit"))
       arg=tonumber(os.time())
     end
     return true
