@@ -7,9 +7,6 @@
 
 ## 注意 | Alert
 
-如需使用源代码，请进入 [发行版 (Gitee)](https://gitee.com/AideLua/AideLua/releases/latest) 页面下载。   
-If you need to use the source code, please go to the [releases (Github)](https://github.com/AideLua/AideLua/releases/latest) page to download.
-
 请不要在 Github 内直接更改此仓库，因为 Github 的仓库是由 Gitee 镜像过去的。   
 Please not to change the repository directly in Github, because Github's repository is mirrored by Gitee。
 
