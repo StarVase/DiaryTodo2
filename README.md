@@ -1,4 +1,4 @@
-# 日记与待办2.X：简洁高效的Markdown日记软件
+# 日记与待办2.X开源项目：简洁高效的Markdown日记软件 | DiaryTodo 2.X OpenSource Project : A Simple but effective diary application of Markdown
 
 [![Gitee 仓库](https://img.shields.io/badge/Gitee-仓库-C71D23?logo=gitee)](https://gitee.com/StarVase/DiaryTodo2)
 [![Github 仓库](https://img.shields.io/badge/Github-仓库-0969DA?logo=github)](https://github.com/StarVase/DiaryTodo2)
@@ -14,7 +14,7 @@ If you need to use the source code, please go to the [releases (Github)](https:/
 Please not to change the repository directly in Github, because Github's repository is mirrored by Gitee。
 
 
-## 介绍
+## 介绍 | Introduction
 
 日记与待办2.X：
 
@@ -29,7 +29,7 @@ Please not to change the repository directly in Github, because Github's reposit
 Page：[https://diarytodo.starvase.cn/](https://diarytodo.starvase.cn/)
 
 
-## 开发
+## 开发 | Development
 
 编写语言：java、lua、JavaScript
 
@@ -42,7 +42,7 @@ Page：[https://diarytodo.starvase.cn/](https://diarytodo.starvase.cn/)
 [![蓝奏云 (官方)](https://img.shields.io/badge/蓝奏云-v2.6.45-FF6600?logo=icloud&logoColor=white)](https://www.lanzouy.com/b00zdhbeb)
 
 
-## 下载
+## 下载 | Download
 
 去[酷安](http://www.coolapk.com/apk/273947)下载  
 
