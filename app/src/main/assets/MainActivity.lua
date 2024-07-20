@@ -324,6 +324,7 @@ activity.newTask(function()
       end
     end
   end
+  bakdata0=Bakdata
 
   import "java.util.Calendar"
   import "java.util.Date"
@@ -345,6 +346,7 @@ activity.newTask(function()
    case "none"
 
   end
+
   year=calendar.get(Calendar.YEAR)
   yearstr=tostring(year)
   month=calendar.get(Calendar.MONTH)+1
@@ -359,7 +361,7 @@ activity.newTask(function()
   end
   boundaryDate=yearstr..monthstr..daystr
 
-  for key,filestruct in ipairs(Bakdata) do
+  for key,filestruct in ipairs(bakdata0) do
     -- print(tointeger(string.sub(tostring(filestruct.file_name),1,8)))
     scannedDate=tointeger(string.sub(filestruct.file_name,1,8)) or 2^31
 

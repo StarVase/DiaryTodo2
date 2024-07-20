@@ -65,7 +65,7 @@
       backgroundColor=BGC;
       radius=0;
       id="bottombar",
-      visibility=View.GONE;
+      
       elevation="8dp";
       layoutTransition=LayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
@@ -80,9 +80,25 @@
 
         {
           MaterialButton_OutlinedButton,
-          text=AdapLan("确定","Next");
+          text=AdapLan("接受","Accept");
           id="nextButton";
+          visibility=View.GONE;
           layout_gravity="right|center";
+          -- layout_margin="16dp";
+        },
+        {
+          AppCompatTextView,
+          text=AdapLan("请阅读","Please read");
+          id="hintText";
+          
+          layout_gravity="right|center";
+          layout_marginRight="16dp";
+        },
+        {
+          MaterialButton_OutlinedButton,
+          text=AdapLan("拒绝并退出","Decline&Exit");
+          id="backButton";
+          layout_gravity="left|center";
           -- layout_margin="16dp";
         }
       };

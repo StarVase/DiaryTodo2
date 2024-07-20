@@ -34,22 +34,27 @@ textView.text=Html.fromHtml(io.open(activity.getLuaDir("PrivacyPolicy.html")):re
 checkBox.setOnCheckedChangeListener({
   onCheckedChanged=function()
     if checkBox.isChecked() then
-      bottombar.visibility=View.VISIBLE
+      hintText.visibility=View.GONE
+      nextButton.visibility=View.VISIBLE
      else
-      bottombar.visibility=View.GONE
+      nextButton.visibility=View.GONE
+      hintText.visibility=View.VISIBLE
     end
   end
 })
 nextButton.onClick=function()
-  activity.setSharedData("PrivacyState20220402",checkBox.isChecked())
+  activity.setSharedData("PrivacyState20240720",checkBox.isChecked())
   import "com.amap.api.location.AMapLocationClient"
   AMapLocationClient.updatePrivacyShow(this,true,true)
   AMapLocationClient.updatePrivacyAgree(this,checkBox.isChecked())
-  
-  task(100,function()
+  applyPermissions(permissionTable)
+
+  task(5000,function()
     this.startActivity(Intent(this,luajava.bindClass("com.StarVase.diaryTodo.app.MainActivity")));
     this.finish()
   end)
 end
 
-applyPermissions(permissionTable)
+backButton.onClick=function()
+  this.finish()
+end

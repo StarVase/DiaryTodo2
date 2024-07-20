@@ -24,7 +24,6 @@ activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 function onCreateOptionsMenu(menu)
   local inflater=activity.getMenuInflater()
   inflater.inflate(R.menu.menu_diary,menu)
-
 end
 
 --菜单点击

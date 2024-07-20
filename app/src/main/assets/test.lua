@@ -8,6 +8,6 @@ import "java.lang.System"
 activity.setTheme(R.style.Night)
 
 import "StarVase"(this,{enableTheme=false})
-sub("backupX")
+sub("aboutX")
 activity.finish()
 

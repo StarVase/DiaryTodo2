@@ -16,6 +16,19 @@
   {
     __type=2,
     img={
+      ImageResource=R.drawable.ic_information_outline,
+    },
+    title={
+      text=AdapLan("备案","App Filing"),
+    },
+    content={
+      text="湘ICP备2024071530号-2A",
+    },
+    onClick=nil,
+  },
+  {
+    __type=2,
+    img={
       ImageResource=R.drawable.ic_arrow_up_thin_circle_outline
     },
     title={

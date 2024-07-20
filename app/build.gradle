@@ -7,8 +7,8 @@ android {
         applicationId "com.StarVase.diaryTodo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2023100801
-        versionName "2.23H2.15 Release"
+        versionCode 2024072002
+        versionName "2.24H2.2 Release"
         //请在发行版中禁止调试
     }
 

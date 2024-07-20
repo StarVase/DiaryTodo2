@@ -57,6 +57,44 @@ mPerformEdit = UndoRedoHelper(mEditText);
 function onCreateOptionsMenu(menu)
   local inflater=activity.getMenuInflater()
   inflater.inflate(R.menu.menu_npd,menu)
+  menu.add(AdapLan("挂起到通知栏","Send to Notification Bar")).onMenuItemClick=function()
+    task(100,function()
+      import "android.content.Intent"
+      import "android.net.Uri"
+      if (not activity.getSystemService(activity.NOTIFICATION_SERVICE).areNotificationsEnabled()) then
+        xpcall(function()
+          activity.startActivity(Intent()
+          .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          .setAction("android.settings.APP_NOTIFICATION_SETTINGS")
+          .putExtra("app_package",activity.getPackageName())
+          .putExtra("android.provider.extra.APP_PACKAGE",activity.getPackageName())
+          .putExtra("app_uid"
+          ,activity.getPackageManager().getApplicationInfo(activity.getPackageName(),0).uid))
+        end,function()
+          activity.startActivity(Intent()
+          .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          .setAction("android.settings.APPLICATION_DETAILS_SETTINGS")
+          .setData(Uri.fromParts("package",activity.getPackageName(),nil)))
+        end)
+      end
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        notificationChannel= NotificationChannel("10002","挂起文本", NotificationManager.IMPORTANCE_DEFAULT);
+        notificationChannel.setDescription("将文本内容挂起到通知栏");
+        notificationManager=activity.getSystemService(activity.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(notificationChannel);
+      end
+      manager=this.getSystemService(Context.NOTIFICATION_SERVICE);
+      builder=Notification.Builder(this,"10002");
+      builder.setSmallIcon(R.drawable.ic_welcome);
+      builder.setContentTitle(Widgettitle.Text);
+      builder.setContentText(Widgetcontent.text)
+      builder.setAutoCancel(false)
+      notification=builder.build();
+      notificationManagerCompat=NotificationManager.from(this);
+      notificationManagerCompat.notify(os.time(),builder.build());
+
+    end)
+  end
 
 end
 
@@ -330,7 +368,7 @@ function onActivityResult(requestCode,resultCode,data)
        else
         editText.getText().replace(start, End, content);
       end
-      
+
     end
   end
 

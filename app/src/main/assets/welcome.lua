@@ -14,9 +14,6 @@ import "initAppData"
 R=luajava.bindClass(activity.getPackageName()..".R")
 import "shortCut"
 
-permission={"android.permission.READ_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"}
-applyPermissions(permission)
-
 if activity.getPackageName()!="com.StarVase.diaryTodo" then
   intent = Intent(Intent.ACTION_MAIN);
   intent.setComponent(ComponentName("com.StarVase.diaryTodo","com.StarVase.diaryTodo.app.BaseActivity"));
@@ -41,7 +38,7 @@ activity.getSupportActionBar().setDisplayShowCustomEnabled(true)
 activity.getSupportActionBar().setCustomView(editTitle)
 activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 
-PrivacyState=activity.getSharedData("PrivacyState20220402")
+PrivacyState=activity.getSharedData("PrivacyState20240720")
 if !PrivacyState then
   activity.newActivity("sub/privacy/main.lua")
   activity.finish()

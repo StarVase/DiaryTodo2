@@ -12,6 +12,7 @@ list.onItemLongClick=function(id,v,zero,one)
   isEmp=data[one].isEmp
   pop=PopupMenu(activity,v)
   menu=pop.Menu
+
   menu.add(AdapLan("删除","Delete")).onMenuItemClick=function()
     task(100,function()
 

@@ -51,7 +51,7 @@
       layout_marginRight="8dp";
       layout_gravity="center",
       gravity="center";
-      Text="Copyright © 2020-2023 StarVase Team.\nAll rights reserved.",
+      Text="Copyright © 2020-2024 StarVase Team.\nAll rights reserved.",
       textSize="12sp",
       textColor=textColor
     },
