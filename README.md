@@ -40,7 +40,7 @@ Page：[https://diarytodo.starvase.cn/](https://diarytodo.starvase.cn/)
 
 
 ## 下载 | Download
-
+转到[发行版](https://gitee.com/StarVase/DiaryTodo2/releases/tag/2.24H2.2_Release)下载
 去[酷安](http://www.coolapk.com/apk/273947)下载  
 
 ## 注意事项
